@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head> 
+<body>
+<canvas id="c" width=1345 height=740>This browser does not support Canvas.</canvas>
+</body>
+<script>
+    const CANVAS = document.getElementById("c");
+    const CANVAS_W = CANVAS.width;
+    const CANVAS_H = CANVAS.height;
+    const CENTER_X = CANVAS_W / 2;
+    const CENTER_Y = CANVAS_H / 2;
+    const ctx = CANVAS.getContext('2d');
+
+
+    function draw() {   
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
+    }
+
+    requestAnimationFrame(draw);
+</script>
+</html>
