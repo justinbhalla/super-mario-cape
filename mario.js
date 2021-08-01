@@ -35,14 +35,12 @@ class Mario {
         
         let count = 0;
         let interval = setInterval(() => {
-            if (this.yPos > 0 && count < 15) {
-                this.yPos -= this.jumpHeight;
-            }
-
             if (count > 15) {
                 clearInterval(interval);
                 this.isJumping = false;
                 count = 0;
+            } else if (this.yPos > 0) {
+                this.yPos -= this.jumpHeight;
             }
             
             count++;
