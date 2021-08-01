@@ -17,10 +17,8 @@ class Mario {
         this.gravity = 7;
         this.wind = 3;
 
-        
         this.isJumping = true;
         this.jumpHeight = 11;
-
     }
 
     move() {
@@ -28,5 +26,26 @@ class Mario {
         if (rightHeld) this.xPos += this.speed + this.wind;
         if (downHeld) this.yPos += this.speed + this.gravity;
         this.isJumping = spacePressed ? true : false;
+    }
+
+    jump() {
+        this.isJumping = true;
+        this.jumpAudio.currentTime = 0;
+        this.jumpAudio.play();
+        
+        let count = 0;
+        let interval = setInterval(() => {
+            if (this.yPos > 0 && count < 15) {
+                this.yPos -= this.jumpHeight;
+            }
+
+            if (count > 15) {
+                clearInterval(interval);
+                this.isJumping = false;
+                count = 0;
+            }
+            
+            count++;
+        }, 10);
     }
 }
