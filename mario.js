@@ -24,9 +24,22 @@ class Mario {
     move() {
         if (leftHeld) this.xPos -= this.speed - this.wind;
         if (rightHeld) this.xPos += this.speed + this.wind;
-        if (downHeld) this.yPos += this.speed + this.gravity;
-        if (spacePressed && !this.isJumping) this.jump();
-        if (!spacePressed) this.isJumping = false;
+        
+        if (downHeld) {
+            this.yPos += this.speed + this.gravity;
+            this.imageSprite = 2;  
+        } 
+
+        if (spacePressed && !this.isJumping) {
+            this.jump();
+            this.imageSprite = 1;
+        }
+
+        if (!spacePressed) {
+            this.isJumping = false;
+            this.imageSprite = 0;
+        }
+
         this.yPos += this.gravity;
     }
 
