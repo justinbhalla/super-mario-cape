@@ -7,7 +7,8 @@
 </head> 
 <body>
 <canvas id="c" width=1345 height=740>This browser does not support Canvas.</canvas>
-</body>
+<script src="mario.js"></script>
+<script src="controls.js"></script>
 <script>
     const CANVAS = document.getElementById("c");
     const CANVAS_W = CANVAS.width;
@@ -15,13 +16,16 @@
     const CENTER_X = CANVAS_W / 2;
     const CENTER_Y = CANVAS_H / 2;
     const ctx = CANVAS.getContext('2d');
-
-
-    function draw() {   
+    
+    function update() {   
         ctx.fillStyle = 'black';
         ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
+        requestAnimationFrame(update);
     }
-
-    requestAnimationFrame(draw);
+    
+    document.addEventListener("keydown", controls);
+    document.addEventListener("keyup", controls);
+    update();
 </script>
+</body>
 </html>
