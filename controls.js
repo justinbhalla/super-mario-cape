@@ -4,6 +4,11 @@ const DOWN = 40;
 const SPACE = 32;
 const ENTER = 13;
 
+let leftHeld = false;
+let rightHeld = false;
+let downHeld = false;
+let spacePressed = false;
+
 function controls(e) {
     let input = e.keyCode;
     switch(e.type) {
@@ -17,7 +22,7 @@ function controls(e) {
             if (input === LEFT) leftHeld = true;
             if (input === RIGHT) rightHeld = true;
             if (input === DOWN) downHeld = true;
-            if (input === SPACE) spacePressed = true;            } 
+            if (input === SPACE) spacePressed = true;
             break;
     }
 
