@@ -25,13 +25,15 @@ class Mario {
         if (leftHeld) this.xPos -= this.speed - this.wind;
         if (rightHeld) this.xPos += this.speed + this.wind;
         if (downHeld) this.yPos += this.speed + this.gravity;
-        this.isJumping = spacePressed ? true : false;
+        if (spacePressed && !this.isJumping) this.jump();
+        if (!spacePressed) this.isJumping = false;
+        this.yPos += this.gravity;
     }
 
     jump() {
         this.isJumping = true;
-        this.jumpAudio.currentTime = 0;
-        this.jumpAudio.play();
+        this.audio.currentTime = 0;
+        // this.audio.play();
         
         let count = 0;
         let interval = setInterval(() => {
