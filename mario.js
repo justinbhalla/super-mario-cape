@@ -15,7 +15,7 @@ class Mario {
         // xBox, yBox defined at end of move()
         
         this.speed = 10;
-        this.gravity = 0;
+        this.gravity = 0; //was 7
         this.wind = 3;
 
         this.isJumping = true;

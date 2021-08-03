@@ -1,7 +1,7 @@
 const LEFT = 37;
 const RIGHT = 39;
 const DOWN = 40;
-const SPACE = 32;
+const SPACE = 38;
 const ENTER = 13;
 
 let leftHeld = false;
@@ -26,5 +26,5 @@ function controls(e) {
             break;
     }
 
-    e.preventDefault();
+    // e.preventDefault();
 }
