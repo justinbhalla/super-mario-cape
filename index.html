@@ -16,10 +16,21 @@
     const CENTER_X = CANVAS_W / 2;
     const CENTER_Y = CANVAS_H / 2;
     const ctx = CANVAS.getContext('2d');
+    const elements = [new Mario()];
     
     function update() {   
         ctx.fillStyle = 'black';
         ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
+
+        for (let element of elements) {
+            let {image,imageSprite, wBox,hBox, xPos,yPos} = element;
+            let xSrc = image.width * imageSprite;
+            let wSrc = image.width;
+            let hSrc = image.height;
+            ctx.drawImage(image, xSrc,0, wSrc,hSrc, xPos,yPos, wSrc,hSrc);            
+            element.move();
+        }
+
         requestAnimationFrame(update);
     }
     
