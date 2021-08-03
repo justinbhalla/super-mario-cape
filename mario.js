@@ -2,10 +2,8 @@ class Mario {
     constructor() {
         this.audio = new Audio('sounds/jump.wav');
 
-        this.image = new Image();
+        this.image = new Image(116, 124);
         this.image.src = "images/mario.png"
-        this.imageWidth = 116;
-        this.imageHeight = 124;
         this.imageSprite = 0;
 
         this.width = 100;
