@@ -6,38 +6,43 @@ class Mario {
         this.image.src = "images/mario.png"
         this.imageSprite = 0;
 
-        this.width = 100;
-        this.height = 120;
         this.xPos = 200;
         this.yPos = 200;
-
+        this.xOff = 20;
+        this.yOff = 38;
+        this.wBox = 92;
+        this.hBox = 76;
+        // xBox, yBox defined at end of move()
+        
         this.speed = 10;
-        this.gravity = 7;
+        this.gravity = 0;
         this.wind = 3;
 
         this.isJumping = true;
-        this.jumpHeight = 11;
+        this.jumpHeight = 10;
     }
 
     move() {
         if (leftHeld) this.xPos -= this.speed - this.wind;
         if (rightHeld) this.xPos += this.speed + this.wind;
         
+        if (spacePressed && !this.isJumping) {
+            this.jump();
+            this.imageSprite = 1;
+        }
+        
+        if (!spacePressed) {
+            this.isJumping = false;
+            this.imageSprite = 0;
+        }
+        
         if (downHeld) {
             this.yPos += this.speed + this.gravity;
             this.imageSprite = 2;  
         } 
 
-        if (spacePressed && !this.isJumping) {
-            this.jump();
-            this.imageSprite = 1;
-        }
-
-        if (!spacePressed) {
-            this.isJumping = false;
-            this.imageSprite = 0;
-        }
-
+        this.xBox = this.xPos + this.xOff;
+        this.yBox = this.yPos + this.yOff;
         this.yPos += this.gravity;
     }
 
