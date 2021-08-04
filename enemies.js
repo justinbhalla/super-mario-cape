@@ -4,6 +4,8 @@ class Enemy {
         this.xPos = CENTER_X;
         this.yPos = CENTER_Y;
         this.yIni = 0;
+        this.xBox = 0;
+        this.yBox = 0;
         this.xOff = 0;
         this.yOff = 0;;
         this.time = 0;
