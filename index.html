@@ -10,6 +10,7 @@
 <script src="mario.js"></script>
 <script src="controls.js"></script>
 <script src="helpers.js"></script>
+<script src="enemies.js"></script>
 <script>
     const CANVAS = document.getElementById("c");
     const CANVAS_W = CANVAS.width;
@@ -20,7 +21,7 @@
     const elements = [new Mario()];
     
     function update() {   
-        ctx.fillStyle = 'black';
+        ctx.fillStyle = 'lightblue';
         ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
 
         for (let element of elements) {
@@ -29,6 +30,8 @@
             let wSrc = image.width;
             let hSrc = image.height;
             ctx.drawImage(image, xSrc,0, wSrc,hSrc, xPos,yPos, wSrc,hSrc);
+            // ctx.fillStyle = "rgba(255, 0, 255, 0.5)";
+            // ctx.fillRect(element.xBox, element.yBox, wBox, hBox);
             moveHitbox(element);
             element.move();
         }
