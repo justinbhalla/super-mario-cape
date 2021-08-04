@@ -12,7 +12,6 @@ class Mario {
         this.yOff = 38;
         this.wBox = 92;
         this.hBox = 76;
-        // xBox, yBox defined at end of move()
         
         this.speed = 10;
         this.gravity = 0; //was 7
@@ -41,8 +40,6 @@ class Mario {
             this.imageSprite = 2;  
         } 
 
-        this.xBox = this.xPos + this.xOff;
-        this.yBox = this.yPos + this.yOff;
         this.yPos += this.gravity;
     }
 
