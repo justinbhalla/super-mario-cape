@@ -10,19 +10,20 @@ let downHeld = false;
 let spacePressed = false;
 
 function controls(e) {
-    let input = e.keyCode;
-    switch(e.type) {
-        case "keyup":
-            if (input === LEFT) leftHeld = false;
-            if (input === RIGHT) rightHeld = false;
-            if (input === DOWN) downHeld = false;
-            if (input === SPACE) spacePressed = false;
+    let isHeld = e.type === "keydown" ? true : false;
+
+    switch(e.keyCode) {
+        case LEFT:
+            leftHeld = isHeld;
             break;
-        case "keydown":    
-            if (input === LEFT) leftHeld = true;
-            if (input === RIGHT) rightHeld = true;
-            if (input === DOWN) downHeld = true;
-            if (input === SPACE) spacePressed = true;
+        case RIGHT:
+            rightHeld = isHeld;
+            break;
+        case DOWN:
+            downHeld = isHeld;
+            break;
+        case SPACE:
+            spacePressed = isHeld;
             break;
     }
 
