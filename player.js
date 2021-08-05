@@ -4,7 +4,7 @@ class Mario {
 
         this.image = new Image(116, 124);
         this.image.src = "images/mario.png"
-        this.imageSprite = 0;
+        this.spriteFrame = 0;
 
         this.xPos = 200;
         this.yPos = 200;
