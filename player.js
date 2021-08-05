@@ -27,17 +27,17 @@ class Mario {
         
         if (spacePressed && !this.isJumping) {
             this.jump();
-            this.imageSprite = 1;
+            this.spriteFrame = 1;
         }
         
         if (!spacePressed) {
             this.isJumping = false;
-            this.imageSprite = 0;
+            this.spriteFrame = 0;
         }
         
         if (downHeld) {
             this.yPos += this.speed + this.gravity;
-            this.imageSprite = 2;  
+            this.spriteFrame = 2;  
         } 
 
         this.yPos += this.gravity;
