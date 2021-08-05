@@ -1,13 +1,15 @@
 class Enemy {
     constructor() {
-        this.imageSprite = 0;
+        this.spriteFrame = 0;
+        this.spriteRate = 0;
+        this.spriteLength = 0;
         this.xPos = CENTER_X;
         this.yPos = CENTER_Y;
         this.yIni = 0;
         this.xBox = 0;
         this.yBox = 0;
         this.xOff = 0;
-        this.yOff = 0;;
+        this.yOff = 0;
         this.time = 0;
         this.isWavey = false;
         this.canRespawn = false;
@@ -45,7 +47,7 @@ class Parakoopa extends Enemy {
 
         this.image = new Image(88, 116);
         this.image.src = `images/parakoopa-${color}.png`;
-        this.spriteTotal = 2;
+        this.spriteLength = 2;
         this.spriteRate = 200;
         this.isWavey = true;
         this.xSpeed = 14;
@@ -81,7 +83,7 @@ class FlyingGoomba extends Enemy {
 
         this.image = new Image(132, 100);
         this.image.src = "images/flying-goomba.png";
-        this.spriteTotal = 4;
+        this.spriteLength = 4;
         this.spriteRate = 200;
         this.xSpeed = 5;
         this.isWavey = true;
@@ -101,7 +103,7 @@ class FlyingBrother extends Enemy {
 
         this.image = new Image(216, 152);
         this.image.src = "images/flying-brother.png";
-        this.spriteTotal = 2;
+        this.spriteLength = 2;
         this.spriteRate = 200;
         this.xSpeed = 15;
         this.wBox = 120;
@@ -123,7 +125,7 @@ class Chainsaw extends Enemy {
 
         this.image = new Image(64, 176);
         this.image.src = "images/chainsaw.png";
-        this.spriteTotal = 4;
+        this.spriteLength = 4;
         this.spriteRate = 50;
         this.xSpeed = 2//BG_SPEED;
         this.wBox = 50;
@@ -157,7 +159,7 @@ class BigBubble extends Enemy {
         
         this.image = new Image(224, 240);
         this.image.src = "images/big-bubble.png";
-        this.spriteTotal = 2;
+        this.spriteLength = 2;
         this.spriteRate = 250;
         this.xSpeed = 8;
         this.ySpeed = 8;
@@ -180,7 +182,7 @@ class BooBuddy extends Enemy {
         
         this.image = new Image(64, 64);
         this.image.src = `images/boo-buddy-${Math.round(Math.random()*2)}.png`;
-        this.spriteTotal = 2
+        this.spriteLength = 2
         this.spriteRate = 150;
         this.xSpeed = 20;
         this.wBox = 64;
@@ -194,7 +196,7 @@ class Eerie extends Enemy {
         
         this.image = new Image(64, 64)
         this.image.src = "images/eerie.png";
-        this.spriteTotal = 2;
+        this.spriteLength = 2;
         this.spriteRate = 100;
         this.xSpeed = 12;
         this.isWavey = true;
@@ -258,7 +260,7 @@ class Grinder extends Enemy {
  
         this.image = new Image (128, 128);
         this.image.src = "images/grinder.png";
-        this.spriteTotal = 2;
+        this.spriteLength = 2;
         this.spriteRate = 25;
         this.xSpeed = 2 //BG_SPEED;
         this.wBox = 108;
