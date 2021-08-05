@@ -24,3 +24,13 @@ function detectHit(enemy) {
 
     return !(ex1 >= mx2 || ey1 >= my2 || ex2 <= mx1 || ey2 <= my1);
 }
+
+function animateSprite(enemy) {
+    let {spriteFrame, spriteLength} = enemy;
+    
+    if (spriteFrame === spriteLength - 1) {
+        enemy.spriteFrame = 0;
+    } else {
+        enemy.spriteFrame++;
+    }
+}
