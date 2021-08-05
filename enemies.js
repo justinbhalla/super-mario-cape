@@ -3,46 +3,57 @@ class Enemy {
         this.spriteFrame = 0;
         this.spriteRate = 0;
         this.spriteLength = 0;
-        this.xPos = CENTER_X;
-        this.yPos = CENTER_Y;
-        this.yIni = 0;
+        this.xPos = CANVAS_W;
         this.xBox = 0;
         this.yBox = 0;
-        this.xOff = 0;
-        this.yOff = 0;
         this.time = 0;
         this.isWavey = false;
-        this.canRespawn = false;
-        this.reflect = this.yIni < CENTER_Y ? 1 : -1
+        this.isCurvy = false;
     }
 
     move() {
         this.xPos -= this.xSpeed;
 
         if (this.isWavey) {
-            this.xPos -= this.xSpeed;
-            this.yPos = this.yIni + this.reflect * 
-            this.amplitude * Math[this.wave](this.radians);
+            let {yIni, waveSize, waveType, waveRate, time} = this;
+            this.yPos = yIni + waveSize * Math[waveType](time * waveRate);
+
+        } else if (this.isCurvy) {
+            let {yIni, curveSize, curveRate, time} = this;
+            this.yPos = yIni + curveSize * Math.sqrt(time * curveRate);
         }
     }
 }
 
 class SuperKoopa extends Enemy {
-    constructor(color) {
+    constructor(yIni, color) {
         super();
 
         this.image = new Image(92, 52);
         this.image.src = `images/super-koopa-${color}.png`
-        this.xSpeed = 16;
+        this.yIni = yIni
+        this.yPos = yIni;
         this.wBox = 72;
         this.hBox = 45;
         this.xOff = 5;
         this.yOff = 5;
+
+        switch(color) {
+            case "yellow":
+                this.isCurvy = true;
+                this.curveSize = 2;
+                this.curveRate = 20;
+                this.xSpeed = 16;
+                break;
+            case "red":
+                this.xSpeed = 18;
+                break;
+        }
     }
 }
 
 class Parakoopa extends Enemy {
-    constructor(color) {
+    constructor(yIni, color) {
         super();
 
         this.image = new Image(88, 116);
@@ -50,35 +61,32 @@ class Parakoopa extends Enemy {
         this.spriteLength = 2;
         this.spriteRate = 200;
         this.isWavey = true;
-        this.xSpeed = 14;
+        this.yIni = yIni;
         this.wBox = 56;
         this.hBox = 93;
         this.xOff = 5;
         this.yOff = 15;
+        this.xSpeed = 14;
 
         switch(color) {
             case "red":
-            case "blue":
-                this.wave = "sin";
             case "yellow":
-            case "green":
-                this.wave = "cos";
-            case "red":
-            case "green":
-                this.amplitude = 50;
-                this.radians = this.time / 100;
+                this.waveType = "sin";
+                this.waveSize = 50;
+                this.waveRate = 1e-2;
                 break;
             case "blue":
             case "green":
-                this.amplitude = 150;
-                this.radians = this.time / 200;
+                this.waveType = "cos";
+                this.waveSize = 150;
+                this.waveRate = 5e-3;
                 break;
         }
     }
 }
 
 class FlyingGoomba extends Enemy {
-    constructor() {
+    constructor(yIni) {
         super();
 
         this.image = new Image(132, 100);
@@ -87,9 +95,10 @@ class FlyingGoomba extends Enemy {
         this.spriteRate = 200;
         this.xSpeed = 5;
         this.isWavey = true;
-        this.wave = 'sin'
-        this.amplitude = 50;
-        this.radians = this.time / 100;
+        this.waveType = 'sin';
+        this.waveSize = 50;
+        this.waveRate = 0.01;
+        this.yIni = yIni;
         this.wBox = 70;
         this.hBox = 60;
         this.xOff = 25;
@@ -98,29 +107,28 @@ class FlyingGoomba extends Enemy {
 }
 
 class FlyingBrother extends Enemy {
-    constructor() {
+    constructor(yIni) {
         super();
 
         this.image = new Image(216, 152);
         this.image.src = "images/flying-brother.png";
         this.spriteLength = 2;
         this.spriteRate = 200;
-        this.xSpeed = 15;
+        this.yIni = yIni
+        this.yPos = yIni;
+        this.isCurvy = true;
+        this.curveSize = 10;
+        this.curveRate = 1;
         this.wBox = 120;
         this.hBox = 136;
         this.xOff = 49;
         this.yOff = 14;
-    }
-
-    move() {
-        this.xPos -= this.xSpeed;
-        this.yPos = this.yIni + 4 * this.reflect * 
-        Math.sqrt(Math.abs(8*this.time));        
+        this.xSpeed = 15;
     }
 }
 
 class Chainsaw extends Enemy {
-    constructor() {
+    constructor(yPos) {
         super();
 
         this.image = new Image(64, 176);
@@ -128,6 +136,7 @@ class Chainsaw extends Enemy {
         this.spriteLength = 4;
         this.spriteRate = 50;
         this.xSpeed = 2//BG_SPEED;
+        this.yPos = yPos;
         this.wBox = 50;
         this.hBox = 168;
         this.xOff = 7;
@@ -136,16 +145,18 @@ class Chainsaw extends Enemy {
 }
 
 class BigBoo extends Enemy {
-    constructor() {
+    constructor(yIni) {
         super();
         
         this.image = new Image(268, 256);
         this.image.src = "images/big-boo.png";
         this.xSpeed = 14;
+        this.yIni = yIni;
+        this.yPos = yIni;
         this.isWavey = true;
-        this.wave = 'sin'
-        this.amplitude = 100;
-        this.radians = this.time / 1000;    
+        this.waveType = 'sin'
+        this.waveSize = 100;
+        this.waveRate = 1e-3;
         this.wBox = 202;
         this.hBox = 218;
         this.xOff = 30;
@@ -154,13 +165,14 @@ class BigBoo extends Enemy {
 }
 
 class BigBubble extends Enemy {
-    constructor() {
+    constructor(yPos) {
         super();
         
         this.image = new Image(224, 240);
         this.image.src = "images/big-bubble.png";
         this.spriteLength = 2;
         this.spriteRate = 250;
+        this.yPos = yPos;
         this.xSpeed = 8;
         this.ySpeed = 8;
         this.wBox = 184;
@@ -170,20 +182,22 @@ class BigBubble extends Enemy {
     }
 
     move() {
-        if (this.y + this.h > CANVAS_H || this.y < 0) this.ySpeed *= -1;
+        if (this.yPos + this.hBox > CANVAS_H || 
+            this.yPos < 0) this.ySpeed *= -1;
         this.xPos -= this.xSpeed;
         this.yPos += this.ySpeed;
     }
 }
 
 class BooBuddy extends Enemy {
-    constructor() {
+    constructor(yPos) {
         super();
         
         this.image = new Image(64, 64);
         this.image.src = `images/boo-buddy-${Math.round(Math.random()*2)}.png`;
         this.spriteLength = 2
         this.spriteRate = 150;
+        this.yPos = yPos;
         this.xSpeed = 20;
         this.wBox = 64;
         this.hBox = 64;
@@ -191,7 +205,7 @@ class BooBuddy extends Enemy {
 }
 
 class Eerie extends Enemy {
-    constructor() {
+    constructor(yIni) {
         super();
         
         this.image = new Image(64, 64)
@@ -199,22 +213,28 @@ class Eerie extends Enemy {
         this.spriteLength = 2;
         this.spriteRate = 100;
         this.xSpeed = 12;
-        this.isWavey = true;
-        this.wave = Math.random() > 0.5 ? "sin" : "cos";
-        this.amplitude = 40 * (this.time / 800);
-        this.radians = 15 * this.time / 800;
+        this.yIni = yIni;
+        this.waveType = "cos"
+        this.waveSize = 40 * (this.time / 800); 
+        this.waveRate = 2e-2;
         this.wBox = 64;
         this.hBox = 64;
+    }
+
+    move() {
+        this.xPos -= this.xSpeed;
+        this.yPos = this.yIni + 40 * (this.time/800) * Math.sin(15*this.time/800);
     }
 }
 
 class BanzaiBill extends Enemy {
-    constructor() {
+    constructor(yPos) {
         super();
         
         this.image = new Image(256, 256);
         this.image.src = "images/banzai-bill.png";
         this.xSpeed = 18;
+        this.yPos = yPos;
         this.wBox = 246;
         this.hBox = 236;
         this.xOff = 10;
@@ -223,39 +243,42 @@ class BanzaiBill extends Enemy {
 }
 
 class BulletBillLinear extends Enemy {
-    constructor() {
+    constructor(yPos) {
         super();
  
         this.image = new Image(64, 56);
         this.image.src = "images/bullet-bill-linear.png";
         this.xSpeed = 35;
+        this.yPos = yPos;
         this.wBox = 64;
         this.hBox = 56;
     }
 }
 
 class BulletBillDiagonal extends Enemy {
-    constructor() {
+    constructor(direction) {
         super();
+        
         this.image = new Image(64, 64);
-        this.yIni = Math.round(Math.random()) * CANVAS_H;
-        this.yPos = this.yIni;
-        this.xPos = CANVAS_W - this.w;
-        this.image.src = `images/bullet-bill-diagonal-${this.yIni ? "down" : "up"}.png`
-        this.ySpeed = this.yIni ? -22 : 22;
+        this.image.src = `images/bullet-bill-diagonal-${direction}.png`
+        this.yPos = CENTER_Y;
+        this.yPos = direction === "up" ? CANVAS_H : 0;
+        this.ySpeed = direction === "up" ? -22 : 22;        
         this.xSpeed = 22;
         this.wBox = 64;
         this.hBox = 64;
+        this.xPos = 1050;
+
     }
 
     move() {
-        this.x -= this.xSpeed;
-        this.y += this.ySpeed
+        this.xPos -= this.xSpeed;
+        this.yPos += this.ySpeed
     }
 }
 
 class Grinder extends Enemy {
-    constructor() {
+    constructor(yPos) {
         super();
  
         this.image = new Image (128, 128);
@@ -263,6 +286,7 @@ class Grinder extends Enemy {
         this.spriteLength = 2;
         this.spriteRate = 25;
         this.xSpeed = 2 //BG_SPEED;
+        this.yPos = yPos;
         this.wBox = 108;
         this.hBox = 108;
         this.xOff = 10;
