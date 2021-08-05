@@ -18,7 +18,8 @@
     const CENTER_X = CANVAS_W / 2;
     const CENTER_Y = CANVAS_H / 2;
     const ctx = CANVAS.getContext('2d');
-    const elements = [new Mario()];
+    const player = new Mario();
+    const elements = [player, new BigBoo()];
     
     function update() {   
         ctx.fillStyle = 'lightblue';
@@ -30,8 +31,11 @@
             let wSrc = image.width;
             let hSrc = image.height;
             ctx.drawImage(image, xSrc,0, wSrc,hSrc, xPos,yPos, wSrc,hSrc);
-            // ctx.fillStyle = "rgba(255, 0, 255, 0.5)";
-            // ctx.fillRect(element.xBox, element.yBox, wBox, hBox);
+            
+            if (element instanceof Enemy) {
+                detectHit(element);
+            }
+            
             moveHitbox(element);
             element.move();
         }
