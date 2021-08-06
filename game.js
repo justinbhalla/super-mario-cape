@@ -1,24 +1,25 @@
-const bgStyle = document.getElementById("b").style;
 const CANVAS = document.getElementById("c");
 const CANVAS_W = CANVAS.width;
 const CANVAS_H = CANVAS.height;
 const CENTER_X = CANVAS_W / 2;
 const CENTER_Y = CANVAS_H / 2;
 const ctx = CANVAS.getContext('2d');
+
+const bgStyle = document.getElementById("b").style;
+bgStyle.backgroundPositionX = 0;
+bgStyle.backgroundPositionY = 0;
+const BG_SPEED = 5;
+
 const player = new Mario();
 const elements = [player];
-const BG_SPEED = 5;
-bgStyle.backgroundPositionX = 0;
 
 function update() {   
-    ctx.clearRect(0,0, CANVAS_W,CANVAS_H);
-    bgStyle.backgroundPositionX = `${parseInt(
-        bgStyle.backgroundPositionX) - BG_SPEED
-    }px`
-    
+    let bgX = parseInt(bgStyle.backgroundPositionX);
+    bgStyle.backgroundPositionX = `${bgX - BG_SPEED}px`;
+    ctx.clearRect(0,0, CANVAS_W, CANVAS_H);
+
     for (let element of elements) {
-        let {image,spriteFrame,spriteRate,
-        wBox,hBox, xPos,yPos, time} = element;
+        let {image,spriteFrame,spriteRate, xPos,yPos, time} = element;
         let xSrc = image.width * spriteFrame;
         let wSrc = image.width;
         let hSrc = image.height;
@@ -30,6 +31,7 @@ function update() {
             }
             
             element.time += 1000 / 60;
+            if (xPos < 0) elements.splice(elements.indexOf(element), 1);
         }
         
         moveHitbox(element);
