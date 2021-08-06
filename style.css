@@ -6,9 +6,9 @@
 }
 
 #b {
-    background-image: url(images/maps.jpg);
+    background-image: url(images/levels.jpg);
     background-repeat: repeat-x;
-    width: 1350px;
-    height: 750px;
+    width: 1360px;
+    height: 760px;
     z-index: -1;
 }
