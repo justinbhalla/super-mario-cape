@@ -6,8 +6,8 @@ class Mario {
         this.image.src = "images/mario.png"
         this.spriteFrame = 0;
 
-        this.xPos = 200;
-        this.yPos = 200;
+        this.xPos = CENTER_X - 58;
+        this.yPos = CENTER_Y - 50;
         this.xOff = 20;
         this.yOff = 38;
         this.wBox = 92;
