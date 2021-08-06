@@ -1,0 +1,14 @@
+#c, #b {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#b {
+    background-image: url(images/maps.jpg);
+    background-repeat: repeat-x;
+    width: 1350px;
+    height: 750px;
+    z-index: -1;
+}
