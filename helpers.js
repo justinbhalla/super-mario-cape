@@ -34,3 +34,7 @@ function animateSprite(enemy) {
         enemy.spriteFrame++;
     }
 }
+
+function spawnEnemy(enemy, timeout) {
+    setTimeout(() => elements.push(enemy), timeout * 1000);
+}
