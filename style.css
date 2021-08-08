@@ -12,14 +12,14 @@ body {
     background-attachment: fixed;
 }
 
-#c, #b, #title {
+#canvas, #background, #title-screen {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-#title {
+#title-screen {
     width: 1360px;
     height: 760px;
 }
@@ -117,7 +117,7 @@ body {
     color: yellow
 }
 
-#b {
+#background {
     background-image: url(images/levels.jpg);
     background-repeat: repeat-x;
     width: 1360px;
