@@ -1,13 +1,13 @@
 const LEFT = 37;
 const RIGHT = 39;
 const DOWN = 40;
-const SPACE = 38;
+const UP = 38;
 const ENTER = 13;
 
 let leftHeld = false;
 let rightHeld = false;
 let downHeld = false;
-let spacePressed = false;
+let upHeld = false;
 
 function controls(e) {
     let isHeld = e.type === "keydown" ? true : false;
@@ -22,8 +22,8 @@ function controls(e) {
         case DOWN:
             downHeld = isHeld;
             break;
-        case SPACE:
-            spacePressed = isHeld;
+        case UP:
+            upHeld = isHeld;
             break;
     }
 

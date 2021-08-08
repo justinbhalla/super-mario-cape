@@ -25,12 +25,12 @@ class Mario {
         if (leftHeld) this.xPos -= this.speed - this.wind;
         if (rightHeld) this.xPos += this.speed + this.wind;
         
-        if (spacePressed && !this.isJumping) {
+        if (upHeld && !this.isJumping) {
             this.jump();
             this.spriteFrame = 1;
         }
         
-        if (!spacePressed) {
+        if (!upHeld) {
             this.isJumping = false;
             this.spriteFrame = 0;
         }
@@ -38,7 +38,7 @@ class Mario {
         if (downHeld) {
             this.yPos += this.speed + this.gravity;
             this.spriteFrame = 2;  
-        } 
+        }
 
         this.yPos += this.gravity;
     }
