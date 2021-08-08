@@ -12,6 +12,9 @@ class Element {
     }
 
     move() {
+        let {xPos, yPos, xOff, yOff} = this;
+        this.xBox = xPos + xOff;
+        this.yBox = yPos + yOff;
         this.xPos -= this.xSpeed;
 
         if (this.isWavey) {
@@ -22,6 +25,15 @@ class Element {
             let {yIni, curveSize, curveRate, time} = this;
             this.yPos = yIni + curveSize * Math.sqrt(time * curveRate);
         }
+    }
+
+    update() {
+        let {time, spriteRate, xPos, image} = this;
+
+        drawImage(this);
+        element.time += 1000 / 60;
+        if (Math.round(time) % spriteRate === 0) animateSprite(this);
+        if (xPos + image.width < 0) elements.splice(elements.indexOf(this), 1);
     }
 }
 
