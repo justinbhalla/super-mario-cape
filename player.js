@@ -22,6 +22,7 @@ class Mario {
     }
 
     move() {
+        moveHitbox(this);
         if (leftHeld) this.xPos -= this.speed - this.wind;
         if (rightHeld) this.xPos += this.speed + this.wind;
         
@@ -61,4 +62,25 @@ class Mario {
             count++;
         }, 10);
     }
+}
+
+function gameControls(e) {
+    let isHeld = e.type === "keydown" ? true : false;
+
+    switch(e.keyCode) {
+        case LEFT:
+            leftHeld = isHeld;
+            break;
+        case RIGHT:
+            rightHeld = isHeld;
+            break;
+        case DOWN:
+            downHeld = isHeld;
+            break;
+        case UP:
+            upHeld = isHeld;
+            break;
+    }
+
+    // e.preventDefault();
 }
