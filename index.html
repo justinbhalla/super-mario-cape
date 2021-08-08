@@ -7,8 +7,8 @@
     <link href="style.css" rel="stylesheet">
 </head> 
 <body>
-    <canvas id="c" width=1360 height=760>This browser does not support Canvas.</canvas>
-    <div id="title">
+    <canvas id="canvas" width=1360 height=760>This browser does not support Canvas.</canvas>
+    <div id="title-screen">
         <img id="header" src="images/title.png">
         <p id="authors">Created by <a href="">Jordan M.</a> & <a href="">Shoghi H.</a></p>
         <div id="controls">
@@ -21,12 +21,13 @@
         </div>
         <p id="start">Press Jump to Play</p>
     </div>
-    <div id="b"></div>
+    <div id="background"></div>
     <script src="player.js"></script>
     <script src="controls.js"></script>
     <script src="helpers.js"></script>
     <script src="elements.js"></script>
     <script src="levels.js"></script>
+    <script src="constants.js"></script>
     <script src="game.js"></script>
 </body>
 </html>
