@@ -5,6 +5,7 @@ const CENTER_X = CANVAS_W / 2;
 const CENTER_Y = CANVAS_H / 2;
 const ctx = CANVAS.getContext('2d');
 
+const titleScreen = document.getElementById("title");
 const bgStyle = document.getElementById("b").style;
 bgStyle.backgroundPositionX = 0;
 bgStyle.backgroundPositionY = 0;
