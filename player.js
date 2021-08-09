@@ -33,7 +33,7 @@ class Mario {
         
         if (!upHeld) {
             this.isJumping = false;
-            this.spriteFrame = 0;
+            // this.spriteFrame = 0;
         }
         
         if (downHeld) {
@@ -61,6 +61,10 @@ class Mario {
             
             count++;
         }, 10);
+    }
+
+    update() {
+        drawImage(this);
     }
 }
 
