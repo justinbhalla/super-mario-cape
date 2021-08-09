@@ -13,6 +13,7 @@ class Element {
 
     move() {
         moveHitbox(this);
+        detectHit(this);
         this.xPos -= this.xSpeed;
 
         if (this.isWavey) {
@@ -28,10 +29,6 @@ class Element {
     update() {
         drawImage(this);
         this.time += 1000 / 60;
-        if (detectHit(this)) {
-            gameState = "DEAD";
-            //
-        };
         let {time, spriteRate, xPos, image} = this;
         if (Math.round(time) % spriteRate === 0) animateSprite(this);
         if (xPos + image.width < 0) gameElements.splice(gameElements.indexOf(this), 1);
