@@ -6,6 +6,13 @@
     padding: 0;
 }
 
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
 body {
     background: radial-gradient(#fff, #ffefba);
     background: -moz-radial-gradient(circle, #fff, #ffefba);
@@ -116,6 +123,45 @@ body {
 #authors a {
     color: yellow
 }
+
+#death-screen {
+    font-family: "Press Start 2P";
+    display: none;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    width: 220px;
+    height: 200px;
+    padding-top: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  #death-screen > * {
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  #death-screen h1 {
+    font-size: 45px;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  #death-screen button {
+    font-size: 15px;
+  }
+
+  .death-button {
+    font-family: "Press Start 2P";
+    display: block;
+    margin: 0 auto;
+    text-transform: uppercase;
+    border: none;
+    background: none;
+    color: white;
+    animation: blink 2s infinite;
+  }
 
 #background {
     background-image: url(images/levels.jpg);
