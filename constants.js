@@ -13,9 +13,17 @@ background.style.backgroundPositionY = 0;
 const BG_SPEED = 5;
 
 let gameState = "START";
+let gamePause = true;
 let gamePlayer = new Mario();
-let gameElements = [];
 let gameLevel = -1;
+let gameElements = [];
+gameElements.move = () => {
+    gameElements.forEach(e => e.move());
+}
+
+gameElements.update = () => {
+    gameElements.forEach(e => e.update());
+}
 
 const LEFT = 37;
 const RIGHT = 39;
