@@ -15,8 +15,9 @@ function detectHit(element) {
 
     let [ex2, mx2] = [ex1 + ew, mx1 + mw];
     let [ey2, my2] = [ey1 + eh, my1 + mh];
+    let collision = !(ex1 >= mx2 || ey1 >= my2 || ex2 <= mx1 || ey2 <= my1);
 
-    return !(ex1 >= mx2 || ey1 >= my2 || ex2 <= mx1 || ey2 <= my1);
+    if (collision) deathScene();
 }
 
 function moveHitbox(element) {
@@ -46,38 +47,22 @@ function spawnElement(element, timeout) {
     setTimeout(() => gameElements.push(element), timeout * 1000);
 }
 
-function changeScene() {
-    switch(gameState) {
-        case "START":
-            titleScreen.style.display = "none";
-            gameState = "PLAY";
-            gameLevel = 0;
-            LEVELS[gameLevel].spawn();
-            break;
-        case "DEAD":
-            gamePlayer.spriteFrame = 3;
-            setTimeout(() => {
-                let yPos = gamePlayer.yPos;
-                let yPeak = gamePlayer.yPos - 200;
-                
-                let animate = setInterval(() => {                    
-                    if (yPos > CANVAS_H) {
-                        clearInterval(animate);
-                        setTimeout(() => {
-                            //show deadscreen
-                            console.log("deadscreen")
-                        }, 1500)
-                    } else if (yPos > yPeak) {
-                        gamePlayer.yPos -= 10;
-                    } else {
-                        gamePlayer.yPos += 12.5;
-                    }    
-            }, 10)}, 500);
-            break;
-    }
-}
-
 function scrollBackground() {
     let x = parseInt(background.style.backgroundPositionX);
     background.style.backgroundPositionX = `${x - BG_SPEED}px`;
+
+}
+
+function changeScreen(screen, bool) {
+    screen.style.display = bool ? "block" : "none";
+}
+
+function changeControls(controller, bool) {
+    let type = bool ? "add" : "remove";
+    leftHeld = false;
+    rightHeld = false;
+    downHeld = false;
+    upHeld = false;
+    document[`${type}EventListener`]("keydown", controller);
+    document[`${type}EventListener`]("keyup", controller);
 }
