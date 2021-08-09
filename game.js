@@ -59,7 +59,6 @@ function deathScene() {
     }, 500)
 }
 
-
 move();
 update();
 document.addEventListener("keydown", menu);
