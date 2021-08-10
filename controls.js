@@ -40,7 +40,7 @@ function menuControls(e) {
                 gamePlayer.yPos = 200;
                 gameElements.length = 0;
                 gameState = "PLAY";
-                LEVELS[gameLevel].spawn();
+                LEVELS[0].spawn();
                 break;
         }
     }
