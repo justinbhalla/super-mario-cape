@@ -67,24 +67,3 @@ class Mario {
         drawImage(this);
     }
 }
-
-function gameControls(e) {
-    let isHeld = e.type === "keydown" ? true : false;
-
-    switch(e.keyCode) {
-        case LEFT:
-            leftHeld = isHeld;
-            break;
-        case RIGHT:
-            rightHeld = isHeld;
-            break;
-        case DOWN:
-            downHeld = isHeld;
-            break;
-        case UP:
-            upHeld = isHeld;
-            break;
-    }
-
-    // e.preventDefault();
-}
