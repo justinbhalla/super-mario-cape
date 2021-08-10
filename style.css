@@ -105,6 +105,7 @@ body {
     left: 50%;
     top: calc(50% + 240px);
     transform: translate(-50%, -50%);
+    animation: blink 2s infinite;
 }
 
 #authors {
@@ -150,9 +151,6 @@ body {
   
   #death-screen button {
     font-size: 15px;
-  }
-
-  .death-button {
     font-family: "Press Start 2P";
     display: block;
     margin: 0 auto;
@@ -170,3 +168,12 @@ body {
     height: 760px;
     z-index: -1;
 }
+
+@keyframes blink {
+    0% {
+      opacity: 100%;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
