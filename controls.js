@@ -30,8 +30,7 @@ function menuControls(e) {
                 changeScreen(titleScreen, false);
                 gamePause = false;
                 gameState = "PLAY";
-                gameLevel++
-                LEVELS[gameLevel].spawn();
+                LEVELS[0].spawn();
                 break;
             case "DEAD":
                 changeScreen(deathScreen, false);
