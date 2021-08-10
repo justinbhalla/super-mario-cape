@@ -134,6 +134,13 @@ body {
     font-size: 12px;
 }
 
+#pass-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(50%);
+}
+
 #death-screen {
     font-family: "Press Start 2P";
     display: none;
@@ -169,6 +176,18 @@ body {
     color: white;
     animation: fadeout 2s infinite;
   }
+
+#level-text {
+    display: none;
+    font-family: "Press Start 2P";
+    color: white;
+    font-size: 40px;
+    text-transform: uppercase;
+    position: absolute;
+    top: calc(50% - 150px);
+    left: 50%;
+    transform: translate(-50%, -50%);  
+}
 
 #background-1 {
     background-image: url(images/levels.jpg);
