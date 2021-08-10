@@ -19,7 +19,7 @@ body {
     background-attachment: fixed;
 }
 
-#canvas, #background, #title-screen {
+#canvas, #background-1, #background-2, #title-screen {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -105,7 +105,7 @@ body {
     left: 50%;
     top: calc(50% + 240px);
     transform: translate(-50%, -50%);
-    animation: blink 2s infinite;
+    animation: fadeout 2s infinite;
 }
 
 #authors {
@@ -123,6 +123,15 @@ body {
 
 #authors a {
     color: yellow
+}
+
+#pass-screen {
+    display: none;
+    text-align: center;
+    font-family: "Press Start 2P";
+    text-transform: uppercase;
+    color: yellow;
+    font-size: 12px;
 }
 
 #death-screen {
@@ -158,10 +167,10 @@ body {
     border: none;
     background: none;
     color: white;
-    animation: blink 2s infinite;
+    animation: fadeout 2s infinite;
   }
 
-#background {
+#background-1 {
     background-image: url(images/levels.jpg);
     background-repeat: repeat-x;
     width: 1360px;
@@ -169,11 +178,20 @@ body {
     z-index: -1;
 }
 
-@keyframes blink {
-    0% {
-      opacity: 100%;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
+
+#background-2 {
+    width: 1360px;
+    height: 760px;
+    background-color: black;
+    z-index: -2;
+}
+
+@keyframes fadein {
+    from {opacity: 0};
+    to {opacity: 1;}
+}
+
+@keyframes fadeout {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}

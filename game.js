@@ -6,10 +6,27 @@ function update() {
 }
 
 function move() {
+    scrollBackground();
     gameElements.move();
     gamePlayer.move();
-    scrollBackground();
     moveReq = requestAnimationFrame(move);
+}
+
+function passScene() {
+    setTimeout(() => cancelAnimationFrame(updateReq));
+    setTimeout(() => cancelAnimationFrame(moveReq));
+    changeScreen(background, false);
+    changeScreen(passScreen, true);
+    gameElements.length = 0;
+    gamePause = true;
+
+    setTimeout(() => {
+        changeScreen(background, true);
+        changeScreen(passScreen, false);
+        gamePause = false;
+        update();
+        move();
+    }, 8200)
 }
 
 function deathScene() {
