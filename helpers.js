@@ -56,13 +56,3 @@ function scrollBackground() {
 function changeScreen(screen, bool) {
     screen.style.display = bool ? "block" : "none";
 }
-
-function changeControls(controller, bool) {
-    let type = bool ? "add" : "remove";
-    leftHeld = false;
-    rightHeld = false;
-    downHeld = false;
-    upHeld = false;
-    document[`${type}EventListener`]("keydown", controller);
-    document[`${type}EventListener`]("keyup", controller);
-}
