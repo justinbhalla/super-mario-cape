@@ -16,6 +16,7 @@ function passScene() {
     setTimeout(() => cancelAnimationFrame(moveReq));
     changeScreen(background, false);
     changeScreen(passScreen, true);
+    resetControls();
     gameElements.length = 0;
     gamePause = true;
 
@@ -23,9 +24,9 @@ function passScene() {
         changeScreen(background, true);
         changeScreen(passScreen, false);
         LEVELS.shift();
-        LEVELS[0].spawn();
         background.style.backgroundPositionY = `${LEVELS[0].backgroundPosY}px`;
         gamePause = false;
+        LEVELS[0].spawn();
         update();
         move();
     }, 8200)
@@ -34,6 +35,7 @@ function passScene() {
 function deathScene() {
     setTimeout(() => {
         cancelAnimationFrame(moveReq);
+        resetControls();
         gamePlayer.spriteFrame = 3;
     })
 
