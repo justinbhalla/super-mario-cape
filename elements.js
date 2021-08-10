@@ -4,8 +4,8 @@ class Element {
         this.spriteRate = 0;
         this.spriteLength = 0;
         this.xPos = CANVAS_W;
-        this.xBox = 0;
-        this.yBox = 0;
+        this.xOff = 0;
+        this.yOff = 0;
         this.time = 0;
         this.isWavey = false;
         this.isCurvy = false;
