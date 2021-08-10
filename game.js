@@ -13,7 +13,6 @@ function move() {
 }
 
 function passScene() {
-    setTimeout(() => cancelAnimationFrame(updateReq));
     setTimeout(() => cancelAnimationFrame(moveReq));
     changeScreen(background, false);
     changeScreen(passScreen, true);
@@ -23,6 +22,9 @@ function passScene() {
     setTimeout(() => {
         changeScreen(background, true);
         changeScreen(passScreen, false);
+        LEVELS.shift();
+        LEVELS[0].spawn();
+        background.style.backgroundPositionY = `${LEVELS[0].backgroundPosY}px`;
         gamePause = false;
         update();
         move();
