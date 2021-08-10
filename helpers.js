@@ -16,7 +16,7 @@ function detectHit(element) {
     let [ex2, mx2] = [ex1 + ew, mx1 + mw];
     let [ey2, my2] = [ey1 + eh, my1 + mh];
     let collision = !(ex1 >= mx2 || ey1 >= my2 || ex2 <= mx1 || ey2 <= my1);
-    
+        
     if (collision && element instanceof Star) passScene();
     else if (collision) deathScene();
 }
@@ -62,4 +62,11 @@ function changeScreen(screen, bool) {
     } else {
         screen.style.display = bool ? "block" : "none";
     }
+}
+
+function resetControls() {
+    rightHeld = false;
+    leftHeld = false;
+    downHeld = false;
+    upHeld = false;
 }
