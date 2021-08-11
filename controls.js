@@ -28,6 +28,7 @@ function menuControls(e) {
         switch(gameState) {
             case "START":
                 changeScreen(titleScreen, false);
+                cursorSelect.style.cursor = "none";
                 gamePause = false;
                 gameState = "PLAY";
                 LEVELS[0].spawn();
