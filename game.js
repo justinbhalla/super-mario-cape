@@ -17,12 +17,12 @@ function deathScene() {
         cancelAnimationFrame(moveReq);
         resetControls();
         gamePlayer.spriteFrame = 3;
-    })
-
-    let yPeak = gamePlayer.yPos - 200;
-    let yFlag = true;
-
+        gamePause = true;
+    });
+    
     setTimeout(() => {
+        let yPeak = gamePlayer.yPos - 200;
+        let yFlag = true;
         let animate = setInterval(() => {
             let yPos = gamePlayer.yPos;
 
@@ -30,7 +30,6 @@ function deathScene() {
                 clearInterval(animate);
                 changeScreen(deathScreen, true);
                 gameState = "DEAD";
-                gamePause = true;
             } else if (yPos > yPeak && yFlag) {
                 gamePlayer.yPos -= 10;
             } else if (yPos < yPeak && yFlag) {
@@ -63,10 +62,9 @@ function passScene() {
         if (LEVELS[0] === FINALE) {
             endScene();
         } else {
+            requestAnimationFrame(move);
             gamePause = false;
             LEVELS[0].spawn();
-            update();
-            move();
         }
     }, 8200)
 }
