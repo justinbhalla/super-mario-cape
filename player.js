@@ -13,18 +13,21 @@ class Mario {
         this.wBox = 92;
         this.hBox = 76;
         
-        this.speed = 10;
+        this.xSpeed = 10;
+        this.ySpeed = 10;
         this.gravity = 0; //was 7
         this.wind = 3;
-
         this.isJumping = true;
-        this.jumpHeight = 10;
     }
 
     move() {
-        moveHitbox(this);
-        if (leftHeld) this.xPos -= this.speed - this.wind;
-        if (rightHeld) this.xPos += this.speed + this.wind;
+        let {xPos, yPos, xSpeed, gravity, wind} = this;
+        let bBound = yPos + this.image.height / 2 < CANVAS_H;
+        let rBound = xPos + this.image.width < CANVAS_W; 
+        let lBound = xPos > 0;
+
+        if (rightHeld && rBound) this.xPos += xSpeed + wind;
+        if (leftHeld && lBound) this.xPos -= xSpeed - wind
         
         if (upHeld && !this.isJumping) {
             this.jump();
@@ -37,17 +40,17 @@ class Mario {
         }
         
         if (downHeld) {
-            this.yPos += this.speed + this.gravity;
+            this.yPos += xSpeed + gravity;
             this.spriteFrame = 2;  
         }
 
-        this.yPos += this.gravity;
+        if (!bBound) deathScene();
+        this.yPos += gravity;
     }
 
     jump() {
         this.isJumping = true;
         this.audio.currentTime = 0;
-        // this.audio.play();
         
         let count = 0;
         let interval = setInterval(() => {
@@ -56,7 +59,7 @@ class Mario {
                 this.isJumping = false;
                 count = 0;
             } else if (this.yPos > 0) {
-                this.yPos -= this.jumpHeight;
+                this.yPos -= this.ySpeed;
             }
             
             count++;
@@ -64,6 +67,7 @@ class Mario {
     }
 
     update() {
+        moveHitbox(this);
         drawImage(this);
     }
 }
