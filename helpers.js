@@ -50,8 +50,7 @@ function spawnElement(element, timeout) {
 
 function scrollBackground() {
     let x = parseInt(background.style.backgroundPositionX);
-    background.style.backgroundPositionX = `${x - BG_SPEED}px`;
-
+    background.style.backgroundPositionX = `${x - backgroundSpeed}px`;
 }
 
 function changeScreen(screen, bool) {

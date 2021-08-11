@@ -318,6 +318,8 @@ class Star extends Element {
     }
 
     move() {
+        moveHitbox(this)
+        detectHit(this)
         if (this.xPos + this.wBox / 2 > CENTER_X) this.xPos -= this.xSpeed;
     }
 }
