@@ -25,26 +25,26 @@ function menuControls(e) {
     if (gamePause === false) return;
 
     if (e.keyCode === UP) {
-        switch(gameState) {
-            case "START":
-                changeScreen(titleScreen, false);
-                introLevel();
-                cursorSelect.style.cursor = "none";
-                gamePause = false;
-                gameState = "PLAY";
-                LEVELS[0].spawn();
-                break;
-            case "DEAD":
-                changeScreen(deathScreen, false);
-                requestAnimationFrame(move);
-                gamePause = false;
-                gamePlayer.xPos = 200;
-                gamePlayer.yPos = 200;
-                gameElements.length = 0;
-                gameTimeouts.forEach(timeout => clearTimeout(timeout));
-                gameState = "PLAY";
-                LEVELS[0].spawn();
-                break;
+        let isStart = gameState === "START";
+        let isDead = gameState === "DEAD";
+        
+        if (isStart) {
+            cursorSelect.style.cursor = "none";
+            changeScreen(titleScreen, false);
+            introLevel();
+        } else if (isDead) {
+            gameTimeouts.forEach(timeout => clearTimeout(timeout));
+            changeScreen(deathScreen, false);
+            requestAnimationFrame(move);
+            gameElements.length = 0;
+        }
+
+        if (isStart || isDead) {
+            gamePlayer.yPos = CENTER_Y;
+            gamePlayer.xPos = 150;
+            gameState = "PLAY";
+            gamePause = false;
+            LEVELS[0].spawn();
         }
     }
 }
