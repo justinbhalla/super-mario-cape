@@ -20,6 +20,7 @@ let backgroundSpeed = 5;
 let gameState = "START";
 let gamePause = true;
 let gamePlayer = new Mario();
+let gameTimeouts = [];
 let gameElements = [];
 gameElements.move = () => {
     gameElements.forEach(e => e.move());
@@ -54,7 +55,7 @@ const LEVEL_4 = new Level(-2280, "castle", 0.8);
 const FINALE = new Level(-3040,"ending", 0.5);
 const LEVELS = [LEVEL_1, FINALE];
 
-LEVEL_1.spawn = () => {spawnElement(new Star())}
+LEVEL_1.spawn = () => {}
 LEVEL_2.spawn = () => {}
 LEVEL_3.spawn = () => {}
 LEVEL_4.spawn = () => {}
