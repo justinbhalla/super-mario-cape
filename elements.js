@@ -7,26 +7,11 @@ class Element {
         this.xOff = 0;
         this.yOff = 0;
         this.time = 0;
-        this.isWavey = false;
-        this.isCurvy = false;
-    }
-
-    move() {
-        moveHitbox(this);
-        detectHit(this);
-        this.xPos -= this.xSpeed;
-
-        if (this.isWavey) {
-            let {yIni, waveSize, waveType, waveRate, time} = this;
-            this.yPos = yIni + waveSize * Math[waveType](time * waveRate);
-
-        } else if (this.isCurvy) {
-            let {yIni, curveSize, curveRate, time} = this;
-            this.yPos = yIni + curveSize * Math.sqrt(time * curveRate);
-        }
     }
 
     update() {
+        moveHitbox(this);
+        detectHit(this);
         drawImage(this);
         this.time += 1000 / 60;
         let {time, spriteRate, xPos, image} = this;
@@ -41,6 +26,7 @@ class SuperKoopa extends Element {
 
         this.image = new Image(92, 52);
         this.image.src = `images/super-koopa-${color}.png`
+        this.color = color;
         this.yIni = yIni
         this.yPos = yIni;
         this.wBox = 72;
@@ -50,7 +36,6 @@ class SuperKoopa extends Element {
 
         switch(color) {
             case "yellow":
-                this.isCurvy = true;
                 this.curveSize = 2;
                 this.curveRate = 20;
                 this.xSpeed = 16;
@@ -58,6 +43,14 @@ class SuperKoopa extends Element {
             case "red":
                 this.xSpeed = 18;
                 break;
+        }
+    }
+
+    move() {
+        if (this.color === "red") {
+            moveLinear(this) 
+        } else {
+            moveCurve(this)
         }
     }
 }
@@ -70,7 +63,6 @@ class Parakoopa extends Element {
         this.image.src = `images/parakoopa-${color}.png`;
         this.spriteLength = 2;
         this.spriteRate = 200;
-        this.isWavey = true;
         this.yIni = yIni;
         this.wBox = 56;
         this.hBox = 93;
@@ -93,6 +85,8 @@ class Parakoopa extends Element {
                 break;
         }
     }
+
+    move() {moveWave(this)}
 }
 
 class FlyingGoomba extends Element {
@@ -104,7 +98,6 @@ class FlyingGoomba extends Element {
         this.spriteLength = 4;
         this.spriteRate = 200;
         this.xSpeed = 5;
-        this.isWavey = true;
         this.waveType = 'sin';
         this.waveSize = 50;
         this.waveRate = 0.01;
@@ -114,6 +107,8 @@ class FlyingGoomba extends Element {
         this.xOff = 25;
         this.yOff = 35;
     }
+
+    move() {moveWave(this)}
 }
 
 class FlyingBrother extends Element {
@@ -126,7 +121,6 @@ class FlyingBrother extends Element {
         this.spriteRate = 200;
         this.yIni = yIni
         this.yPos = yIni;
-        this.isCurvy = true;
         this.curveSize = 10;
         this.curveRate = 1;
         this.wBox = 120;
@@ -135,6 +129,8 @@ class FlyingBrother extends Element {
         this.yOff = 14;
         this.xSpeed = 15;
     }
+
+    move() {moveCurve(this)}
 }
 
 class Chainsaw extends Element {
@@ -145,13 +141,15 @@ class Chainsaw extends Element {
         this.image.src = "images/chainsaw.png";
         this.spriteLength = 4;
         this.spriteRate = 50;
-        this.xSpeed = 2//BG_SPEED;
+        this.xSpeed = backgroundSpeed;
         this.yPos = yPos;
         this.wBox = 50;
         this.hBox = 168;
         this.xOff = 7;
         this.yOff = 3;
     }
+
+    move() {moveLinear(this)}
 }
 
 class BigBoo extends Element {
@@ -163,7 +161,6 @@ class BigBoo extends Element {
         this.xSpeed = 14;
         this.yIni = yIni;
         this.yPos = yIni;
-        this.isWavey = true;
         this.waveType = 'sin'
         this.waveSize = 100;
         this.waveRate = 1e-3;
@@ -172,6 +169,8 @@ class BigBoo extends Element {
         this.xOff = 30;
         this.yOff = 20;
     }
+
+    move() {moveWave(this)}
 }
 
 class BigBubble extends Element {
@@ -212,6 +211,8 @@ class BooBuddy extends Element {
         this.wBox = 64;
         this.hBox = 64;
     }
+
+    move() {moveLinear(this)}
 }
 
 class Eerie extends Element {
@@ -250,6 +251,8 @@ class BanzaiBill extends Element {
         this.xOff = 10;
         this.yOff = 10;
     }
+
+    move() {moveLinear(this)}
 }
 
 class BulletBillLinear extends Element {
@@ -263,6 +266,8 @@ class BulletBillLinear extends Element {
         this.wBox = 64;
         this.hBox = 56;
     }
+
+    move() {moveLinear(this)}
 }
 
 class BulletBillDiagonal extends Element {
@@ -295,13 +300,15 @@ class Grinder extends Element {
         this.image.src = "images/grinder.png";
         this.spriteLength = 2;
         this.spriteRate = 25;
-        this.xSpeed = 2 //BG_SPEED;
+        this.xSpeed = backgroundSpeed
         this.yPos = yPos;
         this.wBox = 108;
         this.hBox = 108;
         this.xOff = 10;
         this.yOff = 10;
     }
+
+    move() {moveLinear(this)}
 }
 
 //STAR
@@ -318,8 +325,6 @@ class Star extends Element {
     }
 
     move() {
-        moveHitbox(this)
-        detectHit(this)
-        if (this.xPos + this.wBox / 2 > CENTER_X) this.xPos -= this.xSpeed;
+        if (this.xPos > CENTER_X - 200) moveLinear(this);
     }
 }
