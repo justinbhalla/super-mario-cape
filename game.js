@@ -12,26 +12,6 @@ function move() {
     moveReq = requestAnimationFrame(move);
 }
 
-function passScene() {
-    setTimeout(() => cancelAnimationFrame(moveReq));
-    changeScreen(background, false);
-    changeScreen(passScreen, true);
-    resetControls();
-    gameElements.length = 0;
-    gamePause = true;
-
-    setTimeout(() => {
-        changeScreen(background, true);
-        changeScreen(passScreen, false);
-        LEVELS.shift();
-        background.style.backgroundPositionY = `${LEVELS[0].backgroundPosY}px`;
-        gamePause = false;
-        LEVELS[0].spawn();
-        update();
-        move();
-    }, 8200)
-}
-
 function deathScene() {
     setTimeout(() => {
         cancelAnimationFrame(moveReq);
@@ -61,6 +41,46 @@ function deathScene() {
         }, 10);
     }, 500)
 }
+
+function passScene() {
+    setTimeout(() => cancelAnimationFrame(moveReq));
+    changeScreen(background, false);
+    changeScreen(passScreen, true);
+    resetControls();
+    gameElements.length = 0;
+    gamePause = true;
+
+    if (LEVELS.length === 2) {
+        passText.innerText = "Fortress Complete";
+    }
+    
+    setTimeout(() => {
+        changeScreen(background, true);
+        changeScreen(passScreen, false);
+        LEVELS.shift();
+        background.style.backgroundPositionY = `${LEVELS[0].backgroundPosY}px`;
+        
+        if (LEVELS[0] === FINALE) {
+            endScene();
+        } else {
+            gamePause = false;
+            LEVELS[0].spawn();
+            update();
+            move();
+        }
+    }, 8200)
+}
+
+function endScene() {
+    gamePlayer.xPos = CENTER_X - gamePlayer.image.width / 2;
+    gamePlayer.yPos = CENTER_Y + 75;
+    cursorSelect.style.cursor = "auto";
+    backgroundSpeed = 2;
+    changeScreen(endScreen, true);
+    gamePlayer.move = () => {}
+    move();
+}
+
 
 move();
 update();
