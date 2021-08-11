@@ -40,6 +40,7 @@ function menuControls(e) {
                 gamePlayer.xPos = 200;
                 gamePlayer.yPos = 200;
                 gameElements.length = 0;
+                gameTimeouts.forEach(timeout => clearTimeout(timeout));
                 gameState = "PLAY";
                 LEVELS[0].spawn();
                 break;
