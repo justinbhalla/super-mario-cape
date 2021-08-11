@@ -57,6 +57,7 @@ function passScene() {
         changeScreen(background, true);
         changeScreen(passScreen, false);
         LEVELS.shift();
+        
         background.style.backgroundPositionY = `${LEVELS[0].backgroundPosY}px`;
         
         if (LEVELS[0] === FINALE) {
@@ -64,6 +65,7 @@ function passScene() {
         } else {
             requestAnimationFrame(move);
             gamePause = false;
+            introLevel();
             LEVELS[0].spawn();
         }
     }, 8200)

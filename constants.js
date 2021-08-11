@@ -19,6 +19,7 @@ let backgroundSpeed = 5;
 
 let gameState = "START";
 let gamePause = true;
+let gameLevel = 1;
 let gamePlayer = new Mario();
 let gameTimeouts = [];
 let gameElements = [];

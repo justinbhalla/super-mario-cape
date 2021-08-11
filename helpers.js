@@ -86,3 +86,9 @@ function resetControls() {
     downHeld = false;
     upHeld = false;
 }
+
+function introLevel() {
+    setTimeout(() => levelText.style.display = "none", 2000);
+    levelText.innerText = `Level ${gameLevel++}`;
+    levelText.style.display = "block";
+}
