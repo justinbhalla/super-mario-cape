@@ -1,3 +1,19 @@
+function moveLinear(element) {
+    element.xPos -= element.xSpeed;
+}
+
+function moveWave(element) {
+    let {yIni, waveSize, waveType, waveRate, time} = element;
+    element.yPos = yIni + waveSize * Math[waveType](time * waveRate);
+    element.xPos -= element.xSpeed;
+}
+
+function moveCurve(element) {
+    let {yIni, curveSize, curveRate, time} = element;
+    element.yPos = yIni + curveSize * Math.sqrt(time * curveRate);
+    element.xPos -= element.xSpeed;
+}
+
 function detectHit(element) {
     let {
         xBox: ex1,
@@ -18,7 +34,7 @@ function detectHit(element) {
     let collision = !(ex1 >= mx2 || ey1 >= my2 || ex2 <= mx1 || ey2 <= my1);
         
     if (collision && element instanceof Star) passScene();
-    else if (collision) deathScene();
+    else if (collision && !gamePause) deathScene();
 }
 
 function moveHitbox(element) {
@@ -44,8 +60,9 @@ function drawImage({image, spriteFrame, xPos,yPos}) {
     ctx.drawImage(image, xSrc,0, wSrc,hSrc, xPos,yPos, wSrc,hSrc);
 }
 
-function spawnElement(element, timeout) {
-    setTimeout(() => gameElements.push(element), timeout * 1000);
+function spawnElement(delay, element) {
+    let timeout = setTimeout(() => gameElements.push(element), delay * 1000);
+    gameTimeouts.push(timeout);
 }
 
 function scrollBackground() {
