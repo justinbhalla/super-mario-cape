@@ -71,6 +71,7 @@ body {
     text-align: center;
     margin-bottom: 3px;    
     width: 62px;
+    margin-left: -67px;
 }
 
 #diagram ul {
@@ -90,10 +91,12 @@ body {
 
 #label-top {
     top: -170px;
+    margin-left: -69px;
 }
 
 #label-bottom {
     top: -18px;
+    word-spacing: 2px;
 }
 
 #start {

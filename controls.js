@@ -13,7 +13,8 @@ function gameControls(e) {
         case DOWN:
             downHeld = isHeld;
             break;
-        case UP:
+        case UP_1:
+        case UP_2:
             upHeld = isHeld;
             break;
     }
@@ -24,7 +25,8 @@ function gameControls(e) {
 function menuControls(e) {
     if (gamePause === false) return;
 
-    if (e.keyCode === UP) {
+    let input = e.keyCode;
+    if (input === UP_1 || input === UP_2 ) {
         let isStart = gameState === "START";
         let isRetry = gameState === "RETRY";
         
