@@ -15,6 +15,8 @@ function moveCurve(element) {
 }
 
 function detectHit(element) {
+    if (gamePause) return;
+
     let {
         xBox: ex1,
         yBox: ey1,
@@ -34,7 +36,7 @@ function detectHit(element) {
     let collision = !(ex1 >= mx2 || ey1 >= my2 || ex2 <= mx1 || ey2 <= my1);
         
     if (collision && element instanceof Star) passScene();
-    else if (collision) deathScene();
+    else if (collision) deathScene();    
 }
 
 function moveHitbox(element) {
@@ -44,6 +46,8 @@ function moveHitbox(element) {
 }
 
 function animateSprite(element) {
+    if (gamePause) return; 
+
     let {spriteFrame, spriteLength} = element;
     
     if (spriteFrame === spriteLength - 1) {
@@ -65,9 +69,13 @@ function spawnElement(delay, element) {
     gameTimeouts.push(timeout);
 }
 
-function scrollBackground() {
-    let x = parseInt(background.style.backgroundPositionX);
-    background.style.backgroundPositionX = `${x - backgroundSpeed}px`;
+function drawBackground() {
+    if (!gamePause) {
+        let x = parseInt(background.style.backgroundPositionX);
+        background.style.backgroundPositionX = `${x - backgroundSpeed}px`;
+    }
+
+    ctx.clearRect(0,0, CANVAS_W, CANVAS_H);
 }
 
 function showScreen(screen, display=true) {
@@ -87,8 +95,17 @@ function resetControls() {
     upHeld = false;
 }
 
-function introLevel() {
-    setTimeout(() => levelText.style.display = "none", 2000);
-    levelText.innerText = `Level ${gameLevel++}`;
-    levelText.style.display = "block";
+function startLevel() {
+    levelScreen.style.display = "block";
+    levelText.innerText = `Level ${gameLevel}`;
+    gameTimeouts.forEach(t => clearTimeout(t));
+    gameElements.length = 0;
+    gamePlayer.reset();
+    gameState = "PLAY";
+
+    setTimeout(() => {
+        levelScreen.style.display = "none";    
+        LEVELS[0].spawn();
+        gamePause = false;
+    }, 1500);    
 }
