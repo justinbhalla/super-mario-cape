@@ -51,9 +51,8 @@ class Mario {
 
     jump() {
         this.isJumping = true;
-        this.audio.currentTime = 0;
-        
         let count = 0;
+        
         let interval = setInterval(() => {
             if (count > 15) {
                 clearInterval(interval);
