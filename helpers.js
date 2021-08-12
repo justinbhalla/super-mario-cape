@@ -34,7 +34,7 @@ function detectHit(element) {
     let collision = !(ex1 >= mx2 || ey1 >= my2 || ex2 <= mx1 || ey2 <= my1);
         
     if (collision && element instanceof Star) passScene();
-    else if (collision && !gamePause) deathScene();
+    else if (collision) deathScene();
 }
 
 function moveHitbox(element) {
@@ -70,13 +70,13 @@ function scrollBackground() {
     background.style.backgroundPositionX = `${x - backgroundSpeed}px`;
 }
 
-function changeScreen(screen, bool) {
-    if (screen === background && bool) {
+function showScreen(screen, display=true) {
+    if (screen === background && display) {
         background.style.animation = "fadein 0.1s forwards";
     } else if (screen === background) {
         background.style.animation = "fadeout 2.5s forwards";
     } else {
-        screen.style.display = bool ? "block" : "none";
+        screen.style.display = display ? "block" : "none";
     }
 }
 
