@@ -44,7 +44,7 @@ class Mario {
             this.spriteFrame = 2;  
         }
 
-        if (gameState == "DEAD") this.spriteFrame = 3;
+        if (gameState === "DEAD") this.spriteFrame = 3;
         if (!bBound) deathScene();
         this.yPos += gravity;
     }
