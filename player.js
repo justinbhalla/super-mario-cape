@@ -44,6 +44,7 @@ class Mario {
             this.spriteFrame = 2;  
         }
 
+        if (gameState == "DEAD") this.spriteFrame = 3;
         if (!bBound) deathScene();
         this.yPos += gravity;
     }
@@ -70,4 +71,9 @@ class Mario {
         moveHitbox(this);
         drawImage(this);
     }
+
+    reset() {
+        this.xPos = 150;
+        this.yPos = 300;
+    }  
 }
