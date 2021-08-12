@@ -26,22 +26,20 @@ function menuControls(e) {
 
     if (e.keyCode === UP) {
         let isStart = gameState === "START";
-        let isDead = gameState === "DEAD";
+        let isRetry = gameState === "RETRY";
         
         if (isStart) {
             cursorSelect.style.cursor = "none";
-            changeScreen(titleScreen, false);
+            showScreen(titleScreen, false);
             introLevel();
-        } else if (isDead) {
-            gameTimeouts.forEach(timeout => clearTimeout(timeout));
-            changeScreen(deathScreen, false);
-            requestAnimationFrame(move);
+        } else if (isRetry) {
+            gameTimeouts.forEach(t => clearTimeout(t));
+            showScreen(deathScreen, false);
             gameElements.length = 0;
         }
 
-        if (isStart || isDead) {
-            gamePlayer.yPos = CENTER_Y;
-            gamePlayer.xPos = 150;
+        if (isStart || isRetry) {
+            gamePlayer.reset();
             gameState = "PLAY";
             gamePause = false;
             LEVELS[0].spawn();
