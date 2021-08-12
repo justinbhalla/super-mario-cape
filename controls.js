@@ -1,7 +1,8 @@
 function gameControls(e) {
     if (gamePause === true) return;
 
-    let isHeld = e.type === "keydown" ? true : false;
+    let isHeld = e.type === "keydown";
+    let jumpFlag = false;
 
     switch(e.keyCode) {
         case LEFT:
@@ -15,6 +16,15 @@ function gameControls(e) {
             break;
         case UP_1:
         case UP_2:
+            if (!jumpFlag && isHeld) {
+                jumpFlag = true;
+                gamePlayer.audio.currentTime = 0;
+                gamePlayer.audio.play();
+            } else if (!isHeld) {
+                jumpFlag = false;
+                gamePlayer.audio.pause();
+            }
+
             upHeld = isHeld;
             break;
     }
