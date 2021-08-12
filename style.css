@@ -10,6 +10,7 @@ p, div, ul, li, h1, button {
     font-family: "Press Start 2P", sans-serif;
     text-transform: uppercase;
     text-align: center;
+    color: white;
 }
 
 .center {
@@ -24,6 +25,7 @@ body {
 }
 
 #title-screen,
+#level-screen,
 #background-1,
 #background-2 {
     width: 1360px;
@@ -81,7 +83,7 @@ body {
 }
 
 #label-top {
-    top: -170px;
+    top: -182px;
     margin-left: -69px;
 }
 
@@ -110,22 +112,22 @@ body {
 
 #pass-screen {
     display: none;
-    color: yellow;
     font-size: 12px;
+}
+
+#pass-text {
+    color: yellow;
 }
 
 #death-screen {
     display: none;
-    background: rgba(0, 0, 0, 0.5);
-    width: 220px;
-    height: 200px;
-    padding-top: 20px;
+    background: black;
+    padding: 20px;
 }
     
 #death-screen h1 {
-    font-size: 45px;
-    color: white;
-    margin-bottom: 20px;
+    font-size: 42px;
+    margin-bottom: 10px;
 }
   
 #death-screen button {
@@ -134,7 +136,6 @@ body {
     margin: 0 auto;
     border: none;
     background: none;
-    color: white;
     animation: fadeout 2s infinite;
 }
 
@@ -176,11 +177,14 @@ body {
     color: white;
 }
 
-#level-text {
+#level-screen {
     display: none;
-    color: white;
-    font-size: 40px;
-    top: calc(50% - 150px);
+    background-color: black;   
+}
+
+#level-text {
+    color: yellow;
+    font-size: 24px;
 }
 
 #background-1 {

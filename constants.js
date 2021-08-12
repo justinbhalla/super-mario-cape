@@ -1,5 +1,6 @@
 const titleScreen = document.getElementById("title-screen");
 const deathScreen = document.getElementById("death-screen");
+const levelScreen = document.getElementById("level-screen")
 const passScreen = document.getElementById("pass-screen");
 const endScreen = document.getElementById("end-screen");
 const levelText = document.getElementById("level-text");
@@ -29,7 +30,7 @@ let gamePlayer = new Mario();
 let gameTimeouts = [];
 let gameElements = [];
 gameElements.move = () => {
-    gameElements.forEach(e => e.move());
+    if (!gamePause) gameElements.forEach(e => e.move());
 }
 
 gameElements.update = () => {
@@ -62,26 +63,18 @@ const FINALE = new Level(-3040,"ending", 0.5);
 const LEVELS = [LEVEL_1, LEVEL_2, LEVEL_3, FINALE];
 
 LEVEL_1.spawn = () => {
-    spawnElement(1, new BulletBillLinear(CENTER_Y))
-    spawnElement(2, new BulletBillLinear(CENTER_Y))
-    spawnElement(3, new BulletBillLinear(CENTER_Y))
-    spawnElement(4, new BulletBillLinear(CENTER_Y))
-    spawnElement(5, new Star())
+    spawnElement(3, new FlyingGoomba(CENTER_Y));
+    spawnElement(5, new Star());
 
 }
 LEVEL_2.spawn = () => {
-    spawnElement(1, new BulletBillLinear(CENTER_Y))
-    spawnElement(2, new BulletBillLinear(CENTER_Y))
-    spawnElement(3, new BulletBillLinear(CENTER_Y))
-    spawnElement(4, new BulletBillLinear(CENTER_Y))
-    spawnElement(5, new Star())
+    spawnElement(3, new FlyingGoomba(CENTER_Y));
+    spawnElement(5, new Star());
 }
 LEVEL_3.spawn = () => {
-    spawnElement(1, new BulletBillLinear(CENTER_Y))
-    spawnElement(2, new BulletBillLinear(CENTER_Y))
-    spawnElement(3, new BulletBillLinear(CENTER_Y))
-    spawnElement(4, new BulletBillLinear(CENTER_Y))
-    spawnElement(5, new Star())
+    spawnElement(3, new FlyingGoomba(CENTER_Y));
+    spawnElement(5, new Star());
 }
+
 LEVEL_4.spawn = () => {}
 
