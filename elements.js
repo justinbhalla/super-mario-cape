@@ -311,7 +311,6 @@ class Grinder extends Element {
     move() {moveLinear(this)}
 }
 
-//STAR
 class Star extends Element {
     constructor() {
         super();
