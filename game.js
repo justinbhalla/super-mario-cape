@@ -5,20 +5,18 @@ function run() {
 
     if (elapsed > fpsInterval) {
         then = now - (elapsed % fpsInterval);
-        ctx.clearRect(0,0, CANVAS_W, CANVAS_H);
-
-        if (!gamePause) gameElements.move();
+        drawBackground();
+        gameElements.move();
         gameElements.update();
         gamePlayer.update();
         gamePlayer.move();
-        scrollBackground();
     }
 }
 
 function deathScene() {
     if (gamePause) return;
-    gameState = "DEAD";
     gamePause = true;
+    gameState = "DEAD";
     resetControls();
     
     setTimeout(() => {
@@ -46,8 +44,10 @@ function passScene() {
     showScreen(background, false);
     showScreen(passScreen);
     resetControls();
-    gamePause = true;
     gameElements.length = 0;
+    gameState = "PASS";
+    gamePause = true;
+    gameLevel++;
 
     if (LEVELS.length === 2) {
         passText.innerText = "Fortress Complete";
@@ -63,10 +63,7 @@ function passScene() {
         if (LEVELS[0] === FINALE) {
             endScene();
         } else {
-            gamePause = false;
-            gamePlayer.reset();
-            introLevel();
-            LEVELS[0].spawn();
+            startLevel();
         }
     }, 8200)
 }
