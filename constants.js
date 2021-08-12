@@ -13,6 +13,11 @@ const CENTER_X = CANVAS_W / 2;
 const CENTER_Y = CANVAS_H / 2;
 const ctx = CANVAS.getContext('2d');
 
+var fpsInterval = 1000 / 60;
+var then = Date.now();
+var startTime = then;
+var elapsed, now;
+
 background.style.backgroundPositionX = 0;
 background.style.backgroundPositionY = 0;
 let backgroundSpeed = 5;
@@ -54,31 +59,29 @@ const LEVEL_2 = new Level(-760, "athletic", 0.45);
 const LEVEL_3 = new Level(-1520, "haunted", 0.35);
 const LEVEL_4 = new Level(-2280, "castle", 0.8);
 const FINALE = new Level(-3040,"ending", 0.5);
-const LEVELS = [LEVEL_1, LEVEL_2, FINALE];
-
-// LEVEL_1.spawn = () => {}
-// LEVEL_2.spawn = () => {}
-// LEVEL_3.spawn = () => {}
-// LEVEL_4.spawn = () => {}
+const LEVELS = [LEVEL_1, LEVEL_2, LEVEL_3, FINALE];
 
 LEVEL_1.spawn = () => {
-    spawnElement(3, new BanzaiBill(CENTER_Y));
-    spawnElement(5, new Parakoopa(CENTER_Y, "blue"));
-    spawnElement(8, new Star());
-    spawnElement(9, new BooBuddy(CENTER_Y));
-    spawnElement(12, new Eerie(CENTER_Y));
-    spawnElement(15, new FlyingGoomba(CENTER_Y + 100));
-    spawnElement(17, new FlyingGoomba(CENTER_Y - 100));
-    spawnElement(16, new FlyingGoomba(CENTER_Y));
-};
+    spawnElement(1, new BulletBillLinear(CENTER_Y))
+    spawnElement(2, new BulletBillLinear(CENTER_Y))
+    spawnElement(3, new BulletBillLinear(CENTER_Y))
+    spawnElement(4, new BulletBillLinear(CENTER_Y))
+    spawnElement(5, new Star())
 
+}
 LEVEL_2.spawn = () => {
-    spawnElement(3, new BanzaiBill(CENTER_Y));
-    spawnElement(5, new Parakoopa(CENTER_Y, "blue"));
-    spawnElement(8, new Star());
-    spawnElement(9, new BooBuddy(CENTER_Y));
-    spawnElement(12, new Eerie(CENTER_Y));
-    spawnElement(15, new FlyingGoomba(CENTER_Y + 100));
-    spawnElement(17, new FlyingGoomba(CENTER_Y - 100));
-    spawnElement(16, new FlyingGoomba(CENTER_Y));
-};
+    spawnElement(1, new BulletBillLinear(CENTER_Y))
+    spawnElement(2, new BulletBillLinear(CENTER_Y))
+    spawnElement(3, new BulletBillLinear(CENTER_Y))
+    spawnElement(4, new BulletBillLinear(CENTER_Y))
+    spawnElement(5, new Star())
+}
+LEVEL_3.spawn = () => {
+    spawnElement(1, new BulletBillLinear(CENTER_Y))
+    spawnElement(2, new BulletBillLinear(CENTER_Y))
+    spawnElement(3, new BulletBillLinear(CENTER_Y))
+    spawnElement(4, new BulletBillLinear(CENTER_Y))
+    spawnElement(5, new Star())
+}
+LEVEL_4.spawn = () => {}
+

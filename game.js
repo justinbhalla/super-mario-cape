@@ -1,24 +1,25 @@
-function update() {   
-    ctx.clearRect(0,0, CANVAS_W, CANVAS_H);
-    gameElements.update();
-    gamePlayer.update();
-    updateReq = requestAnimationFrame(update);
-}
+function run() {
+    requestAnimationFrame(run);
+    now = Date.now();
+    elapsed = now - then;
 
-function move() {
-    scrollBackground();
-    gameElements.move();
-    gamePlayer.move();
-    moveReq = requestAnimationFrame(move);
+    if (elapsed > fpsInterval) {
+        then = now - (elapsed % fpsInterval);
+        ctx.clearRect(0,0, CANVAS_W, CANVAS_H);
+
+        if (!gamePause) gameElements.move();
+        gameElements.update();
+        gamePlayer.update();
+        gamePlayer.move();
+        scrollBackground();
+    }
 }
 
 function deathScene() {
-    setTimeout(() => {
-        cancelAnimationFrame(moveReq);
-        resetControls();
-        gamePlayer.spriteFrame = 3;
-        gamePause = true;
-    });
+    if (gamePause) return;
+    gameState = "DEAD";
+    gamePause = true;
+    resetControls();
     
     setTimeout(() => {
         let yPeak = gamePlayer.yPos - 200;
@@ -27,9 +28,9 @@ function deathScene() {
             let yPos = gamePlayer.yPos;
 
             if (yPos > CANVAS_H) {
+                showScreen(deathScreen);
                 clearInterval(animate);
-                changeScreen(deathScreen, true);
-                gameState = "DEAD";
+                gameState = "RETRY";
             } else if (yPos > yPeak && yFlag) {
                 gamePlayer.yPos -= 10;
             } else if (yPos < yPeak && yFlag) {
@@ -42,20 +43,19 @@ function deathScene() {
 }
 
 function passScene() {
-    setTimeout(() => cancelAnimationFrame(moveReq));
-    changeScreen(background, false);
-    changeScreen(passScreen, true);
+    showScreen(background, false);
+    showScreen(passScreen);
     resetControls();
-    gameElements.length = 0;
     gamePause = true;
+    gameElements.length = 0;
 
     if (LEVELS.length === 2) {
         passText.innerText = "Fortress Complete";
     }
     
     setTimeout(() => {
-        changeScreen(background, true);
-        changeScreen(passScreen, false);
+        showScreen(passScreen, false);
+        showScreen(background);
         LEVELS.shift();
         
         background.style.backgroundPositionY = `${LEVELS[0].backgroundPosY}px`;
@@ -63,8 +63,8 @@ function passScene() {
         if (LEVELS[0] === FINALE) {
             endScene();
         } else {
-            requestAnimationFrame(move);
             gamePause = false;
+            gamePlayer.reset();
             introLevel();
             LEVELS[0].spawn();
         }
@@ -75,12 +75,9 @@ function endScene() {
     gamePlayer.xPos = CENTER_X - gamePlayer.image.width / 2;
     gamePlayer.yPos = CENTER_Y + 75;
     cursorSelect.style.cursor = "auto";
+    showScreen(endScreen);
     backgroundSpeed = 2;
-    changeScreen(endScreen, true);
-    gamePlayer.move = () => {}
     move();
 }
 
-
-move();
-update();
+run()
