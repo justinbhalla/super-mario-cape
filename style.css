@@ -6,6 +6,12 @@
     padding: 0;
 }
 
+p, div, ul, li, h1, button {
+    font-family: "Press Start 2P", sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+}
+
 .center {
     position: absolute;
     top: 50%;
@@ -15,28 +21,17 @@
 
 body {
     background-color: #5590cc   ;
-    /* background: radial-gradient(#fff, #ffefba);
-    background: -moz-radial-gradient(circle, #fff, #ffefba);
-    background-attachment: fixed; */
 }
 
-#canvas, #background-1, #background-2, #title-screen {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-#title-screen {
+#title-screen,
+#background-1,
+#background-2 {
     width: 1360px;
     height: 760px;
 }
 
-#header {
-    position: absolute;
-    left: 50%;
+#header {    
     top: calc(50% - 190px);
-    transform: translate(-50%, -50%);
 }
 
 #controls {
@@ -68,7 +63,6 @@ body {
 }
 
 #diagram div {
-    text-align: center;
     margin-bottom: 3px;    
     width: 62px;
     margin-left: -67px;
@@ -83,9 +77,6 @@ body {
 #label-top {
     position: relative;
     color: white;
-    font-family: "Press Start 2P";
-    text-transform: uppercase;
-    text-align: center;
     font-size: 12px;    
 }
 
@@ -100,29 +91,17 @@ body {
 }
 
 #start {
-    position: absolute;
-    text-align: center;
-    font-family: 'Press Start 2P';
     color: white;
-    text-transform: uppercase;
     font-size: 32px;
-    left: 50%;
     top: calc(50% + 240px);
-    transform: translate(-50%, -50%);
     animation: fadeout 2s infinite;
 }
 
 #authors {
-    position: absolute;
-    text-align: center;
     width: 700px;
-    font-family: 'Press Start 2P';
-    text-transform: uppercase;
     font-size: 12px;
     color: lightskyblue;
     top: calc(50% + -60px);
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 
 #authors a {
@@ -131,125 +110,86 @@ body {
 
 #pass-screen {
     display: none;
-    text-align: center;
-    font-family: "Press Start 2P";
-    text-transform: uppercase;
     color: yellow;
     font-size: 12px;
 }
 
-#pass-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
 #death-screen {
-    font-family: "Press Start 2P";
     display: none;
-    position: absolute;
     background: rgba(0, 0, 0, 0.5);
     width: 220px;
     height: 200px;
     padding-top: 20px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  #death-screen > * {
-    text-align: center;
-    text-transform: uppercase;
-  }
-  
-  #death-screen h1 {
+}
+    
+#death-screen h1 {
     font-size: 45px;
     color: white;
     margin-bottom: 20px;
-  }
+}
   
 #death-screen button {
-font-size: 15px;
-font-family: "Press Start 2P";
-display: block;
-margin: 0 auto;
-text-transform: uppercase;
-border: none;
-background: none;
-color: white;
-animation: fadeout 2s infinite;
+    font-size: 15px;
+    display: block;
+    margin: 0 auto;
+    border: none;
+    background: none;
+    color: white;
+    animation: fadeout 2s infinite;
 }
 
 #end-screen {
-    font-family: "Press Start 2P";
-    position: absolute;
-    left: 50%;
     top: calc(50% - 75px);
-    transform: translate(-50%, -50%);
     display: none;
-    text-align: center;
     background-color: rgba(0, 0, 0, 0.5);
     width: 700px;
     height: 200px;
     padding: 25px;
-  }
+}
   
-  #end-screen h1 {
-    text-transform: uppercase;
+#end-screen h1 {
     font-size: 40px;
     color: yellow;
-  }
+}
   
-  #end-screen h2 {
+#end-screen h2 {
     color: white;
     margin-bottom: 40px;
     font-size: 27px;
-  }
+}
   
-  #end-screen p {
+#end-screen p {
     text-transform: uppercase;
     font-size: 12px;
     color: white;
-  }
+}
   
-  #end-screen p a {
+#end-screen p a {
     background-color: white;
     padding: 10px;
     text-decoration: none;
     color: black;
-  }
+}
   
-  #end-screen p a:hover {
+#end-screen p a:hover {
     background-color: darkgreen;
     color: white;
-  }
-
+}
 
 #level-text {
     display: none;
-    font-family: "Press Start 2P";
     color: white;
     font-size: 40px;
-    text-transform: uppercase;
-    position: absolute;
     top: calc(50% - 150px);
-    left: 50%;
-    transform: translate(-50%, -50%);  
 }
 
 #background-1 {
     background-image: url(images/levels.jpg);
     background-repeat: repeat-x;
-    width: 1360px;
-    height: 760px;
     z-index: -1;
 }
 
-
 #background-2 {
-    width: 1360px;
-    height: 760px;
     background-color: black;
     z-index: -2;
 }
