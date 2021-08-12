@@ -18,11 +18,11 @@ function gameControls(e) {
         case UP_2:
             if (!jumpFlag && isHeld) {
                 jumpFlag = true;
-                gamePlayer.audio.currentTime = 0;
-                gamePlayer.audio.play();
+                // gamePlayer.audio.currentTime = 0;
+                // gamePlayer.audio.play();
             } else if (!isHeld) {
                 jumpFlag = false;
-                gamePlayer.audio.pause();
+                // gamePlayer.audio.pause();
             }
 
             upHeld = isHeld;
@@ -43,19 +43,11 @@ function menuControls(e) {
         if (isStart) {
             cursorSelect.style.cursor = "none";
             showScreen(titleScreen, false);
-            introLevel();
         } else if (isRetry) {
-            gameTimeouts.forEach(t => clearTimeout(t));
             showScreen(deathScreen, false);
-            gameElements.length = 0;
         }
 
-        if (isStart || isRetry) {
-            gamePlayer.reset();
-            gameState = "PLAY";
-            gamePause = false;
-            LEVELS[0].spawn();
-        }
+        if (isStart || isRetry) startLevel();
     }
 }
 
