@@ -39,8 +39,8 @@ gameElements.update = () => {
 const LEFT = 37;
 const RIGHT = 39;
 const DOWN = 40;
-const UP = 38;
-const ENTER = 13;
+const UP_1 = 38;
+const UP_2 = 32;
 let leftHeld = false;
 let rightHeld = false;
 let downHeld = false;
