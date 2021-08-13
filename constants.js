@@ -2,6 +2,7 @@ const titleScreen = document.getElementById("title-screen");
 const deathScreen = document.getElementById("death-screen");
 const levelScreen = document.getElementById("level-screen");
 const livesScreen = document.getElementById("lives-screen");
+const overScreen = document.getElementById("over-screen");
 const irisScreen = document.getElementById("iris-screen");
 const passScreen = document.getElementById("pass-screen");
 const endScreen = document.getElementById("end-screen");
@@ -27,7 +28,7 @@ let backgroundSpeed = 5;
 
 let gameState = "START";
 let gamePause = true;
-let gameLevel = 1;
+let gameLevel = 0;
 let gamePlayer = new Mario();
 let gameTimeouts = [];
 let gameElements = [];

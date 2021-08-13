@@ -26,6 +26,7 @@ body {
 
 #title-screen,
 #level-screen,
+#over-screen,
 #iris-screen,
 #background-1,
 #background-2 {
@@ -37,13 +38,15 @@ body {
 #level-screen,
 #lives-screen,
 #pass-screen,
+#over-screen,
 #end-screen {
     display: none;
 }
 
 #death-screen,
 #level-screen,
-#background-2 {
+#background-2,
+#over-screen {
     background: black;
 }
 
@@ -140,6 +143,23 @@ body {
 
 #authors a {
     color: yellow
+}
+
+#over-screen > * {
+   position: relative;
+   top: 40%;
+}
+
+#over-screen h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+#over-screen button {
+    font-size: 15px;
+    background: none;
+    border: none;
+    animation: fadeout 2s infinite;
 }
 
 #death-screen {

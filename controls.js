@@ -39,7 +39,8 @@ function menuControls(e) {
     if (input === UP_1 || input === UP_2 ) {
         let isStart = gameState === "START";
         let isRetry = gameState === "RETRY";
-        
+        let isOver = gameState === "OVER";
+
         if (isStart) {
             cursorSelect.style.cursor = "none";
             hideScreen(titleScreen);
@@ -47,9 +48,13 @@ function menuControls(e) {
         } else if (isRetry) {
             hideScreen(deathScreen);
             gamePlayer.lives--;
+        } else if (isOver) {
+            hideScreen(overScreen);
+            gamePlayer.lives = gamePlayer.startLives;
+            gameLevel = 0;
         }
 
-        if (isStart || isRetry) startLevel();
+        if (isStart || isRetry | isOver) startLevel();
     }
 }
 
