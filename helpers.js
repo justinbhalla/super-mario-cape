@@ -90,6 +90,9 @@ function showScreen(screen) {
             irisScreen.style.borderTopWidth = "380px";
             irisScreen.style.transition = "ease-in 1s"
             break;
+        case livesScreen:
+            screen.style.display = "flex";
+            break;
         default:
             screen.style.display = "block";
             break;
@@ -125,6 +128,7 @@ function resetControls() {
 function startLevel() {
     levelScreen.style.display = "block";
     levelText.innerText = `Level ${gameLevel}`;
+    livesText.innerText = gamePlayer.lives;
     gameTimeouts.forEach(t => clearTimeout(t));
     gameElements.length = 0;
     gamePlayer.reset();

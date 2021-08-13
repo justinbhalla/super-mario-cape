@@ -43,8 +43,10 @@ function menuControls(e) {
         if (isStart) {
             cursorSelect.style.cursor = "none";
             hideScreen(titleScreen);
+            showScreen(livesScreen);
         } else if (isRetry) {
             hideScreen(deathScreen);
+            gamePlayer.lives--;
         }
 
         if (isStart || isRetry) startLevel();
