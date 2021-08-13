@@ -41,30 +41,33 @@ function deathScene() {
 }
 
 function passScene() {
-    showScreen(background, false);
+    hideScreen(background);
     showScreen(passScreen);
     resetControls();
     gameElements.length = 0;
     gameState = "PASS";
     gamePause = true;
     gameLevel++;
+    LEVELS.shift();
 
-    if (LEVELS.length === 2) {
-        passText.innerText = "Fortress Complete";
-    }
-    
+    let message = LEVELS.length === 1 ? "Fortress" : "Course";
+    passScreen.innerText = `${message} Complete`;
+
     setTimeout(() => {
-        showScreen(passScreen, false);
+        hideScreen(passScreen);
+        showScreen(irisScreen);
         showScreen(background);
-        LEVELS.shift();
         
-        background.style.backgroundPositionY = `${LEVELS[0].backgroundPosY}px`;
+        setTimeout(() => {
+            hideScreen(irisScreen);
+            background.style.backgroundPositionY = `${LEVELS[0].backgroundPosY}px`;
         
-        if (LEVELS[0] === FINALE) {
-            endScene();
-        } else {
-            startLevel();
-        }
+            if (LEVELS.length === FINALE) {
+                endScene();
+            } else {
+                startLevel();
+            }
+        }, 1500)
     }, 8200)
 }
 

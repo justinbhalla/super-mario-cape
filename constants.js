@@ -1,10 +1,10 @@
 const titleScreen = document.getElementById("title-screen");
 const deathScreen = document.getElementById("death-screen");
 const levelScreen = document.getElementById("level-screen")
+const irisScreen = document.getElementById("iris-screen");
 const passScreen = document.getElementById("pass-screen");
 const endScreen = document.getElementById("end-screen");
 const levelText = document.getElementById("level-text");
-const passText = document.getElementById("pass-text");
 const background = document.getElementById("background-1");
 const cursorSelect = document.querySelector("*");
 const CANVAS = document.getElementById("canvas");
@@ -63,8 +63,7 @@ const FINALE = new Level(-3040,"ending", 0.5);
 const LEVELS = [LEVEL_1, LEVEL_2, LEVEL_3, FINALE];
 
 LEVEL_1.spawn = () => {
-    spawnElement(3, new FlyingGoomba(CENTER_Y));
-    spawnElement(5, new Star());
+    spawnElement(2, new Star());
 
 }
 LEVEL_2.spawn = () => {

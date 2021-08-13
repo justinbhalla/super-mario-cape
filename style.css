@@ -26,10 +26,24 @@ body {
 
 #title-screen,
 #level-screen,
+#iris-screen,
 #background-1,
 #background-2 {
     width: 1360px;
     height: 760px;
+}
+
+#death-screen,
+#level-screen,
+#pass-screen,
+#end-screen {
+    display: none;
+}
+
+#death-screen,
+#level-screen,
+#background-2 {
+    background: black;
 }
 
 #header {    
@@ -110,17 +124,7 @@ body {
     color: yellow
 }
 
-#pass-screen {
-    display: none;
-    font-size: 12px;
-}
-
-#pass-text {
-    color: yellow;
-}
-
 #death-screen {
-    display: none;
     background: black;
     padding: 20px;
 }
@@ -141,7 +145,6 @@ body {
 
 #end-screen {
     top: calc(50% - 75px);
-    display: none;
     background-color: rgba(0, 0, 0, 0.5);
     width: 700px;
     height: 200px;
@@ -177,14 +180,15 @@ body {
     color: white;
 }
 
-#level-screen {
-    display: none;
-    background-color: black;   
-}
-
-#level-text {
+#level-text,
+#pass-screen {
+    font-size: 26px;
     color: yellow;
-    font-size: 24px;
+}
+ 
+#iris-screen {
+    box-sizing: border-box;
+    border: 0 solid black;
 }
 
 #background-1 {
@@ -194,7 +198,6 @@ body {
 }
 
 #background-2 {
-    background-color: black;
     z-index: -2;
 }
 
