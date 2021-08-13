@@ -26,9 +26,17 @@ function deathScene() {
             let yPos = gamePlayer.yPos;
 
             if (yPos > CANVAS_H) {
-                showScreen(deathScreen);
+                if (!gamePlayer.lives) {
+                    hideScreen(livesScreen);
+                    showScreen(overScreen);
+                    gameState = "OVER";
+                } else {
+                    showScreen(deathScreen);
+                    gameState = "RETRY";
+                }
+
                 clearInterval(animate);
-                gameState = "RETRY";
+                
             } else if (yPos > yPeak && yFlag) {
                 gamePlayer.yPos -= 10;
             } else if (yPos < yPeak && yFlag) {
@@ -48,9 +56,9 @@ function passScene() {
     gameState = "PASS";
     gamePause = true;
     gameLevel++;
-    LEVELS.shift();
 
-    let message = LEVELS.length === 1 ? "Fortress" : "Course";
+    let gameWon = gameLevel === LEVELS.length;
+    let message = gameWon ? "Fortress" : "Course";
     passScreen.innerText = `${message} Complete`;
 
     setTimeout(() => {
@@ -60,9 +68,8 @@ function passScene() {
         
         setTimeout(() => {
             hideScreen(irisScreen);
-            background.style.backgroundPositionY = `${LEVELS[0].backgroundPosY}px`;
         
-            if (LEVELS.length === FINALE) {
+            if (gameWon) {
                 endScene();
             } else {
                 startLevel();

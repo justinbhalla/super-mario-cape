@@ -126,8 +126,9 @@ function resetControls() {
 }
 
 function startLevel() {
+    background.style.backgroundPositionY = `${LEVELS[gameLevel].backgroundPosY}px`;
     levelScreen.style.display = "block";
-    levelText.innerText = `Level ${gameLevel}`;
+    levelText.innerText = `Level ${gameLevel + 1}`;
     livesText.innerText = gamePlayer.lives;
     gameTimeouts.forEach(t => clearTimeout(t));
     gameElements.length = 0;
@@ -136,7 +137,7 @@ function startLevel() {
 
     setTimeout(() => {
         levelScreen.style.display = "none";    
-        LEVELS[0].spawn();
+        LEVELS[gameLevel].spawn();
         gamePause = false;
     }, 1500);    
 }
