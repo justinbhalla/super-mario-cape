@@ -17,7 +17,7 @@ class Mario {
         
         this.xSpeed = 10;
         this.ySpeed = 10;
-        this.gravity = 0; //was 7
+        this.gravity = 7;
         this.wind = 3;
         this.isJumping = true;
     }
@@ -47,8 +47,8 @@ class Mario {
         }
 
         if (gameState === "DEAD") this.spriteFrame = 3;
-        if (!bBound) deathScene();
-        this.yPos += gravity;
+        if (!gamePause && !bBound) deathScene();
+        if (!gamePause) this.yPos += gravity;
     }
 
     jump() {
@@ -74,7 +74,7 @@ class Mario {
     }
 
     reset() {
-        this.xPos = 150;
-        this.yPos = 300;
+        this.xPos = 100;
+        this.yPos = 100;
     }  
 }
