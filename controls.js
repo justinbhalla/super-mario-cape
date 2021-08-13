@@ -42,9 +42,9 @@ function menuControls(e) {
         
         if (isStart) {
             cursorSelect.style.cursor = "none";
-            showScreen(titleScreen, false);
+            hideScreen(titleScreen);
         } else if (isRetry) {
-            showScreen(deathScreen, false);
+            hideScreen(deathScreen);
         }
 
         if (isStart || isRetry) startLevel();

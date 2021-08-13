@@ -70,7 +70,7 @@ function spawnElement(delay, element) {
 }
 
 function drawBackground() {
-    if (!gamePause) {
+    if (!gamePause || gameState === "START") {
         let x = parseInt(background.style.backgroundPositionX);
         background.style.backgroundPositionX = `${x - backgroundSpeed}px`;
     }
@@ -78,14 +78,41 @@ function drawBackground() {
     ctx.clearRect(0,0, CANVAS_W, CANVAS_H);
 }
 
-function showScreen(screen, display=true) {
-    if (screen === background && display) {
-        background.style.animation = "fadein 0.1s forwards";
-    } else if (screen === background) {
-        background.style.animation = "fadeout 2.5s forwards";
-    } else {
-        screen.style.display = display ? "block" : "none";
+function showScreen(screen) {
+    switch(screen) {
+        case background:
+            background.style.animation = "fadein 0.1s forwards";
+            break;
+        case irisScreen:
+            irisScreen.style.borderLeftWidth = "680px";
+            irisScreen.style.borderRightWidth = "680px";
+            irisScreen.style.borderBottomWidth = "380px";
+            irisScreen.style.borderTopWidth = "380px";
+            irisScreen.style.transition = "ease-in 1s"
+            break;
+        default:
+            screen.style.display = "block";
+            break;
     }
+}
+
+function hideScreen(screen) {
+    switch(screen) {
+        case background:
+            background.style.animation = "fadeout 2.5s forwards";
+            break;
+        case irisScreen:
+            irisScreen.style.borderLeftWidth = "0px";
+            irisScreen.style.borderRightWidth = "0px";
+            irisScreen.style.borderBottomWidth = "0px";
+            irisScreen.style.borderTopWidth = "0px";
+            irisScreen.style.transition = "none"
+            break;
+        default:
+            screen.style.display = "none";
+            break;
+    }
+
 }
 
 function resetControls() {
