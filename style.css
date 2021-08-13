@@ -113,7 +113,7 @@ body {
 #label-bottom,
 #label-top {
     position: relative;
-    color: white;
+    color: black;
     font-size: 12px;    
 }
 
@@ -128,7 +128,7 @@ body {
 }
 
 #start {
-    color: white;
+    color: black;
     font-size: 32px;
     top: calc(50% + 240px);
     animation: fadeout 2s infinite;
@@ -142,7 +142,7 @@ body {
 }
 
 #authors a {
-    color: yellow
+    color: red;
 }
 
 #over-screen > * {
