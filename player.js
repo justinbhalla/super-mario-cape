@@ -5,9 +5,7 @@ class Mario {
         this.image = new Image(116, 124);
         this.image.src = "images/mario.png"
         this.spriteFrame = 0;
-        this.startLives = 2;
-        this.lives = 2;
-
+        
         this.xPos = CENTER_X - 185;
         this.yPos = CENTER_Y + 15;
         this.xOff = 20;

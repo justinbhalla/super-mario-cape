@@ -44,13 +44,12 @@ function menuControls(e) {
         if (isStart) {
             cursorSelect.style.cursor = "none";
             hideScreen(titleScreen);
-            showScreen(livesScreen);
         } else if (isRetry) {
             hideScreen(deathScreen);
-            gamePlayer.lives--;
+            gameLives--;
         } else if (isOver) {
             hideScreen(overScreen);
-            gamePlayer.lives = gamePlayer.startLives;
+            gameLives = gameLivesStart;
             gameLevel = 0;
         }
 

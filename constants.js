@@ -28,11 +28,14 @@ background.style.backgroundPositionY = 0;
 let backgroundSpeed = 5;
 
 let gameState = "START";
+let gameLivesStart = 2;
+let gameLives = 2;
 let gamePause = true;
 let gameLevel = 0;
 let gamePlayer = new Mario();
 let gameTimeouts = [];
 let gameElements = [];
+
 gameElements.move = () => {
     if (!gamePause) gameElements.forEach(e => e.move());
 }

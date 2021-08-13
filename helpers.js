@@ -126,10 +126,11 @@ function resetControls() {
 }
 
 function startLevel() {
+    showScreen(livesScreen);
     background.style.backgroundPositionY = `${LEVELS[gameLevel].backgroundPosY}px`;
     levelScreen.style.display = "block";
     levelText.innerText = `Level ${gameLevel + 1}`;
-    livesText.innerText = gamePlayer.lives;
+    livesText.innerText = gameLives;
     gameTimeouts.forEach(t => clearTimeout(t));
     gameElements.length = 0;
     gamePlayer.reset();

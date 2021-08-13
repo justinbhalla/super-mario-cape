@@ -26,7 +26,7 @@ function deathScene() {
             let yPos = gamePlayer.yPos;
 
             if (yPos > CANVAS_H) {
-                if (!gamePlayer.lives) {
+                if (!gameLives) {
                     hideScreen(livesScreen);
                     showScreen(overScreen);
                     gameState = "OVER";
