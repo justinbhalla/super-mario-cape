@@ -90,4 +90,8 @@ function endScene() {
     backgroundSpeed = 2;
 }
 
-run()
+window.addEventListener("load", () => {
+    document.body.style.background = "#5590cc";
+    hideScreen(loadScreen);
+    run();
+})

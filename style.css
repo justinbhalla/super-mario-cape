@@ -21,7 +21,7 @@ p, div, ul, li, h1, button {
 }
 
 body {
-    background-color: #5590cc;
+    background: black;
 }
 
 #title-screen,
@@ -237,6 +237,39 @@ body {
 
 #background-2 {
     z-index: -2;
+}
+
+#load-screen {
+    width: 100vw;
+    height: 100vh;
+    background: black;
+}
+
+#load-screen > div {
+    position: fixed;
+    background-image: url("images/loading.gif");
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 500px;
+    height: 500px;
+    top: calc(50% - 120px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+}
+
+#load-screen > p {
+    position: fixed;
+    font-family: monospace;
+    font-size: 24px;
+    left: 50%;
+    top: calc(50% + 120px);
+    transform: translate(-50%, -50%);
+}
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 @keyframes fadein {
