@@ -13,11 +13,28 @@ p, div, ul, li, h1, button {
     color: white;
 }
 
-.center {
+#canvas,
+#lives-screen,
+#title-screen,
+#header,
+#authors,
+#start,
+#over-screen,
+#death-screen,
+#end-screen,
+#level-screen,
+#level-text,
+#pass-screen,
+#iris-screen,
+#background-1,
+#background-2,
+#load-screen,
+#load-screen div,
+#load-screen p {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
 }
 
 body {
@@ -232,6 +249,7 @@ body {
 #background-1 {
     background-image: url(images/levels.jpg);
     background-repeat: repeat-x;
+    will-change: background-position-x, background-position-y;
     z-index: -1;
 }
 
@@ -245,26 +263,20 @@ body {
     background: black;
 }
 
-#load-screen > div {
-    position: fixed;
+#load-screen div {   
     background-image: url("images/loading.gif");
     background-position: center;
     background-repeat: no-repeat;
     width: 500px;
     height: 500px;
     top: calc(50% - 120px);
-    left: 50%;
-    transform: translate(-50%, -50%);
     z-index: 999;
 }
 
-#load-screen > p {
-    position: fixed;
+#load-screen p {
     font-family: monospace;
     font-size: 24px;
-    left: 50%;
     top: calc(50% + 120px);
-    transform: translate(-50%, -50%);
 }
   
 @keyframes fadein {
