@@ -57,7 +57,8 @@ function passScene() {
     gamePause = true;
     gameLevel++;
 
-    let gameWon = gameLevel === LEVELS.length;
+    console.log(gameLevel, LEVELS.length);
+    let gameWon = gameLevel === LEVELS.length - 1;
     let message = gameWon ? "Fortress" : "Course";
     passScreen.innerText = `${message} Complete`;
 
@@ -79,12 +80,14 @@ function passScene() {
 }
 
 function endScene() {
+    background.style.backgroundPositionY = `${LEVELS[gameLevel].backgroundPosY}px`;
     gamePlayer.xPos = CENTER_X - gamePlayer.image.width / 2;
     gamePlayer.yPos = CENTER_Y + 75;
+    gameState = "END";
     cursorSelect.style.cursor = "auto";
     showScreen(endScreen);
+    hideScreen(livesScreen);
     backgroundSpeed = 2;
-    move();
 }
 
 run()

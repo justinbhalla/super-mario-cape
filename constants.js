@@ -63,20 +63,18 @@ const LEVEL_2 = new Level(-760, "athletic", 0.45);
 const LEVEL_3 = new Level(-1520, "haunted", 0.35);
 const LEVEL_4 = new Level(-2280, "castle", 0.8);
 const FINALE = new Level(-3040,"ending", 0.5);
-const LEVELS = [LEVEL_1, LEVEL_2, LEVEL_3, FINALE];
+const LEVELS = [LEVEL_1, FINALE];
 
 LEVEL_1.spawn = () => {
+    spawnElement(1, new FlyingGoomba());
     spawnElement(2, new Star());
 
 }
-LEVEL_2.spawn = () => {
-    spawnElement(3, new FlyingGoomba(CENTER_Y));
-    spawnElement(5, new Star());
-}
-LEVEL_3.spawn = () => {
-    spawnElement(3, new FlyingGoomba(CENTER_Y));
-    spawnElement(5, new Star());
-}
+
+LEVEL_2.spawn = () => {}
+
+LEVEL_3.spawn = () => {}
 
 LEVEL_4.spawn = () => {}
 
+FINALE.spawn = () => {}

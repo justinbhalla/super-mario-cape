@@ -70,7 +70,7 @@ function spawnElement(delay, element) {
 }
 
 function drawBackground() {
-    if (!gamePause || gameState === "START") {
+    if (!gamePause || gameState === "START" || gameState === "END") {
         let x = parseInt(background.style.backgroundPositionX);
         background.style.backgroundPositionX = `${x - backgroundSpeed}px`;
     }
