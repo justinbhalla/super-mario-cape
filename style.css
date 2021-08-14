@@ -148,7 +148,6 @@ body {
     color: black;
     font-size: 32px;
     top: calc(50% + 240px);
-    animation: fadeout 2s infinite;
 }
 
 #authors {
@@ -176,7 +175,6 @@ body {
     font-size: 15px;
     background: none;
     border: none;
-    animation: fadeout 2s infinite;
 }
 
 #death-screen {
@@ -195,7 +193,6 @@ body {
     margin: 0 auto;
     border: none;
     background: none;
-    animation: fadeout 2s infinite;
 }
 
 #end-screen {
