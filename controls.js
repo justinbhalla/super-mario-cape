@@ -28,8 +28,6 @@ function gameControls(e) {
             upHeld = isHeld;
             break;
     }
-
-    // e.preventDefault();
 }
 
 function menuControls(e) {
