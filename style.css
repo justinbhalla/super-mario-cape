@@ -63,8 +63,20 @@ body {
 #death-screen,
 #level-screen,
 #background-2,
-#over-screen {
+#over-screen,
+#fullscreen {
     background: black;
+}
+
+#fullscreen {
+    display: none;
+    position: absolute;
+    line-height: 24px;
+    padding: 10px;
+    width: 1360px;
+    border-radius: 10px;
+    top: calc(50% - 435px);
+    left: calc(50% - 680px);
 }
 
 #lives-screen {
@@ -284,4 +296,8 @@ body {
 @keyframes fadeout {
     from {opacity: 1;}
     to {opacity: 0;}
+}
+
+@media (min-width: 1440px) and (min-height: 900px) {
+    #fullscreen {display: block;}    
 }
