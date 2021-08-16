@@ -51,7 +51,7 @@ function menuControls(e) {
             gameLevel = 0;
         }
 
-        if (isStart || isRetry | isOver) startLevel();
+        if (isStart || isRetry | isOver) levelScene();
     }
 }
 

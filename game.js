@@ -13,6 +13,24 @@ function run() {
     }
 }
 
+function levelScene() {
+    showScreen(livesScreen);
+    background.style.backgroundPositionY = `${LEVELS[gameLevel].backgroundPosY}px`;
+    levelScreen.style.display = "block";
+    levelText.innerText = `Level ${gameLevel + 1}`;
+    livesText.innerText = gameLives;
+    gameTimeouts.forEach(t => clearTimeout(t));
+    gameElements.length = 0;
+    gamePlayer.reset();
+    gameState = "PLAY";
+
+    setTimeout(() => {
+        levelScreen.style.display = "none";    
+        LEVELS[gameLevel].spawn();
+        gamePause = false;
+    }, 1500);    
+}
+
 function deathScene() {
     if (gamePause) return;
     gamePause = true;
@@ -57,7 +75,6 @@ function passScene() {
     gamePause = true;
     gameLevel++;
 
-    console.log(gameLevel, LEVELS.length);
     let gameWon = gameLevel === LEVELS.length - 1;
     let message = gameWon ? "Fortress" : "Course";
     passScreen.innerText = `${message} Complete`;
@@ -73,7 +90,7 @@ function passScene() {
             if (gameWon) {
                 endScene();
             } else {
-                startLevel();
+                levelScene();
             }
         }, 1500)
     }, 8200)
