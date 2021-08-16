@@ -13,9 +13,9 @@ class Element {
         moveHitbox(this);
         detectHit(this);
         drawImage(this);
-        this.time += 1000 / 60;
+        this.time += fpsInterval;
         let {time, spriteRate, xPos, image} = this;
-        if (Math.round(time) % spriteRate === 0) animateSprite(this);
+        if (Math.round(time) % spriteRate === 0) drawSprite(this);
         if (xPos + image.width < 0) gameElements.splice(gameElements.indexOf(this), 1);
     }
 }
