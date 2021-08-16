@@ -14,6 +14,77 @@ function moveCurve(element) {
     element.xPos -= element.xSpeed;
 }
 
+function moveHitbox(element) {
+    let {xPos, yPos, xOff, yOff} = element;
+    element.xBox = xPos + xOff;
+    element.yBox = yPos + yOff;
+}
+
+function drawSprite(element) {
+    if (gamePause) return; 
+
+    let {spriteFrame, spriteLength} = element;
+    
+    if (spriteFrame === spriteLength - 1) {
+        element.spriteFrame = 0;
+    } else {
+        element.spriteFrame++;
+    }
+}
+
+function drawImage({image, spriteFrame, xPos,yPos}) {
+    let xSrc = image.width * spriteFrame;
+    let wSrc = image.width;
+    let hSrc = image.height;
+    ctx.drawImage(image, xSrc,0, wSrc,hSrc, xPos,yPos, wSrc,hSrc);
+}
+
+function drawBackground() {
+    if (!gamePause || gameState === "START" || gameState === "END") {
+        let x = parseInt(background.style.backgroundPositionX);
+        background.style.backgroundPositionX = `${x - backgroundSpeed}px`;
+    }
+
+    ctx.clearRect(0,0, CANVAS_W, CANVAS_H);
+}
+
+function showScreen(screen) {
+    switch(screen) {
+        case background:
+            background.style.animation = "fadein 0.1s forwards";
+            break;
+        case irisScreen:
+            irisScreen.style.borderLeftWidth = "680px";
+            irisScreen.style.borderRightWidth = "680px";
+            irisScreen.style.borderBottomWidth = "382px";
+            irisScreen.style.borderTopWidth = "382px";
+            irisScreen.style.transition = "ease-in 1s"
+            break;
+        case livesScreen:
+            screen.style.display = "flex";
+            break;
+        default:
+            screen.style.display = "block";
+            break;
+    }
+}
+
+function hideScreen(screen) {
+    switch(screen) {
+        case background:
+            background.style.animation = "fadeout 2.5s forwards";
+            break;
+        case irisScreen:
+            irisScreen.style.borderWidth = "0px";
+            irisScreen.style.transition = "none"
+            break;
+        default:
+            screen.style.display = "none";
+            break;
+    }
+
+}
+
 function detectHit(element) {
     if (gamePause) return;
 
@@ -39,83 +110,9 @@ function detectHit(element) {
     else if (collision) deathScene();    
 }
 
-function moveHitbox(element) {
-    let {xPos, yPos, xOff, yOff} = element;
-    element.xBox = xPos + xOff;
-    element.yBox = yPos + yOff;
-}
-
-function animateSprite(element) {
-    if (gamePause) return; 
-
-    let {spriteFrame, spriteLength} = element;
-    
-    if (spriteFrame === spriteLength - 1) {
-        element.spriteFrame = 0;
-    } else {
-        element.spriteFrame++;
-    }
-}
-
-function drawImage({image, spriteFrame, xPos,yPos}) {
-    let xSrc = image.width * spriteFrame;
-    let wSrc = image.width;
-    let hSrc = image.height;
-    ctx.drawImage(image, xSrc,0, wSrc,hSrc, xPos,yPos, wSrc,hSrc);
-}
-
 function spawnElement(delay, element) {
     let timeout = setTimeout(() => gameElements.push(element), delay * 1000);
     gameTimeouts.push(timeout);
-}
-
-function drawBackground() {
-    if (!gamePause || gameState === "START" || gameState === "END") {
-        let x = parseInt(background.style.backgroundPositionX);
-        background.style.backgroundPositionX = `${x - backgroundSpeed}px`;
-    }
-
-    ctx.clearRect(0,0, CANVAS_W, CANVAS_H);
-}
-
-function showScreen(screen) {
-    switch(screen) {
-        case background:
-            background.style.animation = "fadein 0.1s forwards";
-            break;
-        case irisScreen:
-            irisScreen.style.borderLeftWidth = "680px";
-            irisScreen.style.borderRightWidth = "680px";
-            irisScreen.style.borderBottomWidth = "380px";
-            irisScreen.style.borderTopWidth = "380px";
-            irisScreen.style.transition = "ease-in 1s"
-            break;
-        case livesScreen:
-            screen.style.display = "flex";
-            break;
-        default:
-            screen.style.display = "block";
-            break;
-    }
-}
-
-function hideScreen(screen) {
-    switch(screen) {
-        case background:
-            background.style.animation = "fadeout 2.5s forwards";
-            break;
-        case irisScreen:
-            irisScreen.style.borderLeftWidth = "0px";
-            irisScreen.style.borderRightWidth = "0px";
-            irisScreen.style.borderBottomWidth = "0px";
-            irisScreen.style.borderTopWidth = "0px";
-            irisScreen.style.transition = "none"
-            break;
-        default:
-            screen.style.display = "none";
-            break;
-    }
-
 }
 
 function resetControls() {
@@ -123,22 +120,4 @@ function resetControls() {
     leftHeld = false;
     downHeld = false;
     upHeld = false;
-}
-
-function startLevel() {
-    showScreen(livesScreen);
-    background.style.backgroundPositionY = `${LEVELS[gameLevel].backgroundPosY}px`;
-    levelScreen.style.display = "block";
-    levelText.innerText = `Level ${gameLevel + 1}`;
-    livesText.innerText = gameLives;
-    gameTimeouts.forEach(t => clearTimeout(t));
-    gameElements.length = 0;
-    gamePlayer.reset();
-    gameState = "PLAY";
-
-    setTimeout(() => {
-        levelScreen.style.display = "none";    
-        LEVELS[gameLevel].spawn();
-        gamePause = false;
-    }, 1500);    
 }
