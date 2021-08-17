@@ -10,6 +10,7 @@ const endScreen = document.getElementById("end-screen");
 const levelText = document.getElementById("level-text");
 const livesText = document.getElementById("lives-text");
 const background = document.getElementById("background-1");
+const audioBox = document.getElementById("audio");
 const cursorSelect = document.querySelector("*");
 const CANVAS = document.getElementById("canvas");
 const CANVAS_W = CANVAS.width;
@@ -29,6 +30,7 @@ let backgroundSpeed = 5;
 
 let gameState = "START";
 let gameLivesStart = 2;
+let gameAudio = false;
 let gameLives = 2;
 let gamePause = true;
 let gameLevel = 0;
@@ -43,6 +45,10 @@ gameElements.move = () => {
 gameElements.update = () => {
     gameElements.forEach(e => e.update());
 }
+
+audioBox.addEventListener("change", () => {
+    gameAudio = this.checked;
+}) 
 
 const LEFT = 37;
 const RIGHT = 39;
