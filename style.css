@@ -284,6 +284,10 @@ body {
     font-size: 26px;
     color: yellow;
 }
+
+#pass-screen {
+    top: calc(50% - 100px);
+}
  
 #iris-screen {
     box-sizing: border-box;

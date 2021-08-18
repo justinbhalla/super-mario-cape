@@ -317,13 +317,13 @@ class Star extends Element {
 
         this.image = new Image(60, 64);
         this.image.src = "images/star.png";
-        this.yPos = CENTER_Y;
+        this.yPos = CENTER_Y + 29;
         this.wBox = 60;
         this.hBox = 64;
-        this.xSpeed = 10;
+        this.xSpeed = 15;
     }
 
     move() {
-        if (this.xPos > CENTER_X - 200) moveLinear(this);
+        if (this.xPos > CENTER_X + 58) moveLinear(this);
     }
 }
