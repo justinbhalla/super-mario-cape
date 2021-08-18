@@ -106,9 +106,3 @@ function endScene() {
     hideScreen(livesScreen);
     backgroundSpeed = 2;
 }
-
-window.addEventListener("load", () => {
-    document.body.style.background = "#5590cc";
-    hideScreen(loadScreen);
-    run();
-})
