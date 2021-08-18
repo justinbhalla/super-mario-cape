@@ -1,5 +1,5 @@
 let loading = [];
-let images = [
+let images = Array.from([
     "banzai-bill.png",
     "big-boo.png",
     "big-bubble.png",
@@ -25,18 +25,8 @@ let images = [
     "super-koopa-red.png",
     "super-koopa-yellow.png",
     "levels.jpg"
-]
-
-window.addEventListener("load", () => {
-    setInterval(() => {
-        console.log(loading);
-    }, 2000);
-    // document.body.style.background = "#5590cc";
-    // hideScreen(loadScreen);
-    // run();
-});
-
-
+], load);
+// let sounds = Array.from([...], load);
 
 function load(asset) {
     let ext = asset.slice(asset.length - 3);
@@ -51,5 +41,13 @@ function load(asset) {
     loading.push(element);
 }
 
-images.forEach(image => load(image));
-// sounds.forEach(sound => load(sound));
+window.addEventListener("load", () => {
+    let interval = setInterval(() => {
+        if (loading.length === 0) {
+            clearInterval(interval);
+            document.body.style.background = "#5590cc";
+            hideScreen(loadScreen);
+            run();        
+        } 
+    }, 250);
+});
