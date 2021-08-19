@@ -1,9 +1,12 @@
+import { CANVAS_WIDTH, CANVAS_HEIGHT, CANVAS_MID_X, CANVAS_MID_Y, 
+         ctx, game, controls, player, elements, fpsInterval } from '../main.js';
+
 class Element {
     constructor() {
         this.spriteFrame = 0;
         this.spriteRate = 0;
         this.spriteLength = 0;
-        this.xPos = CANVAS_W;
+        this.xPos = CANVAS_WIDTH;
         this.xOff = 0;
         this.yOff = 0;
         this.time = 0;
@@ -11,13 +14,99 @@ class Element {
 
     update() {
         moveHitbox(this);
-        detectHit(this);
         drawImage(this);
-        this.time += fpsInterval;
-        let {time, spriteRate, xPos, image} = this;
-        if (Math.round(time) % spriteRate === 0) drawSprite(this);
-        if (xPos + image.width < 0) gameElements.splice(gameElements.indexOf(this), 1);
+        
+        if (this instanceof Mario === false) {
+            if (game.isOn) drawSprite(this);
+            
+            if (this instanceof Star && didHitMario(this)) {player.gotStar = true}
+            else if (didHitMario(this)) {player.isDead = true;}
+                        
+            if (this.xPos + this.image.width < 0) {
+                elements.splice(elements.indexOf(this), 1);            
+            }
+            
+            this.time += fpsInterval;
+        }
     }
+}
+
+class Mario extends Element {
+    constructor() {
+        super();
+        this.audio = new Audio('sounds/jump.wav');
+
+        this.image = new Image(116, 124);
+        this.image.src = "images/mario.png"
+        this.spriteFrame = 0;
+        
+        this.xPos = CANVAS_MID_X - 185;
+        this.yPos = CANVAS_MID_Y + 15;
+        this.xOff = 20;
+        this.yOff = 38;
+        this.wBox = 92;
+        this.hBox = 76;
+        
+        this.xSpeed = 10;
+        this.ySpeed = 10;
+        this.gravity = 7;
+        this.wind = 3;
+        this.isDead = false;
+        this.gotStar = false;
+        this.isJumping = true;
+    }
+
+    move() {
+        let {isLeft, isRight, isUp, isDown} = controls;
+        let {xPos, yPos, xSpeed, gravity, wind} = this;
+        let hasFallen = yPos + this.image.height / 2 > CANVAS_HEIGHT;
+        let hasSpaceRight = xPos + this.image.width < CANVAS_WIDTH;  
+        let hasSpaceLeft = xPos > 0;
+
+        if (isRight && hasSpaceRight) this.xPos += xSpeed + wind;
+        if (isLeft && hasSpaceLeft) this.xPos -= xSpeed - wind
+        
+        if (isUp && !this.isJumping) {
+            this.jump();
+            this.spriteFrame = 1;
+        }
+        
+        if (!isUp) {
+            this.isJumping = false;
+            this.spriteFrame = 0;
+        }
+        
+        if (isDown) {
+            this.yPos += xSpeed + gravity;
+            this.spriteFrame = 2;  
+        }
+
+        if (game.isOn && hasFallen) this.isDead = true;
+        if (game.state === "DEAD") this.spriteFrame = 3;
+        if (game.isOn) this.yPos += gravity;
+    }
+
+    jump() {
+        this.isJumping = true;
+        let count = 0;
+        
+        let interval = setInterval(() => {
+            if (count > 15) {
+                clearInterval(interval);
+                this.isJumping = false;
+                count = 0;
+            } else if (this.yPos > 0) {
+                this.yPos -= this.ySpeed;
+            }
+            
+            count++;
+        }, 10);
+    }
+
+    reset() {
+        this.xPos = 100;
+        this.yPos = 100;
+    }  
 }
 
 class SuperKoopa extends Element {
@@ -141,7 +230,7 @@ class Chainsaw extends Element {
         this.image.src = "images/chainsaw.png";
         this.spriteLength = 4;
         this.spriteRate = 50;
-        this.xSpeed = backgroundSpeed;
+        this.xSpeed = game.scrollSpeed;
         this.yPos = yPos;
         this.wBox = 50;
         this.hBox = 168;
@@ -191,7 +280,7 @@ class BigBubble extends Element {
     }
 
     move() {
-        if (this.yPos + this.hBox > CANVAS_H || 
+        if (this.yPos + this.hBox > CANVAS_HEIGHT || 
             this.yPos < 0) this.ySpeed *= -1;
         this.xPos -= this.xSpeed;
         this.yPos += this.ySpeed;
@@ -276,8 +365,8 @@ class BulletBillDiagonal extends Element {
         
         this.image = new Image(64, 64);
         this.image.src = `images/bullet-bill-diagonal-${direction}.png`
-        this.yPos = CENTER_Y;
-        this.yPos = direction === "up" ? CANVAS_H : 0;
+        this.yPos = CANVAS_MID_Y;
+        this.yPos = direction === "up" ? CANVAS_HEIGHT : 0;
         this.ySpeed = direction === "up" ? -22 : 22;        
         this.xSpeed = 22;
         this.wBox = 64;
@@ -300,7 +389,7 @@ class Grinder extends Element {
         this.image.src = "images/grinder.png";
         this.spriteLength = 2;
         this.spriteRate = 25;
-        this.xSpeed = backgroundSpeed
+        this.xSpeed = game.scrollSpeed
         this.yPos = yPos;
         this.wBox = 108;
         this.hBox = 108;
@@ -317,13 +406,77 @@ class Star extends Element {
 
         this.image = new Image(60, 64);
         this.image.src = "images/star.png";
-        this.yPos = CENTER_Y + 29;
+        this.yPos = CANVAS_MID_Y + 29;
         this.wBox = 60;
         this.hBox = 64;
         this.xSpeed = 15;
     }
 
     move() {
-        if (this.xPos > CENTER_X + 58) moveLinear(this);
+        if (this.xPos > CANVAS_MID_X + 58) moveLinear(this);
     }
 }
+
+function moveHitbox(element) {
+    let {xPos, yPos, xOff, yOff} = element;
+    element.xBox = xPos + xOff;
+    element.yBox = yPos + yOff;
+}
+
+function drawImage(element) {
+    let {image, spriteFrame, xPos, yPos} = element
+    let xSrc = image.width * spriteFrame;
+    let wSrc = image.width;
+    let hSrc = image.height;
+    ctx.drawImage(image, xSrc,0, wSrc,hSrc, xPos,yPos, wSrc,hSrc);
+}
+
+function didHitMario(element) {
+    let {
+        xBox: ex1,
+        yBox: ey1,
+        wBox: ew,
+        hBox: eh
+    } = element;
+
+    let {
+        xBox: mx1,
+        yBox: my1,
+        wBox: mw,
+        hBox: mh
+    } = player;
+
+    let [ex2, mx2] = [ex1 + ew, mx1 + mw];
+    let [ey2, my2] = [ey1 + eh, my1 + mh];
+
+    return !(ex1 >= mx2 || ey1 >= my2 || ex2 <= mx1 || ey2 <= my1);
+}
+
+function drawSprite(element) {
+    let {spriteFrame, spriteLength, spriteRate, time} = element;
+
+    if (Math.round(time) % spriteRate === 0) {
+        let lastFrame = spriteFrame === spriteLength - 1;
+        element.spriteFrame += lastFrame ? -spriteFrame : 1;
+    }
+}
+
+function moveLinear(element) {
+    element.xPos -= element.xSpeed;
+}
+
+function moveWave(element) {
+    let {yIni, waveSize, waveType, waveRate, time} = element;
+    element.yPos = yIni + waveSize * Math[waveType](time * waveRate);
+    element.xPos -= element.xSpeed;
+}
+
+function moveCurve(element) {
+    let {yIni, curveSize, curveRate, time} = element;
+    element.yPos = yIni + curveSize * Math.sqrt(time * curveRate);
+    element.xPos -= element.xSpeed;
+}
+
+export { Mario, SuperKoopa, Parakoopa, FlyingGoomba, FlyingBrother,
+         Chainsaw, BigBoo, BigBubble, BooBuddy, Eerie, BanzaiBill,
+         BulletBillDiagonal, BulletBillLinear, Grinder, Star }

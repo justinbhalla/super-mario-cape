@@ -26,7 +26,6 @@ let images = Array.from([
     "super-koopa-yellow.png",
     "levels.jpg"
 ], load);
-// let sounds = Array.from([...], load);
 
 function load(asset) {
     let ext = asset.slice(asset.length - 3);
@@ -41,13 +40,4 @@ function load(asset) {
     loading.push(element);
 }
 
-window.addEventListener("load", () => {
-    let interval = setInterval(() => {
-        if (loading.length === 0) {
-            clearInterval(interval);
-            document.body.style.background = "#5590cc";
-            hideScreen(loadScreen);
-            run();        
-        } 
-    }, 250);
-});
+export { loading, images }
