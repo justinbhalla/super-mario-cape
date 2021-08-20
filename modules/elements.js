@@ -26,7 +26,7 @@ class Element {
             else if (didHitMario(this)) {player.isDead = true;}
                         
             if (this.xPos + this.width < 0) {
-                elements.splice(elements.indexOf(this), 1);            
+                delete elements.indexOf(this);
             }
             
             this.time += fpsInterval;
@@ -43,8 +43,6 @@ class Mario extends Element {
         this.yAtlas = 180;
         this.width = 116;
         this.height = 124;
-        // this.image = new Image(116, 124);
-        // this.image.src = "images/mario.png"
         this.spriteFrame = 0;
         
         this.xPos = CANVAS_MID_X - 185;
@@ -305,7 +303,6 @@ class BigBubble extends Element {
     constructor(yPos) {
         super();
         
-        this.image = new Image(224, 240);
         this.width = 224;
         this.height = 240;
         this.xAtlas = 0;
@@ -335,9 +332,8 @@ class BooBuddy extends Element {
         
         this.width = 64;
         this.height = 64;
-        this.xAtlas = 248;
+        this.xAtlas = 248 + 2 * this.width * Math.round(Math.random()*2);
         this.yAtlas = 0;
-        // this.image.src = `images/boo-buddy-${Math.round(Math.random()*2)}.png`;
         this.spriteLength = 2
         this.spriteRate = 150;
         this.yPos = yPos;
@@ -353,7 +349,6 @@ class Eerie extends Element {
     constructor(yIni) {
         super();
         
-        this.image = new Image(64, 64)
         this.width = 64;
         this.height = 64;
         this.xAtlas = 760;
@@ -379,7 +374,6 @@ class BanzaiBill extends Element {
     constructor(yPos) {
         super();
         
-        this.image = new Image(256, 256);
         this.width = 256;
         this.height = 256;
         this.xAtlas = 448;
@@ -416,7 +410,6 @@ class BulletBillDiagonal extends Element {
     constructor(direction) {
         super();
         
-        this.image = new Image(64, 64);
         this.width = 64;
         this.height = 64;
         this.xAtlas = direction === "up" ? 696 : 632
@@ -462,7 +455,6 @@ class Star extends Element {
     constructor() {
         super();
 
-        this.image = new Image(60, 64);
         this.width = 60;
         this.height = 64;
         this.xAtlas = 888;
@@ -487,21 +479,9 @@ function moveHitbox(element) {
 function drawImage(element) {
     let {width,height, xAtlas,yAtlas, xPos,yPos, spriteFrame} = element;
     ctx.drawImage (
-        atlas,
-        xAtlas + spriteFrame * width,
-        yAtlas,
-        width,
-        height,
-        xPos,
-        yPos,
-        width,
-        height
+        atlas, xAtlas + spriteFrame * width, yAtlas,
+        width, height, xPos, yPos, width, height
     )
-    // let {image, spriteFrame, xPos, yPos} = element
-    // let xSrc = image.width * spriteFrame;
-    // let wSrc = image.width;
-    // let hSrc = image.height;
-    // ctx.drawImage(image, xSrc,0, wSrc,hSrc, xPos,yPos, wSrc,hSrc);
 }
 
 function didHitMario(element) {
