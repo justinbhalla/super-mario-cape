@@ -1,6 +1,6 @@
-import { game, elements, CANVAS_MID_Y, Elements } from "../main.js";
+import { game, elements, CANVAS_MID_Y, Elements} from "../main.js";
 
-let { Mario, SuperKoopa, Parakoopa, FlyingGoomba, FlyingBrother,
+let { SuperKoopa, Parakoopa, FlyingGoomba, FlyingBrother,
     Chainsaw, BigBoo, BigBubble, BooBuddy, Eerie, BanzaiBill,
     BulletBillDiagonal, BulletBillLinear, Grinder, Star } = Elements;
 
@@ -19,11 +19,13 @@ const LEVEL_4 = new Level(-3040, "castle", 0.8);
 const FINALE = new Level(-3800,"ending", 0.5);
 
 LEVEL_1.spawn = () => {
-    spawnElement(1, new FlyingGoomba(300));
-    spawnElement(2, new SuperKoopa(300, "red"));
-    spawnElement(3, new SuperKoopa(300, "yellow"));
-    spawnElement(4, new Parakoopa(300, "yellow"));
-    spawnElement(5, new Parakoopa(300, "red"));
+    spawnElement(1, new SuperKoopa(CANVAS_MID_Y, "red"));
+    spawnElement(1.5, new Grinder(CANVAS_MID_Y));
+    spawnElement(2, new Grinder(CANVAS_MID_Y));
+    spawnElement(2.5, new Grinder(CANVAS_MID_Y));
+    spawnElement(3, new Grinder(CANVAS_MID_Y));
+    spawnElement(6, new Grinder(CANVAS_MID_Y));
+    
     spawnElement(6, new Star());
 }
 
@@ -31,12 +33,16 @@ LEVEL_2.spawn = () => {
     spawnElement(1, new Parakoopa(300, "green"));
     spawnElement(2, new Parakoopa(300, "blue"));
     spawnElement(3, new FlyingGoomba(300));
+    spawnElement(3, new FlyingBrother(0));
+    spawnElement(3, new Chainsaw(400));
     spawnElement(4, new Grinder(300));
     spawnElement(6, new Star());   
 }
 
 LEVEL_3.spawn = () => {
     spawnElement(1, new BooBuddy(300));
+    spawnElement(1, new BooBuddy(100));
+    spawnElement(1, new BooBuddy(700));
     spawnElement(2, new BigBoo(300));
     spawnElement(3, new BigBubble(300));
     spawnElement(4, new Eerie(300));
