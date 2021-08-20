@@ -1,6 +1,9 @@
 import { CANVAS_WIDTH, CANVAS_HEIGHT, CANVAS_MID_X, CANVAS_MID_Y, 
          ctx, game, controls, player, elements, fpsInterval } from '../main.js';
 
+const atlas = new Image(972, 736);
+atlas.src = "images/atlas.png";
+
 class Element {
     constructor() {
         this.spriteFrame = 0;
@@ -22,7 +25,7 @@ class Element {
             if (this instanceof Star && didHitMario(this)) {player.gotStar = true}
             else if (didHitMario(this)) {player.isDead = true;}
                         
-            if (this.xPos + this.image.width < 0) {
+            if (this.xPos + this.width < 0) {
                 elements.splice(elements.indexOf(this), 1);            
             }
             
@@ -36,8 +39,12 @@ class Mario extends Element {
         super();
         this.audio = new Audio('sounds/jump.wav');
 
-        this.image = new Image(116, 124);
-        this.image.src = "images/mario.png"
+        this.xAtlas = 352;
+        this.yAtlas = 180;
+        this.width = 116;
+        this.height = 124;
+        // this.image = new Image(116, 124);
+        // this.image.src = "images/mario.png"
         this.spriteFrame = 0;
         
         this.xPos = CANVAS_MID_X - 185;
@@ -59,8 +66,8 @@ class Mario extends Element {
     move() {
         let {isLeft, isRight, isUp, isDown} = controls;
         let {xPos, yPos, xSpeed, gravity, wind} = this;
-        let hasFallen = yPos + this.image.height / 2 > CANVAS_HEIGHT;
-        let hasSpaceRight = xPos + this.image.width < CANVAS_WIDTH;  
+        let hasFallen = yPos + this.height / 2 > CANVAS_HEIGHT;
+        let hasSpaceRight = xPos + this.width < CANVAS_WIDTH;  
         let hasSpaceLeft = xPos > 0;
 
         if (isRight && hasSpaceRight) this.xPos += xSpeed + wind;
@@ -113,8 +120,8 @@ class SuperKoopa extends Element {
     constructor(yIni, color) {
         super();
 
-        this.image = new Image(92, 52);
-        this.image.src = `images/super-koopa-${color}.png`
+        this.width = 92;
+        this.height = 52;
         this.color = color;
         this.yIni = yIni
         this.yPos = yIni;
@@ -125,11 +132,15 @@ class SuperKoopa extends Element {
 
         switch(color) {
             case "yellow":
+                this.xAtlas = 92;
+                this.yAtlas = 0;
                 this.curveSize = 2;
                 this.curveRate = 20;
                 this.xSpeed = 16;
                 break;
             case "red":
+                this.xAtlas = 0;
+                this.yAtlas = 0;
                 this.xSpeed = 18;
                 break;
         }
@@ -148,8 +159,8 @@ class Parakoopa extends Element {
     constructor(yIni, color) {
         super();
 
-        this.image = new Image(88, 116);
-        this.image.src = `images/parakoopa-${color}.png`;
+        this.width = 88;
+        this.height = 116;
         this.spriteLength = 2;
         this.spriteRate = 200;
         this.yIni = yIni;
@@ -173,6 +184,25 @@ class Parakoopa extends Element {
                 this.waveRate = 5e-3;
                 break;
         }
+
+        switch(color) {
+            case "red":
+                this.xAtlas = 0;
+                this.yAtlas = 180;
+                break;
+            case "yellow":
+                this.xAtlas = 176;
+                this.yAtlas = 180;
+                break;
+            case "blue":
+                this.xAtlas = 528;
+                this.yAtlas = 64;
+                break;
+            case "green":
+                this.xAtlas = 704;
+                this.yAtlas = 64;
+                break;
+        }
     }
 
     move() {moveWave(this)}
@@ -182,8 +212,10 @@ class FlyingGoomba extends Element {
     constructor(yIni) {
         super();
 
-        this.image = new Image(132, 100);
-        this.image.src = "images/flying-goomba.png";
+        this.width = 132;
+        this.height = 100;
+        this.xAtlas = 0;
+        this.yAtlas = 64;
         this.spriteLength = 4;
         this.spriteRate = 200;
         this.xSpeed = 5;
@@ -204,8 +236,11 @@ class FlyingBrother extends Element {
     constructor(yIni) {
         super();
 
-        this.image = new Image(216, 152);
-        this.image.src = "images/flying-brother.png";
+        this.width = 216;
+        this.height = 152;
+        this.xAtlas = 256;
+        this.yAtlas = 304;
+
         this.spriteLength = 2;
         this.spriteRate = 200;
         this.yIni = yIni
@@ -226,8 +261,10 @@ class Chainsaw extends Element {
     constructor(yPos) {
         super();
 
-        this.image = new Image(64, 176);
-        this.image.src = "images/chainsaw.png";
+        this.width = 64;
+        this.height = 176;
+        this.xAtlas = 688;
+        this.yAtlas = 304;
         this.spriteLength = 4;
         this.spriteRate = 50;
         this.xSpeed = game.scrollSpeed;
@@ -245,8 +282,10 @@ class BigBoo extends Element {
     constructor(yIni) {
         super();
         
-        this.image = new Image(268, 256);
-        this.image.src = "images/big-boo.png";
+        this.width = 268;
+        this.height = 256;
+        this.xAtlas = 704;
+        this.yAtlas = 480;
         this.xSpeed = 14;
         this.yIni = yIni;
         this.yPos = yIni;
@@ -267,7 +306,10 @@ class BigBubble extends Element {
         super();
         
         this.image = new Image(224, 240);
-        this.image.src = "images/big-bubble.png";
+        this.width = 224;
+        this.height = 240;
+        this.xAtlas = 0;
+        this.yAtlas = 480
         this.spriteLength = 2;
         this.spriteRate = 250;
         this.yPos = yPos;
@@ -291,8 +333,11 @@ class BooBuddy extends Element {
     constructor(yPos) {
         super();
         
-        this.image = new Image(64, 64);
-        this.image.src = `images/boo-buddy-${Math.round(Math.random()*2)}.png`;
+        this.width = 64;
+        this.height = 64;
+        this.xAtlas = 248;
+        this.yAtlas = 0;
+        // this.image.src = `images/boo-buddy-${Math.round(Math.random()*2)}.png`;
         this.spriteLength = 2
         this.spriteRate = 150;
         this.yPos = yPos;
@@ -309,7 +354,10 @@ class Eerie extends Element {
         super();
         
         this.image = new Image(64, 64)
-        this.image.src = "images/eerie.png";
+        this.width = 64;
+        this.height = 64;
+        this.xAtlas = 760;
+        this.yAtlas = 0;
         this.spriteLength = 2;
         this.spriteRate = 100;
         this.xSpeed = 12;
@@ -332,7 +380,10 @@ class BanzaiBill extends Element {
         super();
         
         this.image = new Image(256, 256);
-        this.image.src = "images/banzai-bill.png";
+        this.width = 256;
+        this.height = 256;
+        this.xAtlas = 448;
+        this.yAtlas = 480;
         this.xSpeed = 18;
         this.yPos = yPos;
         this.wBox = 246;
@@ -348,8 +399,10 @@ class BulletBillLinear extends Element {
     constructor(yPos) {
         super();
  
-        this.image = new Image(64, 56);
-        this.image.src = "images/bullet-bill-linear.png";
+        this.width = 64;
+        this.height = 56;
+        this.xAtlas = 184;
+        this.yAtlas = 0;
         this.xSpeed = 35;
         this.yPos = yPos;
         this.wBox = 64;
@@ -364,7 +417,10 @@ class BulletBillDiagonal extends Element {
         super();
         
         this.image = new Image(64, 64);
-        this.image.src = `images/bullet-bill-diagonal-${direction}.png`
+        this.width = 64;
+        this.height = 64;
+        this.xAtlas = direction === "up" ? 696 : 632
+        this.yAtlas = 0;
         this.yPos = CANVAS_MID_Y;
         this.yPos = direction === "up" ? CANVAS_HEIGHT : 0;
         this.ySpeed = direction === "up" ? -22 : 22;        
@@ -385,8 +441,10 @@ class Grinder extends Element {
     constructor(yPos) {
         super();
  
-        this.image = new Image (128, 128);
-        this.image.src = "images/grinder.png";
+        this.width = 128;
+        this.height = 128;
+        this.xAtlas = 0;
+        this.yAtlas = 304;
         this.spriteLength = 2;
         this.spriteRate = 25;
         this.xSpeed = game.scrollSpeed
@@ -405,7 +463,10 @@ class Star extends Element {
         super();
 
         this.image = new Image(60, 64);
-        this.image.src = "images/star.png";
+        this.width = 60;
+        this.height = 64;
+        this.xAtlas = 888;
+        this.yAtlas = 0;
         this.yPos = CANVAS_MID_Y + 29;
         this.wBox = 60;
         this.hBox = 64;
@@ -424,11 +485,23 @@ function moveHitbox(element) {
 }
 
 function drawImage(element) {
-    let {image, spriteFrame, xPos, yPos} = element
-    let xSrc = image.width * spriteFrame;
-    let wSrc = image.width;
-    let hSrc = image.height;
-    ctx.drawImage(image, xSrc,0, wSrc,hSrc, xPos,yPos, wSrc,hSrc);
+    let {width,height, xAtlas,yAtlas, xPos,yPos, spriteFrame} = element;
+    ctx.drawImage (
+        atlas,
+        xAtlas + spriteFrame * width,
+        yAtlas,
+        width,
+        height,
+        xPos,
+        yPos,
+        width,
+        height
+    )
+    // let {image, spriteFrame, xPos, yPos} = element
+    // let xSrc = image.width * spriteFrame;
+    // let wSrc = image.width;
+    // let hSrc = image.height;
+    // ctx.drawImage(image, xSrc,0, wSrc,hSrc, xPos,yPos, wSrc,hSrc);
 }
 
 function didHitMario(element) {
