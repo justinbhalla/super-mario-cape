@@ -53,10 +53,6 @@ function runGame() {
     now = Date.now();
     elapsed = now - then;
 
-    ctx.save(); //Freeze redraw
-    ctx.restore()
-
-
     if (elapsed > fpsInterval) {
         then = now - (elapsed % fpsInterval);
         drawBackground();    
