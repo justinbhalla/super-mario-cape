@@ -18,6 +18,7 @@ const game = {
     lives: 3,
     level: 0,
     timeouts: [],
+    hasSound: false
 }
 
 const controls = {
@@ -114,6 +115,8 @@ window.addEventListener("load", () => {
             document.addEventListener("keydown", menuControls);
             document.addEventListener("keydown", playerControls);
             document.addEventListener("keyup", playerControls);
+            let audio = document.getElementById("audio");
+            audio.addEventListener("change", () => game.hasSound = audio.checked);
             clearInterval(interval);
             runGame();        
         } 
