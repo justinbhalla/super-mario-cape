@@ -1,6 +1,9 @@
 let loading = [];
 let images = Array.from([
-    "atlas.png"
+    "atlas.png",
+    "sound-on.png",
+    "sound-off.png",
+    "lives.png"
 ], load);
 
 function load(asset) {
