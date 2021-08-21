@@ -7,14 +7,14 @@ let { SuperKoopa, Parakoopa, FlyingGoomba, FlyingBrother,
 class Level {
     constructor(backgroundPosY, audio, volume) {
         this.backgroundPosY = backgroundPosY;
-        this.audio = audio;//new Audio(`sounds/${audio}.mp3`);
+        this.audio = new Audio(`sounds/${audio}.mp3`);
         this.volume = volume;
     }
 }
 
 const LEVEL_1 = new Level(-760, "overworld", 0.4);
 const LEVEL_2 = new Level(-1520, "athletic", 0.45);
-const LEVEL_3 = new Level(-2280, "haunted", 0.35);
+const LEVEL_3 = new Level(-2280, "spooky", 0.35);
 const LEVEL_4 = new Level(-3040, "castle", 0.8);
 const FINALE = new Level(-3800,"ending", 0.5);
 

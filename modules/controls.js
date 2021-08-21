@@ -1,4 +1,4 @@
-import { game, controls } from "../main.js";
+import { game, controls, sounds } from "../main.js";
 
 export default function playerControls(e) {
     if (!game.isOn) return;
@@ -20,11 +20,10 @@ export default function playerControls(e) {
         case controls.UP_2_BIND:
             if (!jumpFlag && isHeld) {
                 jumpFlag = true;
-                // gamePlayer.audio.currentTime = 0;
-                // gamePlayer.audio.play();
+                sounds.jump.currentTime = 0;
+                sounds.jump.play();
             } else if (!isHeld) {
                 jumpFlag = false;
-                // gamePlayer.audio.pause();
             }
 
             controls.isUp = isHeld;

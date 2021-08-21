@@ -21,6 +21,15 @@ const game = {
     hasSound: false
 }
 
+const sounds = {
+    died: new Audio("sounds/died.wav"),
+    iris: new Audio("sounds/iris.wav"),
+    jump: new Audio("sounds/jump.wav"),
+    course: new Audio("sounds/course.wav"),
+    fortress: new Audio("sounds/fortress.wav"),
+    over: new Audio("sounds/over.wav")
+}
+
 const controls = {
     LEFT_BIND: 37,
     RIGHT_BIND: 39,
@@ -126,4 +135,4 @@ window.addEventListener("load", () => {
 export { default as LEVELS } from './modules/levels.js';
 export * as Elements from './modules/elements.js';
 export { CANVAS_WIDTH, CANVAS_HEIGHT, CANVAS_MID_X, CANVAS_MID_Y, 
-        ctx, game, controls, player, elements, fpsInterval };
+        ctx, game, controls, player, elements, fpsInterval, sounds };
