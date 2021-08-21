@@ -242,30 +242,28 @@ body {
 
 #end-screen {
     top: calc(50% - 50px);
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.25);
     width: 1360px;
     height: 160px;
     padding: 15px;
 }
   
 #end-screen h1 {
-    font-size: 40px;
+    font-size: 60px;
     color: yellow;
-}
-  
-#end-screen h2 {
-    color: yellow;
-    margin-bottom: 20px;
-    font-size: 27.5px;
+    margin-bottom: 10px;
 }
   
 #end-screen p {
+    position: relative;
+    transform: translateX(-50%);
+    left: 50%;
+    width: 920px;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 14px;
     color: white;
     background: black;
     padding: 10px;
-    border-radius: 30px;
 }
   
 #end-screen p a {

@@ -125,7 +125,7 @@ function passScene() {
 
 function endScene() {
     screens.background.backgroundPositionY = `${LEVELS[game.level].backgroundPosY}px`;
-    player.xPos = CANVAS_MID_X - player.width / 2;
+    player.xPos = CANVAS_MID_X - player.width / 2 - 15;
     player.yPos = CANVAS_MID_Y + 75;
     game.state = "END";
     playSound(LEVELS[game.level].audio);
