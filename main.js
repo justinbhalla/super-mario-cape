@@ -135,6 +135,7 @@ window.addEventListener("load", () => {
                 for (let s of Object.values(sounds)) s.muted = isMuted;
                 for (let l of LEVELS) l.audio.muted = isMuted;
                 theme.muted = isMuted;
+                game.hasSound = !isMuted;
             });
             clearInterval(interval);
             runGame();        
@@ -144,5 +145,6 @@ window.addEventListener("load", () => {
 
 export { default as LEVELS } from './modules/levels.js';
 export * as Elements from './modules/elements.js';
+export { playSound } from './modules/scenes.js';
 export { CANVAS_WIDTH, CANVAS_HEIGHT, CANVAS_MID_X, CANVAS_MID_Y, 
         ctx, game, controls, player, elements, fpsInterval, sounds };
