@@ -1,7 +1,8 @@
 import { screens, levelScene, deathScene, passScene, hideScreen} from './modules/scenes.js';
-import { loading, images } from './modules/load.js';
+import { loading } from './modules/load.js';
 import playerControls from './modules/controls.js';
 import { Mario } from './modules/elements.js';
+import LEVELS from './modules/levels.js';
 
 const CANVAS = document.getElementById("canvas");
 const CANVAS_WIDTH = CANVAS.width;
@@ -50,6 +51,7 @@ const controls = {
 }
 
 const player = new Mario();
+const theme = new Audio("sounds/title.mp3");
 const elements = [];
 elements.update = () => elements.forEach(e => e.update());
 elements.move = () => elements.forEach(e => e.move());
@@ -100,6 +102,7 @@ function menuControls(e) {
 
         if (isStart) {
             hideScreen(screens.title);
+            theme.pause();
         } else if (isRetry) {
             hideScreen(screens.death);
             game.lives--
@@ -114,18 +117,25 @@ function menuControls(e) {
 }
 
 window.addEventListener("load", () => {
+    let audio = document.getElementById("audio");
     let interval = setInterval(() => {
         if (loading.length === 0) {
-            images.length = 0;
+            loading.length = 0;
             hideScreen(screens.load);
+            audio.checked = false;
             document.body.style.background = "#5590cc";
             screens.background.backgroundPositionX = 0;
             screens.background.backgroundPositionY = 0;
             document.addEventListener("keydown", menuControls);
             document.addEventListener("keydown", playerControls);
             document.addEventListener("keyup", playerControls);
-            let audio = document.getElementById("audio");
-            audio.addEventListener("change", () => game.hasSound = audio.checked);
+            audio.addEventListener("change", () => {
+                let isMuted = !audio.checked;
+                if (!isMuted && !theme.currentTime) theme.play();
+                for (let s of Object.values(sounds)) s.muted = isMuted;
+                for (let l of LEVELS) l.audio.muted = isMuted;
+                theme.muted = isMuted;
+            });
             clearInterval(interval);
             runGame();        
         } 
