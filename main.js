@@ -4,6 +4,7 @@ import { Mario } from './modules/elements.js';
 import { loading } from './modules/load.js';
 
 
+const cursor = document.querySelector("*").style;
 const CANVAS = document.getElementById("canvas");
 const CANVAS_WIDTH = CANVAS.width;
 const CANVAS_HEIGHT = CANVAS.height;
@@ -102,6 +103,7 @@ function menuControls(e) {
 
         if (isStart) {
             hideScreen(screens.title);
+            cursor.cursor = "none";
             theme.pause();
         } else if (isRetry) {
             hideScreen(screens.death);
@@ -147,5 +149,5 @@ window.addEventListener("load", () => {
 export { LEVELS, Level } from './modules/levels.js';
 export * as Elements from './modules/elements.js';
 export { playSound } from './modules/scenes.js';
-export { CANVAS_WIDTH, CANVAS_HEIGHT, CANVAS_MID_X, CANVAS_MID_Y, 
+export { cursor, CANVAS_WIDTH, CANVAS_HEIGHT, CANVAS_MID_X, CANVAS_MID_Y, 
         ctx, game, controls, player, elements, fpsInterval, sounds};

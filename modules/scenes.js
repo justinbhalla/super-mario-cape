@@ -1,4 +1,4 @@
-import { CANVAS_HEIGHT, CANVAS_MID_X, CANVAS_MID_Y, 
+import { cursor, CANVAS_HEIGHT, CANVAS_MID_X, CANVAS_MID_Y, 
          game, controls, player, elements, LEVELS, Level, sounds} from "../main.js"
 
 const levelText = document.getElementById("level-text");
@@ -133,6 +133,7 @@ function endScene() {
     let finale = new Level(-3800,"ending", 0.5);
     screens.background.backgroundPositionY = `${finale.backgroundPosY}px`;
     playSound(finale.audio)
+    cursor.cursor = "auto";
 }
 
 function showScreen(screen) {
