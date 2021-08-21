@@ -1,4 +1,4 @@
-import { game, controls, sounds } from "../main.js";
+import { game, controls, sounds, playSound } from "../main.js";
 
 export default function playerControls(e) {
     if (!game.isOn) return;
@@ -21,7 +21,7 @@ export default function playerControls(e) {
             if (!jumpFlag && isHeld) {
                 jumpFlag = true;
                 sounds.jump.currentTime = 0;
-                sounds.jump.play();
+                playSound(sounds.jump);
             } else if (!isHeld) {
                 jumpFlag = false;
             }

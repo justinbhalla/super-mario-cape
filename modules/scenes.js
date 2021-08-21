@@ -24,7 +24,7 @@ function levelScene() {
     levelText.innerText = `Level ${game.level + 1}`;
     livesText.innerText = game.lives;
     currentLevel.audio.currentTime = 0;
-    currentLevel.audio.play();
+    playSound(currentLevel.audio);
     game.timeouts.forEach(t => clearTimeout(t));
     game.state = "PLAY";    
     elements.length = 0;
@@ -44,7 +44,7 @@ function deathScene() {
     game.isOn = false;
     game.state = "DEAD";
     LEVELS[game.level].audio.pause();
-    sounds.died.play();
+    playSound(sounds.died);
     controls.reset();
     
     setTimeout(() => {
@@ -53,12 +53,20 @@ function deathScene() {
         let animate = setInterval(() => {
             let yPos = player.yPos;
 
-            if (sounds.died.ended) {
+            if (yPos > CANVAS_HEIGHT && !game.hasSound ||
+                sounds.died.ended) {
                 if (!game.lives) {
                     hideScreen(screens.lives);
                     showScreen(screens.over);
-                    game.state = "OVER";
-                    sounds.over.play();
+                    playSound(sounds.over);
+                    
+                    if (!game.hasSound) {
+                        game.state = "OVER";
+                    } else {
+                        sounds.over.onended = () => {
+                            game.state = "OVER";
+                        }
+                    }
                 } else {
                     showScreen(screens.death);
                     game.state = "RETRY";
@@ -90,7 +98,7 @@ function passScene() {
     
     let gameWon = game.level === LEVELS.length - 1;
     let type = gameWon ? "fortress" : "course";
-    sounds[type].play();
+    playSound(sounds[type]);
     screens.pass.innerText = `${type} Complete`;
 
     hideScreen(screens.background);
@@ -100,7 +108,7 @@ function passScene() {
         hideScreen(screens.pass.style);
         showScreen(screens.iris);
         showScreen(screens.background);
-        sounds.iris.play();
+        playSound(sounds.iris);
         
         setTimeout(() => {
             hideScreen(screens.iris);
@@ -120,7 +128,7 @@ function endScene() {
     player.xPos = CANVAS_MID_X - player.width / 2;
     player.yPos = CANVAS_MID_Y + 75;
     game.state = "END";
-    LEVELS[game.level].audio.play();
+    playSound(LEVELS[game.level].audio);
     showScreen(screens.end);
     hideScreen(screens.lives);
     game.scrollSpeed = 2;
@@ -162,5 +170,9 @@ function hideScreen(screen) {
     }
 }
 
+function playSound(sound) {
+    if (game.hasSound) sound.play();
+} 
+
 export { screens, levelScene, deathScene, passScene, 
-         endScene, showScreen, hideScreen }
+         endScene, showScreen, hideScreen, playSound }
