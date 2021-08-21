@@ -1,8 +1,8 @@
 import { screens, levelScene, deathScene, passScene, hideScreen} from './modules/scenes.js';
-import { loading } from './modules/load.js';
 import playerControls from './modules/controls.js';
 import { Mario } from './modules/elements.js';
-import LEVELS from './modules/levels.js';
+import { loading } from './modules/load.js';
+
 
 const CANVAS = document.getElementById("canvas");
 const CANVAS_WIDTH = CANVAS.width;
@@ -143,8 +143,9 @@ window.addEventListener("load", () => {
     }, 250);
 });
 
-export { default as LEVELS } from './modules/levels.js';
+
+export { LEVELS, Level } from './modules/levels.js';
 export * as Elements from './modules/elements.js';
 export { playSound } from './modules/scenes.js';
 export { CANVAS_WIDTH, CANVAS_HEIGHT, CANVAS_MID_X, CANVAS_MID_Y, 
-        ctx, game, controls, player, elements, fpsInterval, sounds };
+        ctx, game, controls, player, elements, fpsInterval, sounds};

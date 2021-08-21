@@ -1,5 +1,5 @@
 import { CANVAS_HEIGHT, CANVAS_MID_X, CANVAS_MID_Y, 
-         game, controls, player, elements, LEVELS, sounds} from "../main.js"
+         game, controls, player, elements, LEVELS, Level, sounds} from "../main.js"
 
 const levelText = document.getElementById("level-text");
 const livesText = document.getElementById("lives-text");
@@ -96,7 +96,7 @@ function passScene() {
     controls.reset();
     elements.length = 0;
     
-    let gameWon = game.level === LEVELS.length - 1;
+    let gameWon = game.level === LEVELS.length;
     let type = gameWon ? "fortress" : "course";
     playSound(sounds[type]);
     screens.pass.innerText = `${type} Complete`;
@@ -124,14 +124,15 @@ function passScene() {
 }
 
 function endScene() {
-    screens.background.backgroundPositionY = `${LEVELS[game.level].backgroundPosY}px`;
+    showScreen(screens.end);
+    hideScreen(screens.lives);
     player.xPos = CANVAS_MID_X - player.width / 2 - 15;
     player.yPos = CANVAS_MID_Y + 75;
     game.state = "END";
-    playSound(LEVELS[game.level].audio);
-    showScreen(screens.end);
-    hideScreen(screens.lives);
     game.scrollSpeed = 2;
+    let finale = new Level(-3800,"ending", 0.5);
+    screens.background.backgroundPositionY = `${finale.backgroundPosY}px`;
+    playSound(finale.audio)
 }
 
 function showScreen(screen) {
