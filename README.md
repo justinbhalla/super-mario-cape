@@ -1,8 +1,9 @@
-# Super Mario Cape
-![Logo of Super Mario Cape](https://i.ibb.co/ZXYdz5s/Screenshot-from-2021-08-22-12-14-09.png)
+# Super Mario Cape | [Play](https://supermariocape.xyz/) 
+![Screenshot of title screen for Super Mario Cape](https://i.ibb.co/ZXYdz5s/Screenshot-from-2021-08-22-12-14-09.png)
 
 ## Description
-[Super Mario Cape]("https://supermariocape.xyz/") is a browser game inspired by _Super Mario World (SNES 1990)_ and _Flappy Bird (Mobile 2013)_. Fly past unique enemies and complete four hand-designed levels to win.
+[Super Mario Cape](https://supermariocape.xyz/) is a browser game inspired by _Super Mario World (SNES 1990)_ and _Flappy Bird (Mobile 2013)_. <br>
+Zoom past aerial enemies as Caped Mario to collect stars. Complete four hand-designed levels to beat the game.
 <br><br>
 
 ## Code
@@ -22,3 +23,6 @@ We used native JavaScript to implement logic, render images, change styling, and
 ## Resources
 - [Mario Universe](http://www.mariouniverse.com/sprites-snes-smw/) (Images and Backgrounds)
 - [The Mushroom Kingdom](https://themushroomkingdom.net/media/smw/wav) (SFX)
+
+## Screenshots
+![Screenshot of gameplay for Super Mario Cape](https://i.ibb.co/W5nbWnH/Screenshot-from-2021-08-22-13-38-41.png)
