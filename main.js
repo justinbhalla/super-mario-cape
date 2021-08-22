@@ -1,6 +1,7 @@
 import { screens, levelScene, deathScene, passScene, hideScreen} from './modules/scenes.js';
 import playerControls from './modules/controls.js';
 import { Mario } from './modules/elements.js';
+import { LEVELS } from './modules/levels.js';
 import { loading } from './modules/load.js';
 
 
@@ -144,7 +145,6 @@ window.addEventListener("load", () => {
         } 
     }, 250);
 });
-
 
 export { LEVELS, Level } from './modules/levels.js';
 export * as Elements from './modules/elements.js';
