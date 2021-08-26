@@ -154,9 +154,10 @@ class SuperKoopa extends Element {
 }
 
 class Parakoopa extends Element {
-    constructor(yIni, color) {
+    constructor(yIni, color, reflect=false) {
         super();
 
+        this.reflect = reflect ? -1 : 1;
         this.width = 88;
         this.height = 116;
         this.spriteLength = 2;
@@ -172,13 +173,13 @@ class Parakoopa extends Element {
             case "red":
             case "yellow":
                 this.waveType = "sin";
-                this.waveSize = 50;
+                this.waveSize = this.reflect * 50;
                 this.waveRate = 1e-2;
                 break;
             case "blue":
             case "green":
                 this.waveType = "cos";
-                this.waveSize = 150;
+                this.waveSize = this.reflect * 150 ;
                 this.waveRate = 5e-3;
                 break;
         }
