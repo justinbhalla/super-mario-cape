@@ -23,6 +23,13 @@ We used native JavaScript to implement logic, render images, change styling, and
 ## Resources
 - [Mario Universe](http://www.mariouniverse.com/sprites-snes-smw/) (Images and Backgrounds)
 - [The Mushroom Kingdom](https://themushroomkingdom.net/media/smw/wav) (SFX)
+<br><br>
+
+## To-do
+- [ ] Create level names
+- [ ] Change background to per level basis
+- [ ] Helper functions for spawning enemies
+<br><br>
 
 ## Screenshots
 ![Screenshot of gameplay for Super Mario Cape](https://i.ibb.co/W5nbWnH/Screenshot-from-2021-08-22-13-38-41.png)
