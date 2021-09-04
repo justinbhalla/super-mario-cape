@@ -21,7 +21,7 @@ function levelScene() {
     showScreen(screens.level);
     let currentLevel = LEVELS[game.level];
     screens.background.backgroundPositionY = `${currentLevel.backgroundPosY}px`;
-    levelText.innerText = `Level ${game.level + 1}`;
+    levelText.innerText = `Level ${game.level + 1} — ${currentLevel.name}`;
     livesText.innerText = game.lives;
     currentLevel.audio.currentTime = 0;
     playSound(currentLevel.audio);
@@ -130,7 +130,7 @@ function endScene() {
     player.yPos = CANVAS_MID_Y + 75;
     game.state = "END";
     game.scrollSpeed = 2;
-    let finale = new Level(-3800,"ending", 0.5);
+    let finale = new Level("ending", -3800,"ending", 0.5);
     screens.background.backgroundPositionY = `${finale.backgroundPosY}px`;
     playSound(finale.audio)
     cursor.cursor = "auto";

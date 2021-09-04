@@ -5,17 +5,18 @@ let { SuperKoopa, Parakoopa, FlyingGoomba, FlyingBrother,
     BulletBillDiagonal, BulletBillLinear, Grinder, Star } = Elements;
 
 class Level {
-    constructor(backgroundPosY, audio, volume) {
+    constructor(name, backgroundPosY, audio, volume) {
+        this.name = name;
         this.backgroundPosY = backgroundPosY;
         this.audio = new Audio(`sounds/${audio}.mp3`);
         this.volume = volume;
     }
 }
 
-const OVERWORLD = new Level(-760, "overworld", 0.4);
-const ATHLETIC = new Level(-1520, "athletic", 0.45);
-const HAUNTED = new Level(-2280, "spooky", 0.35);
-const CASTLE = new Level(-3040, "castle", 0.8);
+const OVERWORLD = new Level("The Basics", -760, "overworld", 0.4);
+const ATHLETIC = new Level("Koopa Dragon", -1520, "athletic", 0.45);
+const HAUNTED = new Level("Spooooky", -2280, "spooky", 0.35);
+const CASTLE = new Level("You're Doomed", -3040, "castle", 0.8);
 
 OVERWORLD.spawn = () => {
     spawnElement(1, new SuperKoopa(CANVAS_MID_Y, "red"));
