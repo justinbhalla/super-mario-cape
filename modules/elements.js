@@ -398,7 +398,7 @@ class BulletBillLinear extends Element {
         this.height = 56;
         this.xAtlas = 184;
         this.yAtlas = 0;
-        this.xSpeed = 35;
+        this.xSpeed = 25;
         this.yPos = yPos;
         this.wBox = 64;
         this.hBox = 56;
