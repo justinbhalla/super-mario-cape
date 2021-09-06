@@ -20,7 +20,7 @@ function levelScene() {
     showScreen(screens.lives);
     showScreen(screens.level);
     let currentLevel = LEVELS[game.level];
-    screens.background.backgroundPositionY = `${currentLevel.backgroundPosY}px`;
+    screens.background.backgroundImage = currentLevel.background;
     levelText.innerText = `Level ${game.level + 1} — ${currentLevel.name}`;
     livesText.innerText = game.lives;
     currentLevel.audio.currentTime = 0;
@@ -113,10 +113,10 @@ function passScene() {
         setTimeout(() => {
             hideScreen(screens.iris);
             
-
             if (gameWon) {
                 endScene();
             } else {
+                game.lives = game.livesStart;
                 levelScene();
             }
         }, 1500)
@@ -130,8 +130,8 @@ function endScene() {
     player.yPos = CANVAS_MID_Y + 75;
     game.state = "END";
     game.scrollSpeed = 2;
-    let finale = new Level("ending", -3800,"ending", 0.5);
-    screens.background.backgroundPositionY = `${finale.backgroundPosY}px`;
+    let finale = new Level("ending", "images/end.jpg", "ending", 0.5);
+    screens.background.backgroundImage = finale.background; 
     playSound(finale.audio)
     cursor.cursor = "auto";
 }

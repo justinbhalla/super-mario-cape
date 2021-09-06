@@ -289,7 +289,7 @@ body {
 }
 
 #background-1 {
-    background-image: url(images/levels.jpg);
+    background-image: url(images/title.jpg);
     background-repeat: repeat-x;
     will-change: background-position-x, background-position-y;
     z-index: -1;
