@@ -74,7 +74,7 @@ function runGame() {
         elements.update();
         player.update();
         if (game.isOn) elements.move();
-        if (player.isDead) deathScene();
+       // if (player.isDead) deathScene();
         if (player.gotStar) passScene();
     }
 }
