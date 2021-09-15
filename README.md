@@ -29,6 +29,7 @@ We used native JavaScript to implement logic, render images, change styling, and
 - [x] Design actual levels
 - [X] Change background to per level basis
 - [ ] Helper functions for spawning enemies
+- [ ] Image folder for levels and load.js
 <br><br>
 
 ## Screenshots

@@ -3,7 +3,7 @@ let loading = [];
 function load(assets) {
     for (let a of assets) {
         let ext = a.slice(a.length - 3);
-        let isImage = ext === "png";
+        let isImage = ext === "png" || ext === "jpg";
         let element = isImage ? new Image() : new Audio();
         element.src = `${isImage ? "images" : "sounds"}/${a}`;
         element[isImage ? "onload" : "oncanplaythrough"] = function() {
@@ -22,6 +22,12 @@ load([
 "sound-on.png",
 "sound-off.png",
 "lives.png",
+"athletic.jpg",
+"castle.jpg",
+"end.jpg",
+"haunted.jpg",
+"overworld.jpg",
+"title.jpg",
 
 // SOUND
 "died.wav",
