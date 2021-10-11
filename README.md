@@ -31,6 +31,3 @@ We used native JavaScript to implement logic, render images, change styling, and
 - [ ] Helper functions for spawning enemies
 - [ ] Image folder for levels and load.js
 <br><br>
-
-## Screenshots
-![Screenshot of gameplay for Super Mario Cape](https://i.ibb.co/W5nbWnH/Screenshot-from-2021-08-22-13-38-41.png)
