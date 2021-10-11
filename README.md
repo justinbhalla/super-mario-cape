@@ -1,4 +1,4 @@
-# Super Mario Cape | [Play](https://supermariocape.xyz/) 
+# Super Mario Cape | [Demo](https://supermariocape.xyz/) 
 ![Screenshot of title screen for Super Mario Cape](https://i.ibb.co/ZXYdz5s/Screenshot-from-2021-08-22-12-14-09.png)
 
 ## Description
