@@ -1,68 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-    <meta name="author" content="JMMFL">
-    <meta name="description" content="Single-player browser game inspired by Super Mario World and Flappy Bird.">
-    <meta content="utf-8" http-equiv="encoding">
-    <link rel="icon" type="image/png" href="images/favicon.png">
-    <link href="style.css" rel="stylesheet">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta name="author" content="JMMFL" />
+    <meta
+      name="description"
+      content="Single-player browser game inspired by Super Mario World and Flappy Bird."
+    />
+    <meta content="utf-8" http-equiv="encoding" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link href="style.css" rel="stylesheet" />
     <title>Super Mario Cape</title>
-</head>
+  </head>
 
-<body>
-    <canvas id="canvas" width=1360 height=760>This browser does not support Canvas.</canvas>
+  <body>
+    <canvas id="canvas" width="1360" height="760"
+      >This browser does not support Canvas.</canvas
+    >
     <p id="fullscreen">Use CTRL + Plus Sign (+) and F11 To Fullscreen</p>
     <div id="lives-screen">
-        <img src="images/lives.png" alt="Heads Up Display for Player's Lives.">
-        <p id="lives-text">2</p>
+      <img src="images/lives.png" alt="Heads Up Display for Player's Lives." />
+      <p id="lives-text">2</p>
     </div>
     <div id="title-screen">
-        <img id="header" src="images/title.png" alt="Super Mario Cape Logo.">
-        <input id="audio" type="checkbox" name="audio" />
-        <label for="audio"></label>
-        <p id="authors">Created by <a href="https://github.com/JMMFL/super-mario-cape">Jordan & Shoghi</a></p>
-        <div id="controls">
-            <div id="diagram">
-                <div>▲</div>
-                <ul>
-                    <li>◀</li>
-                    <li>▼</li>
-                    <li>▶</li>
-                    <li>⎵</li>
-                </ul>
-            </div>
-            <p id="label-top">Jump</p>
-            <p id="label-bottom">Left Dive Right Jump</p>
+      <img id="header" src="images/title.png" alt="Super Mario Cape Logo." />
+      <input id="audio" type="checkbox" name="audio" />
+      <label for="audio"></label>
+      <p id="authors">
+        Created by
+        <a href="https://github.com/JMMFL/super-mario-cape">Jordan & Shoghi</a>
+      </p>
+      <div id="controls">
+        <div id="diagram">
+          <div>▲</div>
+          <ul>
+            <li>◀</li>
+            <li>▼</li>
+            <li>▶</li>
+            <li>⎵</li>
+          </ul>
         </div>
-        <p id="start">Press Jump to Play</p>
+        <p id="label-top">Jump</p>
+        <p id="label-bottom">Left Dive Right Jump</p>
+      </div>
+      <p id="start">Press Jump to Play</p>
     </div>
     <div id="over-screen">
-        <h1>GAME<br>OVER</h1>
-        <button>Press Jump<br>Try Again</button>
+      <h1>GAME<br />OVER</h1>
+      <button>Press Jump<br />Try Again</button>
     </div>
     <div id="death-screen">
-        <h1>You<br>Died</h1>
-        <button>Press Jump<br>Try Again</button>
+      <h1>You<br />Died</h1>
+      <button>Press Jump<br />Try Again</button>
     </div>
     <div id="end-screen">
-        <h1>Congratulations</h1>
-        <p>Thank You for Playing! Created by <a href="https://github.com/JMMFL/super-mario-cape">Jordan & Shoghi</a>.
-        </p>
+      <h1>Congratulations</h1>
+      <p>
+        Thank You for Playing! Created by
+        <a href="https://github.com/JMMFL/super-mario-cape">Jordan & Shoghi</a>.
+      </p>
     </div>
     <div id="level-screen">
-        <h1 id="level-text"></h1>
+      <h1 id="level-text"></h1>
     </div>
     <h1 id="pass-screen">Course Complete</h1>
     <div id="iris-screen"></div>
     <div id="background-1"></div>
     <div id="background-2"></div>
     <div id="load-screen">
-        <div></div>
-        <p>Loading</p>
+      <div></div>
+      <p>Loading</p>
     </div>
     <script type="module" src="main.js"></script>
-</body>
-
+  </body>
 </html>
