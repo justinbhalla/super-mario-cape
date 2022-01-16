@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta name="author" content="JMMFL">
+    <meta name="description" content="Single-player browser game inspired by Super Mario World and Flappy Bird.">
     <meta content="utf-8" http-equiv="encoding">
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link href="style.css" rel="stylesheet">
     <title>Super Mario Cape</title>
-</head> 
+</head>
+
 <body>
     <canvas id="canvas" width=1360 height=760>This browser does not support Canvas.</canvas>
     <p id="fullscreen">Use CTRL + Plus Sign (+) and F11 To Fullscreen</p>
@@ -16,13 +20,18 @@
     </div>
     <div id="title-screen">
         <img id="header" src="images/title.png" alt="Super Mario Cape Logo.">
-        <input id="audio" type="checkbox" name="audio"/>
+        <input id="audio" type="checkbox" name="audio" />
         <label for="audio"></label>
         <p id="authors">Created by <a href="https://github.com/JMMFL/super-mario-cape">Jordan & Shoghi</a></p>
         <div id="controls">
             <div id="diagram">
                 <div>▲</div>
-                <ul><li>◀</li><li>▼</li><li>▶</li><li>⎵</li></ul>
+                <ul>
+                    <li>◀</li>
+                    <li>▼</li>
+                    <li>▶</li>
+                    <li>⎵</li>
+                </ul>
             </div>
             <p id="label-top">Jump</p>
             <p id="label-bottom">Left Dive Right Jump</p>
@@ -39,7 +48,8 @@
     </div>
     <div id="end-screen">
         <h1>Congratulations</h1>
-        <p>Thank You for Playing! Created by <a href="https://github.com/JMMFL/super-mario-cape">Jordan & Shoghi</a>.</p>
+        <p>Thank You for Playing! Created by <a href="https://github.com/JMMFL/super-mario-cape">Jordan & Shoghi</a>.
+        </p>
     </div>
     <div id="level-screen">
         <h1 id="level-text"></h1>
@@ -54,4 +64,5 @@
     </div>
     <script type="module" src="main.js"></script>
 </body>
+
 </html>
