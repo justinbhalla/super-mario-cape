@@ -577,14 +577,6 @@ CASTLE.spawn = () => {
   spawnElement(6.9, new BulletBillDiagonal('down'));
   spawnElement(7.0, new BulletBillDiagonal('down'));
 
-  // spawnElement(8.0, new Grinder(0))
-  // spawnElement(8.0, new Grinder(128))
-  // spawnElement(8.0, new Grinder(128*2))
-  // spawnElement(8.0, new Grinder(128*3))
-  // spawnElement(8.0, new Grinder(128*4))
-  // spawnElement(8.0, new Grinder(128*5))
-  // spawnElement(8.0, new Grinder(128*6))
-
   spawnElement(7.0, new Grinder(128 * 2));
   spawnElement(7.0, new Grinder(128 * 3));
   spawnElement(7.0, new Grinder(128 * 4));
@@ -674,8 +666,8 @@ CASTLE.spawn = () => {
   spawnElement(32, new Star());
 };
 
-function spawnElement(delay, element) {
-  let timeout = setTimeout(() => elements.push(element), delay * 1000);
+function spawnElement(time, element) {
+  let timeout = setTimeout(() => elements.push(element), time * 1000);
   game.timeouts.push(timeout);
 }
 
