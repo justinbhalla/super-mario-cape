@@ -671,6 +671,22 @@ function spawnElement(time, element) {
   game.timeouts.push(timeout);
 }
 
-const LEVELS = [OVERWORLD, ATHLETIC, HAUNTED, CASTLE];
+function spawnColumn(time, yPos, Element, size, padding = 0) {
+  let element = new Element(0);
+  let { height } = element;
+
+  for (let i = 0; i < size; i++) {
+    let yIni = yPos + i * (height + padding);
+    spawnElement(time, new Element(yIni));
+  }
+}
+
+//test map
+const TEST = new Level('TEST', 'images/overworld.jpg', 'overworld', 0.4);
+TEST.spawn = () => {
+  spawnColumn(2, 0, FlyingGoomba, 5);
+};
+
+const LEVELS = [TEST, OVERWORLD, ATHLETIC, HAUNTED, CASTLE];
 
 export { Level, LEVELS };
