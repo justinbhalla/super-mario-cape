@@ -674,12 +674,12 @@ function spawnElement(time, element) {
   game.timeouts.push(timeout);
 }
 
-function spawnColumn(time, yPos, Element, size, padding = 0) {
+function spawnColumn(time, yIni, Element, size, padding = 0) {
   let element = new Element(0);
   let { height } = element;
 
   for (let i = 0; i < size; i++) {
-    let yIni = yPos + i * (height + padding);
+    let yIni = yIni + i * (height + padding);
     spawnElement(time, new Element(yIni));
   }
 }
