@@ -436,7 +436,7 @@ class BanzaiBill extends Element {
   }
 }
 
-class BulletBillLinear extends Element {
+class BulletBill extends Element {
   constructor(yIni) {
     super();
 
@@ -452,29 +452,6 @@ class BulletBillLinear extends Element {
 
   move() {
     moveLinear(this);
-  }
-}
-
-class BulletBillDiagonal extends Element {
-  constructor(direction) {
-    super();
-
-    this.width = 64;
-    this.height = 64;
-    this.xAtlas = direction === 'up' ? 696 : 632;
-    this.yAtlas = 0;
-    this.yPos = CANVAS_MID_Y;
-    this.yPos = direction === 'up' ? CANVAS_HEIGHT : 0;
-    this.ySpeed = direction === 'up' ? -22 : 22;
-    this.xSpeed = 22;
-    this.wBox = 64;
-    this.hBox = 64;
-    this.xPos = 1050;
-  }
-
-  move() {
-    this.xPos -= this.xSpeed;
-    this.yPos += this.ySpeed;
   }
 }
 
@@ -592,9 +569,8 @@ export {
   BigBubble,
   BooBuddy,
   Eerie,
+  BulletBill,
   BanzaiBill,
-  BulletBillDiagonal,
-  BulletBillLinear,
   Grinder,
   Star,
 };

@@ -21,8 +21,7 @@ let {
   BooBuddy,
   Eerie,
   BanzaiBill,
-  BulletBillDiagonal,
-  BulletBillLinear,
+  BulletBill,
   Grinder,
   Star,
 } = Elements;
@@ -687,9 +686,7 @@ function spawnColumn(time, yPos, Element, size, padding = 0) {
 
 //test map
 const TEST = new Level('TEST', 'images/overworld.jpg', 'overworld', 0.4);
-TEST.spawn = () => {
-  spawnColumn(1, 0, RedSuperKoopa, 8, 50);
-};
+TEST.spawn = () => {};
 
 const LEVELS = [TEST, OVERWORLD, ATHLETIC, HAUNTED, CASTLE];
 
