@@ -294,7 +294,7 @@ class FlyingBrother extends Element {
 }
 
 class Chainsaw extends Element {
-  constructor(yPos) {
+  constructor(yIni) {
     super();
 
     this.width = 64;
@@ -304,7 +304,7 @@ class Chainsaw extends Element {
     this.spriteLength = 4;
     this.spriteRate = 50;
     this.xSpeed = game.scrollSpeed;
-    this.yPos = yPos;
+    this.yPos = yIni;
     this.wBox = 50;
     this.hBox = 168;
     this.xOff = 7;
@@ -342,7 +342,7 @@ class BigBoo extends Element {
 }
 
 class BigBubble extends Element {
-  constructor(yPos) {
+  constructor(yIni) {
     super();
 
     this.width = 224;
@@ -351,7 +351,7 @@ class BigBubble extends Element {
     this.yAtlas = 480;
     this.spriteLength = 2;
     this.spriteRate = 250;
-    this.yPos = yPos;
+    this.yPos = yIni;
     this.xSpeed = 8;
     this.ySpeed = 8;
     this.wBox = 184;
@@ -369,7 +369,7 @@ class BigBubble extends Element {
 }
 
 class BooBuddy extends Element {
-  constructor(yPos) {
+  constructor(yIni) {
     super();
 
     this.width = 64;
@@ -378,7 +378,7 @@ class BooBuddy extends Element {
     this.yAtlas = 0;
     this.spriteLength = 2;
     this.spriteRate = 150;
-    this.yPos = yPos;
+    this.yPos = yIni;
     this.xSpeed = 20;
     this.wBox = 64;
     this.hBox = 64;
@@ -416,7 +416,7 @@ class Eerie extends Element {
 }
 
 class BanzaiBill extends Element {
-  constructor(yPos) {
+  constructor(yIni) {
     super();
 
     this.width = 256;
@@ -424,7 +424,7 @@ class BanzaiBill extends Element {
     this.xAtlas = 448;
     this.yAtlas = 480;
     this.xSpeed = 18;
-    this.yPos = yPos;
+    this.yPos = yIni;
     this.wBox = 246;
     this.hBox = 236;
     this.xOff = 10;
@@ -437,7 +437,7 @@ class BanzaiBill extends Element {
 }
 
 class BulletBillLinear extends Element {
-  constructor(yPos) {
+  constructor(yIni) {
     super();
 
     this.width = 64;
@@ -445,7 +445,7 @@ class BulletBillLinear extends Element {
     this.xAtlas = 184;
     this.yAtlas = 0;
     this.xSpeed = 25;
-    this.yPos = yPos;
+    this.yPos = yIni;
     this.wBox = 64;
     this.hBox = 56;
   }
@@ -479,7 +479,7 @@ class BulletBillDiagonal extends Element {
 }
 
 class Grinder extends Element {
-  constructor(yPos) {
+  constructor(yIni) {
     super();
 
     this.width = 128;
@@ -489,7 +489,7 @@ class Grinder extends Element {
     this.spriteLength = 2;
     this.spriteRate = 25;
     this.xSpeed = game.scrollSpeed;
-    this.yPos = yPos;
+    this.yPos = yIni;
     this.wBox = 108;
     this.hBox = 108;
     this.xOff = 10;
