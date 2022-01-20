@@ -7,8 +7,12 @@ import {
 } from '../main.js';
 
 let {
-  SuperKoopa,
-  Parakoopa,
+  YellowSuperKoopa,
+  RedSuperKoopa,
+  RedParakoopa,
+  YellowParakoopa,
+  GreenParakoopa,
+  BlueParakoopa,
   FlyingGoomba,
   FlyingBrother,
   Chainsaw,
@@ -684,7 +688,7 @@ function spawnColumn(time, yPos, Element, size, padding = 0) {
 //test map
 const TEST = new Level('TEST', 'images/overworld.jpg', 'overworld', 0.4);
 TEST.spawn = () => {
-  spawnColumn(2, 0, FlyingGoomba, 5);
+  spawnColumn(1, 0, RedSuperKoopa, 8, 50);
 };
 
 const LEVELS = [TEST, OVERWORLD, ATHLETIC, HAUNTED, CASTLE];

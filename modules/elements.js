@@ -128,97 +128,115 @@ class Mario extends Element {
 }
 
 class SuperKoopa extends Element {
-  constructor(yIni, color) {
+  constructor() {
     super();
 
     this.width = 92;
     this.height = 52;
-    this.color = color;
-    this.yIni = yIni;
-    this.yPos = yIni;
     this.wBox = 72;
     this.hBox = 45;
     this.xOff = 5;
     this.yOff = 5;
+  }
+}
 
-    switch (color) {
-      case 'yellow':
-        this.xAtlas = 92;
-        this.yAtlas = 0;
-        this.curveSize = 2;
-        this.curveRate = 20;
-        this.xSpeed = 16;
-        break;
-      case 'red':
-        this.xAtlas = 0;
-        this.yAtlas = 0;
-        this.xSpeed = 18;
-        break;
-    }
+class YellowSuperKoopa extends SuperKoopa {
+  constructor(yIni) {
+    super();
+    this.yIni = yIni;
+    this.yPos = yIni;
+    this.xAtlas = 92;
+    this.yAtlas = 0;
+    this.curveSize = 2;
+    this.curveRate = 20;
+    this.xSpeed = 16;
   }
 
   move() {
-    if (this.color === 'red') {
-      moveLinear(this);
-    } else {
-      moveCurve(this);
-    }
+    moveCurve(this);
+  }
+}
+
+class RedSuperKoopa extends SuperKoopa {
+  constructor(yIni) {
+    super();
+    this.yIni = yIni;
+    this.yPos = yIni;
+    this.xAtlas = 0;
+    this.yAtlas = 0;
+    this.xSpeed = 18;
+  }
+
+  move() {
+    moveLinear(this);
   }
 }
 
 class Parakoopa extends Element {
-  constructor(yIni, color, reflect = false) {
+  constructor() {
     super();
 
-    this.reflect = reflect ? -1 : 1;
     this.width = 88;
     this.height = 116;
     this.spriteLength = 2;
     this.spriteRate = 200;
-    this.yIni = yIni;
     this.wBox = 56;
     this.hBox = 93;
     this.xOff = 5;
     this.yOff = 15;
     this.xSpeed = 14;
-
-    switch (color) {
-      case 'red':
-      case 'yellow':
-        this.waveType = 'sin';
-        this.waveSize = this.reflect * 50;
-        this.waveRate = 1e-2;
-        break;
-      case 'blue':
-      case 'green':
-        this.waveType = 'cos';
-        this.waveSize = this.reflect * 150;
-        this.waveRate = 5e-3;
-        break;
-    }
-
-    switch (color) {
-      case 'red':
-        this.xAtlas = 0;
-        this.yAtlas = 180;
-        break;
-      case 'yellow':
-        this.xAtlas = 176;
-        this.yAtlas = 180;
-        break;
-      case 'blue':
-        this.xAtlas = 528;
-        this.yAtlas = 64;
-        break;
-      case 'green':
-        this.xAtlas = 704;
-        this.yAtlas = 64;
-        break;
-    }
   }
 
   move() {
     moveWave(this);
+  }
+}
+
+class RedParakoopa extends Parakoopa {
+  constructor(yIni) {
+    super();
+    this.yIni = yIni;
+    this.waveType = 'sin';
+    this.waveSize = -50;
+    this.waveRate = 1e-2;
+    this.xAtlas = 0;
+    this.yAtlas = 180;
+  }
+}
+
+class YellowParakoopa extends Parakoopa {
+  constructor(yIni) {
+    super();
+    this.yIni = yIni;
+    this.waveType = 'sin';
+    this.waveSize = 50;
+    this.waveRate = 1e-2;
+    this.xAtlas = 176;
+    this.yAtlas = 180;
+  }
+}
+
+class GreenParakoopa extends Parakoopa {
+  constructor(yIni) {
+    super();
+    this.yIni = yIni;
+    this.waveType = 'cos';
+    this.waveSize = -150;
+    this.waveRate = 5e-3;
+    this.xAtlas = 704;
+    this.yAtlas = 64;
+  }
+}
+
+class BlueParakoopa extends Parakoopa {
+  constructor(yIni) {
+    super();
+    this.yIni = yIni;
+    this.waveType = 'cos';
+    this.waveSize = 150;
+    this.waveRate = 5e-3;
+    this.xAtlas = 528;
+    this.yAtlas = 64;
   }
 }
 
@@ -561,8 +579,12 @@ function moveCurve(element) {
 
 export {
   Mario,
-  SuperKoopa,
-  Parakoopa,
+  YellowSuperKoopa,
+  RedSuperKoopa,
+  RedParakoopa,
+  YellowParakoopa,
+  GreenParakoopa,
+  BlueParakoopa,
   FlyingGoomba,
   FlyingBrother,
   Chainsaw,
