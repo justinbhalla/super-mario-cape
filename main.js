@@ -21,7 +21,7 @@ const ctx = canvas.getContext('2d');
 const game = {
   state: 'START',
   isOn: false,
-  scrollSpeed: 5,
+  scrollSpeed: 6,
   livesStart: 3,
   lives: 3,
   level: 0,
