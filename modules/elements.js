@@ -39,7 +39,7 @@ class Element {
       }
 
       if (this.xPos + this.width < 0) {
-        delete elements.indexOf(this);
+        elements.splice(elements.indexOf(this), 1);
       }
 
       this.time += fpsInterval;
