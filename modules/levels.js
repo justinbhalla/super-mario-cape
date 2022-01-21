@@ -669,24 +669,28 @@ CASTLE.spawn = () => {
   spawnElement(32, new Star());
 };
 
-function spawnElement(time, element) {
+function spawnElement(Element, yIni, time) {
+  let element = new Element(yIni);
   let timeout = setTimeout(() => elements.push(element), time * 1000);
   game.timeouts.push(timeout);
 }
 
-function spawnColumn(time, yIni, Element, size, padding = 0) {
+function spawnColumn(Element, yIni, time, size, padding = 0) {
   let element = new Element(0);
   let { height } = element;
 
   for (let i = 0; i < size; i++) {
-    let yIni = yIni + i * (height + padding);
-    spawnElement(time, new Element(yIni));
+    let yPos = yIni + i * (height + padding);
+    spawnElement(Element, yPos, time);
   }
 }
 
 //test map
 const TEST = new Level('TEST', 'images/overworld.jpg', 'overworld', 0.4);
-TEST.spawn = () => {};
+TEST.spawn = () => {
+  spawnElement(BulletBill, CANVAS_MID_Y, 1);
+  spawnColumn(BulletBill, 0, 3, 10, 10);
+};
 
 const LEVELS = [TEST, OVERWORLD, ATHLETIC, HAUNTED, CASTLE];
 
