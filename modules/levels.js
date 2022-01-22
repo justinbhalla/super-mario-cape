@@ -4,6 +4,8 @@ import {
   CANVAS_HEIGHT,
   CANVAS_MID_Y,
   Elements,
+  fpsInterval,
+  CANVAS_WIDTH,
 } from '../main.js';
 
 let {
@@ -678,18 +680,29 @@ function spawnElement(Element, yIni, time) {
 function spawnColumn(Element, yIni, time, size, padding = 0) {
   let element = new Element(0);
   let { height } = element;
+  let spacing = height + padding;
 
   for (let i = 0; i < size; i++) {
-    let yPos = yIni + i * (height + padding);
+    let yPos = yIni + spacing * i;
     spawnElement(Element, yPos, time);
+  }
+}
+
+function spawnRow(Element, yIni, time, size, padding = 0) {
+  let element = new Element(0);
+  let { width } = element;
+  let spacing = (width + padding) / 1000;
+
+  for (let i = 0; i < size; i++) {
+    let delay = time + spacing * i;
+    spawnElement(Element, yIni, delay);
   }
 }
 
 //test map
 const TEST = new Level('TEST', 'images/overworld.jpg', 'overworld', 0.4);
 TEST.spawn = () => {
-  spawnElement(BulletBill, CANVAS_MID_Y, 1);
-  spawnColumn(BulletBill, 0, 3, 10, 10);
+  spawnRow(BanzaiBill, CANVAS_MID_Y, 1, 4, -15);
 };
 
 const LEVELS = [TEST, OVERWORLD, ATHLETIC, HAUNTED, CASTLE];
