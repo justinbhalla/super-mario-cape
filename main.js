@@ -123,7 +123,7 @@ function menuControls(e) {
   }
 }
 
-window.addEventListener('load', () => {
+function loadGame() {
   let audio = document.getElementById('audio');
   let interval = setInterval(() => {
     if (loading.length === 0) {
@@ -147,7 +147,9 @@ window.addEventListener('load', () => {
       runGame();
     }
   }, 250);
-});
+}
+
+window.addEventListener('load', loadGame);
 
 export { LEVELS, Level } from './modules/levels.js';
 export * as Elements from './modules/elements.js';
