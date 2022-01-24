@@ -130,7 +130,6 @@ window.addEventListener('load', () => {
       loading.length = 0;
       hideScreen(screens.load);
       audio.checked = false;
-      document.body.style.background = '#5590cc';
       screens.background.backgroundPositionX = 0;
       screens.background.backgroundPositionY = 0;
       document.addEventListener('keydown', menuControls);
