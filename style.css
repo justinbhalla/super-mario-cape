@@ -37,7 +37,6 @@ img {
 #canvas,
 #lives-screen,
 #title-screen,
-#fullscreen,
 #audio + label,
 #header,
 #authors,
@@ -87,18 +86,8 @@ body {
 #death-screen,
 #level-screen,
 #background-2,
-#over-screen,
-#fullscreen {
+#over-screen {
   background: black;
-}
-
-#fullscreen {
-  display: none;
-  line-height: 24px;
-  padding: 10px;
-  width: 1360px;
-  border-radius: 10px;
-  top: calc(50% - 415px);
 }
 
 #lives-screen {
@@ -345,11 +334,5 @@ body {
   }
   to {
     opacity: 0;
-  }
-}
-
-@media (min-width: 1440px) and (min-height: 900px) {
-  #fullscreen {
-    display: block;
   }
 }
