@@ -10,6 +10,7 @@ import { Mario } from './modules/elements.js';
 import { LEVELS } from './modules/levels.js';
 import { loading } from './modules/load.js';
 
+const audio = document.getElementById('audio');
 const cursor = document.querySelector('*').style;
 const CANVAS = document.getElementById('canvas');
 const CANVAS_WIDTH = CANVAS.width;
@@ -124,7 +125,6 @@ function menuControls(e) {
 }
 
 function loadGame() {
-  let audio = document.getElementById('audio');
   let interval = setInterval(() => {
     if (loading.length === 0) {
       loading.length = 0;
