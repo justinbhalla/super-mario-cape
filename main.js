@@ -127,7 +127,6 @@ function menuControls(e) {
 function loadGame() {
   let interval = setInterval(() => {
     if (loading.length === 0) {
-      loading.length = 0;
       hideScreen(screens.load);
       audio.checked = false;
       screens.background.backgroundPositionX = 0;
@@ -145,8 +144,10 @@ function loadGame() {
       });
       clearInterval(interval);
       runGame();
+    } else {
+      console.log('loading');
     }
-  }, 250);
+  }, 1);
 }
 
 window.addEventListener('load', loadGame);

@@ -1,46 +1,60 @@
-let loading = [];
+const loading = [];
 
-function load(assets) {
-  for (let a of assets) {
-    let ext = a.slice(a.length - 3);
-    let isImage = ext === 'png' || ext === 'jpg';
-    let element = isImage ? new Image() : new Audio();
-    element.src = `${isImage ? 'images' : 'sounds'}/${a}`;
-    element[isImage ? 'onload' : 'oncanplaythrough'] = function () {
+const IMAGE_PATHS = [
+  'images/athletic.jpg',
+  'images/atlas.png',
+  'images/end.jpg',
+  'images/haunted.jpg',
+  'images/lives.png',
+  'images/overworld.jpg',
+  'images/sound-off.png',
+  'images/sound-on.png',
+  'images/title.jpg',
+  'images/title.png',
+];
+
+const AUDIO_PATHS = [
+  'sounds/athletic.mp3',
+  'sounds/castle.mp3',
+  'sounds/course.wav',
+  'sounds/died.wav',
+  'sounds/ending.mp3',
+  'sounds/fortress.wav',
+  'sounds/iris.wav',
+  'sounds/jump.wav',
+  'sounds/over.wav',
+  'sounds/overworld.mp3',
+  'sounds/spooky.mp3',
+  'sounds/title.mp3',
+];
+
+function loadImages(imagePaths) {
+  for (let path of imagePaths) {
+    let image = new Image();
+    image.src = path;
+    image['onload'] = function () {
       let index = loading.indexOf(this);
       if (index > -1) loading.splice(index, 1);
     };
 
-    loading.push(element);
+    loading.push(image);
   }
 }
 
-load([
-  // IMAGES
-  'atlas.png',
-  'sound-on.png',
-  'sound-off.png',
-  'lives.png',
-  'athletic.jpg',
-  'castle.jpg',
-  'end.jpg',
-  'haunted.jpg',
-  'overworld.jpg',
-  'title.jpg',
+function loadSounds(soundPaths) {
+  for (let path of soundPaths) {
+    let audio = new Audio();
+    audio.src = path;
+    audio['oncanplaythrough'] = function () {
+      let index = loading.indexOf(this);
+      if (index > -1) loading.splice(index, 1);
+    };
 
-  // SOUND
-  'died.wav',
-  'course.wav',
-  'fortress.wav',
-  'iris.wav',
-  'over.wav',
-  'jump.wav',
-  'athletic.mp3',
-  'castle.mp3',
-  'title.mp3',
-  'ending.mp3',
-  'spooky.mp3',
-  'overworld.mp3',
-]);
+    loading.push(audio);
+  }
+}
+
+loadImages(IMAGE_PATHS);
+loadSounds(AUDIO_PATHS);
 
 export { loading };
