@@ -124,33 +124,43 @@ function menuControls(e) {
   }
 }
 
-function loadGame() {
+function setGame() {
   let interval = setInterval(() => {
     if (loading.length === 0) {
-      hideScreen(screens.load);
-      audio.checked = false;
-      screens.background.backgroundPositionX = 0;
-      screens.background.backgroundPositionY = 0;
-      document.addEventListener('keydown', menuControls);
-      document.addEventListener('keydown', playerControls);
-      document.addEventListener('keyup', playerControls);
-      audio.addEventListener('change', () => {
-        let isMuted = !audio.checked;
-        if (!isMuted && !theme.currentTime) theme.play();
-        for (let s of Object.values(sounds)) s.muted = isMuted;
-        for (let l of LEVELS) l.audio.muted = isMuted;
-        theme.muted = isMuted;
-        game.hasSound = !isMuted;
-      });
-      clearInterval(interval);
+      setAudio();
+      setScreen();
+      setControls();
       runGame();
-    } else {
-      console.log('loading');
+      clearInterval(interval);
     }
-  }, 1);
+  }, 250);
 }
 
-window.addEventListener('load', loadGame);
+function setAudio() {
+  audio.checked = false;
+  audio.addEventListener('change', () => {
+    let isMuted = !audio.checked;
+    if (!isMuted && !theme.currentTime) theme.play();
+    for (let s of Object.values(sounds)) s.muted = isMuted;
+    for (let l of LEVELS) l.audio.muted = isMuted;
+    theme.muted = isMuted;
+    game.hasSound = !isMuted;
+  });
+}
+
+function setScreen() {
+  hideScreen(screens.load);
+  screens.background.backgroundPositionX = 0;
+  screens.background.backgroundPositionY = 0;
+}
+
+function setControls() {
+  document.addEventListener('keydown', menuControls);
+  document.addEventListener('keydown', playerControls);
+  document.addEventListener('keyup', playerControls);
+}
+
+window.addEventListener('load', setGame);
 
 export { LEVELS, Level } from './modules/levels.js';
 export * as Elements from './modules/elements.js';
