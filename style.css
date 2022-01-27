@@ -67,10 +67,14 @@ body {
 #level-screen,
 #over-screen,
 #iris-screen,
-#background-1,
 #background-2 {
-  width: 1360px;
+  width: 1010px;
   height: 760px;
+}
+
+#background-1 {
+  width: 1008px;
+  height: 758px;
 }
 
 #death-screen,
@@ -92,9 +96,9 @@ body {
 
 #lives-screen {
   top: calc(50% - 320px);
-  left: calc(50% + 605px);
+  left: calc(50% + 430px);
   border: 5px solid #5590cc;
-  border-radius: 25px;
+  border-radius: 15px;
   padding: 10px;
 }
 
@@ -192,6 +196,7 @@ body {
   color: black;
   font-size: 32px;
   top: calc(50% + 240px);
+  width: fit-content;
 }
 
 #authors {
