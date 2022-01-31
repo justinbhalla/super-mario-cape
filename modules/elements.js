@@ -12,7 +12,7 @@ import {
 } from '../main.js';
 
 const atlas = new Image(972, 736);
-atlas.src = 'images/atlas.png';
+atlas.src = 'images/atlas/atlas.png';
 
 class Element {
   constructor() {

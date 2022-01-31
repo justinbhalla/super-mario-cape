@@ -39,18 +39,28 @@ class Level {
 
 const OVERWORLD = new Level(
   'The Basics',
-  'images/overworld.jpg',
+  'images/levels/bg-overworld.jpg',
   'overworld',
   0.4
 );
 const ATHLETIC = new Level(
   'Koopa Dragon',
-  'images/athletic.jpg',
+  'images/levels/bg-athletic.jpg',
   'athletic',
   0.45
 );
-const HAUNTED = new Level('Spooooky', 'images/haunted.jpg', 'spooky', 0.35);
-const CASTLE = new Level("You're Doomed", 'images/castle.jpg', 'castle', 0.8);
+const HAUNTED = new Level(
+  'Spooooky',
+  'images/levels/bg-haunted.jpg',
+  'spooky',
+  0.35
+);
+const CASTLE = new Level(
+  "You're Doomed",
+  'images/levels/bg-castle.jpg',
+  'castle',
+  0.8
+);
 
 OVERWORLD.spawn = () => {
   spawnElement(1, new SuperKoopa(0, 'yellow'));
@@ -700,7 +710,12 @@ function spawnRow(Element, yIni, time, size, padding = 0) {
 }
 
 //test map
-const TEST = new Level('TEST', 'images/overworld.jpg', 'overworld', 0.4);
+const TEST = new Level(
+  'TEST',
+  'images/levels/bg-overworld.jpg',
+  'overworld',
+  0.4
+);
 TEST.spawn = () => {
   spawnRow(BanzaiBill, CANVAS_MID_Y, 1, 4, -15);
 };

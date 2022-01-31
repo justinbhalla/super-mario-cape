@@ -1,16 +1,15 @@
 const loading = [];
 
 const IMAGE_PATHS = [
-  'images/athletic.jpg',
-  'images/atlas.png',
-  'images/end.jpg',
-  'images/haunted.jpg',
-  'images/lives.png',
-  'images/overworld.jpg',
-  'images/sound-off.png',
-  'images/sound-on.png',
-  'images/title.jpg',
-  'images/title.png',
+  'images/atlas/atlas.png',
+  'images/levels/bg-athletic.jpg',
+  'images/levels/bg-finale.jpg',
+  'images/levels/bg-haunted.jpg',
+  'images/levels/bg-overworld.jpg',
+  'images/graphics/lives.png',
+  'images/graphics/sound-off.png',
+  'images/graphics/sound-on.png',
+  'images/graphics/title.png',
 ];
 
 const AUDIO_PATHS = [
