@@ -314,14 +314,8 @@ body {
   background-repeat: no-repeat;
   width: 500px;
   height: 500px;
-  top: calc(50% - 120px);
+  top: calc(50% - 20px);
   z-index: 999;
-}
-
-#load-screen p {
-  font-family: monospace;
-  font-size: 24px;
-  top: calc(50% + 120px);
 }
 
 @keyframes fadein {
