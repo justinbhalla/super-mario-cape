@@ -58,8 +58,8 @@ class Mario extends Element {
     this.height = 124;
     this.spriteFrame = 0;
 
-    this.xPos = CANVAS_MID_X - 185;
-    this.yPos = CANVAS_MID_Y + 15;
+    this.xPos = -this.width;
+    this.yPos = -this.width;
     this.xOff = 20;
     this.yOff = 38;
     this.wBox = 92;

@@ -37,6 +37,7 @@ img {
 #canvas,
 #lives-screen,
 #title-screen,
+#mario,
 #audio + label,
 #header,
 #start,
@@ -112,6 +113,10 @@ body {
 
 #header {
   top: calc(50% - 190px);
+}
+
+#mario {
+  top: calc(50% + 20px);
 }
 
 #audio + label {
