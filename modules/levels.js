@@ -32,7 +32,7 @@ class Level {
   constructor(name, background, audio, volume) {
     this.name = name;
     this.background = `url(${background})`;
-    this.audio = new Audio(`sounds/${audio}.mp3`);
+    // this.audio = new Audio(`sounds/${audio}.mp3`);
     this.volume = volume;
   }
 }
@@ -40,25 +40,25 @@ class Level {
 const OVERWORLD = new Level(
   'The Basics',
   'images/levels/bg-overworld.jpg',
-  'overworld',
+  // 'overworld',
   0.4
 );
 const ATHLETIC = new Level(
   'Koopa Dragon',
   'images/levels/bg-athletic.jpg',
-  'athletic',
+  // 'athletic',
   0.45
 );
 const HAUNTED = new Level(
   'Spooooky',
   'images/levels/bg-haunted.jpg',
-  'spooky',
+  // 'spooky',
   0.35
 );
 const CASTLE = new Level(
   "You're Doomed",
   'images/levels/bg-castle.jpg',
-  'castle',
+  // 'castle',
   0.8
 );
 

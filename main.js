@@ -31,12 +31,12 @@ const game = {
 };
 
 const sounds = {
-  died: new Audio('sounds/died.wav'),
-  iris: new Audio('sounds/iris.wav'),
-  jump: new Audio('sounds/jump.wav'),
-  course: new Audio('sounds/course.wav'),
-  fortress: new Audio('sounds/fortress.wav'),
-  over: new Audio('sounds/over.wav'),
+  died: new Audio('audio/sfx/lost-a-life.wav'),
+  iris: new Audio('audio/sfx/iris-out.wav'),
+  jump: new Audio('audio/sfx/cape-jump.wav'),
+  course: new Audio('audio/sfx/course-clear.wav'),
+  fortress: new Audio('audio/sfx/fortress-clear.wav'),
+  over: new Audio('audio/sfx/game-over.wav'),
 };
 
 const controls = {
@@ -59,7 +59,7 @@ const controls = {
 };
 
 const player = new Mario();
-const theme = new Audio('sounds/title.mp3');
+const theme = new Audio('audio/music/title.mp3');
 const elements = [];
 elements.update = () => elements.forEach((e) => e.update());
 elements.move = () => elements.forEach((e) => e.move());

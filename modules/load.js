@@ -13,18 +13,18 @@ const IMAGE_PATHS = [
 ];
 
 const AUDIO_PATHS = [
-  'sounds/athletic.mp3',
-  'sounds/castle.mp3',
-  'sounds/course.wav',
-  'sounds/died.wav',
-  'sounds/ending.mp3',
-  'sounds/fortress.wav',
-  'sounds/iris.wav',
-  'sounds/jump.wav',
-  'sounds/over.wav',
-  'sounds/overworld.mp3',
-  'sounds/spooky.mp3',
-  'sounds/title.mp3',
+  'audio/music/athletic.mp3',
+  'audio/music/cast-list.mp3',
+  'audio/music/fortress.mp3',
+  'audio/music/ghost-house.mp3',
+  'audio/music/overworld.mp3',
+  'audio/music/title.mp3',
+  'audio/sfx/cape-jump.wav',
+  'audio/sfx/course-clear.wav',
+  'audio/sfx/fortress-clear.wav',
+  'audio/sfx/game-over.wav',
+  'audio/sfx/iris-out.wav',
+  'audio/sfx/lost-a-life.wav',
 ];
 
 function loadImages(imagePaths) {

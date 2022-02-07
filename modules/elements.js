@@ -50,7 +50,7 @@ class Element {
 class Mario extends Element {
   constructor() {
     super();
-    this.audio = new Audio('sounds/jump.wav');
+    this.audio = new Audio('audio/sfx/cape-jump.wav');
 
     this.xAtlas = 352;
     this.yAtlas = 180;
