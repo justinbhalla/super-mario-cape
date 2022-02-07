@@ -17,48 +17,52 @@
     <canvas id="canvas" width="1010" height="760"
       >This browser does not support Canvas.</canvas
     >
-    <div id="lives-screen">
+    <div id="backdrop"></div>
+    <div id="background"></div>
+    <div id="screen-hud">
       <img
+        id="screen-hud__lives"
         src="images/graphics/lives.png"
         alt="Heads Up Display for Player's Lives."
       />
-      <p id="lives-text">2</p>
+      <p id="screen-hud__lives-text">2</p>
     </div>
-    <div id="title-screen">
-      <img
-        id="header"
-        src="images/graphics/title.png"
-        alt="Super Mario Cape Logo."
-      />
-      <img id="mario" src="images/graphics/mario.png" alt="Mario flying with a cape." />
-      <input id="audio" type="checkbox" name="audio" />
-      <label for="audio"></label>
-      </div>
-      <p id="start">Press Jump to Play</p>
-    </div>
-    <div id="over-screen">
-      <h1>GAME<br />OVER</h1>
-      <button>Press Jump<br />Try Again</button>
-    </div>
-    <div id="death-screen">
+    <div id="screen-retry">
       <h1>You<br />Died</h1>
       <button>Press Jump<br />Try Again</button>
     </div>
-    <div id="end-screen">
+    <div id="screen-failure">
+      <h1>GAME<br />OVER</h1>
+      <button>Press Jump<br />Try Again</button>
+    </div>
+    <h1 id="screen-success">Course Complete</h1>
+    <div id="screen-level">
+      <h1 id="screen-level__text"></h1>
+    </div>
+    <div id="screen-outro">
       <h1>Congratulations</h1>
       <p>
         Thank You for Playing! Created by
         <a href="https://github.com/JMMFL/super-mario-cape">Jordan & Shoghi</a>.
       </p>
     </div>
-    <div id="level-screen">
-      <h1 id="level-text"></h1>
+    <div id="screen-intro">
+      <img
+        id="screen-intro__title"
+        src="images/graphics/title.png"
+        alt="Super Mario Cape Logo."
+      />
+      <img
+        id="screen-intro__mario"
+        src="images/graphics/mario.png"
+        alt="Mario flying with a cape."
+      />
+      <input id="screen-intro__start-btn" type="button" value="Start Game" />
+      <input id="screen-intro__sound-btn" type="button" value="Sound: Off" />
+      <div id="screen-intro__start-hover"></div>
     </div>
-    <h1 id="pass-screen">Course Complete</h1>
-    <div id="iris-screen"></div>
-    <div id="background-1"></div>
-    <div id="background-2"></div>
-    <div id="load-screen">
+    <div id="screen-transition"></div>
+    <div id="screen-loading">
       <div></div>
     </div>
     <script type="module" src="main.js"></script>

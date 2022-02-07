@@ -127,7 +127,7 @@ function menuControls(e) {
 function setGame() {
   let interval = setInterval(() => {
     if (loading.length === 0) {
-      setAudio();
+      // setAudio();
       setScreen();
       setControls();
       runGame();

@@ -12,19 +12,19 @@ import {
   sounds,
 } from '../main.js';
 
-const levelText = document.getElementById('level-text');
-const livesText = document.getElementById('lives-text');
+const levelText = document.getElementById('screen-level__text');
+const livesText = document.getElementById('screen-hud__lives-text');
 const screens = {
-  background: document.getElementById('background-1').style,
-  title: document.getElementById('title-screen').style,
-  death: document.getElementById('death-screen').style,
-  level: document.getElementById('level-screen').style,
-  load: document.getElementById('load-screen').style,
-  iris: document.getElementById('iris-screen').style,
-  over: document.getElementById('over-screen').style,
-  lives: document.getElementById('lives-screen').style,
-  end: document.getElementById('end-screen').style,
-  pass: document.getElementById('pass-screen'),
+  background: document.getElementById('background').style,
+  title: document.getElementById('screen-intro').style,
+  death: document.getElementById('screen-retry').style,
+  level: document.getElementById('screen-level').style,
+  load: document.getElementById('screen-loading').style,
+  iris: document.getElementById('screen-transition').style,
+  over: document.getElementById('screen-failure').style,
+  lives: document.getElementById('screen-hud').style,
+  end: document.getElementById('screen-outro').style,
+  pass: document.getElementById('screen-success'),
 };
 
 function levelScene() {
