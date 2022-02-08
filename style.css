@@ -149,9 +149,8 @@ img {
   text-transform: uppercase;
   color: white;
   font-size: 32px;
-
   width: 420px;
-  height: 38px;
+  height: 60px;
   text-shadow: 3px 3px 0 #000, -3px -3px 0 #000, 3px -3px 0 #000, 3px 1px 0 #000,
     -3px 3px 0 #000;
 }
