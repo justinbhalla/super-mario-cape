@@ -10,6 +10,7 @@ import { Mario } from './modules/elements.js';
 import { LEVELS } from './modules/levels.js';
 import { loading } from './modules/load.js';
 
+const startBtn = document.getElementById('screen-intro__start-btn');
 const soundBtn = document.getElementById('screen-intro__sound-btn');
 const cursor = document.querySelector('*').style;
 const CANVAS = document.getElementById('canvas');
@@ -101,30 +102,35 @@ function drawBackground() {
   ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 }
 
-function menuControls(e) {
+function menuControls(event) {
   if (game.isOn) return;
 
-  let input = e.keyCode;
-  if (input === controls.UP_1_BIND || input === controls.UP_2_BIND) {
-    let { state } = game;
-    let isStart = state === 'START';
-    let isRetry = state === 'RETRY';
-    let isOver = state === 'OVER';
+  let { keyCode, type } = event;
+  let { UP_1_BIND, UP_2_BIND } = controls;
+  let menuClicked = type === 'click';
+  let menuPressed = keyCode === UP_1_BIND || keyCode === UP_2_BIND;
 
-    if (isStart) {
-      hideScreen(screens.title);
-      cursor.cursor = 'none';
-      theme.pause();
-    } else if (isRetry) {
-      hideScreen(screens.death);
-      game.lives--;
-    } else if (isOver) {
-      hideScreen(screens.over);
-      game.lives = game.livesStart;
-      game.level = 0;
+  if (menuClicked || menuPressed) {
+    switch (game.state) {
+      case 'START':
+        hideScreen(screens.title);
+        cursor.cursor = 'none';
+        theme.pause();
+        break;
+      case 'RETRY':
+        hideScreen(screens.death);
+        game.lives--;
+        //levelScene();
+        break;
+      case 'OVER':
+        hideScreen(screens.over);
+        game.lives = game.livesStart;
+        game.level = 0;
+        //levelScene();
+        break;
+      default:
+        break;
     }
-
-    if (isStart || isRetry | isOver) levelScene();
   }
 }
 
@@ -156,9 +162,10 @@ function setScreen() {
 }
 
 function setControls() {
-  document.addEventListener('keydown', menuControls);
-  document.addEventListener('keydown', playerControls);
-  document.addEventListener('keyup', playerControls);
+  startBtn.addEventListener('click', menuControls);
+  // document.addEventListener('keydown', menuControls);
+  // document.addEventListener('keydown', playerControls);
+  // document.addEventListener('keyup', playerControls);
 }
 
 window.addEventListener('load', setGame);
