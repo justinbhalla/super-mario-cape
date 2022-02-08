@@ -10,7 +10,7 @@ import { Mario } from './modules/elements.js';
 import { LEVELS } from './modules/levels.js';
 import { loading } from './modules/load.js';
 
-const audio = document.getElementById('audio');
+const soundBtn = document.getElementById('screen-intro__sound-btn');
 const cursor = document.querySelector('*').style;
 const CANVAS = document.getElementById('canvas');
 const CANVAS_WIDTH = CANVAS.width;
@@ -28,6 +28,10 @@ const game = {
   level: 0,
   timeouts: [],
   hasSound: false,
+
+  music: {
+    title: new Audio('audio/music/title.mp3'),
+  },
 };
 
 const sounds = {
@@ -127,7 +131,7 @@ function menuControls(e) {
 function setGame() {
   let interval = setInterval(() => {
     if (loading.length === 0) {
-      // setAudio();
+      setAudio();
       setScreen();
       setControls();
       runGame();
@@ -137,14 +141,11 @@ function setGame() {
 }
 
 function setAudio() {
-  audio.checked = false;
-  audio.addEventListener('change', () => {
-    let isMuted = !audio.checked;
-    if (!isMuted && !theme.currentTime) theme.play();
-    for (let s of Object.values(sounds)) s.muted = isMuted;
-    for (let l of LEVELS) l.audio.muted = isMuted;
-    theme.muted = isMuted;
-    game.hasSound = !isMuted;
+  soundBtn.addEventListener('click', () => {
+    let { hasSound } = game;
+    game.hasSound = !hasSound;
+    game.music.title[hasSound ? 'pause' : 'play']();
+    soundBtn.value = `Sound: ${hasSound ? 'Off' : 'On!'}`;
   });
 }
 
