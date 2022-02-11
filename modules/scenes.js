@@ -149,10 +149,10 @@ function showScreen(screen) {
       screens.background.animation = 'fadein 0.1s forwards';
       break;
     case screens.iris:
-      screens.iris.borderLeftWidth = '680px';
-      screens.iris.borderRightWidth = '680px';
-      screens.iris.borderBottomWidth = '382px';
-      screens.iris.borderTopWidth = '382px';
+      screens.iris.borderLeftWidth = '510px';
+      screens.iris.borderRightWidth = '510px';
+      screens.iris.borderBottomWidth = '380px';
+      screens.iris.borderTopWidth = '380px';
       screens.iris.transition = 'ease-in 1s';
       break;
     case screens.lives:
