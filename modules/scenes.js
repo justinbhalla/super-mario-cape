@@ -15,19 +15,19 @@ const levelText = document.getElementById('screen-level__text');
 const livesText = document.getElementById('screen-hud__lives-text');
 const screens = {
   background: document.getElementById('background').style,
-  title: document.getElementById('screen-intro').style,
-  death: document.getElementById('screen-retry').style,
+  retry: document.getElementById('screen-retry').style,
+  hud: document.getElementById('screen-hud').style,
+  failure: document.getElementById('screen-failure').style,
+  success: document.getElementById('screen-success'),
   level: document.getElementById('screen-level').style,
-  load: document.getElementById('screen-loading').style,
-  iris: document.getElementById('screen-transition').style,
-  over: document.getElementById('screen-failure').style,
-  lives: document.getElementById('screen-hud').style,
-  end: document.getElementById('screen-outro').style,
-  pass: document.getElementById('screen-success'),
+  outro: document.getElementById('screen-outro').style,
+  intro: document.getElementById('screen-intro').style,
+  transition: document.getElementById('screen-transition').style,
+  loading: document.getElementById('screen-loading').style,
 };
 
 function levelScene() {
-  showScreen(screens.lives);
+  showScreen(screens.hud);
   showScreen(screens.level);
   let currentLevel = LEVELS[game.level];
   screens.background.backgroundImage = currentLevel.background;
@@ -65,8 +65,8 @@ function deathScene() {
 
       if ((yPos > CANVAS_HEIGHT && !game.hasSound) || sounds.died.ended) {
         if (!game.lives) {
-          hideScreen(screens.lives);
-          showScreen(screens.over);
+          hideScreen(screens.hud);
+          showScreen(screens.failure);
           playSound(sounds.over);
 
           if (!game.hasSound) {
@@ -77,7 +77,7 @@ function deathScene() {
             };
           }
         } else {
-          showScreen(screens.death);
+          showScreen(screens.retry);
           game.state = 'RETRY';
         }
 
@@ -105,19 +105,19 @@ function passScene() {
   let gameWon = game.level === LEVELS.length;
   let type = gameWon ? 'fortress' : 'course';
   playSound(sounds[type]);
-  screens.pass.innerText = `${type} Complete`;
+  screens.success.innerText = `${type} Complete`;
 
   hideScreen(screens.background);
-  showScreen(screens.pass.style);
+  showScreen(screens.success.style);
 
   setTimeout(() => {
-    hideScreen(screens.pass.style);
-    showScreen(screens.iris);
+    hideScreen(screens.success.style);
+    showScreen(screens.transition);
     showScreen(screens.background);
     playSound(sounds.iris);
 
     setTimeout(() => {
-      hideScreen(screens.iris);
+      hideScreen(screens.transition);
 
       if (gameWon) {
         endScene();
@@ -130,8 +130,8 @@ function passScene() {
 }
 
 function endScene() {
-  showScreen(screens.end);
-  hideScreen(screens.lives);
+  showScreen(screens.outro);
+  hideScreen(screens.hud);
   player.xPos = CANVAS_MID_X - player.width / 2 - 15;
   player.yPos = CANVAS_MID_Y + 75;
   game.state = 'END';
@@ -147,14 +147,14 @@ function showScreen(screen) {
     case screens.background:
       screens.background.animation = 'fadein 0.1s forwards';
       break;
-    case screens.iris:
-      screens.iris.borderLeftWidth = '510px';
-      screens.iris.borderRightWidth = '510px';
-      screens.iris.borderBottomWidth = '380px';
-      screens.iris.borderTopWidth = '380px';
-      screens.iris.transition = 'ease-in 1s';
+    case screens.transition:
+      screens.transition.borderLeftWidth = '510px';
+      screens.transition.borderRightWidth = '510px';
+      screens.transition.borderBottomWidth = '380px';
+      screens.transition.borderTopWidth = '380px';
+      screens.transition.transition = 'ease-in 1s';
       break;
-    case screens.lives:
+    case screens.hud:
       screen.display = 'flex';
       break;
     default:
@@ -168,9 +168,9 @@ function hideScreen(screen) {
     case screens.background:
       screens.background.animation = 'fadeout 2.5s forwards';
       break;
-    case screens.iris:
-      screens.iris.borderWidth = '0px';
-      screens.iris.transition = 'none';
+    case screens.transition:
+      screens.transition.borderWidth = '0px';
+      screens.transition.transition = 'none';
       break;
     default:
       screen.display = 'none';
