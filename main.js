@@ -64,7 +64,6 @@ const controls = {
 };
 
 const player = new Mario();
-const theme = new Audio('audio/music/title.mp3');
 const elements = [];
 elements.update = () => elements.forEach((e) => e.update());
 elements.move = () => elements.forEach((e) => e.move());
