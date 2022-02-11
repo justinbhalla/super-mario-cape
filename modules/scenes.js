@@ -9,7 +9,6 @@ import {
   elements,
   LEVELS,
   Level,
-  sounds,
 } from '../main.js';
 
 const levelText = document.getElementById('screen-level__text');

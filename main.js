@@ -33,15 +33,15 @@ const game = {
   music: {
     title: new Audio('audio/music/title.mp3'),
   },
-};
 
-const sounds = {
-  died: new Audio('audio/sfx/lost-a-life.wav'),
-  iris: new Audio('audio/sfx/iris-out.wav'),
-  jump: new Audio('audio/sfx/cape-jump.wav'),
-  course: new Audio('audio/sfx/course-clear.wav'),
-  fortress: new Audio('audio/sfx/fortress-clear.wav'),
-  over: new Audio('audio/sfx/game-over.wav'),
+  sfx: {
+    lostALife: new Audio('audio/sfx/lost-a-life.wav'),
+    irisOut: new Audio('audio/sfx/iris-out.wav'),
+    capeJump: new Audio('audio/sfx/cape-jump.wav'),
+    courseClear: new Audio('audio/sfx/course-clear.wav'),
+    fortressClear: new Audio('audio/sfx/fortress-clear.wav'),
+    gameOver: new Audio('audio/sfx/game-over.wav'),
+  },
 };
 
 const controls = {
@@ -185,5 +185,4 @@ export {
   player,
   elements,
   fpsInterval,
-  sounds,
 };

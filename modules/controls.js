@@ -1,4 +1,4 @@
-import { game, controls, sounds, playSound } from '../main.js';
+import { game, controls, playSound } from '../main.js';
 
 export default function playerControls(e) {
   if (!game.isOn) return;
