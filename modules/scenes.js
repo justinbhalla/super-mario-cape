@@ -11,9 +11,9 @@ import {
   Level,
 } from '../main.js';
 
-const levelText = document.getElementById('screen-level__text');
-const livesText = document.getElementById('screen-hud__lives-text');
 const screens = {
+  livesText: document.getElementById('screen-hud__lives-text'),
+  levelText: document.getElementById('screen-level__text'),
   background: document.getElementById('background').style,
   retry: document.getElementById('screen-retry').style,
   hud: document.getElementById('screen-hud').style,
