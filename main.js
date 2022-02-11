@@ -113,17 +113,17 @@ function menuControls(event) {
   if (menuClicked || menuPressed) {
     switch (game.state) {
       case 'START':
-        hideScreen(screens.title);
+        hideScreen(screens.intro);
         cursor.cursor = 'none';
         theme.pause();
         break;
       case 'RETRY':
-        hideScreen(screens.death);
+        hideScreen(screens.retry);
         game.lives--;
         //levelScene();
         break;
       case 'OVER':
-        hideScreen(screens.over);
+        hideScreen(screens.failure);
         game.lives = game.livesStart;
         game.level = 0;
         //levelScene();
@@ -156,7 +156,7 @@ function setAudio() {
 }
 
 function setScreen() {
-  hideScreen(screens.load);
+  hideScreen(screens.loading);
   screens.background.backgroundPositionX = 0;
   screens.background.backgroundPositionY = 0;
 }
