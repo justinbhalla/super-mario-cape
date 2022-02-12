@@ -106,19 +106,19 @@ function menuControls(event) {
   if (menuClicked || menuPressed) {
     switch (game.state) {
       case 'START':
-        hideScreen(screens.intro);
-        cursor.cursor = 'none';
-        theme.pause();
+        // hideScreen(screens.intro);
+        // cursor.cursor = 'none';
+        // theme.pause();
         break;
       case 'RETRY':
-        hideScreen(screens.retry);
-        game.lives--;
+        // hideScreen(screens.retry);
+        // game.lives--;
         //levelScene();
         break;
       case 'OVER':
-        hideScreen(screens.failure);
-        game.lives = game.livesStart;
-        game.level = 0;
+        // hideScreen(screens.failure);
+        // game.lives = game.livesStart;
+        // game.level = 0;
         //levelScene();
         break;
       default:
@@ -131,8 +131,8 @@ function setGame() {
   let interval = setInterval(() => {
     if (loading.length === 0) {
       setAudio();
-      setScreen();
       setControls();
+      storyboard.showSceneIntro();
       runGame();
       clearInterval(interval);
     }
@@ -148,12 +148,6 @@ function setAudio() {
   });
 }
 
-function setScreen() {
-  hideScreen(screens.loading);
-  screens.background.backgroundPositionX = 0;
-  screens.background.backgroundPositionY = 0;
-}
-
 function setControls() {
   startBtn.addEventListener('click', menuControls);
   // document.addEventListener('keydown', menuControls);
@@ -165,7 +159,6 @@ window.addEventListener('load', setGame);
 
 export { LEVELS, Level } from './modules/levels.js';
 export * as Elements from './modules/elements.js';
-export { playSound } from './modules/scenes.js';
 export {
   cursor,
   CANVAS_WIDTH,

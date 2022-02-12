@@ -27,6 +27,12 @@ const screens = {
 };
 
 const storyboard = {
+  showSceneIntro() {
+    hideScreen(screens.loading);
+    screens.background.backgroundPositionX = 0;
+    screens.background.backgroundPositionY = 0;
+  },
+
   levelScene() {
     showScreen(screens.hud);
     showScreen(screens.level);
