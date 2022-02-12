@@ -33,6 +33,18 @@ const storyboard = {
     screens.background.backgroundPositionY = 0;
   },
 
+  showSceneMap() {
+    game.music.title.pause();
+    hideScreen(screens.intro);
+    showScreen(screens.transition);
+    playSound(game.sfx.irisOut);
+
+    setTimeout(() => {
+      game.state = 'TUTORIAL';
+      console.log('test');
+    }, 1500);
+  },
+
   levelScene() {
     showScreen(screens.hud);
     showScreen(screens.level);
