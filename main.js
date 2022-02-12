@@ -1,10 +1,4 @@
-import {
-  screens,
-  levelScene,
-  deathScene,
-  passScene,
-  hideScreen,
-} from './modules/scenes.js';
+import { screens, storyboard } from './modules/scenes.js';
 import playerControls from './modules/controls.js';
 import { Mario } from './modules/elements.js';
 import { LEVELS } from './modules/levels.js';

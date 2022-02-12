@@ -184,13 +184,4 @@ function playSound(sound) {
   if (game.hasSound) sound.play();
 }
 
-export {
-  screens,
-  levelScene,
-  deathScene,
-  passScene,
-  endScene,
-  showScreen,
-  hideScreen,
-  playSound,
-};
+export { screens, storyboard };
