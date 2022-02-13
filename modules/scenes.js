@@ -22,7 +22,7 @@ const screens = {
   level: document.getElementById('screen-level').style,
   outro: document.getElementById('screen-outro').style,
   intro: document.getElementById('screen-intro').style,
-  transition: document.getElementById('screen-transition').style,
+  transitionIris: document.getElementById('screen-transition-iris').style,
   loading: document.getElementById('screen-loading').style,
 };
 
@@ -36,7 +36,7 @@ const storyboard = {
   showSceneTutorial() {
     game.music.title.pause();
     hideScreen(screens.intro);
-    showScreen(screens.transition);
+    showScreen(screens.transitionIris);
     playSound(game.sfx.irisOut);
 
     setTimeout(() => {
@@ -131,12 +131,12 @@ const storyboard = {
 
     setTimeout(() => {
       hideScreen(screens.success.style);
-      showScreen(screens.transition);
+      showScreen(screens.transitionIris);
       showScreen(screens.background);
       playSound(sounds.iris);
 
       setTimeout(() => {
-        hideScreen(screens.transition);
+        hideScreen(screens.transitionIris);
 
         if (gameWon) {
           endScene();
@@ -167,12 +167,12 @@ function showScreen(screen) {
     case screens.background:
       screens.background.animation = 'fadein 0.1s forwards';
       break;
-    case screens.transition:
-      screens.transition.borderLeftWidth = '510px';
-      screens.transition.borderRightWidth = '510px';
-      screens.transition.borderBottomWidth = '380px';
-      screens.transition.borderTopWidth = '380px';
-      screens.transition.transition = 'ease-in 1s';
+    case screens.transitionIris:
+      screens.transitionIris.borderLeftWidth = '510px';
+      screens.transitionIris.borderRightWidth = '510px';
+      screens.transitionIris.borderBottomWidth = '380px';
+      screens.transitionIris.borderTopWidth = '380px';
+      screens.transitionIris.transition = 'ease-in 1s';
       break;
     case screens.hud:
       screen.display = 'flex';
@@ -188,9 +188,9 @@ function hideScreen(screen) {
     case screens.background:
       screens.background.animation = 'fadeout 2.5s forwards';
       break;
-    case screens.transition:
-      screens.transition.borderWidth = '0px';
-      screens.transition.transition = 'none';
+    case screens.transitionIris:
+      screens.transitionIris.borderWidth = '0px';
+      screens.transitionIris.transition = 'none';
       break;
     default:
       screen.display = 'none';

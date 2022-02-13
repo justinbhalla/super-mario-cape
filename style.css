@@ -54,7 +54,7 @@ img {
 #screen-intro__title,
 #screen-intro__start-btn,
 #screen-intro__sound-btn,
-#screen-transition,
+#screen-transition-iris,
 #screen-loading,
 #screen-loading div,
 #screen-loading p {
@@ -67,7 +67,7 @@ img {
 #screen-intro,
 #screen-level,
 #screen-failure,
-#screen-transition,
+#screen-transition-iris,
 #backdrop {
   width: 1010px;
   height: 760px;
@@ -248,7 +248,7 @@ img {
   top: calc(50% - 100px);
 }
 
-#screen-transition {
+#screen-transition-iris {
   box-sizing: border-box;
   border: 0 solid black;
   pointer-events: none;
