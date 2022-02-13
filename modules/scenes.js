@@ -33,7 +33,7 @@ const storyboard = {
     screens.background.backgroundPositionY = 0;
   },
 
-  showSceneMap() {
+  showSceneTutorial() {
     game.music.title.pause();
     hideScreen(screens.intro);
     showScreen(screens.transition);

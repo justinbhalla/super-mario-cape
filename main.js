@@ -106,7 +106,7 @@ function menuControls(event) {
   if (menuClicked || menuPressed) {
     switch (game.state) {
       case 'START':
-        storyboard.showSceneMap();
+        storyboard.showSceneTutorial();
         // hideScreen(screens.intro);
         // cursor.cursor = 'none';
         // theme.pause();
