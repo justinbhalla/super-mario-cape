@@ -55,6 +55,7 @@ img {
 #screen-intro__start-btn,
 #screen-intro__sound-btn,
 #screen-transition-iris,
+#screen-transition-fade,
 #screen-loading,
 #screen-loading div,
 #screen-loading p {
@@ -68,6 +69,7 @@ img {
 #screen-level,
 #screen-failure,
 #screen-transition-iris,
+#screen-transition-fade,
 #backdrop {
   width: 1010px;
   height: 760px;
@@ -252,6 +254,29 @@ img {
   box-sizing: border-box;
   border: 0 solid black;
   pointer-events: none;
+}
+
+#screen-transition-fade {
+  background-color: black;
+  opacity: 0;
+}
+
+#screen-tutorial {
+  display: none;
+}
+
+#screen-tutorial__text {
+  font-size: 24px;
+  text-transform: none;
+  position: absolute;
+  background: black;
+  top: calc(50% - 343px);
+  left: calc(50% + -110px);
+  width: 576px;
+  padding: 17px 24px;
+  padding: 17px 24px 34px 24px;
+  line-height: 31px;
+  text-align: left;
 }
 
 #background {

@@ -26,6 +26,7 @@ const game = {
 
   music: {
     title: new Audio('audio/music/title.mp3'),
+    yoshisIsland: new Audio('audio/music/yoshis-island.mp3'),
   },
 
   sfx: {
@@ -34,6 +35,7 @@ const game = {
     capeJump: new Audio('audio/sfx/cape-jump.wav'),
     courseClear: new Audio('audio/sfx/course-clear.wav'),
     fortressClear: new Audio('audio/sfx/fortress-clear.wav'),
+    messageBlock: new Audio('audio/sfx/message-block.wav'),
     gameOver: new Audio('audio/sfx/game-over.wav'),
   },
 };
@@ -78,13 +80,19 @@ function runGame() {
     elements.update();
     player.update();
     if (game.isOn) elements.move();
-    if (player.isDead) deathScene();
+    // if (player.isDead) storyboard.showDeathScene();
+    if (player.passedTutorial) storyboard.showSceneMap();
     if (player.gotStar) passScene();
   }
 }
 
 function drawBackground() {
-  if (game.isOn || game.state === 'START' || game.state === 'END') {
+  if (
+    game.isOn ||
+    game.state === 'START' ||
+    game.state === 'END' ||
+    game.state === 'TUTORIAL'
+  ) {
     let currentPos = parseInt(screens.background.backgroundPositionX);
 
     screens.background.backgroundPositionX = `${
@@ -152,8 +160,8 @@ function setAudio() {
 function setControls() {
   startBtn.addEventListener('click', menuControls);
   // document.addEventListener('keydown', menuControls);
-  // document.addEventListener('keydown', playerControls);
-  // document.addEventListener('keyup', playerControls);
+  document.addEventListener('keydown', playerControls);
+  document.addEventListener('keyup', playerControls);
 }
 
 window.addEventListener('load', setGame);

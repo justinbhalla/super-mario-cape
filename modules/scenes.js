@@ -22,7 +22,9 @@ const screens = {
   level: document.getElementById('screen-level').style,
   outro: document.getElementById('screen-outro').style,
   intro: document.getElementById('screen-intro').style,
+  tutorial: document.getElementById('screen-tutorial').style,
   transitionIris: document.getElementById('screen-transition-iris').style,
+  transitionFade: document.getElementById('screen-transition-fade').style,
   loading: document.getElementById('screen-loading').style,
 };
 
@@ -35,14 +37,27 @@ const storyboard = {
 
   showSceneTutorial() {
     game.music.title.pause();
+    playSound(game.sfx.messageBlock);
     hideScreen(screens.intro);
-    showScreen(screens.transitionIris);
-    playSound(game.sfx.irisOut);
+    showScreen(screens.transitionFade);
 
     setTimeout(() => {
+      showScreen(screens.tutorial);
+      hideScreen(screens.transitionFade);
+      screens.background.backgroundImage = `url(images/levels/bg-plains.jpg)`;
+      playSound(game.music.yoshisIsland);
       game.state = 'TUTORIAL';
-      console.log('test');
+      game.isOn = true;
+      player.reset();
     }, 1500);
+  },
+
+  showSceneMap() {
+    game.state = 'MAP';
+    game.isOn = false;
+    game.music.yoshisIsland.pause();
+    hideScreen(screens.tutorial);
+    showScreen(screens.transitionFade);
   },
 
   levelScene() {
@@ -68,7 +83,7 @@ const storyboard = {
     }, 1500);
   },
 
-  deathScene() {
+  showDeathScene() {
     if (!game.isOn) return;
     game.isOn = false;
     game.state = 'DEAD';
@@ -167,6 +182,10 @@ function showScreen(screen) {
     case screens.background:
       screens.background.animation = 'fadein 0.1s forwards';
       break;
+    case screens.transitionFade:
+      screens.transitionFade.opacity = '100%';
+      screens.transitionFade.transition = 'ease-in 1s';
+      break;
     case screens.transitionIris:
       screens.transitionIris.borderLeftWidth = '510px';
       screens.transitionIris.borderRightWidth = '510px';
@@ -188,6 +207,9 @@ function hideScreen(screen) {
     case screens.background:
       screens.background.animation = 'fadeout 2.5s forwards';
       break;
+    case screens.transitionFade:
+      screens.transitionFade.opacity = '0%';
+      screens.transitionFade.transition = 'none';
     case screens.transitionIris:
       screens.transitionIris.borderWidth = '0px';
       screens.transitionIris.transition = 'none';

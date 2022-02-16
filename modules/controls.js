@@ -20,7 +20,7 @@ export default function playerControls(e) {
     case controls.UP_2_BIND:
       if (!jumpFlag && isHeld) {
         jumpFlag = true;
-        sounds.jump.currentTime = 0;
+        // sounds.jump.currentTime = 0;
         // playSound(sounds.jump);
       } else if (!isHeld) {
         jumpFlag = false;

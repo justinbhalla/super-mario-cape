@@ -2,6 +2,7 @@ const loading = [];
 
 const IMAGE_PATHS = [
   'images/atlas/atlas.png',
+  'images/levels/bg-plains.jpg',
   'images/levels/bg-athletic.jpg',
   'images/levels/bg-finale.jpg',
   'images/levels/bg-haunted.jpg',
@@ -13,6 +14,7 @@ const IMAGE_PATHS = [
 ];
 
 const AUDIO_PATHS = [
+  'audio/music/yoshis-island.mp3',
   'audio/music/athletic.mp3',
   'audio/music/cast-list.mp3',
   'audio/music/fortress.mp3',
@@ -24,6 +26,7 @@ const AUDIO_PATHS = [
   'audio/sfx/fortress-clear.wav',
   'audio/sfx/game-over.wav',
   'audio/sfx/iris-out.wav',
+  'audio/sfx/message-block.wav',
   'audio/sfx/lost-a-life.wav',
 ];
 

@@ -72,16 +72,19 @@ class Mario extends Element {
     this.isDead = false;
     this.gotStar = false;
     this.isJumping = true;
+    this.passedTutorial = false;
   }
 
   move() {
     let { isLeft, isRight, isUp, isDown } = controls;
-    let { xPos, yPos, xSpeed, gravity, wind } = this;
+    let { xPos, yPos, xSpeed, ySpeed, gravity, wind } = this;
     let hasFallen = yPos + this.height / 2 > CANVAS_HEIGHT;
+    let hasSpaceBottom = yPos + this.height < CANVAS_HEIGHT;
     let hasSpaceRight = xPos + this.width < CANVAS_WIDTH;
     let hasSpaceLeft = xPos > 0;
 
-    if (isRight && hasSpaceRight) this.xPos += xSpeed + wind;
+    if ((isRight && hasSpaceRight) || (isRight && game.state === 'TUTORIAL'))
+      this.xPos += xSpeed + wind;
     if (isLeft && hasSpaceLeft) this.xPos -= xSpeed - wind;
 
     if (isUp && !this.isJumping) {
@@ -94,14 +97,23 @@ class Mario extends Element {
       this.spriteFrame = 0;
     }
 
-    if (isDown) {
-      this.yPos += xSpeed + gravity;
+    if (
+      (game.state === 'TUTORIAL' && hasSpaceBottom && isDown) ||
+      (game.state !== 'TUTORIAL' && isDown)
+    ) {
+      this.yPos += ySpeed + gravity;
       this.spriteFrame = 2;
     }
 
-    if (game.isOn && hasFallen) this.isDead = true;
+    if (game.isOn && game.state !== 'TUTORIAL' && hasFallen) this.isDead = true;
     if (game.state === 'DEAD') this.spriteFrame = 3;
-    if (game.isOn) this.yPos += gravity;
+    if (xPos + this.width / 2 > CANVAS_WIDTH) this.passedTutorial = true;
+    if (
+      (game.isOn && game.state === 'TUTORIAL' && hasSpaceBottom) ||
+      (game.isOn && game.state !== 'TUTORIAL')
+    ) {
+      this.yPos += gravity;
+    }
   }
 
   jump() {
