@@ -14,6 +14,7 @@ const PIXELS = {
 };
 
 const game = {
+  FPS_INTERVAL: 1000 / 60,
   state: 'START',
   isOn: false,
   scrollSpeed: 6,
@@ -63,7 +64,6 @@ const elements = [];
 elements.update = () => elements.forEach((e) => e.update());
 elements.move = () => elements.forEach((e) => e.move());
 
-let fpsInterval = 1000 / 60;
 let then = Date.now();
 let elapsed, now;
 
@@ -72,8 +72,8 @@ function runGame() {
   now = Date.now();
   elapsed = now - then;
 
-  if (elapsed > fpsInterval) {
-    then = now - (elapsed % fpsInterval);
+  if (elapsed > game.FPS_INTERVAL) {
+    then = now - (elapsed % game.FPS_INTERVAL);
     drawBackground();
     player.move();
     elements.update();
@@ -168,4 +168,4 @@ window.addEventListener('load', setGame);
 
 export { LEVELS, Level } from './modules/levels.js';
 export * as Elements from './modules/elements.js';
-export { PIXELS, context, game, controller, player, elements, fpsInterval };
+export { PIXELS, context, game, controller, player, elements };

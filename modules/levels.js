@@ -1,4 +1,4 @@
-import { game, elements, PIXELS, Elements, fpsInterval } from '../main.js';
+import { game, elements, PIXELS, Elements } from '../main.js';
 
 let {
   YellowSuperKoopa,

@@ -5,7 +5,6 @@ import {
   controller,
   player,
   elements,
-  fpsInterval,
 } from '../main.js';
 
 const atlas = new Image(972, 736);
@@ -39,7 +38,7 @@ class Element {
         elements.splice(elements.indexOf(this), 1);
       }
 
-      this.time += fpsInterval;
+      this.time += game.FPS_INTERVAL;
     }
   }
 }
