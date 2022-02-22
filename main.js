@@ -59,10 +59,20 @@ const controller = {
   },
 };
 
-const player = new Mario();
-const elements = [];
-elements.draw = () => elements.forEach((e) => e.draw());
-elements.move = () => elements.forEach((e) => e.move());
+const elements = {
+  player: new Mario(),
+  enemies: [],
+
+  update() {
+    this.enemies.forEach((enemy) => {
+      enemy.draw();
+      enemy.move();
+    });
+
+    this.player.draw();
+    this.player.move();
+  },
+};
 
 let then = Date.now();
 let elapsed, now;
@@ -75,15 +85,12 @@ function runGame() {
   if (elapsed > game.FPS_INTERVAL) {
     then = now - (elapsed % game.FPS_INTERVAL);
     drawBackground();
-    player.move();
-    elements.draw();
-    player.draw();
-    if (game.isOn) elements.move();
+    elements.update();
 
-    // if (player.isDead) storyboard.showDeathScene();
-    if (player.passedTutorial && game.state === 'TUTORIAL')
+    // if (elements.player.isDead) storyboard.showDeathScene();
+    if (elements.player.passedTutorial && game.state === 'TUTORIAL')
       storyboard.showSceneMap();
-    if (player.gotStar) passScene();
+    if (elements.player.gotStar) passScene();
   }
 }
 
@@ -167,5 +174,5 @@ function setControls() {
 window.addEventListener('load', setGame);
 
 export { LEVELS, Level } from './modules/levels.js';
-export * as Elements from './modules/elements.js';
-export { PIXELS, context, game, controller, player, elements };
+export * as Enemies from './modules/elements.js';
+export { PIXELS, context, game, controller, elements };

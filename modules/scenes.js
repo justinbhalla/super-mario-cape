@@ -1,12 +1,4 @@
-import {
-  PIXELS,
-  game,
-  controller,
-  player,
-  elements,
-  LEVELS,
-  Level,
-} from '../main.js';
+import { PIXELS, game, controller, elements, LEVELS, Level } from '../main.js';
 
 const screens = {
   canvas: document.getElementById('canvas').style,
@@ -47,7 +39,7 @@ const storyboard = {
       playSound(game.music.yoshisIsland);
       game.state = 'TUTORIAL';
       game.isOn = true;
-      player.reset();
+      elements.player.reset();
     }, 1500);
   },
 
@@ -77,10 +69,10 @@ const storyboard = {
     playSound(currentLevel.audio);
     game.timeouts.forEach((t) => clearTimeout(t));
     game.state = 'PLAY';
-    elements.length = 0;
-    player.isDead = false;
-    player.gotStar = false;
-    player.reset();
+    elements.enemies.length = 0;
+    elements.player.isDead = false;
+    elements.player.gotStar = false;
+    elements.player.reset();
 
     setTimeout(() => {
       hideScreen(screens.level);
@@ -98,10 +90,10 @@ const storyboard = {
     controller.reset();
 
     setTimeout(() => {
-      let yPeak = player.yPos - 200;
+      let yPeak = elements.player.yPos - 200;
       let yFlag = true;
       let animate = setInterval(() => {
-        let yPos = player.yPos;
+        let yPos = elements.player.yPos;
 
         if ((yPos > PIXELS.height && !game.hasSound) || sounds.died.ended) {
           if (!game.lives) {
@@ -123,11 +115,11 @@ const storyboard = {
 
           clearInterval(animate);
         } else if (yPos > yPeak && yFlag) {
-          player.yPos -= 10;
+          elements.player.yPos -= 10;
         } else if (yPos < yPeak && yFlag) {
           yFlag = false;
         } else {
-          player.yPos += 12.5;
+          elements.player.yPos += 12.5;
         }
       }, 10);
     }, 500);
@@ -140,7 +132,7 @@ const storyboard = {
     LEVELS[game.level].audio.pause();
     game.level++;
     controller.reset();
-    elements.length = 0;
+    elements.enemies.length = 0;
 
     let gameWon = game.level === LEVELS.length;
     let type = gameWon ? 'fortress' : 'course';
@@ -172,8 +164,8 @@ const storyboard = {
   endScene() {
     showScreen(screens.outro);
     hideScreen(screens.hud);
-    player.xPos = PIXELS.xMid - player.width / 2 - 15;
-    player.yPos = PIXELS.yMid + 75;
+    elements.player.xPos = PIXELS.xMid - elements.player.width / 2 - 15;
+    elements.player.yPos = PIXELS.yMid + 75;
     game.state = 'END';
     game.scrollSpeed = 2;
     let finale = new Level('ending', 'images/end.jpg', 'ending', 0.5);

@@ -1,11 +1,4 @@
-import {
-  PIXELS,
-  context,
-  game,
-  controller,
-  player,
-  elements,
-} from '../main.js';
+import { PIXELS, context, game, controller, elements } from '../main.js';
 
 const atlas = new Image(972, 736);
 atlas.src = 'images/atlas/atlas.png';
@@ -29,13 +22,13 @@ class Element {
       if (game.isOn) drawSprite(this);
 
       if (this instanceof Star && didHitMario(this)) {
-        player.gotStar = true;
+        elements.player.gotStar = true;
       } else if (didHitMario(this)) {
-        player.isDead = true;
+        elements.player.isDead = true;
       }
 
       if (this.xPos + this.width < 0) {
-        elements.splice(elements.indexOf(this), 1);
+        elements.enemies.splice(elements.enemies.indexOf(this), 1);
       }
 
       this.time += game.FPS_INTERVAL;
@@ -532,7 +525,7 @@ function drawImage(element) {
 function didHitMario(element) {
   let { xBox: ex1, yBox: ey1, wBox: ew, hBox: eh } = element;
 
-  let { xBox: mx1, yBox: my1, wBox: mw, hBox: mh } = player;
+  let { xBox: mx1, yBox: my1, wBox: mw, hBox: mh } = elements.player;
 
   let [ex2, mx2] = [ex1 + ew, mx1 + mw];
   let [ey2, my2] = [ey1 + eh, my1 + mh];

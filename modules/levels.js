@@ -1,4 +1,4 @@
-import { game, elements, PIXELS, Elements } from '../main.js';
+import { game, elements, PIXELS, Enemies } from '../main.js';
 
 let {
   YellowSuperKoopa,
@@ -18,7 +18,7 @@ let {
   BulletBill,
   Grinder,
   Star,
-} = Elements;
+} = Enemies;
 
 class Level {
   constructor(name, background, audio, volume) {
