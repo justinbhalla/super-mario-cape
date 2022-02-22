@@ -1,12 +1,4 @@
-import {
-  game,
-  elements,
-  CANVAS_HEIGHT,
-  CANVAS_MID_Y,
-  Elements,
-  fpsInterval,
-  CANVAS_WIDTH,
-} from '../main.js';
+import { game, elements, PIXELS, Elements, fpsInterval } from '../main.js';
 
 let {
   YellowSuperKoopa,
@@ -119,8 +111,8 @@ OVERWORLD.spawn = () => {
 };
 
 ATHLETIC.spawn = () => {
-  spawnElement(1.5, new Parakoopa(CANVAS_MID_Y, 'green'));
-  spawnElement(1.5, new Parakoopa(CANVAS_MID_Y, 'blue', true));
+  spawnElement(1.5, new Parakoopa(PIXELS.yMid, 'green'));
+  spawnElement(1.5, new Parakoopa(PIXELS.yMid, 'blue', true));
   spawnElement(2.5, new Parakoopa(100, 'green'));
   spawnElement(2.5, new Parakoopa(100, 'blue', true));
   spawnElement(3.5, new Parakoopa(550, 'green'));
@@ -133,66 +125,66 @@ ATHLETIC.spawn = () => {
   spawnElement(5.5, new Parakoopa(550, 'blue', true));
   spawnElement(5.75, new Parakoopa(550, 'blue', true));
   spawnElement(6, new Parakoopa(550, 'blue', true));
-  spawnElement(6.75, new FlyingBrother(CANVAS_MID_Y - 350));
-  spawnElement(7.0, new FlyingBrother(CANVAS_MID_Y - 350));
-  spawnElement(7.25, new FlyingBrother(CANVAS_MID_Y - 350));
-  spawnElement(7.5, new FlyingBrother(CANVAS_MID_Y - 350));
-  spawnElement(7.75, new FlyingBrother(CANVAS_MID_Y - 350));
-  spawnElement(8, new FlyingBrother(CANVAS_MID_Y - 350));
+  spawnElement(6.75, new FlyingBrother(PIXELS.yMid - 350));
+  spawnElement(7.0, new FlyingBrother(PIXELS.yMid - 350));
+  spawnElement(7.25, new FlyingBrother(PIXELS.yMid - 350));
+  spawnElement(7.5, new FlyingBrother(PIXELS.yMid - 350));
+  spawnElement(7.75, new FlyingBrother(PIXELS.yMid - 350));
+  spawnElement(8, new FlyingBrother(PIXELS.yMid - 350));
 
-  spawnElement(7, new Chainsaw(CANVAS_MID_Y - 300));
-  spawnElement(7, new Chainsaw(CANVAS_MID_Y + 200));
-  spawnElement(7.25, new Chainsaw(CANVAS_MID_Y - 300));
-  spawnElement(7.25, new Chainsaw(CANVAS_MID_Y + 200));
-  spawnElement(7.5, new Chainsaw(CANVAS_MID_Y - 300));
-  spawnElement(7.5, new Chainsaw(CANVAS_MID_Y + 200));
-  spawnElement(7.75, new Chainsaw(CANVAS_MID_Y - 300));
-  spawnElement(7.75, new Chainsaw(CANVAS_MID_Y + 200));
+  spawnElement(7, new Chainsaw(PIXELS.yMid - 300));
+  spawnElement(7, new Chainsaw(PIXELS.yMid + 200));
+  spawnElement(7.25, new Chainsaw(PIXELS.yMid - 300));
+  spawnElement(7.25, new Chainsaw(PIXELS.yMid + 200));
+  spawnElement(7.5, new Chainsaw(PIXELS.yMid - 300));
+  spawnElement(7.5, new Chainsaw(PIXELS.yMid + 200));
+  spawnElement(7.75, new Chainsaw(PIXELS.yMid - 300));
+  spawnElement(7.75, new Chainsaw(PIXELS.yMid + 200));
 
-  spawnElement(8, new Chainsaw(CANVAS_MID_Y - 350));
-  spawnElement(8, new Chainsaw(CANVAS_MID_Y + 150));
-  spawnElement(8.25, new Chainsaw(CANVAS_MID_Y - 350));
-  spawnElement(8.25, new Chainsaw(CANVAS_MID_Y + 150));
-  spawnElement(8.5, new Chainsaw(CANVAS_MID_Y - 350));
-  spawnElement(8.5, new Chainsaw(CANVAS_MID_Y + 150));
-  spawnElement(8.75, new Chainsaw(CANVAS_MID_Y - 350));
-  spawnElement(8.75, new Chainsaw(CANVAS_MID_Y + 150));
+  spawnElement(8, new Chainsaw(PIXELS.yMid - 350));
+  spawnElement(8, new Chainsaw(PIXELS.yMid + 150));
+  spawnElement(8.25, new Chainsaw(PIXELS.yMid - 350));
+  spawnElement(8.25, new Chainsaw(PIXELS.yMid + 150));
+  spawnElement(8.5, new Chainsaw(PIXELS.yMid - 350));
+  spawnElement(8.5, new Chainsaw(PIXELS.yMid + 150));
+  spawnElement(8.75, new Chainsaw(PIXELS.yMid - 350));
+  spawnElement(8.75, new Chainsaw(PIXELS.yMid + 150));
 
-  spawnElement(9, new Chainsaw(CANVAS_MID_Y - 400));
-  spawnElement(9, new Chainsaw(CANVAS_MID_Y + 100));
-  spawnElement(9.25, new Chainsaw(CANVAS_MID_Y - 400));
-  spawnElement(9.25, new Chainsaw(CANVAS_MID_Y + 100));
-  spawnElement(9.5, new Chainsaw(CANVAS_MID_Y - 400));
-  spawnElement(9.5, new Chainsaw(CANVAS_MID_Y + 100));
-  spawnElement(9.75, new Chainsaw(CANVAS_MID_Y - 400));
-  spawnElement(9.75, new Chainsaw(CANVAS_MID_Y + 100));
+  spawnElement(9, new Chainsaw(PIXELS.yMid - 400));
+  spawnElement(9, new Chainsaw(PIXELS.yMid + 100));
+  spawnElement(9.25, new Chainsaw(PIXELS.yMid - 400));
+  spawnElement(9.25, new Chainsaw(PIXELS.yMid + 100));
+  spawnElement(9.5, new Chainsaw(PIXELS.yMid - 400));
+  spawnElement(9.5, new Chainsaw(PIXELS.yMid + 100));
+  spawnElement(9.75, new Chainsaw(PIXELS.yMid - 400));
+  spawnElement(9.75, new Chainsaw(PIXELS.yMid + 100));
 
-  spawnElement(10, new Chainsaw(CANVAS_MID_Y - 450));
-  spawnElement(10, new Chainsaw(CANVAS_MID_Y + 50));
-  spawnElement(10.25, new Chainsaw(CANVAS_MID_Y - 450));
-  spawnElement(10.25, new Chainsaw(CANVAS_MID_Y + 50));
-  spawnElement(10.5, new Chainsaw(CANVAS_MID_Y - 450));
-  spawnElement(10.5, new Chainsaw(CANVAS_MID_Y + 50));
-  spawnElement(10.75, new Chainsaw(CANVAS_MID_Y - 450));
-  spawnElement(10.75, new Chainsaw(CANVAS_MID_Y + 50));
+  spawnElement(10, new Chainsaw(PIXELS.yMid - 450));
+  spawnElement(10, new Chainsaw(PIXELS.yMid + 50));
+  spawnElement(10.25, new Chainsaw(PIXELS.yMid - 450));
+  spawnElement(10.25, new Chainsaw(PIXELS.yMid + 50));
+  spawnElement(10.5, new Chainsaw(PIXELS.yMid - 450));
+  spawnElement(10.5, new Chainsaw(PIXELS.yMid + 50));
+  spawnElement(10.75, new Chainsaw(PIXELS.yMid - 450));
+  spawnElement(10.75, new Chainsaw(PIXELS.yMid + 50));
 
-  spawnElement(11, new Chainsaw(CANVAS_MID_Y - 500));
-  spawnElement(11, new Chainsaw(CANVAS_MID_Y));
-  spawnElement(11.25, new Chainsaw(CANVAS_MID_Y - 500));
-  spawnElement(11.25, new Chainsaw(CANVAS_MID_Y));
-  spawnElement(11.5, new Chainsaw(CANVAS_MID_Y - 500));
-  spawnElement(11.5, new Chainsaw(CANVAS_MID_Y));
-  spawnElement(11.75, new Chainsaw(CANVAS_MID_Y - 500));
-  spawnElement(11.75, new Chainsaw(CANVAS_MID_Y));
+  spawnElement(11, new Chainsaw(PIXELS.yMid - 500));
+  spawnElement(11, new Chainsaw(PIXELS.yMid));
+  spawnElement(11.25, new Chainsaw(PIXELS.yMid - 500));
+  spawnElement(11.25, new Chainsaw(PIXELS.yMid));
+  spawnElement(11.5, new Chainsaw(PIXELS.yMid - 500));
+  spawnElement(11.5, new Chainsaw(PIXELS.yMid));
+  spawnElement(11.75, new Chainsaw(PIXELS.yMid - 500));
+  spawnElement(11.75, new Chainsaw(PIXELS.yMid));
 
-  spawnElement(12, new Chainsaw(CANVAS_MID_Y - 600));
-  spawnElement(12, new Chainsaw(CANVAS_MID_Y - 50));
-  spawnElement(12.25, new Chainsaw(CANVAS_MID_Y - 600));
-  spawnElement(12.25, new Chainsaw(CANVAS_MID_Y - 50));
-  spawnElement(12.5, new Chainsaw(CANVAS_MID_Y - 600));
-  spawnElement(12.5, new Chainsaw(CANVAS_MID_Y - 50));
-  spawnElement(12.75, new Chainsaw(CANVAS_MID_Y - 600));
-  spawnElement(12.75, new Chainsaw(CANVAS_MID_Y - 50));
+  spawnElement(12, new Chainsaw(PIXELS.yMid - 600));
+  spawnElement(12, new Chainsaw(PIXELS.yMid - 50));
+  spawnElement(12.25, new Chainsaw(PIXELS.yMid - 600));
+  spawnElement(12.25, new Chainsaw(PIXELS.yMid - 50));
+  spawnElement(12.5, new Chainsaw(PIXELS.yMid - 600));
+  spawnElement(12.5, new Chainsaw(PIXELS.yMid - 50));
+  spawnElement(12.75, new Chainsaw(PIXELS.yMid - 600));
+  spawnElement(12.75, new Chainsaw(PIXELS.yMid - 50));
 
   spawnElement(13.25, new Chainsaw(176));
   spawnElement(13.75, new Chainsaw(176 * 2));
@@ -222,30 +214,30 @@ ATHLETIC.spawn = () => {
   spawnElement(22, new Chainsaw(176 * 3));
 
   //
-  spawnElement(23.0, new Parakoopa(CANVAS_MID_Y - 400, 'blue'));
-  spawnElement(23.0, new Parakoopa(CANVAS_MID_Y - 300, 'blue'));
-  spawnElement(23.0, new Parakoopa(CANVAS_MID_Y - 200, 'blue'));
-  spawnElement(23.1, new Parakoopa(CANVAS_MID_Y - 400, 'green'));
-  spawnElement(23.1, new Parakoopa(CANVAS_MID_Y - 300, 'green'));
-  spawnElement(23.1, new Parakoopa(CANVAS_MID_Y - 200, 'green'));
-  spawnElement(23.2, new Parakoopa(CANVAS_MID_Y - 400, 'blue'));
-  spawnElement(23.2, new Parakoopa(CANVAS_MID_Y - 300, 'blue'));
-  spawnElement(23.2, new Parakoopa(CANVAS_MID_Y - 200, 'blue'));
-  spawnElement(23.3, new Parakoopa(CANVAS_MID_Y - 400, 'green'));
-  spawnElement(23.3, new Parakoopa(CANVAS_MID_Y - 300, 'green'));
-  spawnElement(23.3, new Parakoopa(CANVAS_MID_Y - 200, 'green'));
-  spawnElement(23.4, new Parakoopa(CANVAS_MID_Y - 400, 'blue'));
-  spawnElement(23.4, new Parakoopa(CANVAS_MID_Y - 300, 'blue'));
-  spawnElement(23.4, new Parakoopa(CANVAS_MID_Y - 200, 'blue'));
-  spawnElement(23.5, new Parakoopa(CANVAS_MID_Y - 400, 'green'));
-  spawnElement(23.5, new Parakoopa(CANVAS_MID_Y - 300, 'green'));
-  spawnElement(23.5, new Parakoopa(CANVAS_MID_Y - 200, 'green'));
-  spawnElement(23.6, new Parakoopa(CANVAS_MID_Y - 400, 'blue'));
-  spawnElement(23.6, new Parakoopa(CANVAS_MID_Y - 300, 'blue'));
-  spawnElement(23.6, new Parakoopa(CANVAS_MID_Y - 200, 'blue'));
-  spawnElement(23.7, new Parakoopa(CANVAS_MID_Y - 400, 'green'));
-  spawnElement(23.7, new Parakoopa(CANVAS_MID_Y - 300, 'green'));
-  spawnElement(23.7, new Parakoopa(CANVAS_MID_Y - 200, 'green'));
+  spawnElement(23.0, new Parakoopa(PIXELS.yMid - 400, 'blue'));
+  spawnElement(23.0, new Parakoopa(PIXELS.yMid - 300, 'blue'));
+  spawnElement(23.0, new Parakoopa(PIXELS.yMid - 200, 'blue'));
+  spawnElement(23.1, new Parakoopa(PIXELS.yMid - 400, 'green'));
+  spawnElement(23.1, new Parakoopa(PIXELS.yMid - 300, 'green'));
+  spawnElement(23.1, new Parakoopa(PIXELS.yMid - 200, 'green'));
+  spawnElement(23.2, new Parakoopa(PIXELS.yMid - 400, 'blue'));
+  spawnElement(23.2, new Parakoopa(PIXELS.yMid - 300, 'blue'));
+  spawnElement(23.2, new Parakoopa(PIXELS.yMid - 200, 'blue'));
+  spawnElement(23.3, new Parakoopa(PIXELS.yMid - 400, 'green'));
+  spawnElement(23.3, new Parakoopa(PIXELS.yMid - 300, 'green'));
+  spawnElement(23.3, new Parakoopa(PIXELS.yMid - 200, 'green'));
+  spawnElement(23.4, new Parakoopa(PIXELS.yMid - 400, 'blue'));
+  spawnElement(23.4, new Parakoopa(PIXELS.yMid - 300, 'blue'));
+  spawnElement(23.4, new Parakoopa(PIXELS.yMid - 200, 'blue'));
+  spawnElement(23.5, new Parakoopa(PIXELS.yMid - 400, 'green'));
+  spawnElement(23.5, new Parakoopa(PIXELS.yMid - 300, 'green'));
+  spawnElement(23.5, new Parakoopa(PIXELS.yMid - 200, 'green'));
+  spawnElement(23.6, new Parakoopa(PIXELS.yMid - 400, 'blue'));
+  spawnElement(23.6, new Parakoopa(PIXELS.yMid - 300, 'blue'));
+  spawnElement(23.6, new Parakoopa(PIXELS.yMid - 200, 'blue'));
+  spawnElement(23.7, new Parakoopa(PIXELS.yMid - 400, 'green'));
+  spawnElement(23.7, new Parakoopa(PIXELS.yMid - 300, 'green'));
+  spawnElement(23.7, new Parakoopa(PIXELS.yMid - 200, 'green'));
 
   spawnElement(25.0, new FlyingBrother(-250));
   spawnElement(25.25, new FlyingBrother(-250));
@@ -308,36 +300,36 @@ HAUNTED.spawn = () => {
   spawnElement(5.2, new BooBuddy(375));
   spawnElement(5.2, new BooBuddy(450));
 
-  spawnElement(5.4, new BigBoo(CANVAS_MID_Y));
-  spawnElement(6.5, new Eerie(CANVAS_MID_Y - 250));
-  spawnElement(6.5, new Eerie(CANVAS_MID_Y + 150));
-  spawnElement(7.5, new Eerie(CANVAS_MID_Y - 250));
-  spawnElement(7.5, new Eerie(CANVAS_MID_Y + 150));
+  spawnElement(5.4, new BigBoo(PIXELS.yMid));
+  spawnElement(6.5, new Eerie(PIXELS.yMid - 250));
+  spawnElement(6.5, new Eerie(PIXELS.yMid + 150));
+  spawnElement(7.5, new Eerie(PIXELS.yMid - 250));
+  spawnElement(7.5, new Eerie(PIXELS.yMid + 150));
   spawnElement(8.5, new BigBubble(0));
 
-  spawnElement(10, new BigBubble(CANVAS_MID_Y));
-  spawnElement(10.5, new BigBubble(CANVAS_MID_Y));
+  spawnElement(10, new BigBubble(PIXELS.yMid));
+  spawnElement(10.5, new BigBubble(PIXELS.yMid));
 
-  spawnElement(12, new BigBubble(CANVAS_MID_Y - 150));
-  spawnElement(12.5, new BigBubble(CANVAS_MID_Y - 150));
-  spawnElement(13.0, new BigBubble(CANVAS_MID_Y - 150));
+  spawnElement(12, new BigBubble(PIXELS.yMid - 150));
+  spawnElement(12.5, new BigBubble(PIXELS.yMid - 150));
+  spawnElement(13.0, new BigBubble(PIXELS.yMid - 150));
 
   spawnElement(14.5, new BigBubble(0));
-  spawnElement(14.5, new BigBubble(CANVAS_HEIGHT - 200));
+  spawnElement(14.5, new BigBubble(PIXELS.height - 200));
 
   spawnElement(16.0, new BigBubble(0));
-  spawnElement(16.0, new BigBubble(CANVAS_HEIGHT - 200));
+  spawnElement(16.0, new BigBubble(PIXELS.height - 200));
 
-  spawnElement(18 + 0.5, new BooBuddy(CANVAS_MID_Y));
-  spawnElement(18.1 + 0.5, new BooBuddy(CANVAS_MID_Y + 125));
-  spawnElement(18.1 + 0.5, new BooBuddy(CANVAS_MID_Y - 125));
-  spawnElement(18.2 + 0.5, new BooBuddy(CANVAS_MID_Y + 225));
-  spawnElement(18.2 + 0.5, new BooBuddy(CANVAS_MID_Y - 225));
-  spawnElement(18.3 + 0.5, new BooBuddy(CANVAS_MID_Y + 125));
-  spawnElement(18.3 + 0.5, new BooBuddy(CANVAS_MID_Y - 125));
-  spawnElement(18.4 + 0.5, new BooBuddy(CANVAS_MID_Y));
+  spawnElement(18 + 0.5, new BooBuddy(PIXELS.yMid));
+  spawnElement(18.1 + 0.5, new BooBuddy(PIXELS.yMid + 125));
+  spawnElement(18.1 + 0.5, new BooBuddy(PIXELS.yMid - 125));
+  spawnElement(18.2 + 0.5, new BooBuddy(PIXELS.yMid + 225));
+  spawnElement(18.2 + 0.5, new BooBuddy(PIXELS.yMid - 225));
+  spawnElement(18.3 + 0.5, new BooBuddy(PIXELS.yMid + 125));
+  spawnElement(18.3 + 0.5, new BooBuddy(PIXELS.yMid - 125));
+  spawnElement(18.4 + 0.5, new BooBuddy(PIXELS.yMid));
 
-  let mid = CANVAS_MID_Y - 200;
+  let mid = PIXELS.yMid - 200;
   spawnElement(19.5 + 0.5, new BooBuddy(mid + 125));
   spawnElement(19.6 + 0.5, new BooBuddy(mid));
   spawnElement(19.7 + 0.5, new BooBuddy(mid + 125));
@@ -345,7 +337,7 @@ HAUNTED.spawn = () => {
   spawnElement(19.8 + 0.5, new BooBuddy(mid));
   spawnElement(19.9 + 0.5, new BooBuddy(mid + 125));
 
-  mid = CANVAS_MID_Y + 150;
+  mid = PIXELS.yMid + 150;
   spawnElement(21.0 + 0.5, new BooBuddy(mid - 125));
   spawnElement(21.1 + 0.5, new BooBuddy(mid));
   spawnElement(21.2 + 0.5, new BooBuddy(mid + 125));
@@ -353,7 +345,7 @@ HAUNTED.spawn = () => {
   spawnElement(21.3 + 0.5, new BooBuddy(mid));
   spawnElement(21.4 + 0.5, new BooBuddy(mid - 125));
 
-  mid = CANVAS_MID_Y;
+  mid = PIXELS.yMid;
   spawnElement(23, new BooBuddy(mid - 175));
   spawnElement(23, new BooBuddy(mid + 125));
   spawnElement(23.1, new BooBuddy(mid - 275));
@@ -365,181 +357,181 @@ HAUNTED.spawn = () => {
   spawnElement(23.4, new BooBuddy(mid - 175));
   spawnElement(23.4, new BooBuddy(mid + 125));
 
-  spawnElement(25, new Eerie(CANVAS_MID_Y - 225));
-  spawnElement(25.1, new Eerie(CANVAS_MID_Y - 225));
-  spawnElement(25.2, new Eerie(CANVAS_MID_Y - 225));
-  spawnElement(25.3, new Eerie(CANVAS_MID_Y - 225));
-  spawnElement(25.4, new Eerie(CANVAS_MID_Y - 225));
-  spawnElement(25.5, new Eerie(CANVAS_MID_Y - 225));
-  spawnElement(25.6, new Eerie(CANVAS_MID_Y - 225));
-  spawnElement(25.7, new Eerie(CANVAS_MID_Y - 225));
-  spawnElement(25.8, new Eerie(CANVAS_MID_Y - 225));
-  spawnElement(25.9, new Eerie(CANVAS_MID_Y - 225));
-  spawnElement(26, new Eerie(CANVAS_MID_Y - 225));
-  spawnElement(26.1, new Eerie(CANVAS_MID_Y - 225));
-  spawnElement(26.2, new Eerie(CANVAS_MID_Y - 225));
-  spawnElement(26.3, new Eerie(CANVAS_MID_Y - 225));
-  spawnElement(26.4, new Eerie(CANVAS_MID_Y - 225));
-  spawnElement(26.5, new Eerie(CANVAS_MID_Y - 225));
+  spawnElement(25, new Eerie(PIXELS.yMid - 225));
+  spawnElement(25.1, new Eerie(PIXELS.yMid - 225));
+  spawnElement(25.2, new Eerie(PIXELS.yMid - 225));
+  spawnElement(25.3, new Eerie(PIXELS.yMid - 225));
+  spawnElement(25.4, new Eerie(PIXELS.yMid - 225));
+  spawnElement(25.5, new Eerie(PIXELS.yMid - 225));
+  spawnElement(25.6, new Eerie(PIXELS.yMid - 225));
+  spawnElement(25.7, new Eerie(PIXELS.yMid - 225));
+  spawnElement(25.8, new Eerie(PIXELS.yMid - 225));
+  spawnElement(25.9, new Eerie(PIXELS.yMid - 225));
+  spawnElement(26, new Eerie(PIXELS.yMid - 225));
+  spawnElement(26.1, new Eerie(PIXELS.yMid - 225));
+  spawnElement(26.2, new Eerie(PIXELS.yMid - 225));
+  spawnElement(26.3, new Eerie(PIXELS.yMid - 225));
+  spawnElement(26.4, new Eerie(PIXELS.yMid - 225));
+  spawnElement(26.5, new Eerie(PIXELS.yMid - 225));
 
-  spawnElement(25, new Eerie(CANVAS_MID_Y - 300));
-  spawnElement(25.1, new Eerie(CANVAS_MID_Y - 300));
-  spawnElement(25.2, new Eerie(CANVAS_MID_Y - 300));
-  spawnElement(25.3, new Eerie(CANVAS_MID_Y - 300));
-  spawnElement(25.4, new Eerie(CANVAS_MID_Y - 300));
-  spawnElement(25.5, new Eerie(CANVAS_MID_Y - 300));
-  spawnElement(25.6, new Eerie(CANVAS_MID_Y - 300));
-  spawnElement(25.7, new Eerie(CANVAS_MID_Y - 300));
-  spawnElement(25.8, new Eerie(CANVAS_MID_Y - 300));
-  spawnElement(25.9, new Eerie(CANVAS_MID_Y - 300));
-  spawnElement(26, new Eerie(CANVAS_MID_Y - 300));
-  spawnElement(26.1, new Eerie(CANVAS_MID_Y - 300));
-  spawnElement(26.2, new Eerie(CANVAS_MID_Y - 300));
-  spawnElement(26.3, new Eerie(CANVAS_MID_Y - 300));
-  spawnElement(26.4, new Eerie(CANVAS_MID_Y - 300));
-  spawnElement(26.5, new Eerie(CANVAS_MID_Y - 300));
+  spawnElement(25, new Eerie(PIXELS.yMid - 300));
+  spawnElement(25.1, new Eerie(PIXELS.yMid - 300));
+  spawnElement(25.2, new Eerie(PIXELS.yMid - 300));
+  spawnElement(25.3, new Eerie(PIXELS.yMid - 300));
+  spawnElement(25.4, new Eerie(PIXELS.yMid - 300));
+  spawnElement(25.5, new Eerie(PIXELS.yMid - 300));
+  spawnElement(25.6, new Eerie(PIXELS.yMid - 300));
+  spawnElement(25.7, new Eerie(PIXELS.yMid - 300));
+  spawnElement(25.8, new Eerie(PIXELS.yMid - 300));
+  spawnElement(25.9, new Eerie(PIXELS.yMid - 300));
+  spawnElement(26, new Eerie(PIXELS.yMid - 300));
+  spawnElement(26.1, new Eerie(PIXELS.yMid - 300));
+  spawnElement(26.2, new Eerie(PIXELS.yMid - 300));
+  spawnElement(26.3, new Eerie(PIXELS.yMid - 300));
+  spawnElement(26.4, new Eerie(PIXELS.yMid - 300));
+  spawnElement(26.5, new Eerie(PIXELS.yMid - 300));
 
-  spawnElement(25, new Eerie(CANVAS_MID_Y - 375));
-  spawnElement(25.1, new Eerie(CANVAS_MID_Y - 375));
-  spawnElement(25.2, new Eerie(CANVAS_MID_Y - 375));
-  spawnElement(25.3, new Eerie(CANVAS_MID_Y - 375));
-  spawnElement(25.4, new Eerie(CANVAS_MID_Y - 375));
-  spawnElement(25.5, new Eerie(CANVAS_MID_Y - 375));
-  spawnElement(25.6, new Eerie(CANVAS_MID_Y - 375));
-  spawnElement(25.7, new Eerie(CANVAS_MID_Y - 375));
-  spawnElement(25.8, new Eerie(CANVAS_MID_Y - 375));
-  spawnElement(25.9, new Eerie(CANVAS_MID_Y - 375));
-  spawnElement(26, new Eerie(CANVAS_MID_Y - 375));
-  spawnElement(26.1, new Eerie(CANVAS_MID_Y - 375));
-  spawnElement(26.2, new Eerie(CANVAS_MID_Y - 375));
-  spawnElement(26.3, new Eerie(CANVAS_MID_Y - 375));
-  spawnElement(26.4, new Eerie(CANVAS_MID_Y - 375));
-  spawnElement(26.5, new Eerie(CANVAS_MID_Y - 375));
+  spawnElement(25, new Eerie(PIXELS.yMid - 375));
+  spawnElement(25.1, new Eerie(PIXELS.yMid - 375));
+  spawnElement(25.2, new Eerie(PIXELS.yMid - 375));
+  spawnElement(25.3, new Eerie(PIXELS.yMid - 375));
+  spawnElement(25.4, new Eerie(PIXELS.yMid - 375));
+  spawnElement(25.5, new Eerie(PIXELS.yMid - 375));
+  spawnElement(25.6, new Eerie(PIXELS.yMid - 375));
+  spawnElement(25.7, new Eerie(PIXELS.yMid - 375));
+  spawnElement(25.8, new Eerie(PIXELS.yMid - 375));
+  spawnElement(25.9, new Eerie(PIXELS.yMid - 375));
+  spawnElement(26, new Eerie(PIXELS.yMid - 375));
+  spawnElement(26.1, new Eerie(PIXELS.yMid - 375));
+  spawnElement(26.2, new Eerie(PIXELS.yMid - 375));
+  spawnElement(26.3, new Eerie(PIXELS.yMid - 375));
+  spawnElement(26.4, new Eerie(PIXELS.yMid - 375));
+  spawnElement(26.5, new Eerie(PIXELS.yMid - 375));
 
-  spawnElement(25, new Eerie(CANVAS_MID_Y - 450));
-  spawnElement(25.1, new Eerie(CANVAS_MID_Y - 450));
-  spawnElement(25.2, new Eerie(CANVAS_MID_Y - 450));
-  spawnElement(25.3, new Eerie(CANVAS_MID_Y - 450));
-  spawnElement(25.4, new Eerie(CANVAS_MID_Y - 450));
-  spawnElement(25.5, new Eerie(CANVAS_MID_Y - 450));
-  spawnElement(25.6, new Eerie(CANVAS_MID_Y - 450));
-  spawnElement(25.7, new Eerie(CANVAS_MID_Y - 450));
-  spawnElement(25.8, new Eerie(CANVAS_MID_Y - 450));
-  spawnElement(25.9, new Eerie(CANVAS_MID_Y - 450));
-  spawnElement(26, new Eerie(CANVAS_MID_Y - 450));
-  spawnElement(26.1, new Eerie(CANVAS_MID_Y - 450));
-  spawnElement(26.2, new Eerie(CANVAS_MID_Y - 450));
-  spawnElement(26.3, new Eerie(CANVAS_MID_Y - 450));
-  spawnElement(26.4, new Eerie(CANVAS_MID_Y - 450));
-  spawnElement(26.5, new Eerie(CANVAS_MID_Y - 450));
+  spawnElement(25, new Eerie(PIXELS.yMid - 450));
+  spawnElement(25.1, new Eerie(PIXELS.yMid - 450));
+  spawnElement(25.2, new Eerie(PIXELS.yMid - 450));
+  spawnElement(25.3, new Eerie(PIXELS.yMid - 450));
+  spawnElement(25.4, new Eerie(PIXELS.yMid - 450));
+  spawnElement(25.5, new Eerie(PIXELS.yMid - 450));
+  spawnElement(25.6, new Eerie(PIXELS.yMid - 450));
+  spawnElement(25.7, new Eerie(PIXELS.yMid - 450));
+  spawnElement(25.8, new Eerie(PIXELS.yMid - 450));
+  spawnElement(25.9, new Eerie(PIXELS.yMid - 450));
+  spawnElement(26, new Eerie(PIXELS.yMid - 450));
+  spawnElement(26.1, new Eerie(PIXELS.yMid - 450));
+  spawnElement(26.2, new Eerie(PIXELS.yMid - 450));
+  spawnElement(26.3, new Eerie(PIXELS.yMid - 450));
+  spawnElement(26.4, new Eerie(PIXELS.yMid - 450));
+  spawnElement(26.5, new Eerie(PIXELS.yMid - 450));
 
-  spawnElement(25, new Eerie(CANVAS_MID_Y - 525));
-  spawnElement(25.1, new Eerie(CANVAS_MID_Y - 525));
-  spawnElement(25.2, new Eerie(CANVAS_MID_Y - 525));
-  spawnElement(25.3, new Eerie(CANVAS_MID_Y - 525));
-  spawnElement(25.4, new Eerie(CANVAS_MID_Y - 525));
-  spawnElement(25.5, new Eerie(CANVAS_MID_Y - 525));
-  spawnElement(25.6, new Eerie(CANVAS_MID_Y - 525));
-  spawnElement(25.7, new Eerie(CANVAS_MID_Y - 525));
-  spawnElement(25.8, new Eerie(CANVAS_MID_Y - 525));
-  spawnElement(25.9, new Eerie(CANVAS_MID_Y - 525));
-  spawnElement(26, new Eerie(CANVAS_MID_Y - 525));
-  spawnElement(26.1, new Eerie(CANVAS_MID_Y - 525));
-  spawnElement(26.2, new Eerie(CANVAS_MID_Y - 525));
-  spawnElement(26.3, new Eerie(CANVAS_MID_Y - 525));
-  spawnElement(26.4, new Eerie(CANVAS_MID_Y - 525));
-  spawnElement(26.5, new Eerie(CANVAS_MID_Y - 525));
+  spawnElement(25, new Eerie(PIXELS.yMid - 525));
+  spawnElement(25.1, new Eerie(PIXELS.yMid - 525));
+  spawnElement(25.2, new Eerie(PIXELS.yMid - 525));
+  spawnElement(25.3, new Eerie(PIXELS.yMid - 525));
+  spawnElement(25.4, new Eerie(PIXELS.yMid - 525));
+  spawnElement(25.5, new Eerie(PIXELS.yMid - 525));
+  spawnElement(25.6, new Eerie(PIXELS.yMid - 525));
+  spawnElement(25.7, new Eerie(PIXELS.yMid - 525));
+  spawnElement(25.8, new Eerie(PIXELS.yMid - 525));
+  spawnElement(25.9, new Eerie(PIXELS.yMid - 525));
+  spawnElement(26, new Eerie(PIXELS.yMid - 525));
+  spawnElement(26.1, new Eerie(PIXELS.yMid - 525));
+  spawnElement(26.2, new Eerie(PIXELS.yMid - 525));
+  spawnElement(26.3, new Eerie(PIXELS.yMid - 525));
+  spawnElement(26.4, new Eerie(PIXELS.yMid - 525));
+  spawnElement(26.5, new Eerie(PIXELS.yMid - 525));
 
-  spawnElement(25, new Eerie(CANVAS_MID_Y + 225));
-  spawnElement(25.1, new Eerie(CANVAS_MID_Y + 225));
-  spawnElement(25.2, new Eerie(CANVAS_MID_Y + 225));
-  spawnElement(25.3, new Eerie(CANVAS_MID_Y + 225));
-  spawnElement(25.4, new Eerie(CANVAS_MID_Y + 225));
-  spawnElement(25.5, new Eerie(CANVAS_MID_Y + 225));
-  spawnElement(25.6, new Eerie(CANVAS_MID_Y + 225));
-  spawnElement(25.7, new Eerie(CANVAS_MID_Y + 225));
-  spawnElement(25.8, new Eerie(CANVAS_MID_Y + 225));
-  spawnElement(25.9, new Eerie(CANVAS_MID_Y + 225));
-  spawnElement(26, new Eerie(CANVAS_MID_Y + 225));
-  spawnElement(26.1, new Eerie(CANVAS_MID_Y + 225));
-  spawnElement(26.2, new Eerie(CANVAS_MID_Y + 225));
-  spawnElement(26.3, new Eerie(CANVAS_MID_Y + 225));
-  spawnElement(26.4, new Eerie(CANVAS_MID_Y + 225));
-  spawnElement(26.5, new Eerie(CANVAS_MID_Y + 225));
+  spawnElement(25, new Eerie(PIXELS.yMid + 225));
+  spawnElement(25.1, new Eerie(PIXELS.yMid + 225));
+  spawnElement(25.2, new Eerie(PIXELS.yMid + 225));
+  spawnElement(25.3, new Eerie(PIXELS.yMid + 225));
+  spawnElement(25.4, new Eerie(PIXELS.yMid + 225));
+  spawnElement(25.5, new Eerie(PIXELS.yMid + 225));
+  spawnElement(25.6, new Eerie(PIXELS.yMid + 225));
+  spawnElement(25.7, new Eerie(PIXELS.yMid + 225));
+  spawnElement(25.8, new Eerie(PIXELS.yMid + 225));
+  spawnElement(25.9, new Eerie(PIXELS.yMid + 225));
+  spawnElement(26, new Eerie(PIXELS.yMid + 225));
+  spawnElement(26.1, new Eerie(PIXELS.yMid + 225));
+  spawnElement(26.2, new Eerie(PIXELS.yMid + 225));
+  spawnElement(26.3, new Eerie(PIXELS.yMid + 225));
+  spawnElement(26.4, new Eerie(PIXELS.yMid + 225));
+  spawnElement(26.5, new Eerie(PIXELS.yMid + 225));
 
-  spawnElement(25, new Eerie(CANVAS_MID_Y + 300));
-  spawnElement(25.1, new Eerie(CANVAS_MID_Y + 300));
-  spawnElement(25.2, new Eerie(CANVAS_MID_Y + 300));
-  spawnElement(25.3, new Eerie(CANVAS_MID_Y + 300));
-  spawnElement(25.4, new Eerie(CANVAS_MID_Y + 300));
-  spawnElement(25.5, new Eerie(CANVAS_MID_Y + 300));
-  spawnElement(25.6, new Eerie(CANVAS_MID_Y + 300));
-  spawnElement(25.7, new Eerie(CANVAS_MID_Y + 300));
-  spawnElement(25.8, new Eerie(CANVAS_MID_Y + 300));
-  spawnElement(25.9, new Eerie(CANVAS_MID_Y + 300));
-  spawnElement(26, new Eerie(CANVAS_MID_Y + 300));
-  spawnElement(26.1, new Eerie(CANVAS_MID_Y + 300));
-  spawnElement(26.2, new Eerie(CANVAS_MID_Y + 300));
-  spawnElement(26.3, new Eerie(CANVAS_MID_Y + 300));
-  spawnElement(26.4, new Eerie(CANVAS_MID_Y + 300));
-  spawnElement(26.5, new Eerie(CANVAS_MID_Y + 300));
+  spawnElement(25, new Eerie(PIXELS.yMid + 300));
+  spawnElement(25.1, new Eerie(PIXELS.yMid + 300));
+  spawnElement(25.2, new Eerie(PIXELS.yMid + 300));
+  spawnElement(25.3, new Eerie(PIXELS.yMid + 300));
+  spawnElement(25.4, new Eerie(PIXELS.yMid + 300));
+  spawnElement(25.5, new Eerie(PIXELS.yMid + 300));
+  spawnElement(25.6, new Eerie(PIXELS.yMid + 300));
+  spawnElement(25.7, new Eerie(PIXELS.yMid + 300));
+  spawnElement(25.8, new Eerie(PIXELS.yMid + 300));
+  spawnElement(25.9, new Eerie(PIXELS.yMid + 300));
+  spawnElement(26, new Eerie(PIXELS.yMid + 300));
+  spawnElement(26.1, new Eerie(PIXELS.yMid + 300));
+  spawnElement(26.2, new Eerie(PIXELS.yMid + 300));
+  spawnElement(26.3, new Eerie(PIXELS.yMid + 300));
+  spawnElement(26.4, new Eerie(PIXELS.yMid + 300));
+  spawnElement(26.5, new Eerie(PIXELS.yMid + 300));
 
-  spawnElement(25, new Eerie(CANVAS_MID_Y + 375));
-  spawnElement(25.1, new Eerie(CANVAS_MID_Y + 375));
-  spawnElement(25.2, new Eerie(CANVAS_MID_Y + 375));
-  spawnElement(25.3, new Eerie(CANVAS_MID_Y + 375));
-  spawnElement(25.4, new Eerie(CANVAS_MID_Y + 375));
-  spawnElement(25.5, new Eerie(CANVAS_MID_Y + 375));
-  spawnElement(25.6, new Eerie(CANVAS_MID_Y + 375));
-  spawnElement(25.7, new Eerie(CANVAS_MID_Y + 375));
-  spawnElement(25.8, new Eerie(CANVAS_MID_Y + 375));
-  spawnElement(25.9, new Eerie(CANVAS_MID_Y + 375));
-  spawnElement(26, new Eerie(CANVAS_MID_Y + 375));
-  spawnElement(26.1, new Eerie(CANVAS_MID_Y + 375));
-  spawnElement(26.2, new Eerie(CANVAS_MID_Y + 375));
-  spawnElement(26.3, new Eerie(CANVAS_MID_Y + 375));
-  spawnElement(26.4, new Eerie(CANVAS_MID_Y + 375));
-  spawnElement(26.5, new Eerie(CANVAS_MID_Y + 375));
+  spawnElement(25, new Eerie(PIXELS.yMid + 375));
+  spawnElement(25.1, new Eerie(PIXELS.yMid + 375));
+  spawnElement(25.2, new Eerie(PIXELS.yMid + 375));
+  spawnElement(25.3, new Eerie(PIXELS.yMid + 375));
+  spawnElement(25.4, new Eerie(PIXELS.yMid + 375));
+  spawnElement(25.5, new Eerie(PIXELS.yMid + 375));
+  spawnElement(25.6, new Eerie(PIXELS.yMid + 375));
+  spawnElement(25.7, new Eerie(PIXELS.yMid + 375));
+  spawnElement(25.8, new Eerie(PIXELS.yMid + 375));
+  spawnElement(25.9, new Eerie(PIXELS.yMid + 375));
+  spawnElement(26, new Eerie(PIXELS.yMid + 375));
+  spawnElement(26.1, new Eerie(PIXELS.yMid + 375));
+  spawnElement(26.2, new Eerie(PIXELS.yMid + 375));
+  spawnElement(26.3, new Eerie(PIXELS.yMid + 375));
+  spawnElement(26.4, new Eerie(PIXELS.yMid + 375));
+  spawnElement(26.5, new Eerie(PIXELS.yMid + 375));
 
-  spawnElement(25, new Eerie(CANVAS_MID_Y + 450));
-  spawnElement(25.1, new Eerie(CANVAS_MID_Y + 450));
-  spawnElement(25.2, new Eerie(CANVAS_MID_Y + 450));
-  spawnElement(25.3, new Eerie(CANVAS_MID_Y + 450));
-  spawnElement(25.4, new Eerie(CANVAS_MID_Y + 450));
-  spawnElement(25.5, new Eerie(CANVAS_MID_Y + 450));
-  spawnElement(25.6, new Eerie(CANVAS_MID_Y + 450));
-  spawnElement(25.7, new Eerie(CANVAS_MID_Y + 450));
-  spawnElement(25.8, new Eerie(CANVAS_MID_Y + 450));
-  spawnElement(25.9, new Eerie(CANVAS_MID_Y + 450));
-  spawnElement(26, new Eerie(CANVAS_MID_Y + 450));
-  spawnElement(26.1, new Eerie(CANVAS_MID_Y + 450));
-  spawnElement(26.2, new Eerie(CANVAS_MID_Y + 450));
-  spawnElement(26.3, new Eerie(CANVAS_MID_Y + 450));
-  spawnElement(26.4, new Eerie(CANVAS_MID_Y + 450));
-  spawnElement(26.5, new Eerie(CANVAS_MID_Y + 450));
+  spawnElement(25, new Eerie(PIXELS.yMid + 450));
+  spawnElement(25.1, new Eerie(PIXELS.yMid + 450));
+  spawnElement(25.2, new Eerie(PIXELS.yMid + 450));
+  spawnElement(25.3, new Eerie(PIXELS.yMid + 450));
+  spawnElement(25.4, new Eerie(PIXELS.yMid + 450));
+  spawnElement(25.5, new Eerie(PIXELS.yMid + 450));
+  spawnElement(25.6, new Eerie(PIXELS.yMid + 450));
+  spawnElement(25.7, new Eerie(PIXELS.yMid + 450));
+  spawnElement(25.8, new Eerie(PIXELS.yMid + 450));
+  spawnElement(25.9, new Eerie(PIXELS.yMid + 450));
+  spawnElement(26, new Eerie(PIXELS.yMid + 450));
+  spawnElement(26.1, new Eerie(PIXELS.yMid + 450));
+  spawnElement(26.2, new Eerie(PIXELS.yMid + 450));
+  spawnElement(26.3, new Eerie(PIXELS.yMid + 450));
+  spawnElement(26.4, new Eerie(PIXELS.yMid + 450));
+  spawnElement(26.5, new Eerie(PIXELS.yMid + 450));
 
-  spawnElement(25, new Eerie(CANVAS_MID_Y + 525));
-  spawnElement(25.1, new Eerie(CANVAS_MID_Y + 525));
-  spawnElement(25.2, new Eerie(CANVAS_MID_Y + 525));
-  spawnElement(25.3, new Eerie(CANVAS_MID_Y + 525));
-  spawnElement(25.4, new Eerie(CANVAS_MID_Y + 525));
-  spawnElement(25.5, new Eerie(CANVAS_MID_Y + 525));
-  spawnElement(25.6, new Eerie(CANVAS_MID_Y + 525));
-  spawnElement(25.7, new Eerie(CANVAS_MID_Y + 525));
-  spawnElement(25.8, new Eerie(CANVAS_MID_Y + 525));
-  spawnElement(25.9, new Eerie(CANVAS_MID_Y + 525));
-  spawnElement(26, new Eerie(CANVAS_MID_Y + 525));
-  spawnElement(26.1, new Eerie(CANVAS_MID_Y + 525));
-  spawnElement(26.2, new Eerie(CANVAS_MID_Y + 525));
-  spawnElement(26.3, new Eerie(CANVAS_MID_Y + 525));
-  spawnElement(26.4, new Eerie(CANVAS_MID_Y + 525));
-  spawnElement(26.5, new Eerie(CANVAS_MID_Y + 525));
+  spawnElement(25, new Eerie(PIXELS.yMid + 525));
+  spawnElement(25.1, new Eerie(PIXELS.yMid + 525));
+  spawnElement(25.2, new Eerie(PIXELS.yMid + 525));
+  spawnElement(25.3, new Eerie(PIXELS.yMid + 525));
+  spawnElement(25.4, new Eerie(PIXELS.yMid + 525));
+  spawnElement(25.5, new Eerie(PIXELS.yMid + 525));
+  spawnElement(25.6, new Eerie(PIXELS.yMid + 525));
+  spawnElement(25.7, new Eerie(PIXELS.yMid + 525));
+  spawnElement(25.8, new Eerie(PIXELS.yMid + 525));
+  spawnElement(25.9, new Eerie(PIXELS.yMid + 525));
+  spawnElement(26, new Eerie(PIXELS.yMid + 525));
+  spawnElement(26.1, new Eerie(PIXELS.yMid + 525));
+  spawnElement(26.2, new Eerie(PIXELS.yMid + 525));
+  spawnElement(26.3, new Eerie(PIXELS.yMid + 525));
+  spawnElement(26.4, new Eerie(PIXELS.yMid + 525));
+  spawnElement(26.5, new Eerie(PIXELS.yMid + 525));
 
   spawnElement(25, new Star());
 };
 
 CASTLE.spawn = () => {
-  let mid = CANVAS_MID_Y + 100;
+  let mid = PIXELS.yMid + 100;
   spawnElement(2, new BulletBillLinear(mid - 2 * 56));
   spawnElement(2, new BulletBillLinear(mid - 3 * 56));
   spawnElement(2, new BulletBillLinear(mid - 56));
@@ -548,7 +540,7 @@ CASTLE.spawn = () => {
   spawnElement(2, new BulletBillLinear(mid + 2 * 56));
   spawnElement(2, new BulletBillLinear(mid + 3 * 56));
 
-  mid = CANVAS_MID_Y - 156;
+  mid = PIXELS.yMid - 156;
   spawnElement(3, new BulletBillLinear(mid - 2 * 56));
   spawnElement(3, new BulletBillLinear(mid - 3 * 56));
   spawnElement(3, new BulletBillLinear(mid - 56));
@@ -557,7 +549,7 @@ CASTLE.spawn = () => {
   spawnElement(3, new BulletBillLinear(mid + 2 * 56));
   spawnElement(3, new BulletBillLinear(mid + 3 * 56));
 
-  mid = CANVAS_MID_Y;
+  mid = PIXELS.yMid;
   spawnElement(4, new BulletBillLinear(mid - 2 * 56));
   spawnElement(4, new BulletBillLinear(mid - 3 * 56));
   spawnElement(4, new BulletBillLinear(mid - 56));
@@ -567,7 +559,7 @@ CASTLE.spawn = () => {
   spawnElement(4, new BulletBillLinear(mid + 3 * 56));
 
   spawnElement(5, new BanzaiBill(0));
-  spawnElement(5, new BanzaiBill(CANVAS_HEIGHT - 256));
+  spawnElement(5, new BanzaiBill(PIXELS.height - 256));
 
   spawnElement(6, new BulletBillDiagonal('up'));
   spawnElement(6.1, new BulletBillDiagonal('up'));
@@ -660,12 +652,12 @@ CASTLE.spawn = () => {
   spawnElement(23.6, new Grinder(128 * 1.25));
   spawnElement(27.1, new Grinder(128 * 1.25));
 
-  spawnElement(21, new Grinder(CANVAS_MID_Y - 128 / 2));
-  spawnElement(22.75, new Grinder(CANVAS_MID_Y - 128 / 2));
-  spawnElement(24.5, new Grinder(CANVAS_MID_Y - 128 / 2));
-  spawnElement(26.25, new Grinder(CANVAS_MID_Y - 128 / 2));
-  spawnElement(28, new Grinder(CANVAS_MID_Y - 128 / 2));
-  spawnElement(29.75, new Grinder(CANVAS_MID_Y - 128 / 2));
+  spawnElement(21, new Grinder(PIXELS.yMid - 128 / 2));
+  spawnElement(22.75, new Grinder(PIXELS.yMid - 128 / 2));
+  spawnElement(24.5, new Grinder(PIXELS.yMid - 128 / 2));
+  spawnElement(26.25, new Grinder(PIXELS.yMid - 128 / 2));
+  spawnElement(28, new Grinder(PIXELS.yMid - 128 / 2));
+  spawnElement(29.75, new Grinder(PIXELS.yMid - 128 / 2));
 
   spawnElement(21.85, new Grinder(128 * 3.75));
   spawnElement(23.6, new Grinder(128 * 3.75));
@@ -717,7 +709,7 @@ const TEST = new Level(
   0.4
 );
 TEST.spawn = () => {
-  spawnRow(BanzaiBill, CANVAS_MID_Y, 1, 4, -15);
+  spawnRow(BanzaiBill, PIXELS.yMid, 1, 4, -15);
 };
 
 const LEVELS = [TEST, OVERWORLD, ATHLETIC, HAUNTED, CASTLE];

@@ -5,12 +5,15 @@ import { loading } from './modules/load.js';
 
 const startBtn = document.getElementById('screen-intro__start-btn');
 const soundBtn = document.getElementById('screen-intro__sound-btn');
-const CANVAS = document.getElementById('canvas');
-const CANVAS_WIDTH = CANVAS.width;
-const CANVAS_HEIGHT = CANVAS.height;
-const CANVAS_MID_X = CANVAS_WIDTH / 2;
-const CANVAS_MID_Y = CANVAS_HEIGHT / 2;
-const ctx = canvas.getContext('2d');
+const canvas = document.getElementById('canvas');
+const context = canvas.getContext('2d');
+
+const PIXELS = {
+  width: canvas.width,
+  height: canvas.height,
+  xMid: canvas.width / 2,
+  yMid: canvas.height / 2,
+};
 
 const game = {
   state: 'START',
@@ -100,7 +103,7 @@ function drawBackground() {
     }px`;
   }
 
-  ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  context.clearRect(0, 0, PIXELS.width, PIXELS.height);
 }
 
 function menuControls(event) {
@@ -165,15 +168,4 @@ window.addEventListener('load', setGame);
 
 export { LEVELS, Level } from './modules/levels.js';
 export * as Elements from './modules/elements.js';
-export {
-  CANVAS_WIDTH,
-  CANVAS_HEIGHT,
-  CANVAS_MID_X,
-  CANVAS_MID_Y,
-  ctx,
-  game,
-  controller,
-  player,
-  elements,
-  fpsInterval,
-};
+export { PIXELS, context, game, controller, player, elements, fpsInterval };

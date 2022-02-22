@@ -1,9 +1,6 @@
 import {
-  CANVAS_WIDTH,
-  CANVAS_HEIGHT,
-  CANVAS_MID_X,
-  CANVAS_MID_Y,
-  ctx,
+  PIXELS,
+  context,
   game,
   controller,
   player,
@@ -19,7 +16,7 @@ class Element {
     this.spriteFrame = 0;
     this.spriteRate = 0;
     this.spriteLength = 0;
-    this.xPos = CANVAS_WIDTH;
+    this.xPos = PIXELS.width;
     this.xOff = 0;
     this.yOff = 0;
     this.time = 0;
@@ -78,9 +75,9 @@ class Mario extends Element {
   move() {
     let { pressedLeft, pressedRight, pressedUp, pressedDown } = controller;
     let { xPos, yPos, xSpeed, ySpeed, gravity, wind } = this;
-    let hasFallen = yPos + this.height / 2 > CANVAS_HEIGHT;
-    let hasSpaceBottom = yPos + this.height < CANVAS_HEIGHT;
-    let hasSpaceRight = xPos + this.width < CANVAS_WIDTH;
+    let hasFallen = yPos + this.height / 2 > PIXELS.height;
+    let hasSpaceBottom = yPos + this.height < PIXELS.height;
+    let hasSpaceRight = xPos + this.width < PIXELS.width;
     let hasSpaceLeft = xPos > 0;
 
     if (
@@ -110,7 +107,7 @@ class Mario extends Element {
 
     if (game.isOn && game.state !== 'TUTORIAL' && hasFallen) this.isDead = true;
     if (game.state === 'DEAD') this.spriteFrame = 3;
-    if (xPos + this.width / 2 > CANVAS_WIDTH) this.passedTutorial = true;
+    if (xPos + this.width / 2 > PIXELS.width) this.passedTutorial = true;
     if (
       (game.isOn && game.state === 'TUTORIAL' && hasSpaceBottom) ||
       (game.isOn && game.state !== 'TUTORIAL')
@@ -376,7 +373,7 @@ class BigBubble extends Element {
   }
 
   move() {
-    if (this.yPos + this.hBox > CANVAS_HEIGHT || this.yPos < 0)
+    if (this.yPos + this.hBox > PIXELS.height || this.yPos < 0)
       this.ySpeed *= -1;
     this.xPos -= this.xSpeed;
     this.yPos += this.ySpeed;
@@ -501,14 +498,14 @@ class Star extends Element {
     this.height = 64;
     this.xAtlas = 888;
     this.yAtlas = 0;
-    this.yPos = CANVAS_MID_Y + 29;
+    this.yPos = PIXELS.yMid + 29;
     this.wBox = 60;
     this.hBox = 64;
     this.xSpeed = 15;
   }
 
   move() {
-    if (this.xPos > CANVAS_MID_X + 58) moveLinear(this);
+    if (this.xPos > PIXELS.xMid + 58) moveLinear(this);
   }
 }
 
@@ -520,7 +517,7 @@ function moveHitbox(element) {
 
 function drawImage(element) {
   let { width, height, xAtlas, yAtlas, xPos, yPos, spriteFrame } = element;
-  ctx.drawImage(
+  context.drawImage(
     atlas,
     xAtlas + spriteFrame * width,
     yAtlas,

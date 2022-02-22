@@ -1,7 +1,5 @@
 import {
-  CANVAS_HEIGHT,
-  CANVAS_MID_X,
-  CANVAS_MID_Y,
+  PIXELS,
   game,
   controller,
   player,
@@ -105,7 +103,7 @@ const storyboard = {
       let animate = setInterval(() => {
         let yPos = player.yPos;
 
-        if ((yPos > CANVAS_HEIGHT && !game.hasSound) || sounds.died.ended) {
+        if ((yPos > PIXELS.height && !game.hasSound) || sounds.died.ended) {
           if (!game.lives) {
             hideScreen(screens.hud);
             showScreen(screens.failure);
@@ -174,8 +172,8 @@ const storyboard = {
   endScene() {
     showScreen(screens.outro);
     hideScreen(screens.hud);
-    player.xPos = CANVAS_MID_X - player.width / 2 - 15;
-    player.yPos = CANVAS_MID_Y + 75;
+    player.xPos = PIXELS.xMid - player.width / 2 - 15;
+    player.yPos = PIXELS.yMid + 75;
     game.state = 'END';
     game.scrollSpeed = 2;
     let finale = new Level('ending', 'images/end.jpg', 'ending', 0.5);
