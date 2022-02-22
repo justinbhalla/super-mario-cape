@@ -1,5 +1,4 @@
 import {
-  cursor,
   CANVAS_HEIGHT,
   CANVAS_MID_X,
   CANVAS_MID_Y,

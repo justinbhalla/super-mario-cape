@@ -1,12 +1,10 @@
 import { screens, storyboard } from './modules/scenes.js';
 import playerControls from './modules/controls.js';
 import { Mario } from './modules/elements.js';
-import { LEVELS } from './modules/levels.js';
 import { loading } from './modules/load.js';
 
 const startBtn = document.getElementById('screen-intro__start-btn');
 const soundBtn = document.getElementById('screen-intro__sound-btn');
-const cursor = document.querySelector('*').style;
 const CANVAS = document.getElementById('canvas');
 const CANVAS_WIDTH = CANVAS.width;
 const CANVAS_HEIGHT = CANVAS.height;
@@ -117,9 +115,6 @@ function menuControls(event) {
     switch (game.state) {
       case 'START':
         storyboard.showSceneTutorial();
-        // hideScreen(screens.intro);
-        // cursor.cursor = 'none';
-        // theme.pause();
         break;
       case 'RETRY':
         // hideScreen(screens.retry);
@@ -130,7 +125,7 @@ function menuControls(event) {
         // hideScreen(screens.failure);
         // game.lives = game.livesStart;
         // game.level = 0;
-        //levelScene();
+        // levelScene();
         break;
       default:
         break;
@@ -171,7 +166,6 @@ window.addEventListener('load', setGame);
 export { LEVELS, Level } from './modules/levels.js';
 export * as Elements from './modules/elements.js';
 export {
-  cursor,
   CANVAS_WIDTH,
   CANVAS_HEIGHT,
   CANVAS_MID_X,
