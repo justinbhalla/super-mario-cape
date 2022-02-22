@@ -61,7 +61,7 @@ const controller = {
 
 const player = new Mario();
 const elements = [];
-elements.update = () => elements.forEach((e) => e.update());
+elements.draw = () => elements.forEach((e) => e.draw());
 elements.move = () => elements.forEach((e) => e.move());
 
 let then = Date.now();
@@ -76,8 +76,8 @@ function runGame() {
     then = now - (elapsed % game.FPS_INTERVAL);
     drawBackground();
     player.move();
-    elements.update();
-    player.update();
+    elements.draw();
+    player.draw();
     if (game.isOn) elements.move();
 
     // if (player.isDead) storyboard.showDeathScene();

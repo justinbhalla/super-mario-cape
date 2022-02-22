@@ -21,7 +21,7 @@ class Element {
     this.time = 0;
   }
 
-  update() {
+  draw() {
     moveHitbox(this);
     drawImage(this);
 
