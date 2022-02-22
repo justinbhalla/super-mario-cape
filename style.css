@@ -42,6 +42,7 @@ img {
 #canvas,
 #backdrop,
 #background,
+#screen-map,
 #screen-hud,
 #screen-failure,
 #screen-retry,
@@ -65,6 +66,7 @@ img {
   transform: translate(-50%, -50%);
 }
 
+#screen-map,
 #screen-intro,
 #screen-level,
 #screen-failure,
@@ -77,6 +79,7 @@ img {
 
 #screen-retry,
 #screen-level,
+#screen-map,
 #screen-hud,
 #screen-success,
 #screen-failure,
@@ -163,6 +166,10 @@ img {
 
 #screen-intro__sound-btn {
   top: calc(50% + 250px);
+}
+
+#screen-map {
+  background-image: url(images/graphics/map.jpg);
 }
 
 #screen-intro__start-btn:hover ~ #screen-intro__start-hover {

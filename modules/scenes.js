@@ -12,9 +12,11 @@ import {
 } from '../main.js';
 
 const screens = {
+  canvas: document.getElementById('canvas').style,
   livesText: document.getElementById('screen-hud__lives-text'),
   levelText: document.getElementById('screen-level__text'),
   background: document.getElementById('background').style,
+  map: document.getElementById('screen-map').style,
   retry: document.getElementById('screen-retry').style,
   hud: document.getElementById('screen-hud').style,
   failure: document.getElementById('screen-failure').style,
@@ -58,6 +60,13 @@ const storyboard = {
     game.music.yoshisIsland.pause();
     hideScreen(screens.tutorial);
     showScreen(screens.transitionFade);
+
+    setTimeout(() => {
+      hideScreen(screens.background);
+      hideScreen(screens.transitionFade);
+      hideScreen(screens.canvas);
+      showScreen(screens.map);
+    }, 1500);
   },
 
   levelScene() {
@@ -179,6 +188,10 @@ const storyboard = {
 
 function showScreen(screen) {
   switch (screen) {
+    case screens.map:
+      screen.display = 'block';
+      screens.map.animation = 'fadein 0.5s forwards';
+      break;
     case screens.background:
       screens.background.animation = 'fadein 0.1s forwards';
       break;
@@ -204,9 +217,9 @@ function showScreen(screen) {
 
 function hideScreen(screen) {
   switch (screen) {
-    case screens.background:
-      screens.background.animation = 'fadeout 2.5s forwards';
-      break;
+    // case screens.background:
+    //   screens.background.animation = 'fadeout 2.5s forwards';
+    //   break;
     case screens.transitionFade:
       screens.transitionFade.opacity = '0%';
       screens.transitionFade.transition = 'none';
