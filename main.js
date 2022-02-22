@@ -1,5 +1,5 @@
 import { screens, storyboard } from './modules/scenes.js';
-import playerControls from './modules/controls.js';
+import playerControls from './modules/controller.js';
 import { Mario } from './modules/elements.js';
 import { loading } from './modules/load.js';
 
@@ -38,22 +38,22 @@ const game = {
   },
 };
 
-const controls = {
-  LEFT_BIND: 37,
-  RIGHT_BIND: 39,
-  UP_1_BIND: 38,
-  UP_2_BIND: 32,
-  DOWN_BIND: 40,
-  isLeft: false,
-  isRight: false,
-  isUp: false,
-  isDown: false,
+const controller = {
+  LEFT_KEY: 37,
+  RIGHT_KEY: 39,
+  UP_1_KEY: 38,
+  UP_2_KEY: 32,
+  DOWN_KEY: 40,
+  pressedLeft: false,
+  pressedRight: false,
+  pressedUp: false,
+  pressedDown: false,
 
   reset() {
-    this.isLeft = false;
-    this.isRight = false;
-    this.isUp = false;
-    this.isDown = false;
+    this.pressedLeft = false;
+    this.pressedRight = false;
+    this.pressedUp = false;
+    this.pressedDown = false;
   },
 };
 
@@ -107,9 +107,9 @@ function menuControls(event) {
   if (game.isOn) return;
 
   let { keyCode, type } = event;
-  let { UP_1_BIND, UP_2_BIND } = controls;
+  let { UP_1_KEY, UP_2_KEY } = controller;
   let menuClicked = type === 'click';
-  let menuPressed = keyCode === UP_1_BIND || keyCode === UP_2_BIND;
+  let menuPressed = keyCode === UP_1_KEY || keyCode === UP_2_KEY;
 
   if (menuClicked || menuPressed) {
     switch (game.state) {
@@ -172,7 +172,7 @@ export {
   CANVAS_MID_Y,
   ctx,
   game,
-  controls,
+  controller,
   player,
   elements,
   fpsInterval,

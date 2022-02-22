@@ -1,4 +1,4 @@
-import { game, controls } from '../main.js';
+import { game, controller } from '../main.js';
 
 export default function playerControls(e) {
   if (!game.isOn) return;
@@ -7,17 +7,17 @@ export default function playerControls(e) {
   let jumpFlag = false;
 
   switch (e.keyCode) {
-    case controls.LEFT_BIND:
-      controls.isLeft = isHeld;
+    case controller.LEFT_KEY:
+      controller.pressedLeft = isHeld;
       break;
-    case controls.RIGHT_BIND:
-      controls.isRight = isHeld;
+    case controller.RIGHT_KEY:
+      controller.pressedRight = isHeld;
       break;
-    case controls.DOWN_BIND:
-      controls.isDown = isHeld;
+    case controller.DOWN_KEY:
+      controller.pressedDown = isHeld;
       break;
-    case controls.UP_1_BIND:
-    case controls.UP_2_BIND:
+    case controller.UP_1_KEY:
+    case controller.UP_2_KEY:
       if (!jumpFlag && isHeld) {
         jumpFlag = true;
         // sounds.jump.currentTime = 0;
@@ -26,7 +26,7 @@ export default function playerControls(e) {
         jumpFlag = false;
       }
 
-      controls.isUp = isHeld;
+      controller.pressedUp = isHeld;
       break;
   }
 }

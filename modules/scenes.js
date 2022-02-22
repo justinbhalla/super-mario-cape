@@ -3,7 +3,7 @@ import {
   CANVAS_MID_X,
   CANVAS_MID_Y,
   game,
-  controls,
+  controller,
   player,
   elements,
   LEVELS,
@@ -97,7 +97,7 @@ const storyboard = {
     game.state = 'DEAD';
     LEVELS[game.level].audio.pause();
     playSound(sounds.died);
-    controls.reset();
+    controller.reset();
 
     setTimeout(() => {
       let yPeak = player.yPos - 200;
@@ -141,7 +141,7 @@ const storyboard = {
     game.state = 'PASS';
     LEVELS[game.level].audio.pause();
     game.level++;
-    controls.reset();
+    controller.reset();
     elements.length = 0;
 
     let gameWon = game.level === LEVELS.length;

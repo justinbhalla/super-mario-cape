@@ -5,7 +5,7 @@ import {
   CANVAS_MID_Y,
   ctx,
   game,
-  controls,
+  controller,
   player,
   elements,
   fpsInterval,
@@ -76,30 +76,33 @@ class Mario extends Element {
   }
 
   move() {
-    let { isLeft, isRight, isUp, isDown } = controls;
+    let { pressedLeft, pressedRight, pressedUp, pressedDown } = controller;
     let { xPos, yPos, xSpeed, ySpeed, gravity, wind } = this;
     let hasFallen = yPos + this.height / 2 > CANVAS_HEIGHT;
     let hasSpaceBottom = yPos + this.height < CANVAS_HEIGHT;
     let hasSpaceRight = xPos + this.width < CANVAS_WIDTH;
     let hasSpaceLeft = xPos > 0;
 
-    if ((isRight && hasSpaceRight) || (isRight && game.state === 'TUTORIAL'))
+    if (
+      (pressedRight && hasSpaceRight) ||
+      (pressedRight && game.state === 'TUTORIAL')
+    )
       this.xPos += xSpeed + wind;
-    if (isLeft && hasSpaceLeft) this.xPos -= xSpeed - wind;
+    if (pressedLeft && hasSpaceLeft) this.xPos -= xSpeed - wind;
 
-    if (isUp && !this.isJumping) {
+    if (pressedUp && !this.isJumping) {
       this.jump();
       this.spriteFrame = 1;
     }
 
-    if (!isUp) {
+    if (!pressedUp) {
       this.isJumping = false;
       this.spriteFrame = 0;
     }
 
     if (
-      (game.state === 'TUTORIAL' && hasSpaceBottom && isDown) ||
-      (game.state !== 'TUTORIAL' && isDown)
+      (game.state === 'TUTORIAL' && hasSpaceBottom && pressedDown) ||
+      (game.state !== 'TUTORIAL' && pressedDown)
     ) {
       this.yPos += ySpeed + gravity;
       this.spriteFrame = 2;
