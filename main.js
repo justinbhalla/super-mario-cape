@@ -3,8 +3,6 @@ import playerControls from './modules/controller.js';
 import { Mario } from './modules/elements.js';
 import { loading } from './modules/load.js';
 
-const startBtn = document.getElementById('screen-intro__start-btn');
-const soundBtn = document.getElementById('screen-intro__sound-btn');
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
 
@@ -149,6 +147,7 @@ function setGame() {
 }
 
 function setAudio() {
+  const soundBtn = document.getElementById('screen-intro__sound-btn');
   soundBtn.addEventListener('click', () => {
     let { hasSound } = game;
     game.hasSound = !hasSound;
@@ -158,6 +157,7 @@ function setAudio() {
 }
 
 function setControls() {
+  const startBtn = document.getElementById('screen-intro__start-btn');
   startBtn.addEventListener('click', menuControls);
   // document.addEventListener('keydown', menuControls);
   document.addEventListener('keydown', playerControls);
