@@ -80,6 +80,7 @@ function runGame() {
     elements.update();
     player.update();
     if (game.isOn) elements.move();
+
     // if (player.isDead) storyboard.showDeathScene();
     if (player.passedTutorial && game.state === 'TUTORIAL')
       storyboard.showSceneMap();
