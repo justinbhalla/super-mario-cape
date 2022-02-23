@@ -112,10 +112,11 @@ function setAudio() {
 }
 
 function setControls() {
+  let { onMenuInput, onPlayerInput } = controller;
   const startBtn = document.getElementById('screen-intro__start-btn');
-  startBtn.addEventListener('click', controller.onMenuInput);
-  document.addEventListener('keydown', controller.onPlayerInput);
-  document.addEventListener('keyup', controller.onPlayerInput);
+  startBtn.addEventListener('click', onMenuInput);
+  document.addEventListener('keydown', onPlayerInput);
+  document.addEventListener('keyup', onPlayerInput);
 }
 
 window.addEventListener('load', setGame);
