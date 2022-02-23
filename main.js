@@ -5,6 +5,8 @@ import { loading } from './modules/load.js';
 
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
+let then = Date.now();
+let elapsed, now;
 
 const PIXELS = {
   width: canvas.width,
@@ -64,18 +66,13 @@ const elements = {
   enemies: [],
 
   update() {
-    this.enemies.forEach((enemy) => {
-      enemy.draw();
-      enemy.move();
+    let elements = [this.player, ...this.enemies];
+    elements.forEach((element) => {
+      element.draw();
+      element.move();
     });
-
-    this.player.draw();
-    this.player.move();
   },
 };
-
-let then = Date.now();
-let elapsed, now;
 
 function runGame() {
   requestAnimationFrame(runGame);
