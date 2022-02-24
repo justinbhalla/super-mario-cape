@@ -19,7 +19,7 @@ class Element {
     drawImage(this);
 
     if (this instanceof Mario === false) {
-      if (game.isOn) drawSprite(this);
+      if (game.isPlaying) drawSprite(this);
 
       if (this instanceof Star && didHitMario(this)) {
         elements.player.gotStar = true;
@@ -97,12 +97,13 @@ class Mario extends Element {
       this.spriteFrame = 2;
     }
 
-    if (game.isOn && game.state !== 'TUTORIAL' && hasFallen) this.isDead = true;
+    if (game.isPlaying && game.state !== 'TUTORIAL' && hasFallen)
+      this.isDead = true;
     if (game.state === 'DEAD') this.spriteFrame = 3;
     if (xPos + this.width / 2 > PIXELS.width) this.passedTutorial = true;
     if (
-      (game.isOn && game.state === 'TUTORIAL' && hasSpaceBottom) ||
-      (game.isOn && game.state !== 'TUTORIAL')
+      (game.isPlaying && game.state === 'TUTORIAL' && hasSpaceBottom) ||
+      (game.isPlaying && game.state !== 'TUTORIAL')
     ) {
       this.yPos += gravity;
     }

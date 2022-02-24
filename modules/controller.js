@@ -19,7 +19,7 @@ const controller = {
   },
 
   onMenuInput(event) {
-    if (game.isOn) return;
+    if (game.isPlaying) return;
 
     let { keyCode, type } = event;
     let { UP_1_KEY, UP_2_KEY } = this;
@@ -49,7 +49,7 @@ const controller = {
   },
 
   onPlayerInput(event) {
-    if (!game.isOn) return;
+    if (!game.isPlaying) return;
 
     let { LEFT_KEY, RIGHT_KEY, DOWN_KEY, UP_1_KEY, UP_2_KEY } = controller;
     let isHeld = event.type === 'keydown';

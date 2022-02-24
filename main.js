@@ -17,8 +17,9 @@ const PIXELS = {
 
 const game = {
   FPS_INTERVAL: 1000 / 60,
-  state: 'START',
-  isOn: false,
+  isScrolling: false,
+  isPlaying: false,
+  state: 'LOADING',
   scrollSpeed: 6,
   livesStart: 3,
   lives: 3,
@@ -73,12 +74,7 @@ function runGame() {
 }
 
 function drawBackground() {
-  if (
-    game.isOn ||
-    game.state === 'START' ||
-    game.state === 'END' ||
-    game.state === 'TUTORIAL'
-  ) {
+  if (game.isScrolling) {
     let currentPos = parseInt(screens.background.backgroundPositionX);
 
     screens.background.backgroundPositionX = `${
@@ -94,8 +90,8 @@ function setGame() {
     if (loading.length === 0) {
       setAudio();
       setControls();
-      storyboard.showSceneIntro();
       runGame();
+      storyboard.showSceneIntro();
       clearInterval(interval);
     }
   }, 250);

@@ -21,9 +21,11 @@ const screens = {
 
 const storyboard = {
   showSceneIntro() {
-    hideScreen(screens.loading);
+    game.state = 'START';
+    game.isScrolling = true;
     screens.background.backgroundPositionX = 0;
     screens.background.backgroundPositionY = 0;
+    hideScreen(screens.loading);
   },
 
   showSceneTutorial() {
@@ -38,14 +40,15 @@ const storyboard = {
       screens.background.backgroundImage = `url(images/levels/bg-plains.jpg)`;
       playSound(game.music.yoshisIsland);
       game.state = 'TUTORIAL';
-      game.isOn = true;
+      game.isPlaying = true;
       elements.player.reset();
     }, 1500);
   },
 
   showSceneMap() {
     game.state = 'MAP';
-    game.isOn = false;
+    game.isPlaying = false;
+    game.isScrolling = false;
     game.music.yoshisIsland.pause();
     hideScreen(screens.tutorial);
     showScreen(screens.transitionFade);
@@ -77,13 +80,13 @@ const storyboard = {
     setTimeout(() => {
       hideScreen(screens.level);
       currentLevel.spawn();
-      game.isOn = true;
+      game.isPlaying = true;
     }, 1500);
   },
 
   showDeathScene() {
-    if (!game.isOn) return;
-    game.isOn = false;
+    if (!game.isPlaying) return;
+    game.isPlaying = false;
     game.state = 'DEAD';
     LEVELS[game.level].audio.pause();
     playSound(sounds.died);
@@ -126,8 +129,8 @@ const storyboard = {
   },
 
   passScene() {
-    if (!game.isOn) return;
-    game.isOn = false;
+    if (!game.isPlaying) return;
+    game.isPlaying = false;
     game.state = 'PASS';
     LEVELS[game.level].audio.pause();
     game.level++;
