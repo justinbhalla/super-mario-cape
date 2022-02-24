@@ -78,10 +78,10 @@ class Mario extends Element {
     if (pressedDown) this.dive();
     if (pressedUp && !this.isJumping) this.jump();
     if (!pressedUp) this.isJumping = false;
+    if (game.isPlaying) this.yPos += this.gravity;
+
     if (hasFallen && game.state === 'TUTORIAL') this.reset();
     else if (hasFallen) this.isDead = true;
-
-    this.yPos += this.gravity;
   }
 
   moveRight() {
