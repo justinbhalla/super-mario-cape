@@ -50,6 +50,8 @@ const storyboard = {
     game.isPlaying = false;
     game.isScrolling = false;
     game.music.yoshisIsland.pause();
+    elements.player.passedTutorial = false;
+    controller.reset();
     hideScreen(screens.tutorial);
     showScreen(screens.transitionFade);
 
