@@ -18,7 +18,12 @@ class Element {
     moveHitbox(this);
     drawImage(this);
 
-    if (this instanceof Mario === false) {
+    if (this instanceof Mario) {
+      let { pressedUp, pressedDown } = controller;
+      if (pressedUp && !this.isJumping) this.spriteFrame = 1;
+      if (!pressedUp) this.spriteFrame = 0;
+      if (pressedDown) this.spriteFrame = 2;
+    } else {
       if (game.isPlaying) drawSprite(this);
 
       if (this instanceof Star && didHitMario(this)) {
@@ -66,47 +71,34 @@ class Mario extends Element {
 
   move() {
     let { pressedLeft, pressedRight, pressedUp, pressedDown } = controller;
-    let { xPos, yPos, xSpeed, ySpeed, gravity, wind } = this;
-    let hasFallen = yPos + this.height / 2 > PIXELS.height;
-    let hasSpaceBottom = yPos + this.height < PIXELS.height;
-    let hasSpaceRight = xPos + this.width < PIXELS.width;
-    let hasSpaceLeft = xPos > 0;
+    let hasFallen = this.yPos + this.height / 2 > PIXELS.height;
 
-    if (
-      (pressedRight && hasSpaceRight) ||
-      (pressedRight && game.state === 'TUTORIAL')
-    )
-      this.xPos += xSpeed + wind;
-    if (pressedLeft && hasSpaceLeft) this.xPos -= xSpeed - wind;
+    if (pressedLeft) this.moveLeft();
+    if (pressedRight) this.moveRight();
+    if (pressedDown) this.dive();
+    if (pressedUp && !this.isJumping) this.jump();
+    if (!pressedUp) this.isJumping = false;
+    if (hasFallen && game.state === 'TUTORIAL') this.reset();
+    else if (hasFallen) this.isDead = true;
 
-    if (pressedUp && !this.isJumping) {
-      this.jump();
-      this.spriteFrame = 1;
-    }
+    this.yPos += this.gravity;
+  }
 
-    if (!pressedUp) {
-      this.isJumping = false;
-      this.spriteFrame = 0;
-    }
+  moveRight() {
+    let { state } = game;
+    let offset = state === 'TUTORIAL' ? 2 : 1;
+    let hasSpace = this.xPos + this.width / offset < PIXELS.width;
+    if (hasSpace) this.xPos += this.xSpeed + this.wind;
+    if (state === 'TUTORIAL' && !hasSpace) this.passedTutorial = true;
+  }
 
-    if (
-      (game.state === 'TUTORIAL' && hasSpaceBottom && pressedDown) ||
-      (game.state !== 'TUTORIAL' && pressedDown)
-    ) {
-      this.yPos += ySpeed + gravity;
-      this.spriteFrame = 2;
-    }
+  moveLeft() {
+    let hasSpace = this.xPos >= 0;
+    if (hasSpace) this.xPos -= this.xSpeed - this.wind;
+  }
 
-    if (game.isPlaying && game.state !== 'TUTORIAL' && hasFallen)
-      this.isDead = true;
-    if (game.state === 'DEAD') this.spriteFrame = 3;
-    if (xPos + this.width / 2 > PIXELS.width) this.passedTutorial = true;
-    if (
-      (game.isPlaying && game.state === 'TUTORIAL' && hasSpaceBottom) ||
-      (game.isPlaying && game.state !== 'TUTORIAL')
-    ) {
-      this.yPos += gravity;
-    }
+  dive() {
+    this.yPos += this.ySpeed + this.gravity;
   }
 
   jump() {
