@@ -66,10 +66,11 @@ function runGame() {
     drawBackground();
     elements.update();
 
-    // if (elements.player.isDead) storyboard.showDeathScene();
-    if (elements.player.passedTutorial && game.state === 'TUTORIAL')
+    let { player } = elements;
+    // if (player.isDead) storyboard.showDeathScene();
+    if (player.passedTutorial && game.state === 'TUTORIAL')
       storyboard.showSceneMap();
-    if (elements.player.gotStar) passScene();
+    if (player.gotStar) passScene();
   }
 }
 
