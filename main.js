@@ -34,6 +34,7 @@ const game = {
 
   sfx: {
     lostALife: new Audio('audio/sfx/lost-a-life.wav'),
+    coin: new Audio('audio/sfx/coin.wav'),
     irisOut: new Audio('audio/sfx/iris-out.wav'),
     capeJump: new Audio('audio/sfx/cape-jump.wav'),
     courseClear: new Audio('audio/sfx/course-clear.wav'),

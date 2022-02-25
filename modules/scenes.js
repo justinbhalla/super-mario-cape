@@ -30,7 +30,7 @@ const storyboard = {
 
   showSceneTutorial() {
     game.music.title.pause();
-    playSound(game.sfx.messageBlock);
+    playSound(game.sfx.coin);
     hideScreen(screens.intro);
     showScreen(screens.transitionFade);
 
