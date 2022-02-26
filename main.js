@@ -33,6 +33,7 @@ const game = {
   },
 
   sfx: {
+    worldClear: new Audio('audio/sfx/world-clear.mp3'),
     lostALife: new Audio('audio/sfx/lost-a-life.wav'),
     coin: new Audio('audio/sfx/coin.wav'),
     irisOut: new Audio('audio/sfx/iris-out.wav'),

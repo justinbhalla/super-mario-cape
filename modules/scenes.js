@@ -38,7 +38,7 @@ const storyboard = {
       showScreen(screens.tutorial);
       hideScreen(screens.transitionFade);
       screens.background.backgroundImage = `url(images/levels/bg-plains.jpg)`;
-      playSound(game.music.yoshisIsland);
+      playSound(game.sfx.worldClear);
       game.state = 'TUTORIAL';
       game.isPlaying = true;
       elements.player.reset();
@@ -49,7 +49,7 @@ const storyboard = {
     game.state = 'MAP';
     game.isPlaying = false;
     game.isScrolling = false;
-    game.music.yoshisIsland.pause();
+    game.sfx.worldClear.pause();
     elements.player.passedTutorial = false;
     controller.reset();
     hideScreen(screens.tutorial);
