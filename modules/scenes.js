@@ -26,15 +26,15 @@ const storyboard = {
   },
 
   showSceneTutorial() {
-    game.music.title.pause();
-    playSound(game.sfx.coin);
     hideScreen(screens.intro);
     showScreen(screens.transitionFade);
+    resetSound();
+    playSound(game.sfx.coin);
 
     setTimeout(() => {
       changeState('TUTORIAL');
-      showScreen(screens.tutorial);
       hideScreen(screens.transitionFade);
+      showScreen(screens.tutorial);
       screens.background.backgroundImage = `url(images/levels/bg-athletic.jpg)`;
       playSound(game.sfx.worldClear);
     }, 1500);
@@ -42,10 +42,10 @@ const storyboard = {
 
   showSceneMap() {
     changeState('MAP');
-    game.sfx.worldClear.pause();
-    controller.reset();
     hideScreen(screens.tutorial);
     showScreen(screens.transitionFade);
+    resetSound();
+    controller.reset();
 
     setTimeout(() => {
       hideScreen(screens.background);
@@ -242,6 +242,17 @@ function hideScreen(screen) {
 
 function playSound(sound) {
   if (game.hasSound) sound.play();
+}
+
+function resetSound() {
+  if (!game.hasSound) return;
+
+  let { music, sfx } = game;
+  let sounds = [...Object.values(music), ...Object.values(sfx)];
+  sounds.forEach((sound) => {
+    sound.pause();
+    sound.currentTime = 0;
+  });
 }
 
 export { screens, storyboard };
