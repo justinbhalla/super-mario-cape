@@ -21,9 +21,7 @@ const screens = {
 
 const storyboard = {
   showSceneIntro() {
-    game.state = 'START';
-    game.isScrolling = true;
-    screens.background.backgroundPositionX = 0;
+    changeState('START');
     hideScreen(screens.loading);
   },
 
@@ -34,22 +32,17 @@ const storyboard = {
     showScreen(screens.transitionFade);
 
     setTimeout(() => {
+      changeState('TUTORIAL');
       showScreen(screens.tutorial);
       hideScreen(screens.transitionFade);
       screens.background.backgroundImage = `url(images/levels/bg-athletic.jpg)`;
       playSound(game.sfx.worldClear);
-      game.state = 'TUTORIAL';
-      game.isPlaying = true;
-      elements.player.reset();
     }, 1500);
   },
 
   showSceneMap() {
-    game.state = 'MAP';
-    game.isPlaying = false;
-    game.isScrolling = false;
+    changeState('MAP');
     game.sfx.worldClear.pause();
-    elements.player.passedTutorial = false;
     controller.reset();
     hideScreen(screens.tutorial);
     showScreen(screens.transitionFade);
@@ -178,6 +171,27 @@ const storyboard = {
     cursor.cursor = 'auto';
   },
 };
+
+function changeState(state) {
+  switch (state) {
+    case 'START':
+      game.state = state;
+      game.isScrolling = true;
+      screens.background.backgroundPositionX = 0;
+      break;
+    case 'TUTORIAL':
+      game.state = state;
+      game.isPlaying = true;
+      elements.player.reset();
+      break;
+    case 'MAP':
+      game.state = state;
+      game.isPlaying = false;
+      game.isScrolling = false;
+      elements.player.passedTutorial = false;
+      break;
+  }
+}
 
 function showScreen(screen) {
   switch (screen) {
