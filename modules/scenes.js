@@ -24,7 +24,6 @@ const storyboard = {
     game.state = 'START';
     game.isScrolling = true;
     screens.background.backgroundPositionX = 0;
-    screens.background.backgroundPositionY = 0;
     hideScreen(screens.loading);
   },
 
@@ -37,7 +36,7 @@ const storyboard = {
     setTimeout(() => {
       showScreen(screens.tutorial);
       hideScreen(screens.transitionFade);
-      screens.background.backgroundImage = `url(images/levels/bg-plains.jpg)`;
+      screens.background.backgroundImage = `url(images/levels/bg-athletic.jpg)`;
       playSound(game.sfx.worldClear);
       game.state = 'TUTORIAL';
       game.isPlaying = true;

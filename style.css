@@ -275,6 +275,7 @@ img {
 #screen-tutorial__text {
   font-size: 24px;
   text-transform: none;
+  text-align: justify;
   position: absolute;
   background: black;
   top: calc(50% - 343px);
@@ -283,7 +284,6 @@ img {
   padding: 17px 24px;
   padding: 17px 24px 34px 24px;
   line-height: 31px;
-  text-align: left;
 }
 
 #background {
