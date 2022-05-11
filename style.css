@@ -73,6 +73,10 @@ input:focus {
 #background {
   width: 1008px;
   height: 758px;
+  background-image: url(images/backgrounds/menu.jpg);
+  background-repeat: repeat-x;
+  will-change: background-position-x, background-position-y;
+  z-index: -1;
 }
 
 #screen-hud {
@@ -147,10 +151,6 @@ input:focus {
   to {
     opacity: 1;
   }
-}
-
-#screen-map {
-  background-image: url(images/graphics/map.jpg);
 }
 
 #start-btn:hover ~ #menu-hover {
@@ -262,13 +262,6 @@ input:focus {
   padding: 17px 24px;
   padding: 17px 24px 34px 24px;
   line-height: 31px;
-}
-
-#background {
-  background-image: url(images/levels/bg-title.jpg);
-  background-repeat: repeat-x;
-  will-change: background-position-x, background-position-y;
-  z-index: -1;
 }
 
 #backdrop {

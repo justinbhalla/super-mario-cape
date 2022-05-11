@@ -255,7 +255,7 @@ function changeBackground(background) {
       break;
     case "map":
       screens.background.backgroundPositionX = "center";
-      url = `url(images/graphics/map.jpg)`;
+      url = `url(images/backgrounds/map.jpg)`;
       break;
   }
 
