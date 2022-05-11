@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 * {
   box-sizing: border-box;
@@ -13,24 +13,19 @@ body {
   overflow: hidden;
 }
 
-body {
-  background: black;
+div,
+img,
+input,
+canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 p,
-div,
-ul,
-li,
-h1,
-button,
+img,
 input {
-  font-family: 'Press Start 2P', sans-serif;
-  text-transform: uppercase;
-  text-align: center;
-  color: white;
-}
-
-img {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -39,59 +34,40 @@ img {
   user-select: none;
 }
 
-#canvas,
-#backdrop,
-#background,
-#screen-map,
-#screen-hud,
-#screen-failure,
-#screen-retry,
-#screen-success,
-#screen-level,
-#screen-level__text,
-#screen-outro,
-#screen-intro,
-#screen-intro__mario,
-#screen-intro__title,
-#screen-intro__start-btn,
-#screen-intro__sound-btn,
-#screen-transition-iris,
-#screen-transition-fade,
-#screen-loading,
-#screen-loading div,
-#screen-loading p {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+p,
+input {
+  font-family: "Press Start 2P", monospace;
+  color: white;
 }
 
-#screen-map,
-#screen-intro,
-#screen-level,
-#screen-failure,
-#screen-transition-iris,
-#screen-transition-fade,
-#backdrop {
+body {
+  background: black;
+}
+
+input:focus {
+  outline: none;
+}
+
+.fullscreen {
   width: 1010px;
   height: 760px;
 }
 
-#screen-retry,
-#screen-level,
-#screen-map,
-#screen-hud,
-#screen-success,
-#screen-failure,
-#screen-outro {
+.hidden {
   display: none;
+  opacity: 0%;
 }
 
-#backdrop,
-#screen-retry,
-#screen-level,
-#screen-failure {
-  background: black;
+.btn {
+  background: none;
+  border: none;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 32px;
+  width: 420px;
+  height: 60px;
+  text-shadow: 3px 3px 0 #000, -3px -3px 0 #000, 3px -3px 0 #000, 3px 1px 0 #000,
+    -3px 3px 0 #000;
 }
 
 #background {
@@ -117,15 +93,15 @@ img {
   align-self: center;
 }
 
-#screen-intro__title {
+#menu-title {
   top: calc(50% - 190px);
 }
 
-#screen-intro__mario {
+#menu-mario {
   top: calc(50% + 20px);
 }
 
-#screen-intro__start-hover {
+#menu-hover {
   display: none;
   position: absolute;
   left: 283px;
@@ -136,8 +112,8 @@ img {
   border-left: 28px solid #f73738;
 }
 
-#screen-intro__start-hover::before {
-  content: '';
+#menu-hover::before {
+  content: "";
   position: absolute;
   z-index: -1;
   left: -31px;
@@ -147,37 +123,42 @@ img {
   border-left: 36px solid black;
 }
 
-#screen-intro__start-btn,
-#screen-intro__sound-btn {
-  background: none;
-  border: none;
-  text-transform: uppercase;
-  color: white;
-  font-size: 32px;
-  width: 420px;
-  height: 60px;
-  text-shadow: 3px 3px 0 #000, -3px -3px 0 #000, 3px -3px 0 #000, 3px 1px 0 #000,
-    -3px 3px 0 #000;
-}
-
-#screen-intro__start-btn {
+#start-btn {
   top: calc(50% + 190px);
 }
 
-#screen-intro__sound-btn {
+#sound-btn {
   top: calc(50% + 250px);
+}
+
+#fade {
+  background-color: black;
+  opacity: 0%;
+}
+
+#fade.fade-active {
+  animation: fadein 1s forwards;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 #screen-map {
   background-image: url(images/graphics/map.jpg);
 }
 
-#screen-intro__start-btn:hover ~ #screen-intro__start-hover {
+#start-btn:hover ~ #menu-hover {
   display: block;
   top: calc(50% + 173px);
 }
 
-#screen-intro__sound-btn:hover ~ #screen-intro__start-hover {
+#sound-btn:hover ~ #menu-hover {
   display: block;
   top: calc(50% + 234px);
 }
@@ -268,11 +249,8 @@ img {
   opacity: 0;
 }
 
-#screen-tutorial {
-  display: none;
-}
-
-#screen-tutorial__text {
+#tutorial-text {
+  color: white;
   font-size: 24px;
   text-transform: none;
   text-align: justify;
@@ -297,14 +275,14 @@ img {
   z-index: -2;
 }
 
-#screen-loading {
+#loader {
   width: 100vw;
   height: 100vh;
   background: black;
 }
 
-#screen-loading div {
-  background-image: url('images/graphics/loading.gif');
+#loader div {
+  background-image: url("images/graphics/loading.gif");
   background-position: center;
   background-repeat: no-repeat;
   width: 500px;

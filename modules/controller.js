@@ -1,4 +1,4 @@
-import { game, storyboard } from '../main.js';
+import { game, storyboard } from "../main.js";
 
 const controller = {
   LEFT_KEY: 37,
@@ -23,20 +23,20 @@ const controller = {
 
     let { keyCode, type } = event;
     let { UP_1_KEY, UP_2_KEY } = this;
-    let menuClicked = type === 'click';
+    let menuClicked = type === "click";
     let menuPressed = keyCode === UP_1_KEY || keyCode === UP_2_KEY;
 
     if (menuClicked || menuPressed) {
       switch (game.state) {
-        case 'START':
-          storyboard.showSceneTutorial();
+        case "START":
+          storyboard.showTutorial();
           break;
-        case 'RETRY':
+        case "RETRY":
           // hideScreen(screens.retry);
           // game.lives--;
           //levelScene();
           break;
-        case 'OVER':
+        case "OVER":
           // hideScreen(screens.failure);
           // game.lives = game.livesStart;
           // game.level = 0;
@@ -52,7 +52,7 @@ const controller = {
     if (!game.isPlaying) return;
 
     let { LEFT_KEY, RIGHT_KEY, DOWN_KEY, UP_1_KEY, UP_2_KEY } = controller;
-    let isHeld = event.type === 'keydown';
+    let isHeld = event.type === "keydown";
     let jumpFlag = false;
 
     switch (event.keyCode) {

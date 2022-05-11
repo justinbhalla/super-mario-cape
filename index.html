@@ -5,7 +5,7 @@
     <meta name="author" content="JMMFL" />
     <meta
       name="description"
-      content="Single-elements.player browser game inspired by Super Mario World and Flappy Bird."
+      content="Single-player browser game inspired by Super Mario World and Flappy Bird."
     />
     <meta content="utf-8" http-equiv="encoding" />
     <link rel="icon" type="image/png" href="images/graphics/favicon.png" />
@@ -17,62 +17,41 @@
     <canvas id="canvas" width="1010" height="760"
       >This browser does not support Canvas.</canvas
     >
-    <div id="backdrop"></div>
-    <div id="background"></div>
-    <div id="screen-map"></div>
-    <div id="screen-hud">
-      <img
+    <div id="backdrop" class="fullscreen"></div>
+    <div id="background" class="fullscreen"></div>
+    <div id="hud" class="center">
+      <!-- <img
         id="screen-hud__lives"
         src="images/graphics/lives.png"
         alt="Heads Up Display for elements.player's Lives."
       />
-      <p id="screen-hud__lives-text">2</p>
+      <p id="screen-hud__lives-text">2</p> -->
     </div>
-    <div id="screen-retry">
-      <h1>You<br />Died</h1>
-      <button>Press Jump<br />Try Again</button>
-    </div>
-    <div id="screen-failure">
-      <h1>GAME<br />OVER</h1>
-      <button>Press Jump<br />Try Again</button>
-    </div>
-    <h1 id="screen-success">Course Complete</h1>
-    <div id="screen-level">
-      <h1 id="screen-level__text"></h1>
-    </div>
-    <div id="screen-outro">
-      <h1>Congratulations</h1>
-      <p>
-        Thank You for Playing! Created by
-        <a href="https://github.com/JMMFL/super-mario-cape">Jordan & Shoghi</a>.
-      </p>
-    </div>
-    <div id="screen-tutorial">
-      <p id="screen-tutorial__text">
+    <div id="tutorial" class="fullscreen hidden">
+      <p id="tutorial-text">
         Use arrow keys and spacebar to dodge enemies and collect all six level
         stars.<br /><br />
         Exit right when ready!
       </p>
     </div>
-    <div id="screen-transition-fade"></div>
-    <div id="screen-intro">
+    <div id="menu" class="fullscreen">
       <img
-        id="screen-intro__title"
+        id="menu-title"
         src="images/graphics/title.png"
         alt="Super Mario Cape Logo."
       />
       <img
-        id="screen-intro__mario"
+        id="menu-mario"
         src="images/graphics/mario.png"
         alt="Mario flying with a cape."
       />
-      <input id="screen-intro__start-btn" type="button" value="Start Game" />
-      <input id="screen-intro__sound-btn" type="button" value="Sound: Off" />
-      <div id="screen-intro__start-hover"></div>
+      <input id="start-btn" class="btn" type="button" value="Start Game" />
+      <input id="sound-btn" class="btn" type="button" value="Sound: Off" />
+      <span id="menu-hover"></span>
     </div>
-    <div id="screen-transition-iris"></div>
-
-    <div id="screen-loading">
+    <div id="iris" class="fullscreen hidden"></div>
+    <div id="fade" class="fullscreen hidden"></div>
+    <div id="loader">
       <div></div>
     </div>
     <script type="module" src="main.js"></script>
