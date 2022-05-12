@@ -86,11 +86,6 @@ input:focus {
   background-image: url(images/backgrounds/athletic.jpg);
 }
 
-.bg-map {
-  background-image: url(images/backgrounds/map.jpg);
-  background-position-x: 0px !important;
-}
-
 #screen-hud {
   top: calc(50% - 320px);
   left: calc(50% + 430px);
