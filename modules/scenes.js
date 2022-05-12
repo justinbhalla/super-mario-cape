@@ -246,7 +246,6 @@ function resetSound() {
   });
 }
 
-//change with CSS not JS?
 function changeBackground(background) {
   game.background.classList = [];
   game.background.classList.toggle(`bg-${background}`);
