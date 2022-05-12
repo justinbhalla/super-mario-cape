@@ -74,7 +74,10 @@ function runGame() {
 
     let { player } = elements;
     // if (player.isDead) storyboard.showDeathScene();
-    if (player.passedTutorial);
+    if (player.passedTutorial && game.state === "TUTORIAL") {
+      storyboard.showLevel();
+    }
+
     if (player.gotStar) passScene();
   }
 }

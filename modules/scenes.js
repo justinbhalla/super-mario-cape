@@ -30,6 +30,19 @@ const storyboard = {
     }, 1500);
   },
 
+  showLevel() {
+    changeState("TRANSITION");
+    showScreen(fade);
+    resetSound();
+    playSound(game.sfx.coin);
+
+    setTimeout(() => {
+      changeState("LEVEL");
+      hideScreen(fade);
+      hideScreen(tutorial);
+    }, 1500);
+  },
+
   // levelScene() {
   //   showScreen(screens.hud);
   //   showScreen(screens.level);
@@ -163,6 +176,13 @@ function changeState(state) {
       game.state = state;
       game.isPlaying = false;
       game.isScrolling = true;
+      break;
+    case "LEVEL":
+      game.state = state;
+      game.isPlaying = true;
+      game.isScrolling = true;
+      elements.player.reset();
+      controller.reset();
       break;
   }
 }
