@@ -73,10 +73,18 @@ input:focus {
 #background {
   width: 1008px;
   height: 758px;
-  background-image: url(images/backgrounds/menu.jpg);
+  /* background-image: url(images/backgrounds/menu.jpg); */
   background-repeat: repeat-x;
   will-change: background-position-x, background-position-y;
   z-index: -1;
+}
+
+.bg-menu {
+  background-image: url(images/backgrounds/menu.jpg);
+}
+
+.bg-athletic {
+  background-image: url(images/backgrounds/athletic.jpg);
 }
 
 #screen-hud {

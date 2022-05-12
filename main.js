@@ -1,4 +1,4 @@
-import { screens, storyboard } from "./modules/scenes.js";
+import { storyboard } from "./modules/scenes.js";
 import controller from "./modules/controller.js";
 import { Mario } from "./modules/elements.js";
 import { loading } from "./modules/load.js";
@@ -26,6 +26,8 @@ const game = {
   level: 0,
   timeouts: [],
   hasSound: false,
+
+  background: document.getElementById("background"),
 
   music: {
     title: new Audio("audio/music/title.mp3"),
@@ -77,10 +79,11 @@ function runGame() {
 
 function drawBackground() {
   if (game.isScrolling) {
-    let currentPos = parseInt(screens.background.backgroundPositionX);
+    const { background } = game;
+    const currentX = parseInt(background.style.backgroundPositionX);
 
-    screens.background.backgroundPositionX = `${
-      currentPos - game.scrollSpeed
+    game.background.style.backgroundPositionX = `${
+      currentX - game.scrollSpeed
     }px`;
   }
 

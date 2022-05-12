@@ -3,7 +3,6 @@ import { PIXELS, game, controller, elements, LEVELS, Level } from "../main.js";
 // I can rewrite the helpers to deconstruct from screens
 const screens = {
   backdrop: document.getElementById("backdrop"),
-  background: document.getElementById("background").style,
   iris: document.getElementById("iris"),
   fade: document.getElementById("fade"),
   menu: document.getElementById("menu"),
@@ -14,6 +13,7 @@ const screens = {
 const storyboard = {
   showMenu() {
     changeState("START");
+    changeBackground("menu");
     hideScreen(screens.loader);
   },
 
@@ -167,7 +167,7 @@ function changeState(state) {
     case "START":
       game.state = state;
       game.isScrolling = true;
-      screens.background.backgroundPositionX = 0;
+      game.background.style.backgroundPositionX = 0;
       break;
     case "TUTORIAL":
       game.state = state;
@@ -248,18 +248,8 @@ function resetSound() {
 
 //change with CSS not JS?
 function changeBackground(background) {
-  let url = "";
-  switch (background) {
-    case "athletic":
-      url = `url(images/levels/bg-athletic.jpg)`;
-      break;
-    case "map":
-      screens.background.backgroundPositionX = "center";
-      url = `url(images/backgrounds/map.jpg)`;
-      break;
-  }
-
-  screens.background.backgroundImage = url;
+  game.background.classList = [];
+  game.background.classList.toggle(`bg-${background}`);
 }
 
-export { screens, storyboard };
+export { storyboard };
