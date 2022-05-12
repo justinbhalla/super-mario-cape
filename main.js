@@ -67,7 +67,9 @@ function runGame() {
 
   if (elapsed > game.FPS_INTERVAL) {
     then = now - (elapsed % game.FPS_INTERVAL);
-    drawBackground();
+
+    if (game.isScrolling) scrollBackground();
+    clearCanvas();
     elements.update();
 
     let { player } = elements;
@@ -77,16 +79,16 @@ function runGame() {
   }
 }
 
-function drawBackground() {
-  if (game.isScrolling) {
-    const { background } = game;
-    const currentX = parseInt(background.style.backgroundPositionX);
+function scrollBackground() {
+  const { background } = game;
+  const currentX = parseInt(background.style.backgroundPositionX);
 
-    game.background.style.backgroundPositionX = `${
-      currentX - game.scrollSpeed
-    }px`;
-  }
+  game.background.style.backgroundPositionX = `${
+    currentX - game.scrollSpeed
+  }px`;
+}
 
+function clearCanvas() {
   context.clearRect(0, 0, PIXELS.width, PIXELS.height);
 }
 
