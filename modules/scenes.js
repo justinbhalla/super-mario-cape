@@ -1,48 +1,45 @@
 import { PIXELS, game, controller, elements, LEVELS, Level } from "../main.js";
 
-// I can rewrite the helpers to deconstruct from screens
-const screens = {
-  canvas: document.getElementById("canvas"),
-  iris: document.getElementById("iris"),
-  fade: document.getElementById("fade"),
-  menu: document.getElementById("menu"),
-  tutorial: document.getElementById("tutorial"),
-  loader: document.getElementById("loader"),
-};
+const canvas = document.getElementById("canvas");
+const iris = document.getElementById("iris");
+const fade = document.getElementById("fade");
+const menu = document.getElementById("menu");
+const tutorial = document.getElementById("tutorial");
+const loader = document.getElementById("loader");
 
 const storyboard = {
   showMenu() {
     changeState("START");
     changeBackground("menu");
-    hideScreen(screens.loader);
+    hideScreen(loader);
   },
 
   showTutorial() {
-    showScreen(screens.fade);
+    showScreen(fade);
     resetSound();
     playSound(game.sfx.coin);
 
     setTimeout(() => {
       changeState("TUTORIAL");
       changeBackground("athletic");
-      hideScreen(screens.menu);
-      hideScreen(screens.fade);
-      showScreen(screens.tutorial);
+      hideScreen(menu);
+      hideScreen(fade);
+      showScreen(tutorial);
       playSound(game.sfx.worldClear);
     }, 1500);
   },
 
   showMap() {
     changeState("MAP");
-    hideScreen(screens.tutorial);
-    showScreen(screens.fade);
+    hideScreen(tutorial);
+    showScreen(fade);
     resetSound();
     controller.reset();
 
     setTimeout(() => {
       changeBackground("map");
-      hideScreen(screens.canvas);
-      hideScreen(screens.fade);
+      hideScreen(canvas);
+      hideScreen(fade);
     }, 1500);
   },
 
@@ -186,50 +183,22 @@ function changeState(state) {
 
 function showScreen(screen) {
   switch (screen) {
-    case screens.map:
-      screen.display = "block";
-      screens.map.animation = "fadein 0.5s forwards";
-      break;
-    case screens.background:
-      screens.background.animation = "fadein 0.1s forwards";
-      break;
-    case screens.fade:
-      screens.fade.classList.toggle("hidden");
-      screens.fade.classList.toggle("fade-active");
-      break;
-    case screens.transitionIris:
-      screens.transitionIris.borderLeftWidth = "510px";
-      screens.transitionIris.borderRightWidth = "510px";
-      screens.transitionIris.borderBottomWidth = "380px";
-      screens.transitionIris.borderTopWidth = "380px";
-      screens.transitionIris.transition = "ease-in 1s";
-      break;
-    case screens.hud:
-      screen.display = "flex";
-      break;
-    default:
-      screen.classList.toggle("hidden");
+    case fade:
+      screen.classList.add("fade-active");
       break;
   }
+
+  screen.classList.remove("hidden");
 }
 
 function hideScreen(screen) {
   switch (screen) {
-    // case screens.background:
-    //   screens.background.animation = 'fadeout 2.5s forwards';
-    //   break;
-    case screens.fade:
-      screens.fade.classList.toggle("hidden");
-      screens.fade.classList.toggle("fade-active");
-      break;
-    case screens.transitionIris:
-      screens.transitionIris.borderWidth = "0px";
-      screens.transitionIris.transition = "none";
-      break;
-    default:
-      screen.classList.toggle("hidden");
+    case fade:
+      screen.classList.remove("fade-active");
       break;
   }
+
+  screen.classList.add("hidden");
 }
 
 function playSound(sound) {
