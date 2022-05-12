@@ -18,7 +18,6 @@ const storyboard = {
   },
 
   showTutorial() {
-    hideScreen(screens.menu);
     showScreen(screens.fade);
     resetSound();
     playSound(game.sfx.coin);
@@ -26,6 +25,7 @@ const storyboard = {
     setTimeout(() => {
       changeState("TUTORIAL");
       changeBackground("athletic");
+      hideScreen(screens.menu);
       hideScreen(screens.fade);
       showScreen(screens.tutorial);
       playSound(game.sfx.worldClear);
