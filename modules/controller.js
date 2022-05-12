@@ -29,7 +29,8 @@ const controller = {
     if (menuClicked || menuPressed) {
       switch (game.state) {
         case "START":
-          storyboard.showTutorial();
+          storyboard.showTransition();
+          // storyboard.showTutorial();
           break;
         case "RETRY":
           // hideScreen(screens.retry);

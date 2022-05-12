@@ -15,32 +15,37 @@ const storyboard = {
   },
 
   showTutorial() {
-    changeState("TRANSITION");
-    showScreen(fade);
-    resetSound();
-    playSound(game.sfx.coin);
-
-    setTimeout(() => {
-      changeState("TUTORIAL");
-      changeBackground("athletic");
-      hideScreen(menu);
-      hideScreen(fade);
-      showScreen(tutorial);
-      playSound(game.sfx.worldClear);
-    }, 1500);
+    changeState("TUTORIAL");
+    changeBackground("athletic");
+    hideScreen(menu);
+    hideScreen(fade);
+    showScreen(tutorial);
+    playSound(game.sfx.worldClear);
   },
 
   showLevel() {
-    changeState("TRANSITION");
-    showScreen(fade);
-    resetSound();
-    playSound(game.sfx.coin);
+    changeState("LEVEL");
+    hideScreen(fade);
+    hideScreen(tutorial);
+  },
 
-    setTimeout(() => {
-      changeState("LEVEL");
-      hideScreen(fade);
-      hideScreen(tutorial);
-    }, 1500);
+  showTransition() {
+    resetSound();
+
+    switch (game.state) {
+      case "START":
+        showScreen(fade);
+        playSound(game.sfx.coin);
+        setTimeout(this.showTutorial, 1500);
+        break;
+      case "TUTORIAL":
+        showScreen(fade);
+        playSound(game.sfx.coin);
+        setTimeout(this.showLevel, 1500);
+        break;
+    }
+
+    changeState("TRANSITION");
   },
 };
 
