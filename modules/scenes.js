@@ -29,20 +29,6 @@ const storyboard = {
     }, 1500);
   },
 
-  showMap() {
-    changeState("MAP");
-    hideScreen(tutorial);
-    showScreen(fade);
-    resetSound();
-    controller.reset();
-
-    setTimeout(() => {
-      changeBackground("map");
-      hideScreen(canvas);
-      hideScreen(fade);
-    }, 1500);
-  },
-
   // levelScene() {
   //   showScreen(screens.hud);
   //   showScreen(screens.level);
@@ -171,12 +157,6 @@ function changeState(state) {
       game.state = state;
       game.isPlaying = true;
       elements.player.reset();
-      break;
-    case "MAP":
-      game.state = state;
-      game.isPlaying = false;
-      game.isScrolling = false;
-      elements.player.passedTutorial = false;
       break;
   }
 }
