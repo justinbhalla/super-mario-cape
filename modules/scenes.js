@@ -15,6 +15,7 @@ const storyboard = {
   },
 
   showTutorial() {
+    changeState("TRANSITION");
     showScreen(fade);
     resetSound();
     playSound(game.sfx.coin);
@@ -157,6 +158,11 @@ function changeState(state) {
       game.state = state;
       game.isPlaying = true;
       elements.player.reset();
+      break;
+    case "TRANSITION":
+      game.state = state;
+      game.isPlaying = false;
+      game.isScrolling = true;
       break;
   }
 }
