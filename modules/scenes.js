@@ -2,7 +2,7 @@ import { PIXELS, game, controller, elements, LEVELS, Level } from "../main.js";
 
 // I can rewrite the helpers to deconstruct from screens
 const screens = {
-  backdrop: document.getElementById("backdrop"),
+  canvas: document.getElementById("canvas"),
   iris: document.getElementById("iris"),
   fade: document.getElementById("fade"),
   menu: document.getElementById("menu"),
@@ -41,6 +41,7 @@ const storyboard = {
 
     setTimeout(() => {
       changeBackground("map");
+      hideScreen(screens.canvas);
       hideScreen(screens.fade);
     }, 1500);
   },
