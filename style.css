@@ -171,6 +171,14 @@ input:focus {
   top: calc(50% + 234px);
 }
 
+#text {
+  font-size: 26px;
+  color: yellow;
+  background: #000000;
+  text-align: center;
+  line-height: 650px;
+}
+
 #screen-failure > * {
   position: relative;
   top: 40%;
@@ -234,11 +242,6 @@ input:focus {
 #screen-outro p a {
   text-decoration: underline;
   color: white;
-}
-
-#text {
-  font-size: 26px;
-  color: yellow;
 }
 
 #screen-transition-iris {

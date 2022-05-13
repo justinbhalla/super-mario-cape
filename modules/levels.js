@@ -1,4 +1,4 @@
-import { game, elements, PIXELS, Enemies } from '../main.js';
+import { game, elements, PIXELS, Enemies } from "../main.js";
 
 let {
   YellowSuperKoopa,
@@ -30,45 +30,45 @@ class Level {
 }
 
 const OVERWORLD = new Level(
-  'The Basics',
-  'images/levels/bg-overworld.jpg',
+  "The Basics",
+  "images/levels/bg-overworld.jpg",
   // 'overworld',
   0.4
 );
 const ATHLETIC = new Level(
-  'Koopa Dragon',
-  'images/levels/bg-athletic.jpg',
+  "Koopa Dragon",
+  "images/levels/bg-athletic.jpg",
   // 'athletic',
   0.45
 );
 const HAUNTED = new Level(
-  'Spooooky',
-  'images/levels/bg-haunted.jpg',
+  "Spooooky",
+  "images/levels/bg-haunted.jpg",
   // 'spooky',
   0.35
 );
 const CASTLE = new Level(
   "You're Doomed",
-  'images/levels/bg-castle.jpg',
+  "images/levels/bg-castle.jpg",
   // 'castle',
   0.8
 );
 
 OVERWORLD.spawn = () => {
-  spawnElement(1, new SuperKoopa(0, 'yellow'));
-  spawnElement(1, new SuperKoopa(100, 'yellow'));
-  spawnElement(1, new SuperKoopa(200, 'yellow'));
-  spawnElement(2.5, new SuperKoopa(600, 'red'));
-  spawnElement(2.5, new SuperKoopa(100, 'red'));
-  spawnElement(4, new Parakoopa(300, 'red'));
-  spawnElement(5, new Parakoopa(400, 'yellow'));
+  spawnElement(1, new SuperKoopa(0, "yellow"));
+  spawnElement(1, new SuperKoopa(100, "yellow"));
+  spawnElement(1, new SuperKoopa(200, "yellow"));
+  spawnElement(2.5, new SuperKoopa(600, "red"));
+  spawnElement(2.5, new SuperKoopa(100, "red"));
+  spawnElement(4, new Parakoopa(300, "red"));
+  spawnElement(5, new Parakoopa(400, "yellow"));
   spawnElement(6, new FlyingGoomba(250));
-  spawnElement(8, new Parakoopa(350, 'yellow'));
-  spawnElement(8.5, new Parakoopa(300, 'yellow'));
-  spawnElement(9, new Parakoopa(300, 'yellow'));
-  spawnElement(9.5, new Parakoopa(300, 'yellow'));
-  spawnElement(10, new Parakoopa(300, 'yellow'));
-  spawnElement(10.5, new Parakoopa(300, 'yellow'));
+  spawnElement(8, new Parakoopa(350, "yellow"));
+  spawnElement(8.5, new Parakoopa(300, "yellow"));
+  spawnElement(9, new Parakoopa(300, "yellow"));
+  spawnElement(9.5, new Parakoopa(300, "yellow"));
+  spawnElement(10, new Parakoopa(300, "yellow"));
+  spawnElement(10.5, new Parakoopa(300, "yellow"));
   spawnElement(11, new FlyingGoomba(0));
   spawnElement(11, new FlyingGoomba(100));
   spawnElement(11, new FlyingGoomba(200));
@@ -79,52 +79,52 @@ OVERWORLD.spawn = () => {
   spawnElement(13, new FlyingGoomba(450));
   spawnElement(13, new FlyingGoomba(550));
   spawnElement(13, new FlyingGoomba(650));
-  spawnElement(16, new SuperKoopa(100, 'yellow'));
-  spawnElement(16.25, new SuperKoopa(100, 'yellow'));
-  spawnElement(16.5, new SuperKoopa(100, 'yellow'));
-  spawnElement(16.75, new SuperKoopa(100, 'yellow'));
-  spawnElement(17, new SuperKoopa(100, 'yellow'));
+  spawnElement(16, new SuperKoopa(100, "yellow"));
+  spawnElement(16.25, new SuperKoopa(100, "yellow"));
+  spawnElement(16.5, new SuperKoopa(100, "yellow"));
+  spawnElement(16.75, new SuperKoopa(100, "yellow"));
+  spawnElement(17, new SuperKoopa(100, "yellow"));
   spawnElement(18.5, new FlyingGoomba(200));
   spawnElement(19.5, new FlyingGoomba(200));
   spawnElement(18, new FlyingGoomba(625));
   spawnElement(19, new FlyingGoomba(625));
   spawnElement(20, new FlyingGoomba(625));
-  spawnElement(18.5, new SuperKoopa(100, 'red'));
-  spawnElement(18.75, new SuperKoopa(100, 'red'));
-  spawnElement(19, new SuperKoopa(100, 'red'));
-  spawnElement(19.25, new SuperKoopa(100, 'red'));
-  spawnElement(19.5, new SuperKoopa(100, 'red'));
-  spawnElement(19.75, new SuperKoopa(100, 'red'));
-  spawnElement(20, new SuperKoopa(100, 'red'));
-  spawnElement(20.25, new SuperKoopa(100, 'red'));
-  spawnElement(20.5, new SuperKoopa(100, 'red'));
-  spawnElement(20.75, new SuperKoopa(100, 'red'));
-  spawnElement(21, new SuperKoopa(100, 'red'));
-  spawnElement(22, new Parakoopa(100, 'yellow'));
-  spawnElement(22.5, new Parakoopa(100, 'yellow'));
-  spawnElement(23, new Parakoopa(100, 'yellow'));
-  spawnElement(24.5, new Parakoopa(500, 'red'));
-  spawnElement(25, new Parakoopa(500, 'red'));
-  spawnElement(25.5, new Parakoopa(500, 'red'));
-  spawnElement(26, new Parakoopa(500, 'red'));
+  spawnElement(18.5, new SuperKoopa(100, "red"));
+  spawnElement(18.75, new SuperKoopa(100, "red"));
+  spawnElement(19, new SuperKoopa(100, "red"));
+  spawnElement(19.25, new SuperKoopa(100, "red"));
+  spawnElement(19.5, new SuperKoopa(100, "red"));
+  spawnElement(19.75, new SuperKoopa(100, "red"));
+  spawnElement(20, new SuperKoopa(100, "red"));
+  spawnElement(20.25, new SuperKoopa(100, "red"));
+  spawnElement(20.5, new SuperKoopa(100, "red"));
+  spawnElement(20.75, new SuperKoopa(100, "red"));
+  spawnElement(21, new SuperKoopa(100, "red"));
+  spawnElement(22, new Parakoopa(100, "yellow"));
+  spawnElement(22.5, new Parakoopa(100, "yellow"));
+  spawnElement(23, new Parakoopa(100, "yellow"));
+  spawnElement(24.5, new Parakoopa(500, "red"));
+  spawnElement(25, new Parakoopa(500, "red"));
+  spawnElement(25.5, new Parakoopa(500, "red"));
+  spawnElement(26, new Parakoopa(500, "red"));
   spawnElement(28, new Star());
 };
 
 ATHLETIC.spawn = () => {
-  spawnElement(1.5, new Parakoopa(PIXELS.yMid, 'green'));
-  spawnElement(1.5, new Parakoopa(PIXELS.yMid, 'blue', true));
-  spawnElement(2.5, new Parakoopa(100, 'green'));
-  spawnElement(2.5, new Parakoopa(100, 'blue', true));
-  spawnElement(3.5, new Parakoopa(550, 'green'));
-  spawnElement(3.5, new Parakoopa(550, 'blue', true));
-  spawnElement(4.0, new Parakoopa(100, 'green'));
-  spawnElement(4.25, new Parakoopa(100, 'green'));
-  spawnElement(4.5, new Parakoopa(100, 'green'));
-  spawnElement(4.75, new Parakoopa(100, 'green'));
-  spawnElement(5.25, new Parakoopa(550, 'blue', true));
-  spawnElement(5.5, new Parakoopa(550, 'blue', true));
-  spawnElement(5.75, new Parakoopa(550, 'blue', true));
-  spawnElement(6, new Parakoopa(550, 'blue', true));
+  spawnElement(1.5, new Parakoopa(PIXELS.yMid, "green"));
+  spawnElement(1.5, new Parakoopa(PIXELS.yMid, "blue", true));
+  spawnElement(2.5, new Parakoopa(100, "green"));
+  spawnElement(2.5, new Parakoopa(100, "blue", true));
+  spawnElement(3.5, new Parakoopa(550, "green"));
+  spawnElement(3.5, new Parakoopa(550, "blue", true));
+  spawnElement(4.0, new Parakoopa(100, "green"));
+  spawnElement(4.25, new Parakoopa(100, "green"));
+  spawnElement(4.5, new Parakoopa(100, "green"));
+  spawnElement(4.75, new Parakoopa(100, "green"));
+  spawnElement(5.25, new Parakoopa(550, "blue", true));
+  spawnElement(5.5, new Parakoopa(550, "blue", true));
+  spawnElement(5.75, new Parakoopa(550, "blue", true));
+  spawnElement(6, new Parakoopa(550, "blue", true));
   spawnElement(6.75, new FlyingBrother(PIXELS.yMid - 350));
   spawnElement(7.0, new FlyingBrother(PIXELS.yMid - 350));
   spawnElement(7.25, new FlyingBrother(PIXELS.yMid - 350));
@@ -214,30 +214,30 @@ ATHLETIC.spawn = () => {
   spawnElement(22, new Chainsaw(176 * 3));
 
   //
-  spawnElement(23.0, new Parakoopa(PIXELS.yMid - 400, 'blue'));
-  spawnElement(23.0, new Parakoopa(PIXELS.yMid - 300, 'blue'));
-  spawnElement(23.0, new Parakoopa(PIXELS.yMid - 200, 'blue'));
-  spawnElement(23.1, new Parakoopa(PIXELS.yMid - 400, 'green'));
-  spawnElement(23.1, new Parakoopa(PIXELS.yMid - 300, 'green'));
-  spawnElement(23.1, new Parakoopa(PIXELS.yMid - 200, 'green'));
-  spawnElement(23.2, new Parakoopa(PIXELS.yMid - 400, 'blue'));
-  spawnElement(23.2, new Parakoopa(PIXELS.yMid - 300, 'blue'));
-  spawnElement(23.2, new Parakoopa(PIXELS.yMid - 200, 'blue'));
-  spawnElement(23.3, new Parakoopa(PIXELS.yMid - 400, 'green'));
-  spawnElement(23.3, new Parakoopa(PIXELS.yMid - 300, 'green'));
-  spawnElement(23.3, new Parakoopa(PIXELS.yMid - 200, 'green'));
-  spawnElement(23.4, new Parakoopa(PIXELS.yMid - 400, 'blue'));
-  spawnElement(23.4, new Parakoopa(PIXELS.yMid - 300, 'blue'));
-  spawnElement(23.4, new Parakoopa(PIXELS.yMid - 200, 'blue'));
-  spawnElement(23.5, new Parakoopa(PIXELS.yMid - 400, 'green'));
-  spawnElement(23.5, new Parakoopa(PIXELS.yMid - 300, 'green'));
-  spawnElement(23.5, new Parakoopa(PIXELS.yMid - 200, 'green'));
-  spawnElement(23.6, new Parakoopa(PIXELS.yMid - 400, 'blue'));
-  spawnElement(23.6, new Parakoopa(PIXELS.yMid - 300, 'blue'));
-  spawnElement(23.6, new Parakoopa(PIXELS.yMid - 200, 'blue'));
-  spawnElement(23.7, new Parakoopa(PIXELS.yMid - 400, 'green'));
-  spawnElement(23.7, new Parakoopa(PIXELS.yMid - 300, 'green'));
-  spawnElement(23.7, new Parakoopa(PIXELS.yMid - 200, 'green'));
+  spawnElement(23.0, new Parakoopa(PIXELS.yMid - 400, "blue"));
+  spawnElement(23.0, new Parakoopa(PIXELS.yMid - 300, "blue"));
+  spawnElement(23.0, new Parakoopa(PIXELS.yMid - 200, "blue"));
+  spawnElement(23.1, new Parakoopa(PIXELS.yMid - 400, "green"));
+  spawnElement(23.1, new Parakoopa(PIXELS.yMid - 300, "green"));
+  spawnElement(23.1, new Parakoopa(PIXELS.yMid - 200, "green"));
+  spawnElement(23.2, new Parakoopa(PIXELS.yMid - 400, "blue"));
+  spawnElement(23.2, new Parakoopa(PIXELS.yMid - 300, "blue"));
+  spawnElement(23.2, new Parakoopa(PIXELS.yMid - 200, "blue"));
+  spawnElement(23.3, new Parakoopa(PIXELS.yMid - 400, "green"));
+  spawnElement(23.3, new Parakoopa(PIXELS.yMid - 300, "green"));
+  spawnElement(23.3, new Parakoopa(PIXELS.yMid - 200, "green"));
+  spawnElement(23.4, new Parakoopa(PIXELS.yMid - 400, "blue"));
+  spawnElement(23.4, new Parakoopa(PIXELS.yMid - 300, "blue"));
+  spawnElement(23.4, new Parakoopa(PIXELS.yMid - 200, "blue"));
+  spawnElement(23.5, new Parakoopa(PIXELS.yMid - 400, "green"));
+  spawnElement(23.5, new Parakoopa(PIXELS.yMid - 300, "green"));
+  spawnElement(23.5, new Parakoopa(PIXELS.yMid - 200, "green"));
+  spawnElement(23.6, new Parakoopa(PIXELS.yMid - 400, "blue"));
+  spawnElement(23.6, new Parakoopa(PIXELS.yMid - 300, "blue"));
+  spawnElement(23.6, new Parakoopa(PIXELS.yMid - 200, "blue"));
+  spawnElement(23.7, new Parakoopa(PIXELS.yMid - 400, "green"));
+  spawnElement(23.7, new Parakoopa(PIXELS.yMid - 300, "green"));
+  spawnElement(23.7, new Parakoopa(PIXELS.yMid - 200, "green"));
 
   spawnElement(25.0, new FlyingBrother(-250));
   spawnElement(25.25, new FlyingBrother(-250));
@@ -561,28 +561,28 @@ CASTLE.spawn = () => {
   spawnElement(5, new BanzaiBill(0));
   spawnElement(5, new BanzaiBill(PIXELS.height - 256));
 
-  spawnElement(6, new BulletBillDiagonal('up'));
-  spawnElement(6.1, new BulletBillDiagonal('up'));
-  spawnElement(6.2, new BulletBillDiagonal('up'));
-  spawnElement(6.3, new BulletBillDiagonal('up'));
-  spawnElement(6.4, new BulletBillDiagonal('up'));
-  spawnElement(6.5, new BulletBillDiagonal('up'));
-  spawnElement(6.6, new BulletBillDiagonal('up'));
-  spawnElement(6.7, new BulletBillDiagonal('up'));
-  spawnElement(6.8, new BulletBillDiagonal('up'));
-  spawnElement(6.9, new BulletBillDiagonal('up'));
-  spawnElement(7.0, new BulletBillDiagonal('up'));
-  spawnElement(6, new BulletBillDiagonal('down'));
-  spawnElement(6.1, new BulletBillDiagonal('down'));
-  spawnElement(6.2, new BulletBillDiagonal('down'));
-  spawnElement(6.3, new BulletBillDiagonal('down'));
-  spawnElement(6.4, new BulletBillDiagonal('down'));
-  spawnElement(6.5, new BulletBillDiagonal('down'));
-  spawnElement(6.6, new BulletBillDiagonal('down'));
-  spawnElement(6.7, new BulletBillDiagonal('down'));
-  spawnElement(6.8, new BulletBillDiagonal('down'));
-  spawnElement(6.9, new BulletBillDiagonal('down'));
-  spawnElement(7.0, new BulletBillDiagonal('down'));
+  spawnElement(6, new BulletBillDiagonal("up"));
+  spawnElement(6.1, new BulletBillDiagonal("up"));
+  spawnElement(6.2, new BulletBillDiagonal("up"));
+  spawnElement(6.3, new BulletBillDiagonal("up"));
+  spawnElement(6.4, new BulletBillDiagonal("up"));
+  spawnElement(6.5, new BulletBillDiagonal("up"));
+  spawnElement(6.6, new BulletBillDiagonal("up"));
+  spawnElement(6.7, new BulletBillDiagonal("up"));
+  spawnElement(6.8, new BulletBillDiagonal("up"));
+  spawnElement(6.9, new BulletBillDiagonal("up"));
+  spawnElement(7.0, new BulletBillDiagonal("up"));
+  spawnElement(6, new BulletBillDiagonal("down"));
+  spawnElement(6.1, new BulletBillDiagonal("down"));
+  spawnElement(6.2, new BulletBillDiagonal("down"));
+  spawnElement(6.3, new BulletBillDiagonal("down"));
+  spawnElement(6.4, new BulletBillDiagonal("down"));
+  spawnElement(6.5, new BulletBillDiagonal("down"));
+  spawnElement(6.6, new BulletBillDiagonal("down"));
+  spawnElement(6.7, new BulletBillDiagonal("down"));
+  spawnElement(6.8, new BulletBillDiagonal("down"));
+  spawnElement(6.9, new BulletBillDiagonal("down"));
+  spawnElement(7.0, new BulletBillDiagonal("down"));
 
   spawnElement(7.0, new Grinder(128 * 2));
   spawnElement(7.0, new Grinder(128 * 3));
@@ -703,15 +703,15 @@ function spawnRow(Element, yIni, time, size, padding = 0) {
 
 //test map
 const TEST = new Level(
-  'TEST',
-  'images/levels/bg-overworld.jpg',
-  'overworld',
+  "TEST",
+  "images/levels/bg-overworld.jpg",
+  "overworld",
   0.4
 );
 TEST.spawn = () => {
   spawnRow(BanzaiBill, PIXELS.yMid, 1, 4, -15);
 };
 
-const LEVELS = [TEST, OVERWORLD, ATHLETIC, HAUNTED, CASTLE];
+const LEVELS = [OVERWORLD, ATHLETIC, HAUNTED, CASTLE];
 
 export { Level, LEVELS };

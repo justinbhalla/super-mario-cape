@@ -71,8 +71,8 @@ function changeState(state) {
       break;
     case "LEVEL":
       game.state = state;
-      game.isPlaying = true;
-      game.isScrolling = true;
+      game.isPlaying = false;
+      game.isScrolling = false;
       elements.player.reset();
       controller.reset();
       break;
