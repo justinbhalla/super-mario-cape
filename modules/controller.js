@@ -1,4 +1,4 @@
-import { game, storyboard } from "../main.js";
+import { game, changeScene } from "../main.js";
 
 const controller = {
   LEFT_KEY: 37,
@@ -29,7 +29,7 @@ const controller = {
     if (menuClicked || menuPressed) {
       switch (game.state) {
         case "START":
-          storyboard.showTransition();
+          changeScene();
           // storyboard.showTutorial();
           break;
         case "RETRY":

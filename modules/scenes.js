@@ -7,47 +7,48 @@ const menu = document.getElementById("menu");
 const tutorial = document.getElementById("tutorial");
 const loader = document.getElementById("loader");
 
-const storyboard = {
-  showMenu() {
-    changeState("START");
-    changeBackground("menu");
-    hideScreen(loader);
-  },
+function changeScene() {
+  const { state } = game;
+  changeState("TRANSITION");
+  resetSound();
 
-  showTutorial() {
-    changeState("TUTORIAL");
-    changeBackground("athletic");
-    hideScreen(menu);
-    hideScreen(fade);
-    showScreen(tutorial);
-    playSound(game.sfx.worldClear);
-  },
+  switch (state) {
+    case "LOADING":
+      showMenu();
+      break;
+    case "START":
+      showScreen(fade);
+      playSound(game.sfx.coin);
+      setTimeout(showTutorial, 1500);
+      break;
+    case "TUTORIAL":
+      showScreen(fade);
+      playSound(game.sfx.coin);
+      setTimeout(showLevel, 1500);
+      break;
+  }
+}
 
-  showLevel() {
-    changeState("LEVEL");
-    hideScreen(fade);
-    hideScreen(tutorial);
-  },
+function showMenu() {
+  changeState("START");
+  changeBackground("menu");
+  hideScreen(loader);
+}
 
-  showTransition() {
-    resetSound();
+function showTutorial() {
+  changeState("TUTORIAL");
+  changeBackground("athletic");
+  hideScreen(menu);
+  hideScreen(fade);
+  showScreen(tutorial);
+  playSound(game.sfx.worldClear);
+}
 
-    switch (game.state) {
-      case "START":
-        showScreen(fade);
-        playSound(game.sfx.coin);
-        setTimeout(this.showTutorial, 1500);
-        break;
-      case "TUTORIAL":
-        showScreen(fade);
-        playSound(game.sfx.coin);
-        setTimeout(this.showLevel, 1500);
-        break;
-    }
-
-    changeState("TRANSITION");
-  },
-};
+function showLevel() {
+  changeState("LEVEL");
+  hideScreen(fade);
+  hideScreen(tutorial);
+}
 
 function changeState(state) {
   switch (state) {
@@ -116,4 +117,4 @@ function changeBackground(background) {
   game.background.classList.toggle(`bg-${background}`);
 }
 
-export { storyboard };
+export { changeScene };

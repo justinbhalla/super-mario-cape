@@ -1,4 +1,4 @@
-import { storyboard } from "./modules/scenes.js";
+import { changeScene } from "./modules/scenes.js";
 import controller from "./modules/controller.js";
 import { Mario } from "./modules/elements.js";
 import { loading } from "./modules/load.js";
@@ -75,7 +75,7 @@ function runGame() {
     let { player } = elements;
     // if (player.isDead) storyboard.showDeathScene();
     if (player.passedTutorial && game.state === "TUTORIAL") {
-      storyboard.showTransition();
+      changeScene();
     }
 
     if (player.gotStar) passScene();
@@ -101,7 +101,7 @@ function setGame() {
       setAudio();
       setControls();
       runGame();
-      storyboard.showMenu();
+      changeScene();
       clearInterval(interval);
     }
   }, 250);
@@ -129,4 +129,4 @@ window.addEventListener("load", setGame);
 
 export { LEVELS, Level } from "./modules/levels.js";
 export * as Enemies from "./modules/elements.js";
-export { PIXELS, context, game, controller, storyboard, elements };
+export { PIXELS, context, game, controller, changeScene, elements };
