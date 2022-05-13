@@ -6,6 +6,7 @@ const fade = document.getElementById("fade");
 const menu = document.getElementById("menu");
 const tutorial = document.getElementById("tutorial");
 const loader = document.getElementById("loader");
+const text = document.getElementById("text");
 
 function changeScene() {
   const { state } = game;
@@ -48,6 +49,7 @@ function showLevel() {
   changeState("LEVEL");
   hideScreen(fade);
   hideScreen(tutorial);
+  showScreen(text);
 }
 
 function changeState(state) {
@@ -81,6 +83,10 @@ function showScreen(screen) {
   switch (screen) {
     case fade:
       screen.classList.add("fade-active");
+      break;
+    case text:
+      const { name } = LEVELS[game.level];
+      screen.innerText = `Level ${game.level + 1} - ${name}`;
       break;
   }
 

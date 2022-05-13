@@ -14,6 +14,7 @@ body {
 }
 
 div,
+p,
 img,
 input,
 canvas {
@@ -235,14 +236,9 @@ input:focus {
   color: white;
 }
 
-#screen-level__text,
-#screen-success {
+#text {
   font-size: 26px;
   color: yellow;
-}
-
-#screen-success {
-  top: calc(50% - 100px);
 }
 
 #screen-transition-iris {
