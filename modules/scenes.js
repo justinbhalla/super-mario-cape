@@ -50,33 +50,46 @@ function showLevel() {
   hideScreen(fade);
   hideScreen(tutorial);
   showScreen(text);
+
+  setTimeout(() => {
+    changeState("PLAY");
+    hideScreen(text);
+  }, 1500);
 }
 
 function changeState(state) {
   switch (state) {
     case "START":
-      game.state = state;
       game.isScrolling = true;
       game.background.style.backgroundPositionX = 0;
       break;
     case "TUTORIAL":
-      game.state = state;
       game.isPlaying = true;
       elements.player.reset();
       break;
     case "TRANSITION":
-      game.state = state;
       game.isPlaying = false;
       game.isScrolling = true;
       break;
     case "LEVEL":
-      game.state = state;
       game.isPlaying = false;
       game.isScrolling = false;
       elements.player.reset();
       controller.reset();
       break;
+    case "PLAY":
+      game.isPlaying = true;
+      game.isScrolling = true;
+      game.timeouts.forEach((t) => clearTimeout(t));
+      elements.enemies.length = 0;
+      elements.player.isDead = false;
+      elements.player.gotStar = false;
+      const level = LEVELS[game.level];
+      level.spawn();
+      break;
   }
+
+  game.state = state;
 }
 
 function showScreen(screen) {
