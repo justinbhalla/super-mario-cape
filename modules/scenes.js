@@ -27,6 +27,8 @@ function changeScene() {
       playSound(game.sfx.coin);
       setTimeout(showLevel, 1500);
       break;
+    case "PLAY":
+      showPass();
   }
 }
 
@@ -55,6 +57,10 @@ function showLevel() {
     changeState("PLAY");
     hideScreen(text);
   }, 1500);
+}
+
+function showPass() {
+  changeState("PASS");
 }
 
 function changeState(state) {
@@ -86,6 +92,13 @@ function changeState(state) {
       elements.player.gotStar = false;
       const level = LEVELS[game.level];
       level.spawn();
+      break;
+    case "PASS":
+      elements.enemies.length = 0;
+      game.isPlaying = false;
+      game.isScrolling = false;
+      game.level++;
+      controller.reset();
       break;
   }
 
@@ -134,6 +147,37 @@ function resetSound() {
 function changeBackground(background) {
   game.background.classList = [];
   game.background.classList.toggle(`bg-${background}`);
+}
+
+function passScene() {
+  if (!game.isPlaying) return;
+  game.isPlaying = false;
+  game.state = "PASS";
+  LEVELS[game.level].audio.pause();
+  game.level++;
+  controller.reset();
+  elements.enemies.length = 0;
+  let gameWon = game.level === LEVELS.length;
+  let type = gameWon ? "fortress" : "course";
+  playSound(sounds[type]);
+  screens.success.innerText = `${type} Complete`;
+  hideScreen(screens.background);
+  showScreen(screens.success.style);
+  setTimeout(() => {
+    hideScreen(screens.success.style);
+    showScreen(screens.transitionIris);
+    showScreen(screens.background);
+    playSound(sounds.iris);
+    setTimeout(() => {
+      hideScreen(screens.transitionIris);
+      if (gameWon) {
+        endScene();
+      } else {
+        game.lives = game.livesStart;
+        levelScene();
+      }
+    }, 1500);
+  }, 8200);
 }
 
 export { changeScene };
