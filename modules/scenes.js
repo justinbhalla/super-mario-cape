@@ -1,6 +1,5 @@
 import { PIXELS, game, controller, elements, LEVELS, Level } from "../main.js";
 
-const canvas = document.getElementById("canvas");
 const iris = document.getElementById("iris");
 const fade = document.getElementById("fade");
 const menu = document.getElementById("menu");
