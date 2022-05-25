@@ -1,4 +1,4 @@
-import { moveLinear } from "../elements";
+import { Element } from "../../main.js";
 
 class BanzaiBill extends Element {
   constructor(yIni) {
@@ -17,6 +17,9 @@ class BanzaiBill extends Element {
   }
 
   move() {
-    moveLinear(this);
+    super.move();
+    this.moveLinear();
   }
 }
+
+export default BanzaiBill;

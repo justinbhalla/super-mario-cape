@@ -1,6 +1,6 @@
-import { moveWave } from "./elements";
+import { Element } from "../../main.js";
 
-export class Parakoopa extends Element {
+class Parakoopa extends Element {
   constructor() {
     super();
 
@@ -12,10 +12,13 @@ export class Parakoopa extends Element {
     this.hBox = 93;
     this.xOff = 5;
     this.yOff = 15;
-    this.xSpeed = 14;
+    this.xSpeed = 7;
   }
 
   move() {
-    moveWave(this);
+    super.move();
+    this.moveWave();
   }
 }
+
+export default Parakoopa;

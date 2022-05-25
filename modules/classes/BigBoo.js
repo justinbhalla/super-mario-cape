@@ -1,4 +1,4 @@
-import { moveWave } from "../elements";
+import { Element } from "../../main.js";
 
 class BigBoo extends Element {
   constructor(yIni) {
@@ -21,6 +21,9 @@ class BigBoo extends Element {
   }
 
   move() {
-    moveWave(this);
+    super.move();
+    this.moveWave();
   }
 }
+
+export default BigBoo;

@@ -1,5 +1,4 @@
-import { SuperKoopa } from "./SuperKoopa";
-import { moveLinear } from "./elements";
+import { SuperKoopa } from "../../main.js";
 
 class RedSuperKoopa extends SuperKoopa {
   constructor(yIni) {
@@ -12,6 +11,9 @@ class RedSuperKoopa extends SuperKoopa {
   }
 
   move() {
-    moveLinear(this);
+    super.move();
+    this.moveLinear();
   }
 }
+
+export default RedSuperKoopa;

@@ -1,4 +1,4 @@
-import { moveLinear } from "./elements";
+import { Element } from "../../main.js";
 
 class Grinder extends Element {
   constructor(yIni) {
@@ -19,6 +19,9 @@ class Grinder extends Element {
   }
 
   move() {
-    moveLinear(this);
+    super.move();
+    this.moveLinear();
   }
 }
+
+export default Grinder;

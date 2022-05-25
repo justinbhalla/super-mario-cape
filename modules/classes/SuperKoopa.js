@@ -1,4 +1,6 @@
-export class SuperKoopa extends Element {
+import { Element } from "../../main.js";
+
+class SuperKoopa extends Element {
   constructor() {
     super();
 
@@ -10,3 +12,5 @@ export class SuperKoopa extends Element {
     this.yOff = 5;
   }
 }
+
+export default SuperKoopa;

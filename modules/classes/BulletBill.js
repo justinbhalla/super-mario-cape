@@ -1,4 +1,4 @@
-import { moveLinear } from "./elements";
+import { Element } from "../../main.js";
 
 class BulletBill extends Element {
   constructor(yIni) {
@@ -15,6 +15,9 @@ class BulletBill extends Element {
   }
 
   move() {
-    moveLinear(this);
+    super.move();
+    this.moveLinear();
   }
 }
+
+export default BulletBill;

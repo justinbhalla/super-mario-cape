@@ -1,4 +1,4 @@
-import { Parakoopa } from "./Parakoopa";
+import Parakoopa from "../../main.js";
 
 class RedParakoopa extends Parakoopa {
   constructor(yIni) {
@@ -11,3 +11,5 @@ class RedParakoopa extends Parakoopa {
     this.yAtlas = 180;
   }
 }
+
+export default RedParakoopa;

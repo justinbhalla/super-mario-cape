@@ -1,4 +1,4 @@
-import { moveLinear } from "./elements";
+import { Element } from "../../main.js";
 
 class Star extends Element {
   constructor() {
@@ -15,6 +15,9 @@ class Star extends Element {
   }
 
   move() {
-    if (this.xPos > SCREEN.centerX + 58) moveLinear(this);
+    super.move();
+    if (this.xPos > SCREEN.centerX + 58) this.moveLinear();
   }
 }
+
+export default Star;

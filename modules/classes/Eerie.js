@@ -1,3 +1,5 @@
+import { Element } from "../../main.js";
+
 class Eerie extends Element {
   constructor(yIni) {
     super();
@@ -18,8 +20,11 @@ class Eerie extends Element {
   }
 
   move() {
+    super.move();
     this.xPos -= this.xSpeed;
     this.yPos =
       this.yIni + 40 * (this.time / 800) * Math.sin((15 * this.time) / 800);
   }
 }
+
+export default Eerie;

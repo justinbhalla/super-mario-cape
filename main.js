@@ -1,3 +1,7 @@
+import Element from "./modules/classes/Element.js";
+import SuperKoopa from "./modules/classes/SuperKoopa.js";
+import Parakoopa from "./modules/classes/Parakoopa.js";
+import YellowParakoopa from "./modules/classes/YellowParakoopa.js";
 import SPAWNER from "./modules/spawner.js";
 import background from "./modules/background.js";
 import foreground from "./modules/foreground.js";
@@ -5,7 +9,6 @@ import sound from "./modules/sound.js";
 import storyboard from "./modules/storyboard.js";
 import controller from "./modules/controller.js";
 import loading from "./modules/load.js";
-import Element from "./modules/classes/Element.js";
 import Mario from "./modules/classes/Mario.js";
 import Level from "./modules/classes/Level.js";
 import OVERWORLD from "./modules/levels/overworld.js";
@@ -143,4 +146,7 @@ export {
   player,
   Level,
   levels,
+  Parakoopa,
+  SuperKoopa,
+  YellowParakoopa,
 };

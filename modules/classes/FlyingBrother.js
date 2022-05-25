@@ -1,4 +1,4 @@
-import { moveCurve } from "./elements";
+import { Element } from "../../main.js";
 
 class FlyingBrother extends Element {
   constructor(yIni) {
@@ -23,6 +23,9 @@ class FlyingBrother extends Element {
   }
 
   move() {
-    moveCurve(this);
+    super.move();
+    this.moveCurve();
   }
 }
+
+export default FlyingBrother;

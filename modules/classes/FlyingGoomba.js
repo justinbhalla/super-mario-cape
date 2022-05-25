@@ -1,4 +1,4 @@
-import { moveWave } from "./elements";
+import { Element } from "../../main.js";
 
 class FlyingGoomba extends Element {
   constructor(yIni) {
@@ -22,6 +22,9 @@ class FlyingGoomba extends Element {
   }
 
   move() {
-    moveWave(this);
+    super.move();
+    this.moveWave();
   }
 }
+
+export default FlyingGoomba;
