@@ -50,23 +50,7 @@ const storyboard = {
         sound.reset();
         sound.play("coin");
 
-        setTimeout(() => {
-          const level = levels.getCurrent();
-          const { backgroundTheme, musicName } = level;
-          player.reset();
-          background.change(backgroundTheme);
-          sound.play(musicName);
-          foreground.hide("tutorial");
-          foreground.hide("fade");
-          foreground.show("text");
-          this.changeState("LEVEL");
-
-          setTimeout(() => {
-            foreground.hide("text");
-            level.spawnFn();
-            SPAWN_ON = true;
-          }, 1000);
-        }, timeout);
+        setTimeout(() => {}, timeout);
       },
     },
 
@@ -95,6 +79,25 @@ const storyboard = {
         this.changeScene("LEVEL");
       },
     },
+  },
+
+  playLevel(timeout) {
+    const level = levels.getCurrent();
+    const { backgroundTheme, musicName } = level;
+
+    player.reset();
+    background.change(backgroundTheme);
+    foreground.hide("tutorial");
+    foreground.hide("fade");
+    foreground.show("text");
+    sound.play(musicName);
+    this.changeState("LEVEL");
+
+    setTimeout(() => {
+      foreground.hide("text");
+      level.spawnFn();
+      SPAWN_ON = true;
+    }, timeout);
   },
 
   dispatch(actionName, ...args) {
