@@ -7,8 +7,6 @@ import {
   controller,
 } from "../main.js";
 
-let SPAWN_ON = false;
-
 const storyboard = {
   state: "LOAD",
 
@@ -50,7 +48,7 @@ const storyboard = {
         sound.reset();
         sound.play("coin");
 
-        setTimeout(() => {}, timeout);
+        setTimeout(storyboard.playLevel, timeout);
       },
     },
 
@@ -91,12 +89,11 @@ const storyboard = {
     foreground.hide("fade");
     foreground.show("text");
     sound.play(musicName);
-    this.changeState("LEVEL");
 
     setTimeout(() => {
       foreground.hide("text");
       level.spawnFn();
-      SPAWN_ON = true;
+      storyboard.changeState("LEVEL");
     }, 1000);
   },
 
@@ -119,8 +116,7 @@ const storyboard = {
   canPlay() {
     const { state } = this;
     return (
-      (state === "TUTORIAL" && !player.passedTutorial) ||
-      (state === "LEVEL" && SPAWN_ON)
+      (state === "TUTORIAL" && !player.passedTutorial) || state === "LEVEL"
     );
   },
 
