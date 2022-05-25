@@ -8,19 +8,3 @@ function didHitMario(element) {
 
   return !(ex1 >= mx2 || ey1 >= my2 || ex2 <= mx1 || ey2 <= my1);
 }
-
-function moveLinear(element) {
-  element.xPos -= element.xSpeed;
-}
-
-function moveWave(element) {
-  let { yIni, waveSize, waveType, waveRate, time } = element;
-  element.yPos = yIni + waveSize * Math[waveType](time * waveRate);
-  element.xPos -= element.xSpeed;
-}
-
-function moveCurve(element) {
-  let { yIni, curveSize, curveRate, time } = element;
-  element.yPos = yIni + curveSize * Math.sqrt(time * curveRate);
-  element.xPos -= element.xSpeed;
-}

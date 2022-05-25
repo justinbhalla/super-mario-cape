@@ -46,6 +46,22 @@ class Element {
     this.xPos -= this.xSpeed;
   }
 
+  moveLinear() {
+    this.xPos -= this.xSpeed;
+  }
+
+  moveWave() {
+    const { yIni, waveSize, waveType, waveRate, time } = this;
+    this.yPos = yIni + waveSize * Math[waveType](time * waveRate);
+    this.xPos -= this.xSpeed;
+  }
+
+  moveCurve() {
+    const { yIni, curveSize, curveRate, time } = this;
+    this.yPos = yIni + curveSize * Math.sqrt(time * curveRate);
+    this.xPos -= this.xSpeed;
+  }
+
   draw() {
     this.drawImage();
     this.drawSprite();
