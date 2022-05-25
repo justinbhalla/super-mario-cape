@@ -27,7 +27,7 @@ const controller = {
     if (menuClicked || menuPressed) {
       switch (storyboard.state) {
         case "START":
-          storyboard.dispatch("prepare", ["play", 1500]);
+          storyboard.dispatch("play", [1500]);
           // storyboard.showTutorial();
           break;
         case "RETRY":

@@ -68,7 +68,7 @@ function runGame() {
       elements.move();
 
       if (storyboard.passedTutorial()) {
-        storyboard.dispatch("prepare", ["play", 1500]);
+        storyboard.dispatch("play", [1500]);
       }
     }
 
@@ -89,7 +89,7 @@ function setGame() {
       setAudio();
       setControls();
       runGame();
-      storyboard.dispatch("prepare", ["play", 100]);
+      storyboard.dispatch("play", [100]);
       clearInterval(interval);
     }
   }, 250);

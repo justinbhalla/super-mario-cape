@@ -14,62 +14,59 @@ const storyboard = {
 
   transitions: {
     LOAD: {
-      prepare(actionName, timeout) {
+      play(timeout) {
         background.enabled = true;
         background.element.style.backgroundPositionX = 0;
         background.change("menu");
-        setTimeout(() => this.dispatch(actionName, null), timeout);
-      },
 
-      play() {
-        foreground.hide("loader");
-        this.changeState("START");
+        setTimeout(() => {
+          foreground.hide("loader");
+          this.changeState("START");
+        }, timeout);
       },
     },
 
     START: {
-      prepare(actionName, timeout) {
+      play(timeout) {
         foreground.show("fade");
         sound.reset();
         sound.play("coin");
-        setTimeout(() => this.dispatch(actionName, null), timeout);
-      },
 
-      play() {
-        player.reset();
-        background.change("athletic");
-        foreground.hide("menu");
-        foreground.hide("fade");
-        foreground.show("tutorial");
-        sound.play("worldClear");
-        this.changeState("TUTORIAL");
+        setTimeout(() => {
+          player.reset();
+          background.change("athletic");
+          foreground.hide("menu");
+          foreground.hide("fade");
+          foreground.show("tutorial");
+          sound.play("worldClear");
+          this.changeState("TUTORIAL");
+        }, timeout);
       },
     },
 
     TUTORIAL: {
-      prepare(actionName, timeout) {
+      play(timeout) {
         foreground.show("fade");
         sound.reset();
         sound.play("coin");
-        setTimeout(() => this.dispatch(actionName, null), timeout);
-      },
-
-      play() {
-        const level = levels.getCurrent();
-        const { backgroundTheme, musicName } = level;
-        player.reset();
-        background.change(backgroundTheme);
-        sound.play(musicName);
-        foreground.hide("tutorial");
-        foreground.hide("fade");
-        foreground.show("text");
-        this.changeState("LEVEL");
 
         setTimeout(() => {
-          foreground.hide("text");
-          level.spawnFn();
-          SPAWN_ON = true;
-        }, 1000);
+          const level = levels.getCurrent();
+          const { backgroundTheme, musicName } = level;
+          player.reset();
+          background.change(backgroundTheme);
+          sound.play(musicName);
+          foreground.hide("tutorial");
+          foreground.hide("fade");
+          foreground.show("text");
+          this.changeState("LEVEL");
+
+          setTimeout(() => {
+            foreground.hide("text");
+            level.spawnFn();
+            SPAWN_ON = true;
+          }, 1000);
+        }, timeout);
       },
     },
 
