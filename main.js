@@ -1,3 +1,4 @@
+import SPAWNER from "./modules/spawner.js";
 import background from "./modules/background.js";
 import foreground from "./modules/foreground.js";
 import sound from "./modules/sound.js";
@@ -135,6 +136,7 @@ export {
   sound,
   SCREEN,
   CONTEXT,
+  SPAWNER,
   controller,
   storyboard,
   Element,
