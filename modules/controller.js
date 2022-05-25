@@ -1,4 +1,4 @@
-import { game, changeScene } from "../main.js";
+import { storyboard, sound, player } from "../main.js";
 
 const controller = {
   LEFT_KEY: 37,
@@ -19,17 +19,15 @@ const controller = {
   },
 
   onMenuInput(event) {
-    if (game.isPlaying) return;
-
     let { keyCode, type } = event;
     let { UP_1_KEY, UP_2_KEY } = this;
     let menuClicked = type === "click";
     let menuPressed = keyCode === UP_1_KEY || keyCode === UP_2_KEY;
 
     if (menuClicked || menuPressed) {
-      switch (game.state) {
+      switch (storyboard.state) {
         case "START":
-          changeScene();
+          storyboard.dispatch("prepare", ["play", 1500]);
           // storyboard.showTutorial();
           break;
         case "RETRY":
@@ -50,8 +48,6 @@ const controller = {
   },
 
   onPlayerInput(event) {
-    if (!game.isPlaying) return;
-
     let { LEFT_KEY, RIGHT_KEY, DOWN_KEY, UP_1_KEY, UP_2_KEY } = controller;
     let isHeld = event.type === "keydown";
     let jumpFlag = false;
@@ -70,8 +66,8 @@ const controller = {
       case UP_2_KEY:
         if (!jumpFlag && isHeld) {
           jumpFlag = true;
-          // sounds.jump.currentTime = 0;
-          // playSound(sounds.jump);
+          sound.sfx.capeJump.currentTime = 0;
+          sound.play("capeJump");
         } else if (!isHeld) {
           jumpFlag = false;
         }
@@ -82,4 +78,4 @@ const controller = {
   },
 };
 
-export { controller as default };
+export default controller;

@@ -79,12 +79,32 @@ input:focus {
   z-index: -1;
 }
 
+.bg-athletic {
+  background-image: url(images/backgrounds/athletic.jpg);
+}
+
+.bg-castle {
+  background-image: url(images/backgrounds/castle.jpg);
+}
+
+.bg-finale {
+  background-image: url(images/backgrounds/finale.jpg);
+}
+
+.bg-haunted {
+  background-image: url(images/backgrounds/haunted.jpg);
+}
+
 .bg-menu {
   background-image: url(images/backgrounds/menu.jpg);
 }
 
-.bg-athletic {
-  background-image: url(images/backgrounds/athletic.jpg);
+.bg-overworld {
+  background-image: url(images/backgrounds/overworld.jpg);
+}
+
+.bg-plains {
+  background-image: url(images/backgrounds/plains.jpg);
 }
 
 #screen-hud {

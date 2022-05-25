@@ -61,4 +61,4 @@ function loadSounds(soundPaths) {
 loadImages(IMAGE_PATHS);
 loadSounds(AUDIO_PATHS);
 
-export { loading };
+export default loading;

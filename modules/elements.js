@@ -1,128 +1,7 @@
-import { PIXELS, context, game, controller, elements } from '../main.js';
+import { CONTEXT, controller } from "../main.js";
 
 const atlas = new Image(972, 736);
-atlas.src = 'images/atlas/atlas.png';
-
-class Element {
-  constructor() {
-    this.spriteFrame = 0;
-    this.spriteRate = 0;
-    this.spriteLength = 0;
-    this.xPos = PIXELS.width;
-    this.xOff = 0;
-    this.yOff = 0;
-    this.time = 0;
-  }
-
-  draw() {
-    moveHitbox(this);
-    drawImage(this);
-
-    if (this instanceof Mario) {
-      let { pressedUp, pressedDown } = controller;
-      if (pressedUp && !this.isJumping) this.spriteFrame = 1;
-      if (!pressedUp) this.spriteFrame = 0;
-      if (pressedDown) this.spriteFrame = 2;
-    } else {
-      if (game.isPlaying) drawSprite(this);
-
-      if (this instanceof Star && didHitMario(this)) {
-        elements.player.gotStar = true;
-      } else if (didHitMario(this)) {
-        elements.player.isDead = true;
-      }
-
-      if (this.xPos + this.width < 0) {
-        elements.enemies.splice(elements.enemies.indexOf(this), 1);
-      }
-
-      this.time += game.FPS_INTERVAL;
-    }
-  }
-}
-
-class Mario extends Element {
-  constructor() {
-    super();
-    this.audio = new Audio('audio/sfx/cape-jump.wav');
-
-    this.xAtlas = 352;
-    this.yAtlas = 180;
-    this.width = 116;
-    this.height = 124;
-    this.spriteFrame = 0;
-
-    this.xPos = -this.width;
-    this.yPos = -this.width;
-    this.xOff = 20;
-    this.yOff = 38;
-    this.wBox = 92;
-    this.hBox = 76;
-
-    this.xSpeed = 10;
-    this.ySpeed = 10;
-    this.gravity = 7;
-    this.wind = 3;
-    this.isDead = false;
-    this.gotStar = false;
-    this.isJumping = true;
-    this.passedTutorial = false;
-  }
-
-  move() {
-    let { pressedLeft, pressedRight, pressedUp, pressedDown } = controller;
-    let hasFallen = this.yPos + this.height / 2 > PIXELS.height;
-
-    if (pressedLeft) this.moveLeft();
-    if (pressedRight) this.moveRight();
-    if (pressedDown) this.dive();
-    if (pressedUp && !this.isJumping) this.jump();
-    if (!pressedUp) this.isJumping = false;
-    if (game.isPlaying) this.yPos += this.gravity;
-
-    if (hasFallen && game.state === 'TUTORIAL') this.reset();
-    else if (hasFallen) this.isDead = true;
-  }
-
-  moveRight() {
-    let { state } = game;
-    let offset = state === 'TUTORIAL' ? 2 : 1;
-    let hasSpace = this.xPos + this.width / offset < PIXELS.width;
-    if (hasSpace) this.xPos += this.xSpeed + this.wind;
-    if (state === 'TUTORIAL' && !hasSpace) this.passedTutorial = true;
-  }
-
-  moveLeft() {
-    let hasSpace = this.xPos >= 0;
-    if (hasSpace) this.xPos -= this.xSpeed - this.wind;
-  }
-
-  dive() {
-    this.yPos += this.ySpeed + this.gravity;
-  }
-
-  jump() {
-    this.isJumping = true;
-    let count = 0;
-
-    let interval = setInterval(() => {
-      if (count > 15) {
-        clearInterval(interval);
-        this.isJumping = false;
-        count = 0;
-      } else if (this.yPos > 0) {
-        this.yPos -= this.ySpeed;
-      }
-
-      count++;
-    }, 10);
-  }
-
-  reset() {
-    this.xPos = 100;
-    this.yPos = 100;
-  }
-}
+atlas.src = "images/atlas/atlas.png";
 
 class SuperKoopa extends Element {
   constructor() {
@@ -193,7 +72,7 @@ class RedParakoopa extends Parakoopa {
   constructor(yIni) {
     super();
     this.yIni = yIni;
-    this.waveType = 'sin';
+    this.waveType = "sin";
     this.waveSize = -50;
     this.waveRate = 1e-2;
     this.xAtlas = 0;
@@ -205,7 +84,7 @@ class YellowParakoopa extends Parakoopa {
   constructor(yIni) {
     super();
     this.yIni = yIni;
-    this.waveType = 'sin';
+    this.waveType = "sin";
     this.waveSize = 50;
     this.waveRate = 1e-2;
     this.xAtlas = 176;
@@ -217,7 +96,7 @@ class GreenParakoopa extends Parakoopa {
   constructor(yIni) {
     super();
     this.yIni = yIni;
-    this.waveType = 'cos';
+    this.waveType = "cos";
     this.waveSize = -150;
     this.waveRate = 5e-3;
     this.xAtlas = 704;
@@ -229,7 +108,7 @@ class BlueParakoopa extends Parakoopa {
   constructor(yIni) {
     super();
     this.yIni = yIni;
-    this.waveType = 'cos';
+    this.waveType = "cos";
     this.waveSize = 150;
     this.waveRate = 5e-3;
     this.xAtlas = 528;
@@ -248,7 +127,7 @@ class FlyingGoomba extends Element {
     this.spriteLength = 4;
     this.spriteRate = 200;
     this.xSpeed = 5;
-    this.waveType = 'sin';
+    this.waveType = "sin";
     this.waveSize = 50;
     this.waveRate = 0.01;
     this.yIni = yIni;
@@ -324,7 +203,7 @@ class BigBoo extends Element {
     this.xSpeed = 14;
     this.yIni = yIni;
     this.yPos = yIni;
-    this.waveType = 'sin';
+    this.waveType = "sin";
     this.waveSize = 100;
     this.waveRate = 1e-3;
     this.wBox = 202;
@@ -358,7 +237,7 @@ class BigBubble extends Element {
   }
 
   move() {
-    if (this.yPos + this.hBox > PIXELS.height || this.yPos < 0)
+    if (this.yPos + this.hBox > SCREEN.height || this.yPos < 0)
       this.ySpeed *= -1;
     this.xPos -= this.xSpeed;
     this.yPos += this.ySpeed;
@@ -398,7 +277,7 @@ class Eerie extends Element {
     this.spriteRate = 100;
     this.xSpeed = 12;
     this.yIni = yIni;
-    this.waveType = 'cos';
+    this.waveType = "cos";
     this.waveSize = 40 * (this.time / 800);
     this.waveRate = 2e-2;
     this.wBox = 64;
@@ -483,36 +362,15 @@ class Star extends Element {
     this.height = 64;
     this.xAtlas = 888;
     this.yAtlas = 0;
-    this.yPos = PIXELS.yMid + 29;
+    this.yPos = SCREEN.centerY + 29;
     this.wBox = 60;
     this.hBox = 64;
     this.xSpeed = 15;
   }
 
   move() {
-    if (this.xPos > PIXELS.xMid + 58) moveLinear(this);
+    if (this.xPos > SCREEN.centerX + 58) moveLinear(this);
   }
-}
-
-function moveHitbox(element) {
-  let { xPos, yPos, xOff, yOff } = element;
-  element.xBox = xPos + xOff;
-  element.yBox = yPos + yOff;
-}
-
-function drawImage(element) {
-  let { width, height, xAtlas, yAtlas, xPos, yPos, spriteFrame } = element;
-  context.drawImage(
-    atlas,
-    xAtlas + spriteFrame * width,
-    yAtlas,
-    width,
-    height,
-    xPos,
-    yPos,
-    width,
-    height
-  );
 }
 
 function didHitMario(element) {
@@ -524,15 +382,6 @@ function didHitMario(element) {
   let [ey2, my2] = [ey1 + eh, my1 + mh];
 
   return !(ex1 >= mx2 || ey1 >= my2 || ex2 <= mx1 || ey2 <= my1);
-}
-
-function drawSprite(element) {
-  let { spriteFrame, spriteLength, spriteRate, time } = element;
-
-  if (Math.round(time) % spriteRate === 0) {
-    let lastFrame = spriteFrame === spriteLength - 1;
-    element.spriteFrame += lastFrame ? -spriteFrame : 1;
-  }
 }
 
 function moveLinear(element) {
@@ -551,23 +400,4 @@ function moveCurve(element) {
   element.xPos -= element.xSpeed;
 }
 
-export {
-  Mario,
-  YellowSuperKoopa,
-  RedSuperKoopa,
-  RedParakoopa,
-  YellowParakoopa,
-  GreenParakoopa,
-  BlueParakoopa,
-  FlyingGoomba,
-  FlyingBrother,
-  Chainsaw,
-  BigBoo,
-  BigBubble,
-  BooBuddy,
-  Eerie,
-  BulletBill,
-  BanzaiBill,
-  Grinder,
-  Star,
-};
+export default elements;

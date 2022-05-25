@@ -1,99 +1,85 @@
-import { changeScene } from "./modules/scenes.js";
+import background from "./modules/background.js";
+import foreground from "./modules/foreground.js";
+import sound from "./modules/sound.js";
+import storyboard from "./modules/storyboard.js";
 import controller from "./modules/controller.js";
-import { Mario } from "./modules/elements.js";
-import { loading } from "./modules/load.js";
+import loading from "./modules/load.js";
+import Element from "./modules/classes/Element.js";
+import Mario from "./modules/classes/Mario.js";
+import Level from "./modules/classes/Level.js";
+import OVERWORLD from "./modules/levels/overworld.js";
 
-const canvas = document.getElementById("canvas");
-const context = canvas.getContext("2d");
+const FPS_INTERVAL = 1000 / 60;
+const CANVAS = document.getElementById("canvas");
+const CONTEXT = CANVAS.getContext("2d");
+
+const SCREEN = {
+  width: CANVAS.width,
+  height: CANVAS.height,
+  centerX: CANVAS.width / 2,
+  centerY: CANVAS.height / 2,
+};
+
+const player = new Mario();
+const elements = {
+  list: [],
+  timeouts: [],
+
+  move() {
+    this.list.forEach((element) => element.move());
+  },
+
+  draw() {
+    this.list.forEach((element) => element.draw());
+  },
+};
+
+const levels = {
+  index: 0,
+  list: [OVERWORLD],
+
+  getCurrent() {
+    return this.list[this.index];
+  },
+
+  goNext() {
+    this.index += 1;
+  },
+};
+
+const atlas = new Image(972, 736);
+atlas.src = "images/atlas/atlas.png";
 let then = Date.now();
 let elapsed, now;
-
-const PIXELS = {
-  width: canvas.width,
-  height: canvas.height,
-  xMid: canvas.width / 2,
-  yMid: canvas.height / 2,
-};
-
-const game = {
-  FPS_INTERVAL: 1000 / 60,
-  isScrolling: false,
-  isPlaying: false,
-  state: "LOADING",
-  scrollSpeed: 6,
-  livesStart: 3,
-  lives: 3,
-  level: 0,
-  timeouts: [],
-  hasSound: false,
-
-  background: document.getElementById("background"),
-
-  music: {
-    title: new Audio("audio/music/title.mp3"),
-    yoshisIsland: new Audio("audio/music/yoshis-island.mp3"),
-  },
-
-  sfx: {
-    worldClear: new Audio("audio/sfx/world-clear.mp3"),
-    lostALife: new Audio("audio/sfx/lost-a-life.wav"),
-    coin: new Audio("audio/sfx/coin.wav"),
-    irisOut: new Audio("audio/sfx/iris-out.wav"),
-    capeJump: new Audio("audio/sfx/cape-jump.wav"),
-    courseClear: new Audio("audio/sfx/course-clear.wav"),
-    fortressClear: new Audio("audio/sfx/fortress-clear.wav"),
-    messageBlock: new Audio("audio/sfx/message-block.wav"),
-    gameOver: new Audio("audio/sfx/game-over.wav"),
-  },
-};
-
-const elements = {
-  player: new Mario(),
-  enemies: [],
-
-  update() {
-    let elements = [this.player, ...this.enemies];
-    elements.forEach((element) => {
-      element.draw();
-      element.move();
-    });
-  },
-};
 
 function runGame() {
   requestAnimationFrame(runGame);
   now = Date.now();
   elapsed = now - then;
 
-  if (elapsed > game.FPS_INTERVAL) {
-    then = now - (elapsed % game.FPS_INTERVAL);
+  if (elapsed > FPS_INTERVAL) {
+    then = now - (elapsed % FPS_INTERVAL);
 
-    if (game.isScrolling) scrollBackground();
-    clearCanvas();
-    elements.update();
+    if (background.enabled) background.scroll();
 
-    let { player } = elements;
-    // if (player.isDead) storyboard.showDeathScene();
-    if (
-      (player.passedTutorial && game.state === "TUTORIAL") ||
-      (player.gotStar && game.state === "PLAY")
-    ) {
-      changeScene();
+    if (storyboard.canPlay()) {
+      player.move();
+      elements.move();
+
+      if (storyboard.passedTutorial()) {
+        storyboard.dispatch("prepare", ["play", 1500]);
+      }
     }
+
+    clearCanvas();
+    // we're drawing mario on all screens
+    player.draw();
+    elements.draw();
   }
 }
 
-function scrollBackground() {
-  const { background } = game;
-  const currentX = parseInt(background.style.backgroundPositionX);
-
-  game.background.style.backgroundPositionX = `${
-    currentX - game.scrollSpeed
-  }px`;
-}
-
 function clearCanvas() {
-  context.clearRect(0, 0, PIXELS.width, PIXELS.height);
+  CONTEXT.clearRect(0, 0, CANVAS.width, CANVAS.height);
 }
 
 function setGame() {
@@ -102,7 +88,7 @@ function setGame() {
       setAudio();
       setControls();
       runGame();
-      changeScene();
+      storyboard.dispatch("prepare", ["play", 100]);
       clearInterval(interval);
     }
   }, 250);
@@ -111,23 +97,48 @@ function setGame() {
 function setAudio() {
   const soundBtn = document.getElementById("sound-btn");
   soundBtn.addEventListener("click", () => {
-    let { hasSound } = game;
-    game.hasSound = !hasSound;
-    game.music.title[hasSound ? "pause" : "play"]();
-    soundBtn.value = `Sound: ${hasSound ? "Off" : "On!"}`;
+    sound.toggle();
+    const { enabled } = sound;
+    sound.music.title[enabled ? "play" : "pause"]();
+    soundBtn.value = `Sound: ${enabled ? "On!" : "Off"}`;
   });
 }
 
 function setControls() {
-  let { onMenuInput, onPlayerInput } = controller;
   const startBtn = document.getElementById("start-btn");
-  startBtn.addEventListener("click", onMenuInput);
-  document.addEventListener("keydown", onPlayerInput);
-  document.addEventListener("keyup", onPlayerInput);
+
+  startBtn.addEventListener("click", (event) => {
+    if (storyboard.state === "START") {
+      controller.onMenuInput(event);
+    }
+  });
+
+  const callback = (event) => {
+    const { state } = storyboard;
+    if (state === "LEVEL" || state === "TUTORIAL") {
+      controller.onPlayerInput(event);
+    }
+  };
+
+  document.addEventListener("keydown", callback);
+  document.addEventListener("keyup", callback);
 }
 
 window.addEventListener("load", setGame);
 
-export { LEVELS, Level } from "./modules/levels.js";
-export * as Enemies from "./modules/elements.js";
-export { PIXELS, context, game, controller, changeScene, elements };
+export {
+  FPS_INTERVAL,
+  elements,
+  atlas,
+  background,
+  foreground,
+  sound,
+  SCREEN,
+  CONTEXT,
+  controller,
+  storyboard,
+  Element,
+  player,
+  Level,
+  levels,
+};

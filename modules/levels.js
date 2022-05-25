@@ -1,4 +1,4 @@
-import { game, elements, PIXELS, Enemies } from "../main.js";
+import { Enemies } from "../main.js";
 
 let {
   YellowSuperKoopa,
@@ -20,14 +20,9 @@ let {
   Star,
 } = Enemies;
 
-class Level {
-  constructor(name, background, audio, volume) {
-    this.name = name;
-    this.background = `url(${background})`;
-    // this.audio = new Audio(`sounds/${audio}.mp3`);
-    this.volume = volume;
-  }
-}
+const TEST = new Level("Creative Name", "castle", "ghost-house", 0.4, () => {
+  spawnElement(RedParakoopa, 100, 1000);
+});
 
 const OVERWORLD = new Level(
   "The Basics",
@@ -107,12 +102,12 @@ OVERWORLD.spawn = () => {
   // spawnElement(25, new Parakoopa(500, "red"));
   // spawnElement(25.5, new Parakoopa(500, "red"));
   // spawnElement(26, new Parakoopa(500, "red"));
-  spawnElement(Star, PIXELS.yMid, 5);
+  spawnElement(Star, SCREEN.centerY, 5);
 };
 
 ATHLETIC.spawn = () => {
-  spawnElement(1.5, new Parakoopa(PIXELS.yMid, "green"));
-  spawnElement(1.5, new Parakoopa(PIXELS.yMid, "blue", true));
+  spawnElement(1.5, new Parakoopa(SCREEN.centerY, "green"));
+  spawnElement(1.5, new Parakoopa(SCREEN.centerY, "blue", true));
   spawnElement(2.5, new Parakoopa(100, "green"));
   spawnElement(2.5, new Parakoopa(100, "blue", true));
   spawnElement(3.5, new Parakoopa(550, "green"));
@@ -125,66 +120,66 @@ ATHLETIC.spawn = () => {
   spawnElement(5.5, new Parakoopa(550, "blue", true));
   spawnElement(5.75, new Parakoopa(550, "blue", true));
   spawnElement(6, new Parakoopa(550, "blue", true));
-  spawnElement(6.75, new FlyingBrother(PIXELS.yMid - 350));
-  spawnElement(7.0, new FlyingBrother(PIXELS.yMid - 350));
-  spawnElement(7.25, new FlyingBrother(PIXELS.yMid - 350));
-  spawnElement(7.5, new FlyingBrother(PIXELS.yMid - 350));
-  spawnElement(7.75, new FlyingBrother(PIXELS.yMid - 350));
-  spawnElement(8, new FlyingBrother(PIXELS.yMid - 350));
+  spawnElement(6.75, new FlyingBrother(SCREEN.centerY - 350));
+  spawnElement(7.0, new FlyingBrother(SCREEN.centerY - 350));
+  spawnElement(7.25, new FlyingBrother(SCREEN.centerY - 350));
+  spawnElement(7.5, new FlyingBrother(SCREEN.centerY - 350));
+  spawnElement(7.75, new FlyingBrother(SCREEN.centerY - 350));
+  spawnElement(8, new FlyingBrother(SCREEN.centerY - 350));
 
-  spawnElement(7, new Chainsaw(PIXELS.yMid - 300));
-  spawnElement(7, new Chainsaw(PIXELS.yMid + 200));
-  spawnElement(7.25, new Chainsaw(PIXELS.yMid - 300));
-  spawnElement(7.25, new Chainsaw(PIXELS.yMid + 200));
-  spawnElement(7.5, new Chainsaw(PIXELS.yMid - 300));
-  spawnElement(7.5, new Chainsaw(PIXELS.yMid + 200));
-  spawnElement(7.75, new Chainsaw(PIXELS.yMid - 300));
-  spawnElement(7.75, new Chainsaw(PIXELS.yMid + 200));
+  spawnElement(7, new Chainsaw(SCREEN.centerY - 300));
+  spawnElement(7, new Chainsaw(SCREEN.centerY + 200));
+  spawnElement(7.25, new Chainsaw(SCREEN.centerY - 300));
+  spawnElement(7.25, new Chainsaw(SCREEN.centerY + 200));
+  spawnElement(7.5, new Chainsaw(SCREEN.centerY - 300));
+  spawnElement(7.5, new Chainsaw(SCREEN.centerY + 200));
+  spawnElement(7.75, new Chainsaw(SCREEN.centerY - 300));
+  spawnElement(7.75, new Chainsaw(SCREEN.centerY + 200));
 
-  spawnElement(8, new Chainsaw(PIXELS.yMid - 350));
-  spawnElement(8, new Chainsaw(PIXELS.yMid + 150));
-  spawnElement(8.25, new Chainsaw(PIXELS.yMid - 350));
-  spawnElement(8.25, new Chainsaw(PIXELS.yMid + 150));
-  spawnElement(8.5, new Chainsaw(PIXELS.yMid - 350));
-  spawnElement(8.5, new Chainsaw(PIXELS.yMid + 150));
-  spawnElement(8.75, new Chainsaw(PIXELS.yMid - 350));
-  spawnElement(8.75, new Chainsaw(PIXELS.yMid + 150));
+  spawnElement(8, new Chainsaw(SCREEN.centerY - 350));
+  spawnElement(8, new Chainsaw(SCREEN.centerY + 150));
+  spawnElement(8.25, new Chainsaw(SCREEN.centerY - 350));
+  spawnElement(8.25, new Chainsaw(SCREEN.centerY + 150));
+  spawnElement(8.5, new Chainsaw(SCREEN.centerY - 350));
+  spawnElement(8.5, new Chainsaw(SCREEN.centerY + 150));
+  spawnElement(8.75, new Chainsaw(SCREEN.centerY - 350));
+  spawnElement(8.75, new Chainsaw(SCREEN.centerY + 150));
 
-  spawnElement(9, new Chainsaw(PIXELS.yMid - 400));
-  spawnElement(9, new Chainsaw(PIXELS.yMid + 100));
-  spawnElement(9.25, new Chainsaw(PIXELS.yMid - 400));
-  spawnElement(9.25, new Chainsaw(PIXELS.yMid + 100));
-  spawnElement(9.5, new Chainsaw(PIXELS.yMid - 400));
-  spawnElement(9.5, new Chainsaw(PIXELS.yMid + 100));
-  spawnElement(9.75, new Chainsaw(PIXELS.yMid - 400));
-  spawnElement(9.75, new Chainsaw(PIXELS.yMid + 100));
+  spawnElement(9, new Chainsaw(SCREEN.centerY - 400));
+  spawnElement(9, new Chainsaw(SCREEN.centerY + 100));
+  spawnElement(9.25, new Chainsaw(SCREEN.centerY - 400));
+  spawnElement(9.25, new Chainsaw(SCREEN.centerY + 100));
+  spawnElement(9.5, new Chainsaw(SCREEN.centerY - 400));
+  spawnElement(9.5, new Chainsaw(SCREEN.centerY + 100));
+  spawnElement(9.75, new Chainsaw(SCREEN.centerY - 400));
+  spawnElement(9.75, new Chainsaw(SCREEN.centerY + 100));
 
-  spawnElement(10, new Chainsaw(PIXELS.yMid - 450));
-  spawnElement(10, new Chainsaw(PIXELS.yMid + 50));
-  spawnElement(10.25, new Chainsaw(PIXELS.yMid - 450));
-  spawnElement(10.25, new Chainsaw(PIXELS.yMid + 50));
-  spawnElement(10.5, new Chainsaw(PIXELS.yMid - 450));
-  spawnElement(10.5, new Chainsaw(PIXELS.yMid + 50));
-  spawnElement(10.75, new Chainsaw(PIXELS.yMid - 450));
-  spawnElement(10.75, new Chainsaw(PIXELS.yMid + 50));
+  spawnElement(10, new Chainsaw(SCREEN.centerY - 450));
+  spawnElement(10, new Chainsaw(SCREEN.centerY + 50));
+  spawnElement(10.25, new Chainsaw(SCREEN.centerY - 450));
+  spawnElement(10.25, new Chainsaw(SCREEN.centerY + 50));
+  spawnElement(10.5, new Chainsaw(SCREEN.centerY - 450));
+  spawnElement(10.5, new Chainsaw(SCREEN.centerY + 50));
+  spawnElement(10.75, new Chainsaw(SCREEN.centerY - 450));
+  spawnElement(10.75, new Chainsaw(SCREEN.centerY + 50));
 
-  spawnElement(11, new Chainsaw(PIXELS.yMid - 500));
-  spawnElement(11, new Chainsaw(PIXELS.yMid));
-  spawnElement(11.25, new Chainsaw(PIXELS.yMid - 500));
-  spawnElement(11.25, new Chainsaw(PIXELS.yMid));
-  spawnElement(11.5, new Chainsaw(PIXELS.yMid - 500));
-  spawnElement(11.5, new Chainsaw(PIXELS.yMid));
-  spawnElement(11.75, new Chainsaw(PIXELS.yMid - 500));
-  spawnElement(11.75, new Chainsaw(PIXELS.yMid));
+  spawnElement(11, new Chainsaw(SCREEN.centerY - 500));
+  spawnElement(11, new Chainsaw(SCREEN.centerY));
+  spawnElement(11.25, new Chainsaw(SCREEN.centerY - 500));
+  spawnElement(11.25, new Chainsaw(SCREEN.centerY));
+  spawnElement(11.5, new Chainsaw(SCREEN.centerY - 500));
+  spawnElement(11.5, new Chainsaw(SCREEN.centerY));
+  spawnElement(11.75, new Chainsaw(SCREEN.centerY - 500));
+  spawnElement(11.75, new Chainsaw(SCREEN.centerY));
 
-  spawnElement(12, new Chainsaw(PIXELS.yMid - 600));
-  spawnElement(12, new Chainsaw(PIXELS.yMid - 50));
-  spawnElement(12.25, new Chainsaw(PIXELS.yMid - 600));
-  spawnElement(12.25, new Chainsaw(PIXELS.yMid - 50));
-  spawnElement(12.5, new Chainsaw(PIXELS.yMid - 600));
-  spawnElement(12.5, new Chainsaw(PIXELS.yMid - 50));
-  spawnElement(12.75, new Chainsaw(PIXELS.yMid - 600));
-  spawnElement(12.75, new Chainsaw(PIXELS.yMid - 50));
+  spawnElement(12, new Chainsaw(SCREEN.centerY - 600));
+  spawnElement(12, new Chainsaw(SCREEN.centerY - 50));
+  spawnElement(12.25, new Chainsaw(SCREEN.centerY - 600));
+  spawnElement(12.25, new Chainsaw(SCREEN.centerY - 50));
+  spawnElement(12.5, new Chainsaw(SCREEN.centerY - 600));
+  spawnElement(12.5, new Chainsaw(SCREEN.centerY - 50));
+  spawnElement(12.75, new Chainsaw(SCREEN.centerY - 600));
+  spawnElement(12.75, new Chainsaw(SCREEN.centerY - 50));
 
   spawnElement(13.25, new Chainsaw(176));
   spawnElement(13.75, new Chainsaw(176 * 2));
@@ -214,30 +209,30 @@ ATHLETIC.spawn = () => {
   spawnElement(22, new Chainsaw(176 * 3));
 
   //
-  spawnElement(23.0, new Parakoopa(PIXELS.yMid - 400, "blue"));
-  spawnElement(23.0, new Parakoopa(PIXELS.yMid - 300, "blue"));
-  spawnElement(23.0, new Parakoopa(PIXELS.yMid - 200, "blue"));
-  spawnElement(23.1, new Parakoopa(PIXELS.yMid - 400, "green"));
-  spawnElement(23.1, new Parakoopa(PIXELS.yMid - 300, "green"));
-  spawnElement(23.1, new Parakoopa(PIXELS.yMid - 200, "green"));
-  spawnElement(23.2, new Parakoopa(PIXELS.yMid - 400, "blue"));
-  spawnElement(23.2, new Parakoopa(PIXELS.yMid - 300, "blue"));
-  spawnElement(23.2, new Parakoopa(PIXELS.yMid - 200, "blue"));
-  spawnElement(23.3, new Parakoopa(PIXELS.yMid - 400, "green"));
-  spawnElement(23.3, new Parakoopa(PIXELS.yMid - 300, "green"));
-  spawnElement(23.3, new Parakoopa(PIXELS.yMid - 200, "green"));
-  spawnElement(23.4, new Parakoopa(PIXELS.yMid - 400, "blue"));
-  spawnElement(23.4, new Parakoopa(PIXELS.yMid - 300, "blue"));
-  spawnElement(23.4, new Parakoopa(PIXELS.yMid - 200, "blue"));
-  spawnElement(23.5, new Parakoopa(PIXELS.yMid - 400, "green"));
-  spawnElement(23.5, new Parakoopa(PIXELS.yMid - 300, "green"));
-  spawnElement(23.5, new Parakoopa(PIXELS.yMid - 200, "green"));
-  spawnElement(23.6, new Parakoopa(PIXELS.yMid - 400, "blue"));
-  spawnElement(23.6, new Parakoopa(PIXELS.yMid - 300, "blue"));
-  spawnElement(23.6, new Parakoopa(PIXELS.yMid - 200, "blue"));
-  spawnElement(23.7, new Parakoopa(PIXELS.yMid - 400, "green"));
-  spawnElement(23.7, new Parakoopa(PIXELS.yMid - 300, "green"));
-  spawnElement(23.7, new Parakoopa(PIXELS.yMid - 200, "green"));
+  spawnElement(23.0, new Parakoopa(SCREEN.centerY - 400, "blue"));
+  spawnElement(23.0, new Parakoopa(SCREEN.centerY - 300, "blue"));
+  spawnElement(23.0, new Parakoopa(SCREEN.centerY - 200, "blue"));
+  spawnElement(23.1, new Parakoopa(SCREEN.centerY - 400, "green"));
+  spawnElement(23.1, new Parakoopa(SCREEN.centerY - 300, "green"));
+  spawnElement(23.1, new Parakoopa(SCREEN.centerY - 200, "green"));
+  spawnElement(23.2, new Parakoopa(SCREEN.centerY - 400, "blue"));
+  spawnElement(23.2, new Parakoopa(SCREEN.centerY - 300, "blue"));
+  spawnElement(23.2, new Parakoopa(SCREEN.centerY - 200, "blue"));
+  spawnElement(23.3, new Parakoopa(SCREEN.centerY - 400, "green"));
+  spawnElement(23.3, new Parakoopa(SCREEN.centerY - 300, "green"));
+  spawnElement(23.3, new Parakoopa(SCREEN.centerY - 200, "green"));
+  spawnElement(23.4, new Parakoopa(SCREEN.centerY - 400, "blue"));
+  spawnElement(23.4, new Parakoopa(SCREEN.centerY - 300, "blue"));
+  spawnElement(23.4, new Parakoopa(SCREEN.centerY - 200, "blue"));
+  spawnElement(23.5, new Parakoopa(SCREEN.centerY - 400, "green"));
+  spawnElement(23.5, new Parakoopa(SCREEN.centerY - 300, "green"));
+  spawnElement(23.5, new Parakoopa(SCREEN.centerY - 200, "green"));
+  spawnElement(23.6, new Parakoopa(SCREEN.centerY - 400, "blue"));
+  spawnElement(23.6, new Parakoopa(SCREEN.centerY - 300, "blue"));
+  spawnElement(23.6, new Parakoopa(SCREEN.centerY - 200, "blue"));
+  spawnElement(23.7, new Parakoopa(SCREEN.centerY - 400, "green"));
+  spawnElement(23.7, new Parakoopa(SCREEN.centerY - 300, "green"));
+  spawnElement(23.7, new Parakoopa(SCREEN.centerY - 200, "green"));
 
   spawnElement(25.0, new FlyingBrother(-250));
   spawnElement(25.25, new FlyingBrother(-250));
@@ -300,36 +295,36 @@ HAUNTED.spawn = () => {
   spawnElement(5.2, new BooBuddy(375));
   spawnElement(5.2, new BooBuddy(450));
 
-  spawnElement(5.4, new BigBoo(PIXELS.yMid));
-  spawnElement(6.5, new Eerie(PIXELS.yMid - 250));
-  spawnElement(6.5, new Eerie(PIXELS.yMid + 150));
-  spawnElement(7.5, new Eerie(PIXELS.yMid - 250));
-  spawnElement(7.5, new Eerie(PIXELS.yMid + 150));
+  spawnElement(5.4, new BigBoo(SCREEN.centerY));
+  spawnElement(6.5, new Eerie(SCREEN.centerY - 250));
+  spawnElement(6.5, new Eerie(SCREEN.centerY + 150));
+  spawnElement(7.5, new Eerie(SCREEN.centerY - 250));
+  spawnElement(7.5, new Eerie(SCREEN.centerY + 150));
   spawnElement(8.5, new BigBubble(0));
 
-  spawnElement(10, new BigBubble(PIXELS.yMid));
-  spawnElement(10.5, new BigBubble(PIXELS.yMid));
+  spawnElement(10, new BigBubble(SCREEN.centerY));
+  spawnElement(10.5, new BigBubble(SCREEN.centerY));
 
-  spawnElement(12, new BigBubble(PIXELS.yMid - 150));
-  spawnElement(12.5, new BigBubble(PIXELS.yMid - 150));
-  spawnElement(13.0, new BigBubble(PIXELS.yMid - 150));
+  spawnElement(12, new BigBubble(SCREEN.centerY - 150));
+  spawnElement(12.5, new BigBubble(SCREEN.centerY - 150));
+  spawnElement(13.0, new BigBubble(SCREEN.centerY - 150));
 
   spawnElement(14.5, new BigBubble(0));
-  spawnElement(14.5, new BigBubble(PIXELS.height - 200));
+  spawnElement(14.5, new BigBubble(SCREEN.height - 200));
 
   spawnElement(16.0, new BigBubble(0));
-  spawnElement(16.0, new BigBubble(PIXELS.height - 200));
+  spawnElement(16.0, new BigBubble(SCREEN.height - 200));
 
-  spawnElement(18 + 0.5, new BooBuddy(PIXELS.yMid));
-  spawnElement(18.1 + 0.5, new BooBuddy(PIXELS.yMid + 125));
-  spawnElement(18.1 + 0.5, new BooBuddy(PIXELS.yMid - 125));
-  spawnElement(18.2 + 0.5, new BooBuddy(PIXELS.yMid + 225));
-  spawnElement(18.2 + 0.5, new BooBuddy(PIXELS.yMid - 225));
-  spawnElement(18.3 + 0.5, new BooBuddy(PIXELS.yMid + 125));
-  spawnElement(18.3 + 0.5, new BooBuddy(PIXELS.yMid - 125));
-  spawnElement(18.4 + 0.5, new BooBuddy(PIXELS.yMid));
+  spawnElement(18 + 0.5, new BooBuddy(SCREEN.centerY));
+  spawnElement(18.1 + 0.5, new BooBuddy(SCREEN.centerY + 125));
+  spawnElement(18.1 + 0.5, new BooBuddy(SCREEN.centerY - 125));
+  spawnElement(18.2 + 0.5, new BooBuddy(SCREEN.centerY + 225));
+  spawnElement(18.2 + 0.5, new BooBuddy(SCREEN.centerY - 225));
+  spawnElement(18.3 + 0.5, new BooBuddy(SCREEN.centerY + 125));
+  spawnElement(18.3 + 0.5, new BooBuddy(SCREEN.centerY - 125));
+  spawnElement(18.4 + 0.5, new BooBuddy(SCREEN.centerY));
 
-  let mid = PIXELS.yMid - 200;
+  let mid = SCREEN.centerY - 200;
   spawnElement(19.5 + 0.5, new BooBuddy(mid + 125));
   spawnElement(19.6 + 0.5, new BooBuddy(mid));
   spawnElement(19.7 + 0.5, new BooBuddy(mid + 125));
@@ -337,7 +332,7 @@ HAUNTED.spawn = () => {
   spawnElement(19.8 + 0.5, new BooBuddy(mid));
   spawnElement(19.9 + 0.5, new BooBuddy(mid + 125));
 
-  mid = PIXELS.yMid + 150;
+  mid = SCREEN.centerY + 150;
   spawnElement(21.0 + 0.5, new BooBuddy(mid - 125));
   spawnElement(21.1 + 0.5, new BooBuddy(mid));
   spawnElement(21.2 + 0.5, new BooBuddy(mid + 125));
@@ -345,7 +340,7 @@ HAUNTED.spawn = () => {
   spawnElement(21.3 + 0.5, new BooBuddy(mid));
   spawnElement(21.4 + 0.5, new BooBuddy(mid - 125));
 
-  mid = PIXELS.yMid;
+  mid = SCREEN.centerY;
   spawnElement(23, new BooBuddy(mid - 175));
   spawnElement(23, new BooBuddy(mid + 125));
   spawnElement(23.1, new BooBuddy(mid - 275));
@@ -357,181 +352,181 @@ HAUNTED.spawn = () => {
   spawnElement(23.4, new BooBuddy(mid - 175));
   spawnElement(23.4, new BooBuddy(mid + 125));
 
-  spawnElement(25, new Eerie(PIXELS.yMid - 225));
-  spawnElement(25.1, new Eerie(PIXELS.yMid - 225));
-  spawnElement(25.2, new Eerie(PIXELS.yMid - 225));
-  spawnElement(25.3, new Eerie(PIXELS.yMid - 225));
-  spawnElement(25.4, new Eerie(PIXELS.yMid - 225));
-  spawnElement(25.5, new Eerie(PIXELS.yMid - 225));
-  spawnElement(25.6, new Eerie(PIXELS.yMid - 225));
-  spawnElement(25.7, new Eerie(PIXELS.yMid - 225));
-  spawnElement(25.8, new Eerie(PIXELS.yMid - 225));
-  spawnElement(25.9, new Eerie(PIXELS.yMid - 225));
-  spawnElement(26, new Eerie(PIXELS.yMid - 225));
-  spawnElement(26.1, new Eerie(PIXELS.yMid - 225));
-  spawnElement(26.2, new Eerie(PIXELS.yMid - 225));
-  spawnElement(26.3, new Eerie(PIXELS.yMid - 225));
-  spawnElement(26.4, new Eerie(PIXELS.yMid - 225));
-  spawnElement(26.5, new Eerie(PIXELS.yMid - 225));
+  spawnElement(25, new Eerie(SCREEN.centerY - 225));
+  spawnElement(25.1, new Eerie(SCREEN.centerY - 225));
+  spawnElement(25.2, new Eerie(SCREEN.centerY - 225));
+  spawnElement(25.3, new Eerie(SCREEN.centerY - 225));
+  spawnElement(25.4, new Eerie(SCREEN.centerY - 225));
+  spawnElement(25.5, new Eerie(SCREEN.centerY - 225));
+  spawnElement(25.6, new Eerie(SCREEN.centerY - 225));
+  spawnElement(25.7, new Eerie(SCREEN.centerY - 225));
+  spawnElement(25.8, new Eerie(SCREEN.centerY - 225));
+  spawnElement(25.9, new Eerie(SCREEN.centerY - 225));
+  spawnElement(26, new Eerie(SCREEN.centerY - 225));
+  spawnElement(26.1, new Eerie(SCREEN.centerY - 225));
+  spawnElement(26.2, new Eerie(SCREEN.centerY - 225));
+  spawnElement(26.3, new Eerie(SCREEN.centerY - 225));
+  spawnElement(26.4, new Eerie(SCREEN.centerY - 225));
+  spawnElement(26.5, new Eerie(SCREEN.centerY - 225));
 
-  spawnElement(25, new Eerie(PIXELS.yMid - 300));
-  spawnElement(25.1, new Eerie(PIXELS.yMid - 300));
-  spawnElement(25.2, new Eerie(PIXELS.yMid - 300));
-  spawnElement(25.3, new Eerie(PIXELS.yMid - 300));
-  spawnElement(25.4, new Eerie(PIXELS.yMid - 300));
-  spawnElement(25.5, new Eerie(PIXELS.yMid - 300));
-  spawnElement(25.6, new Eerie(PIXELS.yMid - 300));
-  spawnElement(25.7, new Eerie(PIXELS.yMid - 300));
-  spawnElement(25.8, new Eerie(PIXELS.yMid - 300));
-  spawnElement(25.9, new Eerie(PIXELS.yMid - 300));
-  spawnElement(26, new Eerie(PIXELS.yMid - 300));
-  spawnElement(26.1, new Eerie(PIXELS.yMid - 300));
-  spawnElement(26.2, new Eerie(PIXELS.yMid - 300));
-  spawnElement(26.3, new Eerie(PIXELS.yMid - 300));
-  spawnElement(26.4, new Eerie(PIXELS.yMid - 300));
-  spawnElement(26.5, new Eerie(PIXELS.yMid - 300));
+  spawnElement(25, new Eerie(SCREEN.centerY - 300));
+  spawnElement(25.1, new Eerie(SCREEN.centerY - 300));
+  spawnElement(25.2, new Eerie(SCREEN.centerY - 300));
+  spawnElement(25.3, new Eerie(SCREEN.centerY - 300));
+  spawnElement(25.4, new Eerie(SCREEN.centerY - 300));
+  spawnElement(25.5, new Eerie(SCREEN.centerY - 300));
+  spawnElement(25.6, new Eerie(SCREEN.centerY - 300));
+  spawnElement(25.7, new Eerie(SCREEN.centerY - 300));
+  spawnElement(25.8, new Eerie(SCREEN.centerY - 300));
+  spawnElement(25.9, new Eerie(SCREEN.centerY - 300));
+  spawnElement(26, new Eerie(SCREEN.centerY - 300));
+  spawnElement(26.1, new Eerie(SCREEN.centerY - 300));
+  spawnElement(26.2, new Eerie(SCREEN.centerY - 300));
+  spawnElement(26.3, new Eerie(SCREEN.centerY - 300));
+  spawnElement(26.4, new Eerie(SCREEN.centerY - 300));
+  spawnElement(26.5, new Eerie(SCREEN.centerY - 300));
 
-  spawnElement(25, new Eerie(PIXELS.yMid - 375));
-  spawnElement(25.1, new Eerie(PIXELS.yMid - 375));
-  spawnElement(25.2, new Eerie(PIXELS.yMid - 375));
-  spawnElement(25.3, new Eerie(PIXELS.yMid - 375));
-  spawnElement(25.4, new Eerie(PIXELS.yMid - 375));
-  spawnElement(25.5, new Eerie(PIXELS.yMid - 375));
-  spawnElement(25.6, new Eerie(PIXELS.yMid - 375));
-  spawnElement(25.7, new Eerie(PIXELS.yMid - 375));
-  spawnElement(25.8, new Eerie(PIXELS.yMid - 375));
-  spawnElement(25.9, new Eerie(PIXELS.yMid - 375));
-  spawnElement(26, new Eerie(PIXELS.yMid - 375));
-  spawnElement(26.1, new Eerie(PIXELS.yMid - 375));
-  spawnElement(26.2, new Eerie(PIXELS.yMid - 375));
-  spawnElement(26.3, new Eerie(PIXELS.yMid - 375));
-  spawnElement(26.4, new Eerie(PIXELS.yMid - 375));
-  spawnElement(26.5, new Eerie(PIXELS.yMid - 375));
+  spawnElement(25, new Eerie(SCREEN.centerY - 375));
+  spawnElement(25.1, new Eerie(SCREEN.centerY - 375));
+  spawnElement(25.2, new Eerie(SCREEN.centerY - 375));
+  spawnElement(25.3, new Eerie(SCREEN.centerY - 375));
+  spawnElement(25.4, new Eerie(SCREEN.centerY - 375));
+  spawnElement(25.5, new Eerie(SCREEN.centerY - 375));
+  spawnElement(25.6, new Eerie(SCREEN.centerY - 375));
+  spawnElement(25.7, new Eerie(SCREEN.centerY - 375));
+  spawnElement(25.8, new Eerie(SCREEN.centerY - 375));
+  spawnElement(25.9, new Eerie(SCREEN.centerY - 375));
+  spawnElement(26, new Eerie(SCREEN.centerY - 375));
+  spawnElement(26.1, new Eerie(SCREEN.centerY - 375));
+  spawnElement(26.2, new Eerie(SCREEN.centerY - 375));
+  spawnElement(26.3, new Eerie(SCREEN.centerY - 375));
+  spawnElement(26.4, new Eerie(SCREEN.centerY - 375));
+  spawnElement(26.5, new Eerie(SCREEN.centerY - 375));
 
-  spawnElement(25, new Eerie(PIXELS.yMid - 450));
-  spawnElement(25.1, new Eerie(PIXELS.yMid - 450));
-  spawnElement(25.2, new Eerie(PIXELS.yMid - 450));
-  spawnElement(25.3, new Eerie(PIXELS.yMid - 450));
-  spawnElement(25.4, new Eerie(PIXELS.yMid - 450));
-  spawnElement(25.5, new Eerie(PIXELS.yMid - 450));
-  spawnElement(25.6, new Eerie(PIXELS.yMid - 450));
-  spawnElement(25.7, new Eerie(PIXELS.yMid - 450));
-  spawnElement(25.8, new Eerie(PIXELS.yMid - 450));
-  spawnElement(25.9, new Eerie(PIXELS.yMid - 450));
-  spawnElement(26, new Eerie(PIXELS.yMid - 450));
-  spawnElement(26.1, new Eerie(PIXELS.yMid - 450));
-  spawnElement(26.2, new Eerie(PIXELS.yMid - 450));
-  spawnElement(26.3, new Eerie(PIXELS.yMid - 450));
-  spawnElement(26.4, new Eerie(PIXELS.yMid - 450));
-  spawnElement(26.5, new Eerie(PIXELS.yMid - 450));
+  spawnElement(25, new Eerie(SCREEN.centerY - 450));
+  spawnElement(25.1, new Eerie(SCREEN.centerY - 450));
+  spawnElement(25.2, new Eerie(SCREEN.centerY - 450));
+  spawnElement(25.3, new Eerie(SCREEN.centerY - 450));
+  spawnElement(25.4, new Eerie(SCREEN.centerY - 450));
+  spawnElement(25.5, new Eerie(SCREEN.centerY - 450));
+  spawnElement(25.6, new Eerie(SCREEN.centerY - 450));
+  spawnElement(25.7, new Eerie(SCREEN.centerY - 450));
+  spawnElement(25.8, new Eerie(SCREEN.centerY - 450));
+  spawnElement(25.9, new Eerie(SCREEN.centerY - 450));
+  spawnElement(26, new Eerie(SCREEN.centerY - 450));
+  spawnElement(26.1, new Eerie(SCREEN.centerY - 450));
+  spawnElement(26.2, new Eerie(SCREEN.centerY - 450));
+  spawnElement(26.3, new Eerie(SCREEN.centerY - 450));
+  spawnElement(26.4, new Eerie(SCREEN.centerY - 450));
+  spawnElement(26.5, new Eerie(SCREEN.centerY - 450));
 
-  spawnElement(25, new Eerie(PIXELS.yMid - 525));
-  spawnElement(25.1, new Eerie(PIXELS.yMid - 525));
-  spawnElement(25.2, new Eerie(PIXELS.yMid - 525));
-  spawnElement(25.3, new Eerie(PIXELS.yMid - 525));
-  spawnElement(25.4, new Eerie(PIXELS.yMid - 525));
-  spawnElement(25.5, new Eerie(PIXELS.yMid - 525));
-  spawnElement(25.6, new Eerie(PIXELS.yMid - 525));
-  spawnElement(25.7, new Eerie(PIXELS.yMid - 525));
-  spawnElement(25.8, new Eerie(PIXELS.yMid - 525));
-  spawnElement(25.9, new Eerie(PIXELS.yMid - 525));
-  spawnElement(26, new Eerie(PIXELS.yMid - 525));
-  spawnElement(26.1, new Eerie(PIXELS.yMid - 525));
-  spawnElement(26.2, new Eerie(PIXELS.yMid - 525));
-  spawnElement(26.3, new Eerie(PIXELS.yMid - 525));
-  spawnElement(26.4, new Eerie(PIXELS.yMid - 525));
-  spawnElement(26.5, new Eerie(PIXELS.yMid - 525));
+  spawnElement(25, new Eerie(SCREEN.centerY - 525));
+  spawnElement(25.1, new Eerie(SCREEN.centerY - 525));
+  spawnElement(25.2, new Eerie(SCREEN.centerY - 525));
+  spawnElement(25.3, new Eerie(SCREEN.centerY - 525));
+  spawnElement(25.4, new Eerie(SCREEN.centerY - 525));
+  spawnElement(25.5, new Eerie(SCREEN.centerY - 525));
+  spawnElement(25.6, new Eerie(SCREEN.centerY - 525));
+  spawnElement(25.7, new Eerie(SCREEN.centerY - 525));
+  spawnElement(25.8, new Eerie(SCREEN.centerY - 525));
+  spawnElement(25.9, new Eerie(SCREEN.centerY - 525));
+  spawnElement(26, new Eerie(SCREEN.centerY - 525));
+  spawnElement(26.1, new Eerie(SCREEN.centerY - 525));
+  spawnElement(26.2, new Eerie(SCREEN.centerY - 525));
+  spawnElement(26.3, new Eerie(SCREEN.centerY - 525));
+  spawnElement(26.4, new Eerie(SCREEN.centerY - 525));
+  spawnElement(26.5, new Eerie(SCREEN.centerY - 525));
 
-  spawnElement(25, new Eerie(PIXELS.yMid + 225));
-  spawnElement(25.1, new Eerie(PIXELS.yMid + 225));
-  spawnElement(25.2, new Eerie(PIXELS.yMid + 225));
-  spawnElement(25.3, new Eerie(PIXELS.yMid + 225));
-  spawnElement(25.4, new Eerie(PIXELS.yMid + 225));
-  spawnElement(25.5, new Eerie(PIXELS.yMid + 225));
-  spawnElement(25.6, new Eerie(PIXELS.yMid + 225));
-  spawnElement(25.7, new Eerie(PIXELS.yMid + 225));
-  spawnElement(25.8, new Eerie(PIXELS.yMid + 225));
-  spawnElement(25.9, new Eerie(PIXELS.yMid + 225));
-  spawnElement(26, new Eerie(PIXELS.yMid + 225));
-  spawnElement(26.1, new Eerie(PIXELS.yMid + 225));
-  spawnElement(26.2, new Eerie(PIXELS.yMid + 225));
-  spawnElement(26.3, new Eerie(PIXELS.yMid + 225));
-  spawnElement(26.4, new Eerie(PIXELS.yMid + 225));
-  spawnElement(26.5, new Eerie(PIXELS.yMid + 225));
+  spawnElement(25, new Eerie(SCREEN.centerY + 225));
+  spawnElement(25.1, new Eerie(SCREEN.centerY + 225));
+  spawnElement(25.2, new Eerie(SCREEN.centerY + 225));
+  spawnElement(25.3, new Eerie(SCREEN.centerY + 225));
+  spawnElement(25.4, new Eerie(SCREEN.centerY + 225));
+  spawnElement(25.5, new Eerie(SCREEN.centerY + 225));
+  spawnElement(25.6, new Eerie(SCREEN.centerY + 225));
+  spawnElement(25.7, new Eerie(SCREEN.centerY + 225));
+  spawnElement(25.8, new Eerie(SCREEN.centerY + 225));
+  spawnElement(25.9, new Eerie(SCREEN.centerY + 225));
+  spawnElement(26, new Eerie(SCREEN.centerY + 225));
+  spawnElement(26.1, new Eerie(SCREEN.centerY + 225));
+  spawnElement(26.2, new Eerie(SCREEN.centerY + 225));
+  spawnElement(26.3, new Eerie(SCREEN.centerY + 225));
+  spawnElement(26.4, new Eerie(SCREEN.centerY + 225));
+  spawnElement(26.5, new Eerie(SCREEN.centerY + 225));
 
-  spawnElement(25, new Eerie(PIXELS.yMid + 300));
-  spawnElement(25.1, new Eerie(PIXELS.yMid + 300));
-  spawnElement(25.2, new Eerie(PIXELS.yMid + 300));
-  spawnElement(25.3, new Eerie(PIXELS.yMid + 300));
-  spawnElement(25.4, new Eerie(PIXELS.yMid + 300));
-  spawnElement(25.5, new Eerie(PIXELS.yMid + 300));
-  spawnElement(25.6, new Eerie(PIXELS.yMid + 300));
-  spawnElement(25.7, new Eerie(PIXELS.yMid + 300));
-  spawnElement(25.8, new Eerie(PIXELS.yMid + 300));
-  spawnElement(25.9, new Eerie(PIXELS.yMid + 300));
-  spawnElement(26, new Eerie(PIXELS.yMid + 300));
-  spawnElement(26.1, new Eerie(PIXELS.yMid + 300));
-  spawnElement(26.2, new Eerie(PIXELS.yMid + 300));
-  spawnElement(26.3, new Eerie(PIXELS.yMid + 300));
-  spawnElement(26.4, new Eerie(PIXELS.yMid + 300));
-  spawnElement(26.5, new Eerie(PIXELS.yMid + 300));
+  spawnElement(25, new Eerie(SCREEN.centerY + 300));
+  spawnElement(25.1, new Eerie(SCREEN.centerY + 300));
+  spawnElement(25.2, new Eerie(SCREEN.centerY + 300));
+  spawnElement(25.3, new Eerie(SCREEN.centerY + 300));
+  spawnElement(25.4, new Eerie(SCREEN.centerY + 300));
+  spawnElement(25.5, new Eerie(SCREEN.centerY + 300));
+  spawnElement(25.6, new Eerie(SCREEN.centerY + 300));
+  spawnElement(25.7, new Eerie(SCREEN.centerY + 300));
+  spawnElement(25.8, new Eerie(SCREEN.centerY + 300));
+  spawnElement(25.9, new Eerie(SCREEN.centerY + 300));
+  spawnElement(26, new Eerie(SCREEN.centerY + 300));
+  spawnElement(26.1, new Eerie(SCREEN.centerY + 300));
+  spawnElement(26.2, new Eerie(SCREEN.centerY + 300));
+  spawnElement(26.3, new Eerie(SCREEN.centerY + 300));
+  spawnElement(26.4, new Eerie(SCREEN.centerY + 300));
+  spawnElement(26.5, new Eerie(SCREEN.centerY + 300));
 
-  spawnElement(25, new Eerie(PIXELS.yMid + 375));
-  spawnElement(25.1, new Eerie(PIXELS.yMid + 375));
-  spawnElement(25.2, new Eerie(PIXELS.yMid + 375));
-  spawnElement(25.3, new Eerie(PIXELS.yMid + 375));
-  spawnElement(25.4, new Eerie(PIXELS.yMid + 375));
-  spawnElement(25.5, new Eerie(PIXELS.yMid + 375));
-  spawnElement(25.6, new Eerie(PIXELS.yMid + 375));
-  spawnElement(25.7, new Eerie(PIXELS.yMid + 375));
-  spawnElement(25.8, new Eerie(PIXELS.yMid + 375));
-  spawnElement(25.9, new Eerie(PIXELS.yMid + 375));
-  spawnElement(26, new Eerie(PIXELS.yMid + 375));
-  spawnElement(26.1, new Eerie(PIXELS.yMid + 375));
-  spawnElement(26.2, new Eerie(PIXELS.yMid + 375));
-  spawnElement(26.3, new Eerie(PIXELS.yMid + 375));
-  spawnElement(26.4, new Eerie(PIXELS.yMid + 375));
-  spawnElement(26.5, new Eerie(PIXELS.yMid + 375));
+  spawnElement(25, new Eerie(SCREEN.centerY + 375));
+  spawnElement(25.1, new Eerie(SCREEN.centerY + 375));
+  spawnElement(25.2, new Eerie(SCREEN.centerY + 375));
+  spawnElement(25.3, new Eerie(SCREEN.centerY + 375));
+  spawnElement(25.4, new Eerie(SCREEN.centerY + 375));
+  spawnElement(25.5, new Eerie(SCREEN.centerY + 375));
+  spawnElement(25.6, new Eerie(SCREEN.centerY + 375));
+  spawnElement(25.7, new Eerie(SCREEN.centerY + 375));
+  spawnElement(25.8, new Eerie(SCREEN.centerY + 375));
+  spawnElement(25.9, new Eerie(SCREEN.centerY + 375));
+  spawnElement(26, new Eerie(SCREEN.centerY + 375));
+  spawnElement(26.1, new Eerie(SCREEN.centerY + 375));
+  spawnElement(26.2, new Eerie(SCREEN.centerY + 375));
+  spawnElement(26.3, new Eerie(SCREEN.centerY + 375));
+  spawnElement(26.4, new Eerie(SCREEN.centerY + 375));
+  spawnElement(26.5, new Eerie(SCREEN.centerY + 375));
 
-  spawnElement(25, new Eerie(PIXELS.yMid + 450));
-  spawnElement(25.1, new Eerie(PIXELS.yMid + 450));
-  spawnElement(25.2, new Eerie(PIXELS.yMid + 450));
-  spawnElement(25.3, new Eerie(PIXELS.yMid + 450));
-  spawnElement(25.4, new Eerie(PIXELS.yMid + 450));
-  spawnElement(25.5, new Eerie(PIXELS.yMid + 450));
-  spawnElement(25.6, new Eerie(PIXELS.yMid + 450));
-  spawnElement(25.7, new Eerie(PIXELS.yMid + 450));
-  spawnElement(25.8, new Eerie(PIXELS.yMid + 450));
-  spawnElement(25.9, new Eerie(PIXELS.yMid + 450));
-  spawnElement(26, new Eerie(PIXELS.yMid + 450));
-  spawnElement(26.1, new Eerie(PIXELS.yMid + 450));
-  spawnElement(26.2, new Eerie(PIXELS.yMid + 450));
-  spawnElement(26.3, new Eerie(PIXELS.yMid + 450));
-  spawnElement(26.4, new Eerie(PIXELS.yMid + 450));
-  spawnElement(26.5, new Eerie(PIXELS.yMid + 450));
+  spawnElement(25, new Eerie(SCREEN.centerY + 450));
+  spawnElement(25.1, new Eerie(SCREEN.centerY + 450));
+  spawnElement(25.2, new Eerie(SCREEN.centerY + 450));
+  spawnElement(25.3, new Eerie(SCREEN.centerY + 450));
+  spawnElement(25.4, new Eerie(SCREEN.centerY + 450));
+  spawnElement(25.5, new Eerie(SCREEN.centerY + 450));
+  spawnElement(25.6, new Eerie(SCREEN.centerY + 450));
+  spawnElement(25.7, new Eerie(SCREEN.centerY + 450));
+  spawnElement(25.8, new Eerie(SCREEN.centerY + 450));
+  spawnElement(25.9, new Eerie(SCREEN.centerY + 450));
+  spawnElement(26, new Eerie(SCREEN.centerY + 450));
+  spawnElement(26.1, new Eerie(SCREEN.centerY + 450));
+  spawnElement(26.2, new Eerie(SCREEN.centerY + 450));
+  spawnElement(26.3, new Eerie(SCREEN.centerY + 450));
+  spawnElement(26.4, new Eerie(SCREEN.centerY + 450));
+  spawnElement(26.5, new Eerie(SCREEN.centerY + 450));
 
-  spawnElement(25, new Eerie(PIXELS.yMid + 525));
-  spawnElement(25.1, new Eerie(PIXELS.yMid + 525));
-  spawnElement(25.2, new Eerie(PIXELS.yMid + 525));
-  spawnElement(25.3, new Eerie(PIXELS.yMid + 525));
-  spawnElement(25.4, new Eerie(PIXELS.yMid + 525));
-  spawnElement(25.5, new Eerie(PIXELS.yMid + 525));
-  spawnElement(25.6, new Eerie(PIXELS.yMid + 525));
-  spawnElement(25.7, new Eerie(PIXELS.yMid + 525));
-  spawnElement(25.8, new Eerie(PIXELS.yMid + 525));
-  spawnElement(25.9, new Eerie(PIXELS.yMid + 525));
-  spawnElement(26, new Eerie(PIXELS.yMid + 525));
-  spawnElement(26.1, new Eerie(PIXELS.yMid + 525));
-  spawnElement(26.2, new Eerie(PIXELS.yMid + 525));
-  spawnElement(26.3, new Eerie(PIXELS.yMid + 525));
-  spawnElement(26.4, new Eerie(PIXELS.yMid + 525));
-  spawnElement(26.5, new Eerie(PIXELS.yMid + 525));
+  spawnElement(25, new Eerie(SCREEN.centerY + 525));
+  spawnElement(25.1, new Eerie(SCREEN.centerY + 525));
+  spawnElement(25.2, new Eerie(SCREEN.centerY + 525));
+  spawnElement(25.3, new Eerie(SCREEN.centerY + 525));
+  spawnElement(25.4, new Eerie(SCREEN.centerY + 525));
+  spawnElement(25.5, new Eerie(SCREEN.centerY + 525));
+  spawnElement(25.6, new Eerie(SCREEN.centerY + 525));
+  spawnElement(25.7, new Eerie(SCREEN.centerY + 525));
+  spawnElement(25.8, new Eerie(SCREEN.centerY + 525));
+  spawnElement(25.9, new Eerie(SCREEN.centerY + 525));
+  spawnElement(26, new Eerie(SCREEN.centerY + 525));
+  spawnElement(26.1, new Eerie(SCREEN.centerY + 525));
+  spawnElement(26.2, new Eerie(SCREEN.centerY + 525));
+  spawnElement(26.3, new Eerie(SCREEN.centerY + 525));
+  spawnElement(26.4, new Eerie(SCREEN.centerY + 525));
+  spawnElement(26.5, new Eerie(SCREEN.centerY + 525));
 
   spawnElement(25, new Star());
 };
 
 CASTLE.spawn = () => {
-  let mid = PIXELS.yMid + 100;
+  let mid = SCREEN.centerY + 100;
   spawnElement(2, new BulletBillLinear(mid - 2 * 56));
   spawnElement(2, new BulletBillLinear(mid - 3 * 56));
   spawnElement(2, new BulletBillLinear(mid - 56));
@@ -540,7 +535,7 @@ CASTLE.spawn = () => {
   spawnElement(2, new BulletBillLinear(mid + 2 * 56));
   spawnElement(2, new BulletBillLinear(mid + 3 * 56));
 
-  mid = PIXELS.yMid - 156;
+  mid = SCREEN.centerY - 156;
   spawnElement(3, new BulletBillLinear(mid - 2 * 56));
   spawnElement(3, new BulletBillLinear(mid - 3 * 56));
   spawnElement(3, new BulletBillLinear(mid - 56));
@@ -549,7 +544,7 @@ CASTLE.spawn = () => {
   spawnElement(3, new BulletBillLinear(mid + 2 * 56));
   spawnElement(3, new BulletBillLinear(mid + 3 * 56));
 
-  mid = PIXELS.yMid;
+  mid = SCREEN.centerY;
   spawnElement(4, new BulletBillLinear(mid - 2 * 56));
   spawnElement(4, new BulletBillLinear(mid - 3 * 56));
   spawnElement(4, new BulletBillLinear(mid - 56));
@@ -559,7 +554,7 @@ CASTLE.spawn = () => {
   spawnElement(4, new BulletBillLinear(mid + 3 * 56));
 
   spawnElement(5, new BanzaiBill(0));
-  spawnElement(5, new BanzaiBill(PIXELS.height - 256));
+  spawnElement(5, new BanzaiBill(SCREEN.height - 256));
 
   spawnElement(6, new BulletBillDiagonal("up"));
   spawnElement(6.1, new BulletBillDiagonal("up"));
@@ -652,12 +647,12 @@ CASTLE.spawn = () => {
   spawnElement(23.6, new Grinder(128 * 1.25));
   spawnElement(27.1, new Grinder(128 * 1.25));
 
-  spawnElement(21, new Grinder(PIXELS.yMid - 128 / 2));
-  spawnElement(22.75, new Grinder(PIXELS.yMid - 128 / 2));
-  spawnElement(24.5, new Grinder(PIXELS.yMid - 128 / 2));
-  spawnElement(26.25, new Grinder(PIXELS.yMid - 128 / 2));
-  spawnElement(28, new Grinder(PIXELS.yMid - 128 / 2));
-  spawnElement(29.75, new Grinder(PIXELS.yMid - 128 / 2));
+  spawnElement(21, new Grinder(SCREEN.centerY - 128 / 2));
+  spawnElement(22.75, new Grinder(SCREEN.centerY - 128 / 2));
+  spawnElement(24.5, new Grinder(SCREEN.centerY - 128 / 2));
+  spawnElement(26.25, new Grinder(SCREEN.centerY - 128 / 2));
+  spawnElement(28, new Grinder(SCREEN.centerY - 128 / 2));
+  spawnElement(29.75, new Grinder(SCREEN.centerY - 128 / 2));
 
   spawnElement(21.85, new Grinder(128 * 3.75));
   spawnElement(23.6, new Grinder(128 * 3.75));
@@ -673,43 +668,9 @@ CASTLE.spawn = () => {
   spawnElement(32, new Star());
 };
 
-function spawnElement(Element, yIni, time) {
-  let element = new Element(yIni);
-  let timeout = setTimeout(() => elements.enemies.push(element), time * 1000);
-  game.timeouts.push(timeout);
-}
-
-function spawnColumn(Element, yIni, time, size, padding = 0) {
-  let element = new Element(0);
-  let { height } = element;
-  let spacing = height + padding;
-
-  for (let i = 0; i < size; i++) {
-    let yPos = yIni + spacing * i;
-    spawnElement(Element, yPos, time);
-  }
-}
-
-function spawnRow(Element, yIni, time, size, padding = 0) {
-  let element = new Element(0);
-  let { width } = element;
-  let spacing = (width + padding) / 1000;
-
-  for (let i = 0; i < size; i++) {
-    let delay = time + spacing * i;
-    spawnElement(Element, yIni, delay);
-  }
-}
-
-//test map
-const TEST = new Level(
-  "TEST",
-  "images/levels/bg-overworld.jpg",
-  "overworld",
-  0.4
-);
-TEST.spawn = () => {
-  spawnRow(BanzaiBill, PIXELS.yMid, 1, 4, -15);
+const levels = {
+  index: 0,
+  list: [TEST],
 };
 
 const LEVELS = [OVERWORLD, ATHLETIC, HAUNTED, CASTLE];
