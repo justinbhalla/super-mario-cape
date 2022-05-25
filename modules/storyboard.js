@@ -81,7 +81,7 @@ const storyboard = {
     },
   },
 
-  playLevel(timeout) {
+  playLevel() {
     const level = levels.getCurrent();
     const { backgroundTheme, musicName } = level;
 
@@ -97,7 +97,7 @@ const storyboard = {
       foreground.hide("text");
       level.spawnFn();
       SPAWN_ON = true;
-    }, timeout);
+    }, 1000);
   },
 
   dispatch(actionName, ...args) {
