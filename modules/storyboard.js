@@ -5,6 +5,7 @@ import {
   sound,
   player,
   controller,
+  elements,
 } from "../main.js";
 
 const storyboard = {
@@ -52,37 +53,18 @@ const storyboard = {
       },
     },
 
-    LEVEL: {
-      prepare(actionName, timeout) {
-        game.isPlaying = false;
-        game.isScrolling = false;
-        elements.player.reset();
-        controller.reset();
-        hideScreen(fade);
-        hideScreen(tutorial);
-        showScreen(text);
-        setTimeout(() => this[actionName], timeout);
-      },
-
-      play() {
-        game.isPlaying = true;
-        game.isScrolling = true;
-        game.timeouts.forEach((t) => clearTimeout(t));
-        elements.enemies.length = 0;
-        elements.player.isDead = false;
-        elements.player.gotStar = false;
-        const level = LEVELS[game.level];
-        level.spawn();
-        hideScreen(text);
-        this.changeScene("LEVEL");
-      },
-    },
+    LEVEL: {},
   },
 
   playLevel() {
     const level = levels.getCurrent();
     const { backgroundTheme, musicName } = level;
+    elements.timeouts.length = 0;
+    elements.list.length = 0;
+    player.isDead = false;
+    player.gotStar = false;
 
+    controller.reset();
     player.reset();
     background.change(backgroundTheme);
     foreground.hide("tutorial");
