@@ -53,7 +53,15 @@ const storyboard = {
       },
     },
 
-    LEVEL: {},
+    LEVEL: {
+      death() {
+        background.enabled = false;
+        foreground.show("death");
+        sound.reset();
+        sound.play("lostALife");
+        storyboard.changeState("DEATH");
+      },
+    },
   },
 
   playLevel() {

@@ -9,6 +9,8 @@ const IMAGE_PATHS = [
   "images/backgrounds/overworld.jpg",
   "images/backgrounds/castle.jpg",
   "images/backgrounds/menu.jpg",
+  "images/graphics/death.gif",
+  "images/graphics/death.png",
   "images/graphics/lives.png",
   "images/graphics/sound-off.png",
   "images/graphics/sound-on.png",

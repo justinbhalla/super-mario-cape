@@ -1,4 +1,4 @@
-import { Level, SPAWNER } from "../../main.js";
+import { Level, SPAWNER, YellowParakoopa } from "../../main.js";
 
 const OVERWORLD = new Level(
   "Creative Name",
@@ -9,7 +9,7 @@ const OVERWORLD = new Level(
 );
 
 function spawnFn() {
-  console.log(SPAWNER);
+  SPAWNER.makeOne(YellowParakoopa, 400, 1);
 }
 
 export default OVERWORLD;

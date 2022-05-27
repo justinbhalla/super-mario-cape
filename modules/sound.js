@@ -14,6 +14,7 @@ const sound = {
   },
 
   music: {
+    athletic: new Audio("audio/music/athletic.mp3"),
     title: new Audio("audio/music/title.mp3"),
     yoshisIsland: new Audio("audio/music/yoshis-island.mp3"),
   },

@@ -1,4 +1,4 @@
-import { levels } from "../main.js";
+import { levels, player } from "../main.js";
 
 const foreground = {
   screens: {
@@ -8,6 +8,7 @@ const foreground = {
     tutorial: document.getElementById("tutorial"),
     loader: document.getElementById("loader"),
     text: document.getElementById("text"),
+    death: document.getElementById("death"),
   },
 
   show(screenName) {
@@ -21,6 +22,12 @@ const foreground = {
         const { name } = levels.getCurrent();
         screen.innerText = `${name}`;
         break;
+      case death:
+        const { xBox, wBox, yPos } = player;
+        const centerX = xBox + wBox / 2;
+        death.style.backgroundPosition = `${centerX}px ${yPos}px`;
+        setTimeout(() => death.classList.add("falling"), 500);
+        break;
     }
 
     screen.classList.remove("hidden");
@@ -32,6 +39,9 @@ const foreground = {
     switch (screen) {
       case fade:
         screen.classList.remove("fade-active");
+        break;
+      case death:
+        screen.classList.remove("falling");
         break;
     }
 

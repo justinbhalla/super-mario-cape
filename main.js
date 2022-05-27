@@ -77,7 +77,7 @@ function runGame() {
 
     clearCanvas();
     // we're drawing mario on all screens
-    player.draw();
+    if (storyboard.state !== "DEATH") player.draw();
     elements.draw();
   }
 }
@@ -92,7 +92,7 @@ function setGame() {
       setAudio();
       setControls();
       runGame();
-      storyboard.dispatch("play", [100]);
+      storyboard.dispatch("play", []);
       clearInterval(interval);
     }
   }, 250);
@@ -149,4 +149,5 @@ export {
   Parakoopa,
   SuperKoopa,
   YellowParakoopa,
+  Mario,
 };

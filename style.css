@@ -79,6 +79,27 @@ input:focus {
   z-index: -1;
 }
 
+#death {
+  background-image: url(images/graphics/death.png),
+    url(images/graphics/death.gif);
+  background-repeat: no-repeat, no-repeat;
+  background-size: auto, 0;
+}
+
+#death.falling {
+  background-size: 0, auto;
+  animation: falling 1.5s forwards;
+}
+
+@keyframes falling {
+  from {
+    background-position-y: initial, initial;
+  }
+  to {
+    background-position-y: 100vh, 100vh;
+  }
+}
+
 .bg-athletic {
   background-image: url(images/backgrounds/athletic.jpg);
 }
