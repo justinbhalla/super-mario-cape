@@ -1,10 +1,4 @@
-import {
-  SCREEN,
-  storyboard,
-  controller,
-  elements,
-  Element,
-} from "../../main.js";
+import { SCREEN, storyboard, controller, Element } from "../../main.js";
 
 class Mario extends Element {
   constructor() {
@@ -49,7 +43,8 @@ class Mario extends Element {
     this.yPos += this.gravity;
 
     if (hasFallen && storyboard.state === "TUTORIAL") this.reset();
-    else if (hasFallen) this.isDead = true;
+    else if (hasFallen) storyboard.dispatch("death", []);
+    // else if (hasFallen) this.isDead = true;
   }
 
   moveRight() {
@@ -89,16 +84,6 @@ class Mario extends Element {
   reset() {
     this.xPos = 100;
     this.yPos = 100;
-  }
-
-  detectHit() {
-    return elements.every((element) => {
-      const { xBox: mx1, yBox: my1, wBox: mw, hBox: mh } = this;
-      const { xBox: ex1, yBox: ey1, wBox: ew, hBox: eh } = element;
-      const [ey2, my2] = [ey1 + eh, my1 + mh];
-      const [ex2, mx2] = [ex1 + ew, mx1 + mw];
-      return !(ex1 >= mx2 || ey1 >= my2 || ex2 <= mx1 || ey2 <= my1);
-    });
   }
 }
 

@@ -1,4 +1,12 @@
-import { FPS_INTERVAL, CONTEXT, SCREEN, atlas } from "../../main.js";
+import {
+  FPS_INTERVAL,
+  Mario,
+  CONTEXT,
+  SCREEN,
+  atlas,
+  storyboard,
+  player,
+} from "../../main.js";
 
 class Element {
   constructor() {
@@ -62,6 +70,14 @@ class Element {
     this.xPos -= this.xSpeed;
   }
 
+  detectHit() {
+    let { xBox: ex1, yBox: ey1, wBox: ew, hBox: eh } = this;
+    let { xBox: mx1, yBox: my1, wBox: mw, hBox: mh } = player;
+    let [ex2, mx2] = [ex1 + ew, mx1 + mw];
+    let [ey2, my2] = [ey1 + eh, my1 + mh];
+    return !(ex1 >= mx2 || ey1 >= my2 || ex2 <= mx1 || ey2 <= my1);
+  }
+
   draw() {
     this.drawImage();
     this.drawSprite();
@@ -70,6 +86,13 @@ class Element {
   move() {
     this.moveHitbox();
     this.moveImage();
+
+    if (this instanceof Mario === false) {
+      if (this.detectHit()) {
+        storyboard.dispatch("death", []);
+      }
+    }
+
     this.time += FPS_INTERVAL;
   }
 }
