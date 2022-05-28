@@ -82,6 +82,7 @@ const storyboard = {
 
     setTimeout(() => {
       foreground.hide("text");
+      foreground.show("hud");
       level.spawnFn();
       storyboard.changeState("LEVEL");
     }, 1000);

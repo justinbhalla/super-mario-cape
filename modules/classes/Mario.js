@@ -15,6 +15,8 @@ class Mario extends Element {
     this.wBox = 92;
     this.hBox = 76;
 
+    this.lives = 3;
+
     this.xSpeed = 10;
     this.ySpeed = 10;
     this.gravity = 7;

@@ -9,6 +9,7 @@ const foreground = {
     loader: document.getElementById("loader"),
     text: document.getElementById("text"),
     death: document.getElementById("death"),
+    hud: document.getElementById("hud"),
   },
 
   show(screenName) {
@@ -21,6 +22,10 @@ const foreground = {
       case text:
         const { name } = levels.getCurrent();
         screen.innerText = `${name}`;
+        break;
+      case hud:
+        const { lives } = player;
+        hud.innerText = lives;
         break;
       case death:
         const { xBox, wBox, yPos } = player;

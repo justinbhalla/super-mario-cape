@@ -13,6 +13,9 @@ import Mario from "./modules/classes/Mario.js";
 import Level from "./modules/classes/Level.js";
 import OVERWORLD from "./modules/levels/overworld.js";
 
+// bug where sprite is midway for enemies when mario dies
+// we're drawing mario on all screens
+
 const FPS_INTERVAL = 1000 / 60;
 const CANVAS = document.getElementById("canvas");
 const CONTEXT = CANVAS.getContext("2d");
@@ -76,7 +79,6 @@ function runGame() {
     }
 
     clearCanvas();
-    // we're drawing mario on all screens
     if (storyboard.state !== "DEATH") player.draw();
     elements.draw();
   }
